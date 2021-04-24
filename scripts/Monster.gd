@@ -3,6 +3,8 @@ extends RigidBody2D
 export(int) onready var damage = 1
 export(float) var invuln_time = 0.25
 
+onready var sprite = $Sprite
+
 var noise = OpenSimplexNoise.new()
 var count = 0
 var speed = 300.0
@@ -22,6 +24,12 @@ func _ready():
   connect("body_entered", self, "on_enter")
   connect("body_exited", self, "on_exit")
 
+func damage_anim():
+  sprite.visible = false
+  
+  yield(get_tree().create_timer(0.04), "timeout")
+  
+  sprite.visible = true
 
 func _process(delta):
   invuln_time_left -= delta
@@ -50,13 +58,17 @@ func damage(amount: int, source: Node2D) -> void:
     return
     
   health -= amount
+  
+  if health <= 0:
+    queue_free()
+    return      
+
   invuln_time_left = invuln_time
   
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true
   
-  if health <= 0:
-    queue_free()
+  damage_anim()
 
 func on_enter(other) -> void:
   if other.has_method("is_player") and other.is_player():
