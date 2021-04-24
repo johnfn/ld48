@@ -28,6 +28,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Test="*res://compiled/Test.gd"
+CombatHelpers="*res://scripts/CombatHelpers.gd"
 
 [display]
 

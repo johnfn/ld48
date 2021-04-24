@@ -14,6 +14,7 @@ var invuln_time_left = 0.0
 
 var knockback = false
 var knockback_vector: Vector2
+var dying = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,17 +24,6 @@ func _ready():
   noise.persistence = 0.8
   connect("body_entered", self, "on_enter")
   connect("body_exited", self, "on_exit")
-
-func damage_anim():
-  yield(get_tree(), "idle_frame")
-  yield(get_tree(), "idle_frame")
-  yield(get_tree(), "idle_frame")
-  
-  Sprite.material.set_shader_param("white", 1.0)
-
-  yield(get_tree().create_timer(0.1), "timeout")
-  
-  Sprite.material.set_shader_param("white", 0.0)
 
 func _process(delta):
   invuln_time_left -= delta
@@ -72,10 +62,15 @@ func damage(amount: int, source: Node2D) -> void:
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true
   
-  damage_anim()
+  CombatHelpers.damage_anim(Sprite)
 
 func animate_and_die():
-  yield(damage_anim(), "completed")
+  if dying: 
+    return
+    
+  dying = true
+  
+  yield(CombatHelpers.damage_anim(Sprite), "completed")
   queue_free()
 
 func on_enter(other) -> void:
