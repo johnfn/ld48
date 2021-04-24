@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://components/Tree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 637.052, 482.457 )
+
+[node name="LevelX" type="Node2D"]
+
+[node name="Bounds" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 635.037, 233.085 )
+shape = SubResource( 1 )
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Sword" parent="Items" instance=ExtResource( 2 )]
+position = Vector2( 680.226, 311.431 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Tree" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 113.434, 592.225 )
+
+[node name="Tree2" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 102.056, 344.87 )
+
+[node name="Tree3" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 110.949, 103.011 )
+
+[node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 64.2802, -127.506 )
+
+[node name="Tree4" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1161.91, 108.056 )
+rotation = 3.14159
+
+[node name="Tree8" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1202.92, -128.118 )
+rotation = 3.14159
+
+[node name="Tree5" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1164.53, 349.465 )
+rotation = 3.14159
+
+[node name="Tree6" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1163.91, 594.442 )
+rotation = 3.14159
+
+[node name="Enemies" type="Node2D" parent="."]
