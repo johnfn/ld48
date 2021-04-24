@@ -4,6 +4,7 @@
 
 [node name="Sword" type="Area2D" groups=[
 "items",
+"weapons",
 ]]
 collision_layer = 24
 collision_mask = 5

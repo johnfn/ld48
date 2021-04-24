@@ -18,3 +18,5 @@ texture = ExtResource( 1 )
 visible = false
 position = Vector2( -0.420441, 0 )
 shape = SubResource( 1 )
+
+[node name="Equipment" type="Node2D" parent="."]

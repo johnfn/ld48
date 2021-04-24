@@ -5,10 +5,14 @@ var input_vec : Vector2 = Vector2(0, 0)
 export(float) var max_speed = 600.0
 
 export(int) var health = 6
+onready var Equipment = $Equipment
+var equipment_slots = {}
+
 
 func _physics_process(delta):
   var direction = input_vec.normalized()
   move_and_slide(direction * max_speed)
+
 
 func _unhandled_input(event):
   if Input.is_action_just_pressed("move_down"):
@@ -25,8 +29,14 @@ func _unhandled_input(event):
   elif not Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
     input_vec.x = 0
 
+
 func damage(amount: int) -> void:
   health -= 1
-  
   print(health)
-  
+
+
+func equip(equipment: Node, slot: String):
+  if slot in equipment_slots:
+    equipment_slots[slot].queue_free()
+  Equipment.add_child(equipment)
+  equipment_slots[slot] = equipment
