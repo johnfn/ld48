@@ -1,10 +1,5 @@
 extends RigidBody2D 
 
-# TODO: hit walls
-# TODO: hit enemies
-# TODO: hit player
-# TODO: Better bullet explosion
-# TODO: With particle effects
 
 # should be supplied by parent
 var direction: Vector2
