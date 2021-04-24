@@ -6,6 +6,8 @@ onready var Ui = $UI
 onready var Levels = $Levels
 onready var TransitionTop = $Levels/TransitionTop
 onready var TransitionBottom = $Levels/TransitionBottom
+onready var TopWall = $Walls/BottomWall
+onready var BottomWall = $Walls/BottomWall
 onready var teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + TransitionTop.position.y
 onready var load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
 
@@ -19,7 +21,9 @@ var inventory = []
 const ALL_SLOTS = ["weapons"]
 var Level = null
 const BASE_VIEWPORT_HEIGHT = 1280 # TODO this sucks
+const WALL_THICKNESS = 10
 var last_player_y = 0
+var last_is_top_open = false
 var is_transitioning = false
 
 func add_to_inventory(item_name):
@@ -36,6 +40,9 @@ func start_level(level_num: int) -> void:
   last_player_y = Player.position.y
   TransitionBottom.position.y = Level.bottom_wall
   curr_level_num = level_num
+  TransitionBottom.position.y = Level.bottom_wall
+  update_wall_positions()
+
 
 func load_new_level(level_num: int) -> void:
   Level.queue_free()
@@ -45,6 +52,14 @@ func load_new_level(level_num: int) -> void:
   TransitionBottom.position.y = Level.bottom_wall
   curr_level_num = level_num
   is_transitioning = true
+  update_wall_positions()
+
+
+func update_wall_positions() -> void:
+  get_node("Walls/BottomWall/Box").position.y = Level.bottom_wall
+  get_node("Walls/TopWall/Box").one_way_collision = Level.is_top_open
+  get_node("Walls/TopWall/Box").position.y = Level.top_wall
+
 
 func _ready():
   Ui.player = Player
@@ -79,6 +94,11 @@ func _process(delta):
     is_transitioning = false
     
   last_player_y = Player.position.y
+  
+func _physics_process(delta):
+  if last_is_top_open != Level.is_top_open:
+    last_is_top_open = Level.is_top_open
+    update_wall_positions()
 
 
 func wire_item_signals():

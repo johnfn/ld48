@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://scripts/LevelTransition.gd" type="Script" id=1]
 [ext_resource path="res://components/Tree.tscn" type="PackedScene" id=2]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 627.239, 1109.14 )
+
 [node name="LevelTransition" type="Node2D"]
+script = ExtResource( 1 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -107,3 +112,12 @@ position = Vector2( 628.611, 1054.03 )
 
 [node name="LoadPoint" type="Node2D" parent="Markers"]
 position = Vector2( 663.533, 1435.01 )
+
+[node name="Bounds" type="Area2D" parent="."]
+
+[node name="Box" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 644.485, 1066.73 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Bounds" to="." method="_on_Bounds_body_entered"]
+[connection signal="body_exited" from="Bounds" to="." method="_on_Bounds_body_exited"]
