@@ -1,4 +1,4 @@
-extends Node2D 
+extends RigidBody2D 
 
 # TODO: hit walls
 # TODO: hit enemies
@@ -6,7 +6,7 @@ extends Node2D
 
 # should be supplied by parent
 var direction: Vector2
-var speed = 6
+var speed = 400
 
-func _process(delta):
-   position += direction * speed
+func _integrate_forces(state):
+  state.linear_velocity = direction * speed
