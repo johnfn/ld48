@@ -16,6 +16,7 @@ func add_to_inventory(item_name):
 func _ready():
   wire_item_signals()
   Ui.player = Player
+  print(Levels[0].size())
 
 
 func _process(delta):
@@ -39,9 +40,3 @@ func handle_item_body_entered(body: Node, item_node):
       var equipment = load(item_node.filename).instance()
       Player.equip(equipment, slot)
     item_node.queue_free()
-        
-
-func reset_to_level(level_num):
-  var level = Levels[level_num]
-  var level_bounds = level.get_child('Bounds') as Area2D
-  
