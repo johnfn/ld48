@@ -37,9 +37,11 @@ func is_enemy() -> bool:
 
 func shoot():
   var new_bullet = BulletScene.instance()
+  new_bullet.position += direction_to_shoot * 100
+  
   add_child(new_bullet)
   new_bullet.direction = direction_to_shoot
-  new_bullet.position += direction_to_shoot * 60
+
 
 func damage(amount: int, source: Node2D) -> void:
   if invuln_time_left > 0:
