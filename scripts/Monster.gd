@@ -25,11 +25,12 @@ func _ready():
   connect("body_exited", self, "on_exit")
 
 func damage_anim():
-  sprite.visible = false
+  sprite.material.set_shader_param("white", 1.0)
+
+  yield(get_tree().create_timer(0.1), "timeout")
   
-  yield(get_tree().create_timer(0.04), "timeout")
-  
-  sprite.visible = true
+  sprite.material.set_shader_param("white", 0.0)
+
 
 func _process(delta):
   invuln_time_left -= delta
