@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Inventory" type="ColorRect"]
+margin_left = 29.5771
+margin_top = 639.078
+margin_right = 802.577
+margin_bottom = 702.078
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryLabel" type="Label" parent="."]
+margin_left = 5.7431
+margin_top = 4.17682
+margin_right = 66.7431
+margin_bottom = 18.1768
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}

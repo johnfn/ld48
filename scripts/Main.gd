@@ -5,6 +5,8 @@ onready var Cam = $Camera
 onready var Ui = $UI
 onready var Levels = $Levels.get_children()
 
+export(bool) var debug_already_has_sword = false
+
 var inventory = []
 const ALL_SLOTS = ["weapons"]
 
@@ -16,6 +18,10 @@ func add_to_inventory(item_name):
 func _ready():
   wire_item_signals()
   Ui.player = Player
+  
+  if debug_already_has_sword:
+    var equipment = load("res://components/Sword.tscn").instance()
+    Player.equip(equipment, ALL_SLOTS[0])
 
 
 func _process(delta):

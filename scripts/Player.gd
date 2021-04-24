@@ -46,13 +46,24 @@ func _unhandled_input(event: InputEvent) -> void:
         weapon.set_in_use(false)
 
 
-func damage(amount: int) -> void:
+func damage(amount: int, source: Node2D) -> void:
   if invuln_time_left <= 0:
+    # take damage
+    
     health -= amount
     invuln_time_left = invuln_time
+    
+    # bump player back a little
+    
+    var bump_direction = position.direction_to(source.position)
+    self.position += bump_direction * 100
 
 
 func equip(equipment: Node, slot: String) -> void:
+  print("o..k")
+  if equipment.has_method("init"):
+    equipment.init(self)
+  
   if slot in equipment_slots:
     equipment_slots[slot].queue_free()
   Equipment.get_node(slot).call_deferred("add_child", equipment)
