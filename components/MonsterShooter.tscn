@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materials/modulate_shader.tres" type="Material" id=1]
+[ext_resource path="res://assets/art/enemy_shooter.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Monster.gd" type="Script" id=3]
+[ext_resource path="res://scripts/CombatHelpers.gd" type="Script" id=4]
+
+[node name="MonsterShooter" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 23
+mode = 2
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 1 )
+texture = ExtResource( 2 )
+script = ExtResource( 4 )
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( 3.65842, -94.9257, -50.3742, -75.8554, -94.077, -21.8228, -83.4824, 36.9774, -68.1202, 57.1072, -54.8769, 87.037, -8.52539, 94.4533, 25.9072, 93.3938, 66.4316, 82.5343, 87.0912, 51.8099, 94.7722, 11.5503, 94.5074, -37.185, 58.2208, -63.9364, 12.1341, -95.4555 )

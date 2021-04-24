@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://components/Tree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/Spike.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/LevelX.gd" type="Script" id=3]
+[ext_resource path="res://components/Donut.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=5]
+[ext_resource path="res://components/Monster.tscn" type="PackedScene" id=6]
+[ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=7]
+
+[node name="LevelX" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Donut" parent="Items" instance=ExtResource( 4 )]
+position = Vector2( 907.05, 590.676 )
+
+[node name="Sword" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 632.786, 1637.06 )
+rotation = 0.0
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Tree" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 144.142, 774.358 )
+
+[node name="Tree2" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 150.723, 531.493 )
+
+[node name="Tree3" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 265.128, 314.328 )
+
+[node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 409.277, 128.71 )
+
+[node name="Tree4" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1033.23, 341.822 )
+rotation = 3.14159
+
+[node name="Tree8" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 948.523, 137.077 )
+rotation = 3.14159
+
+[node name="Tree5" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1172.79, 560.782 )
+rotation = 3.14159
+
+[node name="Tree6" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1176.66, 796.78 )
+rotation = 3.14159
+
+[node name="Tree9" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 132.25, 1247.66 )
+
+[node name="Tree10" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 138.831, 1004.8 )
+
+[node name="Tree11" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1160.9, 1034.09 )
+rotation = 3.14159
+
+[node name="Tree12" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1164.77, 1270.08 )
+rotation = 3.14159
+
+[node name="Tree13" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 129.871, 1728.1 )
+
+[node name="Tree17" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 218.961, 1963.3 )
+
+[node name="Tree18" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 329.433, 2198.5 )
+
+[node name="Tree14" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 136.453, 1485.24 )
+
+[node name="Tree15" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1158.52, 1514.53 )
+rotation = 3.14159
+
+[node name="Tree16" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1162.39, 1750.52 )
+rotation = 3.14159
+
+[node name="Tree19" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1016.28, 1957.21 )
+rotation = 3.14159
+
+[node name="Tree20" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 873.737, 2163.9 )
+rotation = 3.14159
+
+[node name="Spike" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 396.294, 663.481 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Monster" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 773.559, 819.66 )
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="LevelBottom" type="Node2D" parent="Markers"]
+position = Vector2( 611.31, 2283.42 )
+
+[node name="SpawnPoint" type="Node2D" parent="Markers"]
+position = Vector2( 614.306, 2031.7 )
+
+[node name="LevelTop" type="Node2D" parent="Markers"]
+position = Vector2( 677.235, 0 )
+
+[node name="MonsterShooter" parent="." instance=ExtResource( 7 )]
+position = Vector2( 345.505, 1282.44 )
+
+[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

@@ -11,34 +11,13 @@ onready var Equipment = $Equipment
 onready var Weapons = $Equipment/weapons
 
 var equipment_slots = {}
-var invuln_time_left = 0.0
+var is_invuln = false
 
 var knockback = false
 var knockback_source: Node2D = null
 
 func _process(delta: float) -> void:
   look_at(get_global_mouse_position())
-  invuln_time_left -= delta
-
-func damage_anim_co():
-  yield(get_tree(), "idle_frame")
-  yield(get_tree(), "idle_frame")
-  yield(get_tree(), "idle_frame")
-  
-  Sprite.material.set_shader_param("white", 1.0)
-
-  yield(get_tree().create_timer(0.1), "timeout")
-  
-  Sprite.material.set_shader_param("white", 0.0)
-  
-  while invuln_time_left > 0:
-    Sprite.visible = false
-    
-    yield(get_tree().create_timer(0.05), "timeout")
-    
-    Sprite.visible = true
-    
-    yield(get_tree().create_timer(0.05), "timeout")
 
 func _physics_process(delta: float) -> void:
   var direction = input_vec.normalized() * max_speed
@@ -78,18 +57,21 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func damage(amount: int, source: Node2D) -> void:
-  if invuln_time_left <= 0:
+  if not is_invuln:
+    is_invuln = true
+    
     # take damage
     
     health -= amount
-    invuln_time_left = invuln_time
     
     # bump player back a little
     
     knockback = true
     knockback_source = source
 
-    damage_anim_co()
+    yield(CombatHelpers.damage_anim(Sprite), "completed")
+    
+    is_invuln = false
 
 
 func equip(equipment: Node, slot: String) -> void:

@@ -48,6 +48,7 @@ func _process(delta):
   cam_pos = min(Cam.position.y + player_moved_y + max_camera_speed * delta, cam_pos)
   cam_pos = max(Cam.position.y + player_moved_y - max_camera_speed * delta, cam_pos)
   cam_pos = min(max_cam, cam_pos)
+  
   if not Level.is_top_open:
     cam_pos = max(Level.top_wall + BASE_VIEWPORT_HEIGHT / 2, cam_pos)
   Cam.position.y = cam_pos
