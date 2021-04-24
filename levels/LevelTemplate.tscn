@@ -1,11 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://components/Tree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/Donut.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/Monster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
 
-[node name="LevelTransition" type="Node2D"]
+[node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Donut" parent="Items" instance=ExtResource( 4 )]
+position = Vector2( 907.05, 590.676 )
+
+[node name="Sword" parent="Items" instance=ExtResource( 2 )]
+position = Vector2( 632.786, 1637.06 )
+rotation = 0.0
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -81,3 +93,21 @@ rotation = 3.14159
 
 [node name="Spike" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 396.294, 663.481 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 773.559, 819.66 )
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="LevelBottom" type="Node2D" parent="Markers"]
+position = Vector2( 611.31, 2283.42 )
+
+[node name="SpawnPoint" type="Node2D" parent="Markers"]
+position = Vector2( 614.306, 2031.7 )
+
+[node name="LevelTop" type="Node2D" parent="Markers"]
+position = Vector2( 677.235, 0 )
+
+[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
