@@ -10,4 +10,3 @@ var speed = 6
 
 func _process(delta):
    position += direction * speed
-
