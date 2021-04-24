@@ -20,6 +20,9 @@ func bullet_explode_anim_co():
   
   queue_free()
 
+# I DONT GET WHY THIS BULLET INSTANTLY HITS THE SHOOTER ENEMY< EVEN THO THEY ARENT TOUCHING IN THE SLIGHTEST
+# GOD HELP ME
+
 func body_entered(body):
   if body is Player:
     body.damage(1, self)
