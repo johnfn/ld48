@@ -9,6 +9,7 @@ extents = Vector2( 12.9477, 11.8649 )
 [node name="MonsterBullet" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 7
+mode = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
