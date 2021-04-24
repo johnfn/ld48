@@ -3,7 +3,7 @@ extends RigidBody2D
 export(int) onready var damage = 1
 export(float) var invuln_time = 0.25
 
-onready var sprite = $Sprite
+onready var Sprite = $Sprite
 
 var noise = OpenSimplexNoise.new()
 var count = 0
@@ -29,12 +29,11 @@ func damage_anim():
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
   
-  sprite.material.set_shader_param("white", 1.0)
+  Sprite.material.set_shader_param("white", 1.0)
 
   yield(get_tree().create_timer(0.1), "timeout")
   
-  sprite.material.set_shader_param("white", 0.0)
-
+  Sprite.material.set_shader_param("white", 0.0)
 
 func _process(delta):
   invuln_time_left -= delta
