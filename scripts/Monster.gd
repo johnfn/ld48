@@ -8,6 +8,7 @@ var count = 0
 var speed = 300.0
 var player_in_contact = null
 var health = 2
+var invuln_time_left = 0.0
 
 var knockback = false
 var knockback_vector: Vector2
@@ -23,6 +24,8 @@ func _ready():
 
 
 func _process(delta):
+  invuln_time_left -= delta
+  
   if player_in_contact != null:
     player_in_contact.damage(damage, self)
 
@@ -42,9 +45,12 @@ func _integrate_forces(state):
 func is_enemy() -> bool:
   return true
 
-
 func damage(amount: int, source: Node2D) -> void:
+  if invuln_time_left > 0:
+    return
+    
   health -= amount
+  invuln_time_left = invuln_time
   
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true
