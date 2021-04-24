@@ -13,7 +13,7 @@ script = ExtResource( 6 )
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Donut" parent="Items" instance=ExtResource( 4 )]
-position = Vector2( 859.755, 573.145 )
+position = Vector2( 907.05, 590.676 )
 
 [node name="Sword" parent="Items" instance=ExtResource( 2 )]
 position = Vector2( 632.786, 1637.06 )
@@ -109,3 +109,5 @@ position = Vector2( 614.306, 2031.7 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
+
+[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

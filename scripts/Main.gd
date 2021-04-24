@@ -3,24 +3,55 @@ extends Node2D
 onready var Player = $Player
 onready var Cam = $Camera
 onready var Ui = $UI
-onready var Levels = $Levels.get_children()
+onready var Levels = $Levels
+
+export(float) var max_camera_speed = 300
+export(float) var camera_offset = 370
+export(bool) var debug_already_has_sword = false
+export(Array) var level_scenes = ["res://levels/LevelTemplate.tscn"]
 
 var inventory = []
 const ALL_SLOTS = ["weapons"]
+var Level = null
+const BASE_VIEWPORT_HEIGHT = 1280 # TODO this sucks
+var last_player_y = 0
 
 func add_to_inventory(item_name):
   inventory.append(item_name)
   Ui.display_items(inventory)
 
 
+func start_level(level_num: int) -> void:
+  Level = load(level_scenes[level_num]).instance()
+  Levels.add_child(Level)
+  Player.position = Level.spawn_point
+  wire_item_signals() 
+  Cam.position.y = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
+  last_player_y = Player.position.y
+
 func _ready():
-  wire_item_signals()
   Ui.player = Player
-  print(Levels[0].size())
+  
+  start_level(0)
+
+  if debug_already_has_sword:
+    var equipment = load("res://components/Sword.tscn").instance()
+    Player.equip(equipment, ALL_SLOTS[0])
+    add_to_inventory("Sword")
 
 
 func _process(delta):
-  Cam.position.y = Player.position.y - 370
+  var max_cam = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
+  max_cam = max(max_cam, Cam.position.y)
+  var cam_pos = Player.position.y - camera_offset
+  var player_moved_y = (Player.position.y - last_player_y)
+  cam_pos = min(Cam.position.y + player_moved_y + max_camera_speed * delta, cam_pos)
+  cam_pos = max(Cam.position.y + player_moved_y - max_camera_speed * delta, cam_pos)
+  cam_pos = min(max_cam, cam_pos)
+  if not Level.is_top_open:
+    cam_pos = max(Level.top_wall + BASE_VIEWPORT_HEIGHT / 2, cam_pos)
+  Cam.position.y = cam_pos
+  last_player_y = Player.position.y
 
 
 func wire_item_signals():

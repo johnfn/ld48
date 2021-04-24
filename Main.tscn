@@ -1,11 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://levels/Level1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=3]
 [ext_resource path="res://ui_elements/UiOverlay.tscn" type="PackedScene" id=4]
-[ext_resource path="res://levels/Level2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://levels/Level3.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 662.915, 39.7155 )
@@ -15,16 +12,8 @@ script = ExtResource( 3 )
 
 [node name="Levels" type="Node2D" parent="."]
 
-[node name="Level1" parent="Levels" instance=ExtResource( 2 )]
-
-[node name="Level2" parent="Levels" instance=ExtResource( 5 )]
-position = Vector2( 26.1993, -2368.8 )
-
-[node name="Level3" parent="Levels" instance=ExtResource( 6 )]
-position = Vector2( 11.9293, -4404.72 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 658.336, -282.198 )
+position = Vector2( 755.969, -2017.28 )
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 640, 640 )

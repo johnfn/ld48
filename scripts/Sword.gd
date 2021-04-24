@@ -3,16 +3,17 @@ extends Area2D
 onready var AnimationPlayer = $AnimationPlayer
 onready var swing_animation = AnimationPlayer.get_animation("Swing")
 var damage = 1
-
+var player: Player
 
 func _ready() -> void:
     self.connect("body_entered", self, "on_enter")
 
-
 func on_enter(other) -> void:
     if other.has_method("is_enemy") and other.is_enemy():
-      other.damage(damage)
+      other.damage(damage, self)
 
+func init(player: Player):
+  self.player = player
 
 func set_in_use(in_use: bool) -> void:
   if in_use:
