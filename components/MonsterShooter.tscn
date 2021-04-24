@@ -1,20 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=1]
 [ext_resource path="res://assets/art/enemy_shooter.png" type="Texture" id=2]
-[ext_resource path="res://scripts/Monster.gd" type="Script" id=3]
-[ext_resource path="res://scripts/CombatHelpers.gd" type="Script" id=4]
+[ext_resource path="res://scripts/MonsterShooter.gd" type="Script" id=3]
 
 [node name="MonsterShooter" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 23
-mode = 2
+mode = 1
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 1 )
 texture = ExtResource( 2 )
-script = ExtResource( 4 )
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 visible = false
