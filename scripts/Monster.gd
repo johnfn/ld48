@@ -25,6 +25,10 @@ func _ready():
   connect("body_exited", self, "on_exit")
 
 func damage_anim():
+  yield(get_tree(), "idle_frame")
+  yield(get_tree(), "idle_frame")
+  yield(get_tree(), "idle_frame")
+  
   sprite.material.set_shader_param("white", 1.0)
 
   yield(get_tree().create_timer(0.1), "timeout")
@@ -61,7 +65,7 @@ func damage(amount: int, source: Node2D) -> void:
   health -= amount
   
   if health <= 0:
-    queue_free()
+    animate_and_die()
     return      
 
   invuln_time_left = invuln_time
@@ -70,6 +74,10 @@ func damage(amount: int, source: Node2D) -> void:
   knockback = true
   
   damage_anim()
+
+func animate_and_die():
+  yield(damage_anim(), "completed")
+  queue_free()
 
 func on_enter(other) -> void:
   if other.has_method("is_player") and other.is_player():
