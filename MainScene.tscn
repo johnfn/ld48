@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/ExampleScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui_elements/ExampleScene.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Label

@@ -1,10 +1,6 @@
-extends Node2D
+extends Control
 
-onready var hearts: Array = [
-  $CanvasLayer/Heart,
-  $CanvasLayer/Heart2,
-  $CanvasLayer/Heart3
-  ]
+onready var hearts: Array = $CanvasLayer/HeartContainer.get_children()
 
 # passed in by Main
 var player: Player

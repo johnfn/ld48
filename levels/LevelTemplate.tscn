@@ -2,7 +2,7 @@
 
 [ext_resource path="res://components/Tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Spike.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/Spike.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 637.052, 482.457 )
@@ -18,7 +18,8 @@ shape = SubResource( 1 )
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Sword" parent="Items" instance=ExtResource( 2 )]
-position = Vector2( 680.226, 311.431 )
+position = Vector2( 653.899, 302.498 )
+rotation = 0.0
 
 [node name="Obstacles" type="Node2D" parent="."]
 

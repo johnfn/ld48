@@ -1,21 +1,15 @@
-extends Node2D
+extends Control
 
-onready var black_square = $black_square
-onready var white_square = $white_square
+onready var Left = $Left
+onready var Right = $Right
 
 func _ready():
-  black_square.visible = false
-  white_square.visible = true
+  Left.visible = true
+  Right.visible = true
 
 func set_status(new_status: String) -> void:
-  if new_status == "full":
-    white_square.visible = true
-    black_square.visible = false
-  elif new_status == "half":
-    white_square.visible = true
-    black_square.visible = true
-  elif new_status == "empty":
-    white_square.visible = false
-    black_square.visible = true
-  else:
+  if not new_status in ["full", "half", "empty"]:
     print("invalid status to UIHeart#set_status:", new_status)
+  else:
+    Left.visible = new_status != "empty"
+    Right.visible = new_status == "full"
