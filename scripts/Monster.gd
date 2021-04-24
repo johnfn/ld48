@@ -1,11 +1,16 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 export(int) onready var damage = 1
+export(float) var invuln_time = 0.25
+
 var noise = OpenSimplexNoise.new()
 var count = 0
 var speed = 300.0
 var player_in_contact = null
 var health = 2
+
+var knockback = false
+var knockback_vector: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,7 +33,11 @@ func _integrate_forces(state):
   var y_vel = noise.get_noise_1d(-count)
   var direction = Vector2(x_vel, y_vel).normalized()
   state.linear_velocity = direction * speed
-
+  
+  if knockback:
+    knockback = false
+    state.linear_velocity += knockback_vector
+    knockback_vector = Vector2.ZERO
 
 func is_enemy() -> bool:
   return true
@@ -37,14 +46,11 @@ func is_enemy() -> bool:
 func damage(amount: int, source: Node2D) -> void:
   health -= amount
   
-  var bump_direction = position.direction_to(source.position)
+  knockback_vector = position.direction_to(source.position) * 10000
+  knockback = true
   
-  move_and_slide(-bump_direction * 50, Vector2(0, 0), false, 4, 0.785398, false)
-  
-  print("Ow!", bump_direction)
-  
-#  if health <= 0:
-#    queue_free()
+  if health <= 0:
+    queue_free()
 
 func on_enter(other) -> void:
   if other.has_method("is_player") and other.is_player():
