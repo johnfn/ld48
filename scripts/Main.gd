@@ -4,17 +4,23 @@ onready var Player = $Player
 onready var Cam = $Camera
 onready var Ui = $UI
 onready var Levels = $Levels
+onready var TransitionTop = $Levels/TransitionTop
+onready var TransitionBottom = $Levels/TransitionBottom
+onready var teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + TransitionTop.position.y
+onready var load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
 
 export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
 export(bool) var debug_already_has_sword = false
-export(Array) var level_scenes = ["res://levels/LevelTemplate.tscn"]
+export(Array) var level_scenes = ["res://levels/LevelTemplate.tscn", "res://levels/LevelTemplate.tscn", "res://levels/LevelTemplate.tscn"]
+export(int) var curr_level_num = 0
 
 var inventory = []
 const ALL_SLOTS = ["weapons"]
 var Level = null
 const BASE_VIEWPORT_HEIGHT = 1280 # TODO this sucks
 var last_player_y = 0
+var is_transitioning = false
 
 func add_to_inventory(item_name):
   inventory.append(item_name)
@@ -28,11 +34,22 @@ func start_level(level_num: int) -> void:
   wire_item_signals() 
   Cam.position.y = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
   last_player_y = Player.position.y
+  TransitionBottom.position.y = Level.bottom_wall
+  curr_level_num = level_num
+
+func load_new_level(level_num: int) -> void:
+  Level.queue_free()
+  Level = load(level_scenes[level_num]).instance()
+  Levels.add_child(Level)
+  wire_item_signals() 
+  TransitionBottom.position.y = Level.bottom_wall
+  curr_level_num = level_num
+  is_transitioning = true
 
 func _ready():
   Ui.player = Player
   
-  start_level(0)
+  start_level(curr_level_num)
 
   if debug_already_has_sword:
     var equipment = load("res://components/Sword.tscn").instance()
@@ -48,9 +65,19 @@ func _process(delta):
   cam_pos = min(Cam.position.y + player_moved_y + max_camera_speed * delta, cam_pos)
   cam_pos = max(Cam.position.y + player_moved_y - max_camera_speed * delta, cam_pos)
   cam_pos = min(max_cam, cam_pos)
-  if not Level.is_top_open:
+  if not Level.is_top_open and not is_transitioning:
     cam_pos = max(Level.top_wall + BASE_VIEWPORT_HEIGHT / 2, cam_pos)
   Cam.position.y = cam_pos
+  
+  if Player.position.y < load_y and not is_transitioning:
+    load_new_level(curr_level_num + 1)
+
+  if Player.position.y < teleport_y:
+    var teleport_dist = TransitionBottom.position.y - TransitionTop.position.y
+    Player.position.y += teleport_dist
+    Cam.position.y += teleport_dist
+    is_transitioning = false
+    
   last_player_y = Player.position.y
 
 
@@ -61,7 +88,7 @@ func wire_item_signals():
 
 
 func handle_item_body_entered(body: Node, item_node):
-  if body == Player:
+  if body == Player and not is_transitioning:
     add_to_inventory(item_node.name)
     var slot = ""
     for poss_slot in ALL_SLOTS:

@@ -100,6 +100,8 @@ func equip(equipment: Node, slot: String) -> void:
     equipment_slots[slot].queue_free()
   Equipment.get_node(slot).call_deferred("add_child", equipment)
   equipment_slots[slot] = equipment
+  if equipment.is_in_group("items"):
+    equipment.remove_from_group("items")
 
 
 func is_player() -> bool:

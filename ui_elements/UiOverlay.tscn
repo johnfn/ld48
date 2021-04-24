@@ -42,7 +42,7 @@ size_flags_horizontal = 3
 [node name="InventorySlots" type="HBoxContainer" parent="CanvasLayer"]
 margin_left = 36.0
 margin_top = 1159.0
-margin_right = 431.0
+margin_right = 669.0
 margin_bottom = 1275.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,19 +51,33 @@ __meta__ = {
 [node name="UIInventorySlot" parent="CanvasLayer/InventorySlots" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 129.0
+margin_right = 123.0
 margin_bottom = 116.0
 
 [node name="UIInventorySlot2" parent="CanvasLayer/InventorySlots" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 133.0
-margin_right = 262.0
+margin_left = 127.0
+margin_right = 250.0
 margin_bottom = 116.0
 
 [node name="UIInventorySlot3" parent="CanvasLayer/InventorySlots" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 266.0
-margin_right = 395.0
+margin_left = 254.0
+margin_right = 378.0
+margin_bottom = 116.0
+
+[node name="UIInventorySlot4" parent="CanvasLayer/InventorySlots" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 382.0
+margin_right = 505.0
+margin_bottom = 116.0
+
+[node name="UIInventorySlot5" parent="CanvasLayer/InventorySlots" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 509.0
+margin_right = 633.0
 margin_bottom = 116.0
