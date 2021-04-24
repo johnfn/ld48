@@ -6,7 +6,7 @@
 [ext_resource path="res://components/Donut.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Monster.tscn" type="PackedScene" id=6]
-[ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=7]
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 3 )
@@ -111,7 +111,7 @@ position = Vector2( 614.306, 2031.7 )
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
 
-[node name="MonsterShooter" parent="." instance=ExtResource( 7 )]
-position = Vector2( 345.505, 1282.44 )
+[node name="MonsterWitch" parent="." instance=ExtResource( 7 )]
+position = Vector2( 345.901, 1614.2 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
