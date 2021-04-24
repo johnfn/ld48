@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://components/Tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Spike.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 637.052, 482.457 )
@@ -48,5 +49,8 @@ rotation = 3.14159
 [node name="Tree6" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1163.91, 594.442 )
 rotation = 3.14159
+
+[node name="Spike" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 647.41, 100.434 )
 
 [node name="Enemies" type="Node2D" parent="."]
