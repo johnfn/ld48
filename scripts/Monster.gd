@@ -39,7 +39,9 @@ func damage(amount: int, source: Node2D) -> void:
   
   var bump_direction = position.direction_to(source.position)
   
-  move_and_slide(bump_direction, Vector2(0, 0), false, 4, 0.785398, false)
+  move_and_slide(-bump_direction * 50, Vector2(0, 0), false, 4, 0.785398, false)
+  
+  print("Ow!", bump_direction)
   
 #  if health <= 0:
 #    queue_free()

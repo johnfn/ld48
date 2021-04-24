@@ -23,7 +23,6 @@ func _ready():
     var equipment = load("res://components/Sword.tscn").instance()
     Player.equip(equipment, ALL_SLOTS[0])
 
-
 func _process(delta):
   Cam.position.y = Player.position.y - 370
 

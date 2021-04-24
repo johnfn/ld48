@@ -11,6 +11,8 @@ onready var Weapons = $Equipment/weapons
 var equipment_slots = {}
 var invuln_time_left = 0.0
 
+var knockback = false
+var knockback_source: Node2D = null
 
 func _process(delta: float) -> void:
   look_at(get_global_mouse_position())
@@ -18,9 +20,17 @@ func _process(delta: float) -> void:
   
 
 func _physics_process(delta: float) -> void:
-  var direction = input_vec.normalized()
-  move_and_slide(direction * max_speed, Vector2(0, 0), false, 4, 0.785398, false)
-
+  var direction = input_vec.normalized() * max_speed
+  
+  if knockback:
+    var bump_direction = (global_position - knockback_source.global_position).normalized()
+    direction += bump_direction * 10000
+    
+    knockback = false
+    knockback_source = null
+  
+  move_and_slide(direction, Vector2(0, 0), false, 4, 0.785398, false)
+  
 
 func _unhandled_input(event: InputEvent) -> void:
   if Input.is_action_just_pressed("move_down"):
@@ -55,8 +65,9 @@ func damage(amount: int, source: Node2D) -> void:
     
     # bump player back a little
     
-    var bump_direction = position.direction_to(source.position)
-    self.position += bump_direction * 100
+    knockback = true
+    knockback_source = source
+
 
 
 func equip(equipment: Node, slot: String) -> void:
