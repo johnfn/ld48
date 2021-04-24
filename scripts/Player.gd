@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 var input_vec : Vector2 = Vector2(0, 0)
 export(float) var max_speed = 600.0
-export(float) var invuln_time = 0.25
+export(float) var invuln_time = 0.4
 export(int) var health = 6
 
 onready var Sprite = $Sprite
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
   look_at(get_global_mouse_position())
   invuln_time_left -= delta
 
-func damage_anim():
+func damage_anim_co():
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
@@ -30,6 +30,15 @@ func damage_anim():
   yield(get_tree().create_timer(0.1), "timeout")
   
   Sprite.material.set_shader_param("white", 0.0)
+  
+  while invuln_time_left > 0:
+    Sprite.visible = false
+    
+    yield(get_tree().create_timer(0.05), "timeout")
+    
+    Sprite.visible = true
+    
+    yield(get_tree().create_timer(0.05), "timeout")
 
 func _physics_process(delta: float) -> void:
   var direction = input_vec.normalized() * max_speed
@@ -80,11 +89,10 @@ func damage(amount: int, source: Node2D) -> void:
     knockback = true
     knockback_source = source
 
-    damage_anim()
+    damage_anim_co()
 
 
 func equip(equipment: Node, slot: String) -> void:
-  print("o..k")
   if equipment.has_method("init"):
     equipment.init(self)
   
