@@ -3,9 +3,15 @@ extends Node2D
 onready var Player = $Player
 onready var Cam = $Camera
 onready var Ui = $UI
+onready var Levels = $Levels.get_children()
 
-var inventory = {}
+var inventory = []
 const ALL_SLOTS = ["weapons"]
+
+func add_to_inventory(item_name):
+  inventory.append(item_name)
+  Ui.display_items(inventory)
+
 
 func _ready():
   wire_item_signals()
@@ -24,14 +30,18 @@ func wire_item_signals():
 
 func handle_item_body_entered(body: Node, item_node):
   if body == Player:
-    if item_node.visible:
-      item_node.visible = false
-      inventory[item_node.name] = item_node.filename
-      var slot = ""
-      for poss_slot in ALL_SLOTS:
-        if item_node.is_in_group(poss_slot):
-          slot = poss_slot
-      if slot != "":
-        var equipment = load(item_node.filename).instance()
-        Player.equip(equipment, slot)
+    add_to_inventory(item_node.name)
+    var slot = ""
+    for poss_slot in ALL_SLOTS:
+      if item_node.is_in_group(poss_slot):
+        slot = poss_slot
+    if slot != "":
+      var equipment = load(item_node.filename).instance()
+      Player.equip(equipment, slot)
+    item_node.queue_free()
         
+
+func reset_to_level(level_num):
+  var level = Levels[level_num]
+  var level_bounds = level.get_child('Bounds') as Area2D
+  

@@ -3,19 +3,23 @@ extends KinematicBody2D
 
 var input_vec : Vector2 = Vector2(0, 0)
 export(float) var max_speed = 600.0
+export(float) var invuln_time = 0.25
 
 export(int) var health = 6
 onready var Equipment = $Equipment
 onready var Weapons = $Equipment/weapons
 var equipment_slots = {}
+var invuln_time_left = 0.0
 
 
 func _process(delta: float) -> void:
   look_at(get_global_mouse_position())
+  invuln_time_left -= delta
+  
 
 func _physics_process(delta: float) -> void:
   var direction = input_vec.normalized()
-  move_and_slide(direction * max_speed)
+  move_and_slide(direction * max_speed, Vector2(0, 0), false, 4, 0.785398, false)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -43,13 +47,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func damage(amount: int) -> void:
-  health -= amount
+  if invuln_time_left <= 0:
+    health -= amount
+    invuln_time_left = invuln_time
 
 
 func equip(equipment: Node, slot: String) -> void:
   if slot in equipment_slots:
     equipment_slots[slot].queue_free()
-  Equipment.get_node(slot).add_child(equipment)
+  Equipment.get_node(slot).call_deferred("add_child", equipment)
   equipment_slots[slot] = equipment
 
 

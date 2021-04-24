@@ -50,5 +50,4 @@ visible = false
 polygon = PoolVector2Array( -25.6629, 35.037, -25.6629, 16.0155, -10.3122, -58.4018, 8.87608, -58.5686, 26.229, 16.1824, 25.8953, 33.869, 9.87721, 58.5636, -9.81168, 58.8973 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.28567, 0.28567 )
 texture = ExtResource( 1 )

@@ -1,6 +1,7 @@
 extends Control
 
-onready var hearts: Array = $CanvasLayer/HeartContainer.get_children()
+onready var hearts: Array = $CanvasLayer/Hearts.get_children()
+onready var slots: Array = $CanvasLayer/InventorySlots.get_children()
 
 # passed in by Main
 var player: Player
@@ -14,6 +15,11 @@ func render_hearts():
       hearts[i].set_status("half")
     else:
       hearts[i].set_status("empty")
+
+func display_items(item_names):
+  for i in range(min(len(slots), len(item_names))):
+    slots[i].set_contents(item_names[i])
+    
 
 func _process(delta: float) -> void:
   if player.health != old_player_health:

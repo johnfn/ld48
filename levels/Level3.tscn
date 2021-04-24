@@ -1,22 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://components/Tree.tscn" type="PackedScene" id=1]
-[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
-[ext_resource path="res://components/Spike.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/Donut.tscn" type="PackedScene" id=4]
-[ext_resource path="res://components/Monster.tscn" type="PackedScene" id=5]
 
-[node name="LevelX" type="Node2D"]
+[node name="Level3" type="Node2D"]
 position = Vector2( 11.9293, -718.183 )
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Donut" parent="Items" instance=ExtResource( 4 )]
-position = Vector2( 413.26, 132.642 )
-
-[node name="Sword" parent="Items" instance=ExtResource( 2 )]
-position = Vector2( 746.658, -59.0212 )
-rotation = 0.0
+position = Vector2( 620.915, 191.972 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -31,6 +24,30 @@ position = Vector2( 110.949, 103.011 )
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 64.2802, -127.506 )
+
+[node name="Tree9" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 113.016, -305.496 )
+rotation = 1.5708
+
+[node name="Tree10" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 350.335, -311.852 )
+rotation = 1.5708
+
+[node name="Tree11" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 594.011, -309.733 )
+rotation = 1.5708
+
+[node name="Tree12" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 829.212, -305.496 )
+rotation = 1.5708
+
+[node name="Tree13" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1049.58, -299.139 )
+rotation = 1.5708
+
+[node name="Tree14" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1206.38, -301.258 )
+rotation = 1.5708
 
 [node name="Tree4" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1161.91, 108.056 )
@@ -48,10 +65,4 @@ rotation = 3.14159
 position = Vector2( 1163.91, 594.442 )
 rotation = 3.14159
 
-[node name="Spike" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 345.351, 366.816 )
-
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 578.78, -106.294 )
