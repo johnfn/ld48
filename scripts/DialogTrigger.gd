@@ -1,3 +1,4 @@
+class_name DialogTrigger
 extends Area2D
 
 export var dialog: Array = [
@@ -5,6 +6,7 @@ export var dialog: Array = [
 ]
 export var cinematic_style_dialog = false
 export var fade_to_black = false
+var speaker = null # null implies player - otherwise this will be passed down by someone who inherits us
 
 var triggered = false
 onready var area = $DialogTrigger
@@ -25,6 +27,9 @@ func body_entered(other: Node2D):
 func begin_cinematic(player: Player):
   var new_dialog = DialogScene.instance()
   
+  if speaker == null:
+    speaker = player
+  
   if not cinematic_style_dialog:
     new_dialog.display_text_sequence_co(player, dialog)
     return
@@ -32,8 +37,8 @@ func begin_cinematic(player: Player):
   Letterbox.in_cinematic = true
   
   yield(Letterbox.animate_in(), "completed")
-  
-  yield(new_dialog.display_text_sequence_co(player, dialog), "completed")
+    
+  yield(new_dialog.display_text_sequence_co(speaker, dialog), "completed")
   
   if fade_to_black:
     yield(Letterbox.fade_to_black(), "completed")

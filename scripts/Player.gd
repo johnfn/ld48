@@ -17,6 +17,7 @@ onready var health = max_health
 
 var equipment_slots = {}
 var is_invuln = false
+var idleCounter = 0
 
 var knockback = false
 var knockback_source: Node2D = null
@@ -40,6 +41,7 @@ func _physics_process(delta: float) -> void:
     knockback = false
     knockback_source = null
   
+
   if input_vec.y < 0:
     if input_vec.x > 0:
       set_direction("upright")
@@ -59,9 +61,15 @@ func _physics_process(delta: float) -> void:
   elif input_vec.x < 0:
     set_direction("left")
 
+
   if input_vec == Vector2(0, 0) and Sprite.is_playing():
-    Sprite.stop()
-    Sprite.frame = IDLE_FRAME  
+  # IdleCounter smooths the stopping animation
+  # Also reduces sliding
+    idleCounter += 1
+    if idleCounter > 3:
+      Sprite.stop()
+      Sprite.frame = IDLE_FRAME
+      idleCounter = 0
   
   move_and_slide(direction, Vector2(0, 0), false, 4, 0.785398, false)
 
@@ -118,6 +126,12 @@ func set_direction(dir_name):
       Weapons.position = $Equipment/rh_upright.position
     "downright":
       Weapons.position = $Equipment/rh_downright.position
+
+func get_health(amount: int) -> void:
+  health += amount
+  
+  if health > max_health:
+    health = max_health
 
 func damage(amount: int, source: Node2D) -> void:
   if not is_invuln and health > 0:
