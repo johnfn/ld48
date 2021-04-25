@@ -10,7 +10,7 @@ export(float) var max_speed = 600.0
 export(float) var invuln_time = 0.4
 export(int) var max_health = 6
 
-onready var Sprite = $Sprite
+onready var Sprite: AnimatedSprite = $Sprite
 onready var Equipment = $Equipment
 onready var Weapons = $Equipment/weapons
 onready var health = max_health
@@ -110,7 +110,7 @@ func damage(amount: int, source: Node2D) -> void:
     knockback = true
     knockback_source = source
 
-    yield(CombatHelpers.damage_anim(Sprite), "completed")
+    yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
     
     is_invuln = false
 

@@ -51,14 +51,14 @@ func damage(amount: int, source: Node2D) -> void:
   
   if health <= 0 and not dying:
     dying = true
-    yield(CombatHelpers.damage_anim(Sprite), "completed")
+    yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
     queue_free()
     
     return      
 
   invuln_time_left = invuln_time
   
-  CombatHelpers.damage_anim(Sprite)
+  CombatHelpers.damage_anim_sprite(Sprite)
 
 func on_enter(other) -> void:
   if other.has_method("is_player") and other.is_player():

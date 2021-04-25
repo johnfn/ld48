@@ -39,12 +39,12 @@ func damage(amount: int, source: Node2D) -> void:
   
   if health <= 0 and not dying:
     dying = true
-    yield(CombatHelpers.damage_anim(Sprite), "completed")
+    yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
     queue_free()
     
     return
   
-  yield(CombatHelpers.damage_anim(Sprite), "completed")
+  yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
   
   is_invuln = false
 

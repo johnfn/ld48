@@ -1,6 +1,12 @@
 extends Node2D
 
-func damage_anim(target: Sprite):
+func damage_anim_sprite(target: Sprite):
+ return _damage_anim(target)
+
+func damage_anim_animated_sprite(target: AnimatedSprite):
+  return _damage_anim(target)
+
+func _damage_anim(target):
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
