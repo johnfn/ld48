@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=8]
+[ext_resource path="res://scenes/EnemyDialogTrigger.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/Dog.gd" type="Script" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -151,7 +152,13 @@ position = Vector2( 652.559, 1591.22 )
 
 [node name="MonsterShooter" parent="." instance=ExtResource( 7 )]
 material = SubResource( 4 )
-position = Vector2( 378.444, 1700.21 )
+position = Vector2( 381.8, 1213.59 )
 health = 3
+
+[node name="EnemyDialogTrigger" parent="." instance=ExtResource( 9 )]
+position = Vector2( 601.983, 1251.07 )
+dialog = [ "HEHEH I will eat u up!" ]
+cinematic_style_dialog = true
+enemy_speaker = NodePath("../MonsterShooter")
 
 [connection signal="tree_exited" from="Items/Doggy" to="." method="_on_Donut_tree_exited"]

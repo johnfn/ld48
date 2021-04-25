@@ -63,8 +63,8 @@ func _physics_process(delta: float) -> void:
 
 
   if input_vec == Vector2(0, 0) and Sprite.is_playing():
-	# IdleCounter smooths the stopping animation
-	# Also reduces sliding
+  # IdleCounter smooths the stopping animation
+  # Also reduces sliding
     idleCounter += 1
     if idleCounter > 3:
       Sprite.stop()
