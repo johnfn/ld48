@@ -6,12 +6,7 @@ var noise = OpenSimplexNoise.new()
 var count = 0
 var speed = 300.0
 var player_in_contact = null
-var health = 2
-var invuln_time_left = 0.0
 
-var knockback = false
-var knockback_vector: Vector2
-var dying = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,8 +17,6 @@ func _ready():
   .connect("body_exited", self, "on_exit")
 
 func _process(delta):
-  invuln_time_left -= delta
-  
   if player_in_contact != null:
     player_in_contact.damage(damage, self)
 
