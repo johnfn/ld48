@@ -10,12 +10,11 @@ extents = Vector2( 956.12, 10 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
-level_scenes = [ "res://levels/LevelTemplate2.tscn" ]
 
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="TransitionTop" parent="Levels" instance=ExtResource( 2 )]
-position = Vector2( 0.960327, -2326.39 )
+position = Vector2( 0.96, -2558 )
 
 [node name="TransitionBottom" parent="Levels" instance=ExtResource( 2 )]
 position = Vector2( 0, -0.960266 )
