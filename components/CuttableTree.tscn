@@ -12,6 +12,7 @@ mode = 1
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
