@@ -24,7 +24,6 @@ script = ExtResource( 3 )
 material = ExtResource( 1 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 flip_h = true
 

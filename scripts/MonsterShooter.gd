@@ -1,5 +1,5 @@
 tool
-extends RigidBody2D
+extends BaseHittable
 
 export(int) onready var damage = 1
 export(int) onready var shoot_cooldown = 1
@@ -8,26 +8,26 @@ export(Vector2) var direction_to_shoot = Vector2.RIGHT
 
 onready var BulletScene = load("res://scenes/MonsterBullet.tscn")
 
-onready var Sprite = $Sprite
+func _init().():
+  self.health = 3
+
 
 var shoot_cooldown_remaining = 1
 var speed = 300.0
 var player_in_contact = null
-var health = 2
 var invuln_time_left = 0.0
 
 var dying = false
 
 func _ready():
-  connect("body_entered", self, "on_enter")
-  connect("body_exited", self, "on_exit")
+  .connect("body_entered", self, "on_enter")
+  .connect("body_exited", self, "on_exit")
   if direction_to_shoot.x > 0:
-    Sprite.flip_h = true
-
+    self.sprite.flip_h = true
 
 func _process(delta):
   if Engine.editor_hint:
-    $Sprite.flip_h = direction_to_shoot.x > 0
+    self.sprite.flip_h = direction_to_shoot.x > 0
     return
   
   if Letterbox.in_cinematic: return
@@ -42,34 +42,18 @@ func _process(delta):
   if player_in_contact != null:
     player_in_contact.damage(damage, self)
 
-func is_enemy() -> bool:
-  return true
-
 func shoot():
+  if Engine.editor_hint:
+    return
+    
   var new_bullet = BulletScene.instance()
   new_bullet.position += direction_to_shoot * 100
   new_bullet.shooter = self
   
-  add_child(new_bullet)
+  print (Engine.editor_hint)
+  
+  .add_child(new_bullet)
   new_bullet.direction = direction_to_shoot
-
-
-func damage(amount: int, source: Node2D) -> void:
-  if invuln_time_left > 0:
-    return
-    
-  health -= amount
-  
-  if health <= 0 and not dying:
-    dying = true
-    yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
-    queue_free()
-    
-    return      
-
-  invuln_time_left = invuln_time
-  
-  CombatHelpers.damage_anim_animated_sprite(Sprite)
 
 func on_enter(other) -> void:
   if other.has_method("is_player") and other.is_player():

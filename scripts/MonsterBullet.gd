@@ -7,7 +7,7 @@ var speed = 400
 var exploding = false
 var shooter = null
 
-onready var Sprite = $Sprite
+onready var sprite = $Sprite
 
 func _ready():
   contact_monitor = true
@@ -22,10 +22,10 @@ func bullet_explode_anim_co():
   exploding = true
   
   # TODO - better anim
-  Sprite.scale = Vector2(5, 5)
+  self.sprite.scale = Vector2(5, 5)
   for x in range(30):
-    Sprite.scale = Vector2(1.0 + x / 30.0, 1.0 + x / 30.0)
-    Sprite.modulate.a = (10.0 - float(x)) / 10.0
+    self.sprite.scale = Vector2(1.0 + x / 30.0, 1.0 + x / 30.0)
+    self.sprite.modulate.a = (10.0 - float(x)) / 10.0
 
     yield(get_tree(), "idle_frame")
 

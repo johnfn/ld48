@@ -120,7 +120,6 @@ func set_direction(dir_name):
       Weapons.position = $Equipment/rh_downright.position
 
 func damage(amount: int, source: Node2D) -> void:
-  print('damage', amount)
   if not is_invuln and health > 0:
     is_invuln = true
     
