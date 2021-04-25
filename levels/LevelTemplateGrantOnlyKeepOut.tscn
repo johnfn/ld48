@@ -1,13 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=2]
+[ext_resource path="res://components/CuttableTree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/Monster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Dog.gd" type="Script" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 
 [node name="LevelX" type="Node2D"]
@@ -115,5 +119,9 @@ position = Vector2( 677.235, 0 )
 
 [node name="DogExit1" type="Node2D" parent="Markers"]
 position = Vector2( 692.302, 250.504 )
+
+[node name="CuttableTree" parent="." instance=ExtResource( 3 )]
+material = SubResource( 2 )
+position = Vector2( 591.305, 1718.48 )
 
 [connection signal="tree_exited" from="Items/Doggy" to="." method="_on_Donut_tree_exited"]

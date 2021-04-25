@@ -5,10 +5,6 @@ onready var white_tex: Texture = load("res://assets/white_square.png")
 onready var sq: Sprite = $Sprite/white_square
 var color = "white"
 
-func _ready():
-    print(sq)
-
-
 func set_color(new_color: String) -> void:
     if new_color == "white":
         sq.texture = white_tex

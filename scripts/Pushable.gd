@@ -82,7 +82,6 @@ func attempt_push(push_dir):
   target.x = round((target - initial_pos).x / push_distance) * push_distance + initial_pos.x
   target.y = round((target - initial_pos).y / push_distance) * push_distance + initial_pos.y
   
-  print(target, ' ', position)
   
   var curr_pos = position
   var collision = move_and_collide(target - position, false, true, true)

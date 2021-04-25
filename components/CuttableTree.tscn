@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://materials/modulate_shader.tres" type="Material" id=1]
+[ext_resource path="res://assets/art/choppable_tree.png" type="Texture" id=2]
+[ext_resource path="res://scripts/CuttableTree.gd" type="Script" id=3]
+
+[node name="CuttableTree" type="RigidBody2D"]
+material = ExtResource( 1 )
+collision_layer = 4
+collision_mask = 23
+mode = 1
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 1 )
+texture = ExtResource( 2 )
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -49.2108, 23.1421, -27.6034, 32.9636, 25.7136, 30.1574, 50.4077, 7.14698, 32.4483, -24.8432, 19.54, -37.4709, -19.7462, -37.1903, -37.9861, -30.7361 )

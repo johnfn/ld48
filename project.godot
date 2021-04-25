@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "BaseHittable",
+"language": "GDScript",
+"path": "res://scripts/BaseHittable.gd"
+}, {
 "base": "Area2D",
 "class": "Dog",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://scripts/Player.gd"
 } ]
 _global_script_class_icons={
+"BaseHittable": "",
 "Dog": "",
 "Player": ""
 }
@@ -34,8 +40,8 @@ config/icon="res://icon.png"
 [autoload]
 
 CombatHelpers="*res://scripts/CombatHelpers.gd"
-Test="*res://compiled/Test.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
+Test="*res://compiled/Test.gd"
 
 [display]
 

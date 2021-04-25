@@ -169,7 +169,6 @@ func handle_player_died():
 const BACKGROUND_HEIGHT = 2560
 func _on_background_entered(body, i):
   if body.has_method("is_player") and body.is_player():
-    print(bgs, ' ', i)
     if i == bgs[0]:
       var last = bgs.pop_back()
       bgs.push_front(last)
