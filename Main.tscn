@@ -11,7 +11,7 @@ extents = Vector2( 956.12, 10 )
 [node name="Main" type="Node2D"]
 position = Vector2( 4.48926, 0 )
 script = ExtResource( 3 )
-level_scenes = [ "res://levels/LevelTemplateGrantOnlyKeepOut.tscn" ]
+level_scenes = [ "res://levels/LevelTemplateChauncey.tscn" ]
 
 [node name="Levels" type="Node2D" parent="."]
 

@@ -1,3 +1,4 @@
+tool
 extends RigidBody2D
 
 export(int) onready var damage = 1
@@ -23,7 +24,11 @@ func _ready():
   if direction_to_shoot.x > 0:
     Sprite.flip_h = true
 
+
 func _process(delta):
+  if Engine.editor_hint:
+    Sprite.flip_h = direction_to_shoot.x > 0
+    return
   shoot_cooldown_remaining -= delta
   invuln_time_left -= delta
   

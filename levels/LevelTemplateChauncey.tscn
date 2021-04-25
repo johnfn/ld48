@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -11,6 +11,137 @@
 [ext_resource path="res://assets/art/background1.png" type="Texture" id=9]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=10]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float white;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+    COLOR = vec4(mix(texture_color.rgb, vec3(1, 1, 1), white), texture_color.a);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=18]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=19]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=20]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=21]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=22]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=23]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=24]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=25]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
@@ -197,15 +328,19 @@ position = Vector2( 373.781, 698.625 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
+material = SubResource( 2 )
 position = Vector2( 1675.86, 537.147 )
 
 [node name="MonsterWitch" parent="Enemies/Monster" instance=ExtResource( 11 )]
+material = SubResource( 3 )
 position = Vector2( -1326.39, 1501.99 )
 
 [node name="MonsterWitch2" parent="Enemies/Monster" instance=ExtResource( 11 )]
+material = SubResource( 4 )
 position = Vector2( -1292.56, 1000.07 )
 
 [node name="MonsterWitch3" parent="Enemies/Monster" instance=ExtResource( 11 )]
+material = SubResource( 5 )
 position = Vector2( -797.933, 799.048 )
 
 [node name="Markers" type="Node2D" parent="."]
@@ -278,66 +413,87 @@ position = Vector2( 743.549, 2345.97 )
 rotation = 1.5713
 
 [node name="MonsterShooter2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 955.57, 3720.74 )
-rotation = 3.14214
+position = Vector2( 954.156, 3720.74 )
+direction_to_shoot = Vector2( -1, 1 )
 
 [node name="Shrub" parent="." instance=ExtResource( 10 )]
+material = SubResource( 6 )
 position = Vector2( 320.341, 4459.97 )
 
 [node name="Shrub2" parent="." instance=ExtResource( 10 )]
+material = SubResource( 7 )
 position = Vector2( 406.529, 4456.31 )
 
 [node name="Shrub3" parent="." instance=ExtResource( 10 )]
+material = SubResource( 8 )
 position = Vector2( 494.202, 4457.3 )
 
 [node name="Shrub4" parent="." instance=ExtResource( 10 )]
+material = SubResource( 9 )
 position = Vector2( 579.171, 4457.3 )
 
 [node name="Shrub5" parent="." instance=ExtResource( 10 )]
+material = SubResource( 10 )
 position = Vector2( 663.338, 4460.5 )
 
 [node name="Shrub6" parent="." instance=ExtResource( 10 )]
+material = SubResource( 11 )
 position = Vector2( 737.085, 4460.5 )
 
 [node name="Shrub7" parent="." instance=ExtResource( 10 )]
+material = SubResource( 12 )
 position = Vector2( 600.381, 3937.68 )
 
 [node name="Shrub8" parent="." instance=ExtResource( 10 )]
+material = SubResource( 13 )
 position = Vector2( 686.569, 3934.03 )
 
 [node name="Shrub9" parent="." instance=ExtResource( 10 )]
+material = SubResource( 14 )
 position = Vector2( 774.242, 3935.01 )
 
 [node name="Shrub10" parent="." instance=ExtResource( 10 )]
+material = SubResource( 15 )
 position = Vector2( 859.211, 3935.01 )
 
 [node name="Shrub11" parent="." instance=ExtResource( 10 )]
+material = SubResource( 16 )
 position = Vector2( 943.378, 3938.22 )
 
 [node name="Shrub12" parent="." instance=ExtResource( 10 )]
+material = SubResource( 17 )
 position = Vector2( 1017.12, 3938.22 )
 
 [node name="Shrub13" parent="." instance=ExtResource( 10 )]
+material = SubResource( 18 )
 position = Vector2( 566.665, 3306.43 )
 
 [node name="Shrub14" parent="." instance=ExtResource( 10 )]
+material = SubResource( 19 )
 position = Vector2( 669.736, 3310.25 )
 
 [node name="Shrub15" parent="." instance=ExtResource( 10 )]
+material = SubResource( 20 )
 position = Vector2( 767.081, 3310.25 )
 
 [node name="Shrub16" parent="." instance=ExtResource( 10 )]
+material = SubResource( 21 )
 position = Vector2( 871.503, 997.799 )
 
 [node name="Shrub17" parent="." instance=ExtResource( 10 )]
+material = SubResource( 22 )
 position = Vector2( 694.844, 682.75 )
 
 [node name="Shrub19" parent="." instance=ExtResource( 10 )]
+material = SubResource( 23 )
 position = Vector2( 615.76, 989.569 )
 
 [node name="Shrub20" parent="." instance=ExtResource( 10 )]
+material = SubResource( 24 )
 position = Vector2( 1010.16, 679.232 )
 
 [node name="Shrub18" parent="." instance=ExtResource( 10 )]
+material = SubResource( 25 )
 position = Vector2( 859.967, 679.803 )
+
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

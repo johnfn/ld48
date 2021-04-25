@@ -23,7 +23,7 @@ collision_layer = 8
 material = ExtResource( 5 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
