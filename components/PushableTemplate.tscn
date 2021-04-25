@@ -4,13 +4,14 @@
 [ext_resource path="res://scripts/Pushable.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 72.1143, 71.3868 )
+extents = Vector2( 38.6578, 36.0737 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 61.8134, 55.62 )
+extents = Vector2( 34.8461, 32.2621 )
 
 [node name="Pushable" type="KinematicBody2D"]
 script = ExtResource( 2 )
+push_distance = 64.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -19,6 +20,7 @@ texture = ExtResource( 1 )
 collision_layer = 2
 
 [node name="Box" type="CollisionShape2D" parent="PushBounds"]
+position = Vector2( -0.423523, 0 )
 shape = SubResource( 1 )
 
 [node name="Box" type="CollisionShape2D" parent="."]
