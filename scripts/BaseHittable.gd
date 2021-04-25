@@ -16,9 +16,11 @@ func is_enemy() -> bool:
 
 # can be overridden if u want custom behavior.
 func on_die():
-  var new_heart = heart_drop.instance()
-  parent.add_child(new_heart)
-  new_heart.position = position
+  
+  if randi() % 5 == 0:
+    var new_heart = heart_drop.instance()
+    parent.add_child(new_heart)
+    new_heart.position = position
   
   queue_free()
 
