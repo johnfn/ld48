@@ -6,7 +6,7 @@
 
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 133
 script = ExtResource( 3 )
 
 [node name="Trunk" type="Sprite" parent="."]

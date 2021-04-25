@@ -15,8 +15,8 @@ animations = [ {
 
 [node name="MonsterWitch" type="RigidBody2D"]
 material = ExtResource( 2 )
-collision_layer = 4
-collision_mask = 23
+collision_layer = 128
+collision_mask = 151
 mode = 2
 script = ExtResource( 3 )
 
@@ -24,6 +24,7 @@ script = ExtResource( 3 )
 material = ExtResource( 2 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
