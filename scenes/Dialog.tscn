@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/ui/dialog_panel_white_9slice.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/FreePixel.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/Dialog.gd" type="Script" id=3]
+[ext_resource path="res://assets/ui/notch.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/press_x_key.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="Dialog" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.22864
+margin_right = -1.22864
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="NinePatchRect" parent="."]
+margin_right = 132.0
+margin_bottom = 53.0
+texture = ExtResource( 1 )
+patch_margin_left = 28
+patch_margin_top = 27
+patch_margin_right = 28
+patch_margin_bottom = 26
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="."]
+anchor_top = -0.000216526
+anchor_bottom = 0.00134597
+margin_left = 11.0
+margin_top = 13.0
+margin_right = 123.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Hewo :^)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Notch" type="Sprite" parent="."]
+position = Vector2( 29.1037, 66.117 )
+texture = ExtResource( 4 )
+
+[node name="PressXKey" type="Sprite" parent="."]
+position = Vector2( 185.26, 23.42 )
+texture = ExtResource( 5 )
