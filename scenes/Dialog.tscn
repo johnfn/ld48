@@ -45,6 +45,7 @@ margin_bottom = 40.7228
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Hewo :^)"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
