@@ -27,7 +27,7 @@ func _ready():
 
 func _process(delta):
   if Engine.editor_hint:
-    Sprite.flip_h = direction_to_shoot.x > 0
+    $Sprite.flip_h = direction_to_shoot.x > 0
     return
   shoot_cooldown_remaining -= delta
   invuln_time_left -= delta
@@ -65,7 +65,7 @@ func damage(amount: int, source: Node2D) -> void:
 
   invuln_time_left = invuln_time
   
-  CombatHelpers.damage_anim_sprite(Sprite)
+  CombatHelpers.damage_anim_animated_sprite(Sprite)
 
 func on_enter(other) -> void:
   if other.has_method("is_player") and other.is_player():

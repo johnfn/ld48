@@ -30,6 +30,7 @@ const WALL_THICKNESS = 10
 var last_player_y = 0
 var last_is_top_open = false
 var is_transitioning = false
+var bgs = [0, 1, 2, 3]
 
 func add_to_inventory(item_name):
   inventory.append(item_name)
@@ -47,7 +48,8 @@ func start_level(level_num: int) -> void:
   Level = load(level_scenes[level_num]).instance()
   Levels.add_child(Level)
   
-  Player.position = Level.spawn_point
+  Player.position.x = Level.spawn_point.x
+  jump_view(Level.spawn_point.y - Player.position.y)
   Player.health = Player.max_health
   Player.reset_equipment()
   inventory = saved_inventory.duplicate()
@@ -90,6 +92,16 @@ func _ready():
   start_level(curr_level_num)
 
 
+func jump_view(dist):
+  for bg in $Background.get_children():
+    bg.get_node('Hitbox').disabled = true
+  Player.position.y += dist
+  Cam.position.y += dist
+  for bg in $Background.get_children():
+    bg.position.y += dist
+    bg.get_node('Hitbox').disabled = false
+
+
 func _process(delta):
   var max_cam = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
   max_cam = max(max_cam, Cam.position.y)
@@ -107,8 +119,6 @@ func _process(delta):
 
   if Player.position.y < teleport_y:
     var teleport_dist = TransitionBottom.position.y - TransitionTop.position.y
-    Player.position.y += teleport_dist
-    Cam.position.y += teleport_dist
     is_transitioning = false
     
   last_player_y = Player.position.y
@@ -152,3 +162,17 @@ func handle_item_body_entered(body: Node, item_node):
 
 func handle_player_died():
   start_level(curr_level_num)
+
+
+const BACKGROUND_HEIGHT = 2560
+func _on_background_entered(body, i):
+  if body.has_method("is_player") and body.is_player():
+    print(bgs, ' ', i)
+    if i == bgs[0]:
+      var last = bgs.pop_back()
+      bgs.push_front(last)
+      $Background.get_child(last).position.y -= BACKGROUND_HEIGHT * len(bgs)
+    elif i == bgs[len(bgs)-1]:
+      var front = bgs.pop_front()
+      bgs.push_back(front)
+      $Background.get_child(front).position.y += BACKGROUND_HEIGHT * len(bgs)

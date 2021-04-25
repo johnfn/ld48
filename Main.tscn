@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/LevelTransition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=3]
 [ext_resource path="res://ui_elements/UiOverlay.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/art/background1.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 640.632, 1277.67 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 956.12, 10 )
@@ -12,6 +16,59 @@ extents = Vector2( 956.12, 10 )
 position = Vector2( 4.48926, 0 )
 script = ExtResource( 3 )
 level_scenes = [ "res://levels/LevelTemplateChauncey.tscn" ]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Bg1" type="Area2D" parent="Background"]
+collision_layer = 64
+
+[node name="Sprite" type="Sprite" parent="Background/Bg1"]
+position = Vector2( 640, 1280 )
+texture = ExtResource( 5 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="Background/Bg1"]
+visible = false
+position = Vector2( 641.382, 1279.99 )
+shape = SubResource( 2 )
+
+[node name="Bg2" type="Area2D" parent="Background"]
+position = Vector2( 0, 2560 )
+collision_layer = 64
+
+[node name="Sprite" type="Sprite" parent="Background/Bg2"]
+position = Vector2( 640, 1280 )
+texture = ExtResource( 5 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="Background/Bg2"]
+visible = false
+position = Vector2( 641.382, 1279.99 )
+shape = SubResource( 2 )
+
+[node name="Bg3" type="Area2D" parent="Background"]
+position = Vector2( 0, 5120 )
+collision_layer = 64
+
+[node name="Sprite" type="Sprite" parent="Background/Bg3"]
+position = Vector2( 640, 1280 )
+texture = ExtResource( 5 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="Background/Bg3"]
+visible = false
+position = Vector2( 641.382, 1279.99 )
+shape = SubResource( 2 )
+
+[node name="Bg4" type="Area2D" parent="Background"]
+position = Vector2( 0, 7680 )
+collision_layer = 64
+
+[node name="Sprite" type="Sprite" parent="Background/Bg4"]
+position = Vector2( 640, 1280 )
+texture = ExtResource( 5 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="Background/Bg4"]
+visible = false
+position = Vector2( 641.382, 1279.99 )
+shape = SubResource( 2 )
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -22,10 +79,10 @@ position = Vector2( 0.96, -2558 )
 position = Vector2( 0, -0.960266 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 755.969, -2017.28 )
+position = Vector2( -583.471, 127.642 )
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 640, 640 )
+position = Vector2( 632.449, 632.449 )
 current = true
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
@@ -46,3 +103,8 @@ collision_layer = 2
 [node name="Box" type="CollisionShape2D" parent="Walls/TopWall"]
 position = Vector2( 509.399, -10 )
 shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Background/Bg1" to="." method="_on_background_entered" binds= [ 0 ]]
+[connection signal="body_entered" from="Background/Bg2" to="." method="_on_background_entered" binds= [ 1 ]]
+[connection signal="body_entered" from="Background/Bg3" to="." method="_on_background_entered" binds= [ 2 ]]
+[connection signal="body_entered" from="Background/Bg4" to="." method="_on_background_entered" binds= [ 3 ]]

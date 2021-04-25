@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -39,6 +39,19 @@ shader = SubResource( 1 )
 shader_param/white = null
 
 [sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=28]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=26]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=27]
 resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/white = null
@@ -396,14 +409,17 @@ position = Vector2( 818.281, 1814.29 )
 position = Vector2( 953.999, 1814.29 )
 
 [node name="MonsterShooter" parent="." instance=ExtResource( 8 )]
+material = SubResource( 28 )
 position = Vector2( 329.561, 4241.69 )
 
 [node name="MonsterShooter4" parent="." instance=ExtResource( 8 )]
+material = SubResource( 26 )
 position = Vector2( 743.549, 2345.97 )
 rotation = 1.5713
 direction_to_shoot = Vector2( 0, 1 )
 
 [node name="MonsterShooter2" parent="." instance=ExtResource( 8 )]
+material = SubResource( 27 )
 position = Vector2( 954.156, 3720.74 )
 direction_to_shoot = Vector2( -1, 1 )
 
