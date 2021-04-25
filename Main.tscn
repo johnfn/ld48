@@ -15,9 +15,10 @@ level_scenes = [ "res://levels/LevelTemplate2.tscn" ]
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="TransitionTop" parent="Levels" instance=ExtResource( 2 )]
-position = Vector2( 0, -2305.39 )
+position = Vector2( 0.960327, -2326.39 )
 
 [node name="TransitionBottom" parent="Levels" instance=ExtResource( 2 )]
+position = Vector2( 0, -0.960266 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 755.969, -2017.28 )
