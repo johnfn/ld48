@@ -65,6 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func attempt_push(push_dir):
   # check for possible collisions TODO
+  # TODO round target to grid
   target = position
   match push_dir:
     0:

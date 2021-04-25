@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/LevelTransition.gd" type="Script" id=1]
-[ext_resource path="res://components/Tree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 627.239, 1109.14 )
