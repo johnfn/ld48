@@ -4,10 +4,10 @@
 [ext_resource path="res://scripts/Pushable.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 72.1143, 71.3868 )
+extents = Vector2( 38.9099, 38.6062 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 61.8134, 55.62 )
+extents = Vector2( 30.8111, 30.2634 )
 
 [node name="Pushable" type="KinematicBody2D"]
 script = ExtResource( 2 )

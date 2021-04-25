@@ -13,6 +13,7 @@ var dir_map = {
 var target = null
 export(float) var speed = 300
 export(float) var push_distance = 128
+onready var initial_pos = position
 
 func _ready():
   $PushBounds.connect("body_entered", self, "_on_push_entered")
@@ -65,8 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func attempt_push(push_dir):
   # check for possible collisions TODO
-  # TODO round target to grid
-  target = position
+  target = position * 1
   match push_dir:
     0:
       target.x += push_distance
@@ -76,3 +76,12 @@ func attempt_push(push_dir):
       target.x -= push_distance
     3:
       target.y -= push_distance
+  target.x = round((target - initial_pos).x / push_distance) * push_distance + initial_pos.x
+  target.y = round((target - initial_pos).y / push_distance) * push_distance + initial_pos.y
+  
+  print(target, ' ', position)
+  
+  var curr_pos = position
+  var collision = move_and_collide(target - position, false, true, true)
+  if collision != null:
+    target = null
