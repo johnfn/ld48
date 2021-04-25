@@ -1,4 +1,4 @@
-# TODO: Float on top
+# TODO: Don't go off edge
 
 extends Control
 
@@ -6,6 +6,9 @@ onready var ZSorter: Node2D = $ZSorter
 onready var Image: NinePatchRect = $ZSorter/Image
 onready var Text: Label = $ZSorter/Text
 onready var PressXKey: Sprite = $PressXKey
+
+var max_width = 350
+var min_height = 50
 
 # Here's how you use this:
 #  display_text_sequence_co([
@@ -33,15 +36,36 @@ func display_text_co(new_text: String) -> void:
   var size = Text.get_font("font").get_string_size(cur_text)
   
   PressXKey.visible = false
+  var one_last_loop = false
   
   for x in new_text:
     cur_text += x
     
+    if one_last_loop:
+      cur_text = new_text
+    
     Text.text = cur_text
-    size = Text.get_font("font").get_string_size(cur_text)
-    Image.rect_size = (size + Vector2(20, 20))
+    var size_w = Text.get_font("font").get_string_size(cur_text).x
+    var size_h = min_height
+    
+    if size_w > max_width:
+      size_w = max_width
+      size = Text.get_font("font").get_wordwrap_string_size(cur_text, max_width)
+      size_h = size.y
+    
+    Text.rect_size  = Vector2(max_width, 1000)
+    Image.rect_size = (Vector2(size_w, size_h) + Vector2(20, 40))
+    
+    rect_position.y = -size_h - 100
     
     yield(get_tree().create_timer(0.05), "timeout")
+    
+    if one_last_loop:
+      break
+      
+    if Input.is_action_just_pressed("interact"):
+      one_last_loop = true
+      
     
   Image.rect_size += Vector2(60, 0)
   PressXKey.position = size + Vector2(50, 0)
