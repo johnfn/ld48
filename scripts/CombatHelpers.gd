@@ -7,6 +7,9 @@ func damage_anim_animated_sprite(target: AnimatedSprite):
   return _damage_anim(target)
 
 func _damage_anim(target):
+  assert(target != null, "null target in _damage_anim")
+  print(target)
+    
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
