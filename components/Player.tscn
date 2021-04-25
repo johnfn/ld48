@@ -1,11 +1,46 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/art/chara_up2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=3]
+[ext_resource path="res://assets/art/chara_right2.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/chara_up3.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/chara_right3.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/chara_left2.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/chara_left1.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/chara_down3.png" type="Texture" id=9]
+[ext_resource path="res://assets/art/chara_up1.png" type="Texture" id=10]
+[ext_resource path="res://assets/art/chara_down2.png" type="Texture" id=11]
+[ext_resource path="res://assets/art/chara_left3.png" type="Texture" id=12]
+[ext_resource path="res://assets/art/chara_right1.png" type="Texture" id=13]
+[ext_resource path="res://assets/art/chara_down1.png" type="Texture" id=14]
+[ext_resource path="res://assets/art/hand.png" type="Texture" id=15]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 60.8228
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 1 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+} ]
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 46
@@ -16,12 +51,33 @@ visible = false
 position = Vector2( -0.420441, 0 )
 shape = SubResource( 1 )
 
-[node name="Equipment" type="Node2D" parent="."]
-
-[node name="weapons" type="Node2D" parent="Equipment"]
-position = Vector2( 29.8881, 52.1408 )
-
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 3 )
 position = Vector2( 8, 0 )
-texture = ExtResource( 1 )
+z_index = 1
+frames = SubResource( 2 )
+animation = "up"
+frame = 1
+
+[node name="Equipment" type="Node2D" parent="."]
+z_index = 1
+
+[node name="weapons" type="Node2D" parent="Equipment"]
+position = Vector2( 38.0235, 20.5912 )
+
+[node name="Sprite" type="Sprite" parent="Equipment/weapons"]
+texture = ExtResource( 15 )
+
+[node name="rh_up" type="Node2D" parent="Equipment"]
+position = Vector2( 38.296, 20.4378 )
+z_index = -1
+
+[node name="rh_down" type="Node2D" parent="Equipment"]
+position = Vector2( -25.3984, 26.589 )
+
+[node name="rh_left" type="Node2D" parent="Equipment"]
+position = Vector2( -8.73071, 17.0646 )
+z_index = -1
+
+[node name="rh_right" type="Node2D" parent="Equipment"]
+position = Vector2( 13.4929, 22.4221 )

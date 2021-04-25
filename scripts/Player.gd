@@ -1,6 +1,8 @@
 class_name Player
 extends KinematicBody2D
 
+const IDLE_FRAME = 1
+
 var input_vec : Vector2 = Vector2(0, 0)
 export(float) var max_speed = 600.0
 export(float) var invuln_time = 0.4
@@ -17,7 +19,7 @@ var knockback = false
 var knockback_source: Node2D = null
 
 func _process(delta: float) -> void:
-  look_at(get_global_mouse_position())
+  Weapons.look_at(get_global_mouse_position())
 
 func _physics_process(delta: float) -> void:
   var direction = input_vec.normalized() * max_speed
@@ -50,11 +52,43 @@ func _unhandled_input(event: InputEvent) -> void:
   if Weapons.get_child_count() > 0:
     if Input.is_action_just_pressed("interact"):
       for weapon in Weapons.get_children():
-        weapon.set_in_use(true)
+        if weapon.has_method("set_in_use"):
+          weapon.set_in_use(true)
     elif Input.is_action_just_released("interact"):
       for weapon in Weapons.get_children():
-        weapon.set_in_use(false)
+        if weapon.has_method("set_in_use"):
+          weapon.set_in_use(false)
+  
+  print(input_vec)
+  if input_vec.y < 0:
+    set_direction("up")
+  elif input_vec.y > 0:
+    set_direction("down")
+  elif input_vec.x > 0:
+    set_direction("right")
+  elif input_vec.x < 0:
+    set_direction("left")
+  if input_vec == Vector2(0, 0) and Sprite.is_playing():
+    Sprite.stop()
+    Sprite.frame = IDLE_FRAME
 
+
+func set_direction(dir_name):
+  if Sprite.animation != dir_name or not Sprite.playing:
+    Sprite.play(dir_name)
+  if dir_name == "up" or dir_name == "left":
+    Weapons.z_index = 0
+  else:
+    Weapons.z_index = 2
+  match dir_name:
+    "up":
+      Weapons.position = $Equipment/rh_up.position
+    "down":
+      Weapons.position = $Equipment/rh_down.position
+    "left":
+      Weapons.position = $Equipment/rh_left.position
+    "right":
+      Weapons.position = $Equipment/rh_right.position
 
 func damage(amount: int, source: Node2D) -> void:
   if not is_invuln:
