@@ -21,6 +21,7 @@ __meta__ = {
 }
 
 [node name="Items" type="Node2D" parent="."]
+position = Vector2( -5.26025, -1.33179 )
 
 [node name="Donut" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 907.05, 590.676 )
