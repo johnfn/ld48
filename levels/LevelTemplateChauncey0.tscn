@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/Dog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
+[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=8]
+
+[node name="LevelX" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="EditorBackground" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1.12231, 1.12225 )
+num_bgs = 4
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Donut" parent="Items" instance=ExtResource( 4 )]
+position = Vector2( 683.729, 210.839 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Tree3" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 157.388, 4.5744 )
+
+[node name="Tree10" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -95.129, 12.4305 )
+
+[node name="Tree4" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 416.638, 2.32983 )
+
+[node name="Tree11" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 306.653, 117.926 )
+
+[node name="Tree12" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 54.1363, 117.926 )
+
+[node name="Tree5" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1434.56, -2.15939 )
+
+[node name="Tree6" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1178.68, -2.15933 )
+
+[node name="Tree9" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 923.916, -2.15939 )
+
+[node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -77.7994, 261.141 )
+
+[node name="Tree8" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 175.839, 253.285 )
+
+[node name="Tree13" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 13.1065, 382.349 )
+
+[node name="Tree24" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1015.96, 82.0395 )
+
+[node name="Tree25" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1272.97, 92.1401 )
+
+[node name="Tree26" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1131.56, 217.837 )
+
+[node name="Tree27" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1385.2, 242.528 )
+
+[node name="Tree28" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1257.25, 363.736 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="LevelBottom" type="Node2D" parent="Markers"]
+position = Vector2( 671.308, 1912.75 )
+
+[node name="SpawnPoint" type="Node2D" parent="Markers"]
+position = Vector2( 667.512, 1618.01 )
+
+[node name="LevelTop" type="Node2D" parent="Markers"]
+position = Vector2( 677.235, 0 )
+[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
