@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://components/Tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://components/Monster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
 [ext_resource path="res://components/PushableTemplate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Dialog.tscn" type="PackedScene" id=8]
+[ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=10]
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
@@ -113,5 +116,17 @@ position = Vector2( 677.235, 0 )
 
 [node name="Pushable" parent="." instance=ExtResource( 7 )]
 position = Vector2( 512, 1280 )
+
+[node name="Dialog" parent="." instance=ExtResource( 8 )]
+margin_left = 573.063
+margin_top = 1845.11
+margin_right = 573.063
+margin_bottom = 1845.11
+
+[node name="MonsterWitch" parent="." instance=ExtResource( 10 )]
+position = Vector2( 356.579, 543.067 )
+
+[node name="MonsterShooter" parent="." instance=ExtResource( 9 )]
+position = Vector2( 508.228, 362.727 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
