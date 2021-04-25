@@ -1,19 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/art/enemy_witch.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/witch2.png" type="Texture" id=1]
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=2]
 [ext_resource path="res://scripts/MonsterWitch.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/witch1.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 1.6
+} ]
 
 [node name="MonsterWitch" type="RigidBody2D"]
+material = ExtResource( 2 )
 collision_layer = 4
 collision_mask = 23
 mode = 2
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 2 )
-texture = ExtResource( 1 )
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 visible = false
-polygon = PoolVector2Array( 3.65842, -94.9257, -50.3742, -75.8554, -94.077, -21.8228, -83.4824, 36.9774, -68.1202, 57.1072, -54.8769, 87.037, -8.52539, 94.4533, 25.9072, 93.3938, 66.4316, 82.5343, 87.0912, 51.8099, 94.7722, 11.5503, 94.5074, -37.185, 58.2208, -63.9364, 12.1341, -95.4555 )
+polygon = PoolVector2Array( -37.8568, -77.9528, 32.3064, -63.9797, 32.0091, -57.1417, -25.3701, -54.7633, -10.2077, -32.1684, 20.4143, -35.736, 45.9823, 1.72403, 45.9823, 29.6704, 64.1177, 40.6706, 87.6045, 21.6432, 94.1452, 56.4276, 87.3072, 88.5361, 63.2258, 72.1845, 40.0363, 81.1036, 10.6034, 84.6712, -9.01852, 68.9142, -58.9652, 68.0223, -61.0463, 55.5356, -3.36981, 17.1837, -40.5325, 14.8053, -50.0462, -6.30312, -69.6681, -19.6817, -47.9651, -22.6547, -46.4785, -59.8174 )

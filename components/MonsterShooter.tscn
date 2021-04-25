@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=1]
-[ext_resource path="res://assets/art/enemy_shooter.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/shooter1.png" type="Texture" id=2]
 [ext_resource path="res://scripts/MonsterShooter.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/shooter2.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 1.6
+} ]
 
 [node name="MonsterShooter" type="RigidBody2D"]
 collision_layer = 4
@@ -10,9 +19,12 @@ collision_mask = 23
 mode = 1
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 1 )
-texture = ExtResource( 2 )
+frames = SubResource( 1 )
+animation = "idle"
+frame = 1
+playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 visible = false

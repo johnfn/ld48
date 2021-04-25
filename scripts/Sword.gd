@@ -14,6 +14,8 @@ func _ready() -> void:
 
 func on_pick_up() -> void:
   Hitbox.set_disabled(true)
+  $SwordSprite.visible = true
+  $StickSprite.visible = false
 
 func on_enter(other) -> void:
   if not is_in_use:

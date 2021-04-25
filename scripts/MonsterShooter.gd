@@ -20,6 +20,8 @@ var dying = false
 func _ready():
   connect("body_entered", self, "on_enter")
   connect("body_exited", self, "on_exit")
+  if direction_to_shoot.x > 0:
+    Sprite.flip_h = true
 
 func _process(delta):
   shoot_cooldown_remaining -= delta
@@ -51,7 +53,7 @@ func damage(amount: int, source: Node2D) -> void:
   
   if health <= 0 and not dying:
     dying = true
-    yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
+    yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
     queue_free()
     
     return      

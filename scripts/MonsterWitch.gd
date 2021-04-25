@@ -26,6 +26,8 @@ func _ready():
 
 func _integrate_forces(state):
   state.linear_velocity = current_movement_direction * speed
+  if current_movement_direction.x != 0:
+    Sprite.flip_h = current_movement_direction.x > 0
 
 func is_enemy() -> bool:
   return true
@@ -39,12 +41,12 @@ func damage(amount: int, source: Node2D) -> void:
   
   if health <= 0 and not dying:
     dying = true
-    yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
+    yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
     queue_free()
     
     return
   
-  yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
+  yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
   
   is_invuln = false
 
