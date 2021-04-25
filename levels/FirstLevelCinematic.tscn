@@ -123,7 +123,7 @@ position = Vector2( 636.486, 1913.6 )
 cinematic_style_dialog = true
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 8 )]
-position = Vector2( 606.714, 1454.46 )
+position = Vector2( 608.957, 1454.46 )
 destinations = [ NodePath("../DogDest1") ]
 dog_path = NodePath("../Items/Doggy")
 

@@ -11,13 +11,13 @@
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=10]
 
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -240,7 +240,7 @@ position = Vector2( 1450.3, 3156.85 )
 position = Vector2( 667.13, 3388.82 )
 
 [node name="MonsterShooter" parent="Markers/LevelBottom" instance=ExtResource( 5 )]
-material = SubResource( 3 )
+material = SubResource( 1 )
 position = Vector2( -438.168, -2427.49 )
 
 [node name="SpawnPoint" type="Node2D" parent="Markers"]
@@ -259,15 +259,15 @@ position = Vector2( 975.58, 2352.28 )
 position = Vector2( 864.181, 1879.34 )
 
 [node name="Shrub5" parent="." instance=ExtResource( 10 )]
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 335.656, 2752.06 )
 
 [node name="MonsterWitch" parent="." instance=ExtResource( 9 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( 973.626, 2152 )
 
 [node name="MonsterWitch2" parent="." instance=ExtResource( 9 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( 356.15, 2539.27 )
 
 [node name="MonsterShooter" parent="." instance=ExtResource( 5 )]
