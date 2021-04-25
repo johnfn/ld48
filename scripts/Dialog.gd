@@ -58,14 +58,17 @@ func display_text_co(new_text: String) -> void:
     
     rect_position.y = -size_h - 100
     
-    yield(get_tree().create_timer(0.05), "timeout")
-    
     if one_last_loop:
       break
       
-    if Input.is_action_just_pressed("interact"):
-      one_last_loop = true
-      
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("interact"): one_last_loop = true
+    
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("interact"): one_last_loop = true
+    
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("interact"): one_last_loop = true
     
   Image.rect_size += Vector2(60, 0)
   PressXKey.position = size + Vector2(50, 0)

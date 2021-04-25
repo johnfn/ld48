@@ -4,6 +4,7 @@ export var dialog: Array = [
   "I'm some dialog that someone should really rewrite!"
 ]
 export var cinematic_style_dialog = false
+export var fade_to_black = false
 
 var triggered = false
 onready var area = $DialogTrigger
@@ -33,6 +34,9 @@ func begin_cinematic(player: Player):
   yield(Letterbox.animate_in(), "completed")
   
   yield(new_dialog.display_text_sequence_co(player, dialog), "completed")
+  
+  if fade_to_black:
+    yield(Letterbox.fade_to_black(), "completed")
   
   yield(Letterbox.animate_out(), "completed")
   

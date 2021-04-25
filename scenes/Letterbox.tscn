@@ -26,3 +26,11 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="EnterScreenFadeRect" type="ColorRect" parent="CanvasLayer"]
+margin_right = 1500.0
+margin_bottom = 1500.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
