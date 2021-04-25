@@ -14,7 +14,7 @@ onready var load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + Transi
 export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
 export(bool) var debug_already_has_sword = false
-export(Array) var level_scenes = ["res://levels/LevelTemplate.tscn", "res://levels/LevelTemplate.tscn", "res://levels/LevelTemplate.tscn"]
+export(Array) var level_scenes = ["res://levels/LevelTemplateAndrew.tscn"]
 export(int) var curr_level_num = 0
 
 var inventory = []
