@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -10,11 +10,24 @@
 [ext_resource path="res://scenes/Dialog.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=11]
 
-[node name="LevelX3" type="Node2D"]
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+
+[node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="Items" type="Node2D" parent="."]
+[node name="EditorBackground" parent="." instance=ExtResource( 11 )]
+num_bgs = 1
+
+[node name="Items" type="YSort" parent="."]
 
 [node name="Donut" parent="Items" instance=ExtResource( 4 )]
 position = Vector2( 907.05, 590.676 )
@@ -23,13 +36,16 @@ position = Vector2( 907.05, 590.676 )
 position = Vector2( 632.786, 1637.06 )
 rotation = 0.0
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Tree" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 144.142, 774.358 )
 
 [node name="Tree2" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 150.723, 531.493 )
+
+[node name="Tree16" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1115.77, 2008.57 )
 
 [node name="Tree3" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 265.128, 314.328 )
@@ -39,19 +55,19 @@ position = Vector2( 409.277, 128.71 )
 
 [node name="Tree4" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1033.23, 341.822 )
-rotation = 3.14159
 
 [node name="Tree8" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 948.523, 137.077 )
-rotation = 3.14159
 
 [node name="Tree5" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1172.79, 560.782 )
-rotation = 3.14159
 
 [node name="Tree6" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1176.66, 796.78 )
-rotation = 3.14159
+
+[node name="Tree15" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 763.366, 1464.08 )
+solid_leaves = false
 
 [node name="Tree9" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 132.25, 1247.66 )
@@ -61,11 +77,9 @@ position = Vector2( 138.831, 1004.8 )
 
 [node name="Tree11" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1160.9, 1034.09 )
-rotation = 3.14159
 
 [node name="Tree12" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1164.77, 1270.08 )
-rotation = 3.14159
 
 [node name="Tree13" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 129.871, 1728.1 )
@@ -79,29 +93,33 @@ position = Vector2( 329.433, 2198.5 )
 [node name="Tree14" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 136.453, 1485.24 )
 
-[node name="Tree15" parent="Obstacles" instance=ExtResource( 1 )]
-position = Vector2( 1158.52, 1514.53 )
-rotation = 3.14159
-
-[node name="Tree16" parent="Obstacles" instance=ExtResource( 1 )]
-position = Vector2( 1162.39, 1750.52 )
-rotation = 3.14159
-
 [node name="Tree19" parent="Obstacles" instance=ExtResource( 1 )]
-position = Vector2( 1016.28, 1957.21 )
-rotation = 3.14159
+position = Vector2( 1153.38, 1586.57 )
 
 [node name="Tree20" parent="Obstacles" instance=ExtResource( 1 )]
-position = Vector2( 873.737, 2163.9 )
-rotation = 3.14159
+position = Vector2( 1114.38, 1807.8 )
 
 [node name="Spike" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 396.294, 663.481 )
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies" type="YSort" parent="."]
+
+[node name="MonsterShooter" parent="Enemies" instance=ExtResource( 9 )]
+material = SubResource( 1 )
+position = Vector2( 508.228, 362.727 )
+
+[node name="MonsterWitch" parent="Enemies" instance=ExtResource( 10 )]
+material = SubResource( 2 )
+position = Vector2( 356.579, 543.067 )
 
 [node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
+material = SubResource( 3 )
 position = Vector2( 648.966, 895.988 )
+
+[node name="Pushables" type="YSort" parent="."]
+
+[node name="Pushable" parent="Pushables" instance=ExtResource( 7 )]
+position = Vector2( 512, 1280 )
 
 [node name="Markers" type="Node2D" parent="."]
 
@@ -114,19 +132,10 @@ position = Vector2( 614.306, 2031.7 )
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
 
-[node name="Pushable" parent="." instance=ExtResource( 7 )]
-position = Vector2( 512, 1280 )
-
 [node name="Dialog" parent="." instance=ExtResource( 8 )]
 margin_left = 573.063
 margin_top = 1845.11
 margin_right = 573.063
 margin_bottom = 1845.11
-
-[node name="MonsterWitch" parent="." instance=ExtResource( 10 )]
-position = Vector2( 356.579, 543.067 )
-
-[node name="MonsterShooter" parent="." instance=ExtResource( 9 )]
-position = Vector2( 508.228, 362.727 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
