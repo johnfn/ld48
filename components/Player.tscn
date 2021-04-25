@@ -29,7 +29,7 @@
 [ext_resource path="res://assets/art/chara_downleft2.png" type="Texture" id=27]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 48.3867
+radius = 16.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -79,18 +79,19 @@ collision_mask = 46
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( 4.79727, 2.78275 )
+position = Vector2( 0.342758, -0.335419 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 3 )
-position = Vector2( 7.78976, -0.21022 )
+position = Vector2( 2.88979, -29.1645 )
 z_index = 1
 frames = SubResource( 2 )
 animation = "up"
 frame = 1
 
 [node name="Equipment" type="Node2D" parent="."]
+position = Vector2( -4.89996, -28.9543 )
 z_index = 1
 
 [node name="weapons" type="Node2D" parent="Equipment"]
