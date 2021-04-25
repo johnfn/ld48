@@ -59,13 +59,6 @@ func set_in_use(in_use: bool) -> void:
 
   # ... continues in _physics_process, b/c we need to wait for the overlapping bodies to be updated!
 
-var targets = []
-
-func _draw():
-  # draw_line(Vector2.ZERO, Vector2(500, 500), Color.blue)
-  for target in targets:
-    draw_line(Vector2.ZERO, (target.global_position - player.global_position), Color.blue)
-
 func _physics_process(delta):
   if Hitbox.disabled:
     return
@@ -81,7 +74,6 @@ func _physics_process(delta):
   var hits = SwordArea.get_overlapping_bodies()
   var enemy_hits = []
   
-  targets = hits
   update()
   
   for potential_enemy in hits:
