@@ -9,6 +9,7 @@ onready var area = $DialogTrigger
 var DialogScene = load("res://scenes/Dialog.tscn")
 
 func _ready():
+  print("Hewo")
   connect("body_entered", self, "body_entered")
 
 func body_entered(other: Node2D):
