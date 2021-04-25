@@ -32,7 +32,10 @@ tracks/1/keys = {
 "values": [ Vector2( 46, 0 ), Vector2( 0, -120 ), Vector2( 46, 0 ) ]
 }
 
-[node name="Sword" type="Area2D" groups=[
+[node name="SwordRoot" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sword" type="Area2D" parent="." groups=[
 "items",
 "weapons",
 ]]
@@ -40,20 +43,19 @@ position = Vector2( 46, 0 )
 rotation = 1.5708
 collision_layer = 24
 collision_mask = 133
-script = ExtResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sword"]
 anims/Swing = SubResource( 1 )
 
-[node name="Hitbox" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PoolVector2Array( -9.75, 8.5, -49.5623, -85.444, 5.07083, -150.843, 48.9393, -78.9852, 13.75, 7.5 )
+[node name="Hitbox" type="CollisionPolygon2D" parent="Sword"]
+position = Vector2( 1.23221e-06, 0.340393 )
+polygon = PoolVector2Array( -53.1036, 8.22645, -49.5623, -85.444, 5.07083, -150.843, 48.9393, -78.9852, 50.3801, 6.18365 )
 
-[node name="SwordSprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( -2.08722e-06, -47.75 )
+[node name="SwordSprite" type="Sprite" parent="Sword"]
+position = Vector2( -0.340397, -47.75 )
 texture = ExtResource( 1 )
 
-[node name="StickSprite" type="Sprite" parent="."]
+[node name="StickSprite" type="Sprite" parent="Sword"]
+visible = false
 position = Vector2( -0.667091, 44.3539 )
 texture = ExtResource( 3 )

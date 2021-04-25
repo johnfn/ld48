@@ -9,4 +9,4 @@ func _ready():
 func leave_screen():
   for node_path in dog_exit_path:
     var node = get_node(node_path)
-    print(node)
+

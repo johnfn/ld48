@@ -50,8 +50,6 @@ func shoot():
   new_bullet.position += direction_to_shoot * 100
   new_bullet.shooter = self
   
-  print (Engine.editor_hint)
-  
   .add_child(new_bullet)
   new_bullet.direction = direction_to_shoot
 
