@@ -18,10 +18,10 @@ func _damage_anim(target):
   target.material.set_shader_param("white", 0.0)
 
   for i in range(3):
-    target.visible = false
+     target.visible = false
     
-    yield(get_tree().create_timer(0.05), "timeout")
+     yield(get_tree().create_timer(0.05), "timeout")
     
-    target.visible = true
+     target.visible = true
     
-    yield(get_tree().create_timer(0.05), "timeout")
+     yield(get_tree().create_timer(0.05), "timeout")

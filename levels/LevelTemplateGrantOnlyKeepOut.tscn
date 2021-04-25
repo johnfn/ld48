@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=8]
 [ext_resource path="res://scripts/Dog.gd" type="Script" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
 
 [node name="LevelX" type="Node2D"]
 position = Vector2( -1.79102, -0.868958 )
@@ -96,6 +99,7 @@ position = Vector2( 396.294, 663.481 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
+material = SubResource( 1 )
 position = Vector2( 773.559, 819.66 )
 
 [node name="Markers" type="Node2D" parent="."]

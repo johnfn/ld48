@@ -1,12 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/PushableTemplate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/art/river placeholder.png" type="Texture" id=5]
+[ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=8]
+[ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
@@ -68,6 +75,24 @@ position = Vector2( -18.4196, 1283.89 )
 
 [node name="Tree49" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 31.4405, 1411.96 )
+
+[node name="Tree83" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 222.58, 1557.11 )
+
+[node name="Tree84" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 373.48, 1639.03 )
+
+[node name="Tree89" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 392.163, 1996.88 )
+
+[node name="Tree90" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 236.952, 2055.8 )
+
+[node name="Tree85" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1015.88, 1475.2 )
+
+[node name="Tree86" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 956.959, 1848.85 )
 
 [node name="Tree50" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( -46.7716, 1550.79 )
@@ -244,9 +269,6 @@ position = Vector2( 677.235, 0 )
 [node name="Pushable" parent="Markers" instance=ExtResource( 3 )]
 position = Vector2( 211.919, 631.133 )
 
-[node name="Pushable2" parent="Markers" instance=ExtResource( 3 )]
-position = Vector2( 297.064, 631.149 )
-
 [node name="Pushable3" parent="Markers" instance=ExtResource( 3 )]
 position = Vector2( 382.31, 631.149 )
 
@@ -265,8 +287,296 @@ position = Vector2( 722.41, 631.149 )
 [node name="Pushable8" parent="Markers" instance=ExtResource( 3 )]
 position = Vector2( 807.655, 631.149 )
 
-[node name="river placeholder" type="Sprite" parent="."]
-position = Vector2( 609.87, 974.42 )
-texture = ExtResource( 5 )
+[node name="Pushable11" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 1063.4, 631.149 )
+
+[node name="Pushable13" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 212.379, 546.845 )
+
+[node name="Pushable24" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 297.524, 546.862 )
+
+[node name="Pushable36" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 468.015, 546.862 )
+
+[node name="Pushable37" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 552.479, 546.845 )
+
+[node name="Pushable38" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 637.624, 546.862 )
+
+[node name="Pushable46" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 893.367, 546.862 )
+
+[node name="Pushable53" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 978.613, 546.862 )
+
+[node name="Pushable59" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 1063.86, 546.862 )
+
+[node name="Pushable12" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 211.99, 714.236 )
+
+[node name="Pushable14" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 382.381, 714.252 )
+
+[node name="Pushable16" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 552.09, 714.236 )
+
+[node name="Pushable17" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 637.235, 714.252 )
+
+[node name="Pushable18" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 722.481, 713.252 )
+
+[node name="Pushable19" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 807.727, 714.252 )
+
+[node name="Pushable20" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 892.979, 714.252 )
+
+[node name="Pushable21" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 978.224, 714.252 )
+
+[node name="Pushable22" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 1063.47, 714.252 )
+
+[node name="Pushable23" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 212.078, 797.785 )
+
+[node name="Pushable25" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 382.469, 797.802 )
+
+[node name="Pushable26" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 467.715, 797.802 )
+
+[node name="Pushable27" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 552.178, 797.785 )
+
+[node name="Pushable28" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 635.323, 797.802 )
+
+[node name="Pushable30" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 809.814, 797.802 )
+
+[node name="Pushable31" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 893.067, 797.802 )
+
+[node name="Pushable32" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 978.312, 797.802 )
+
+[node name="Pushable34" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 212.15, 880.889 )
+
+[node name="Pushable35" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 297.294, 880.905 )
+
+[node name="Pushable39" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 635.394, 880.905 )
+
+[node name="Pushable41" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 809.886, 880.905 )
+
+[node name="Pushable42" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 893.138, 880.905 )
+
+[node name="Pushable43" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 978.384, 880.905 )
+
+[node name="Pushable47" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 382.641, 963.997 )
+
+[node name="Pushable48" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 467.886, 963.997 )
+
+[node name="Pushable49" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 552.35, 963.981 )
+
+[node name="Pushable50" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 637.495, 963.997 )
+
+[node name="Pushable51" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 722.741, 963.997 )
+
+[node name="Pushable52" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 807.986, 963.997 )
+
+[node name="Pushable54" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 978.484, 963.997 )
+
+[node name="Pushable55" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 1063.73, 963.997 )
+
+[node name="Pushable56" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 212.321, 1047.08 )
+
+[node name="Pushable57" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 297.466, 1047.1 )
+
+[node name="Pushable58" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 382.712, 1047.1 )
+
+[node name="Pushable60" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 552.422, 1047.08 )
+
+[node name="Pushable63" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 808.058, 1047.1 )
+
+[node name="Pushable65" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 978.556, 1047.1 )
+
+[node name="Pushable66" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 1063.8, 1047.1 )
+
+[node name="Pushable67" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 212.409, 1130.63 )
+
+[node name="Pushable68" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 297.554, 1130.65 )
+
+[node name="Pushable69" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 382.8, 1130.65 )
+
+[node name="Pushable70" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 468.046, 1130.65 )
+
+[node name="Pushable71" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 552.509, 1130.63 )
+
+[node name="Pushable72" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 637.654, 1130.65 )
+
+[node name="Pushable73" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 722.9, 1130.65 )
+
+[node name="Pushable74" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 808.146, 1130.65 )
+
+[node name="Pushable76" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 978.643, 1130.65 )
+
+[node name="Pushable77" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 1063.89, 1130.65 )
+
+[node name="Pushable80" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 382.871, 1213.75 )
+
+[node name="Pushable89" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 421.674, 2446.82 )
+
+[node name="Pushable90" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 962.039, 2563.23 )
+
+[node name="Pushable91" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 604.191, 2721.31 )
+
+[node name="Pushable81" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 468.117, 1213.75 )
+
+[node name="Pushable82" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 552.581, 1213.74 )
+
+[node name="Pushable83" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 637.725, 1213.75 )
+
+[node name="Pushable84" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 722.971, 1213.75 )
+
+[node name="Pushable85" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 808.217, 1213.75 )
+
+[node name="Pushable86" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 893.469, 1213.75 )
+
+[node name="Pushable87" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 978.715, 1213.75 )
+
+[node name="Pushable88" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 1063.96, 1213.75 )
+
+[node name="Shrub" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 523.921, 1730.46 )
+
+[node name="Shrub2" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 631.707, 1730.46 )
+
+[node name="Shrub4" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 983.806, 2737.89 )
+
+[node name="Shrub5" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 335.656, 2814.06 )
+
+[node name="Shrub3" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 740.929, 1730.46 )
+
+[node name="Shrub6" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 523.921, 1730.46 )
+
+[node name="Shrub7" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 631.707, 1730.46 )
+
+[node name="Shrub9" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 577.095, 1649.98 )
+
+[node name="Shrub10" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 684.881, 1649.98 )
+
+[node name="Shrub11" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 577.095, 1649.98 )
+
+[node name="Shrub12" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 684.881, 1649.98 )
+
+[node name="Shrub18" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 794.103, 1645.66 )
+
+[node name="Shrub13" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 502.364, 1563.75 )
+
+[node name="Shrub14" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 610.15, 1563.75 )
+
+[node name="Shrub15" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 502.364, 1563.75 )
+
+[node name="Shrub16" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 610.15, 1563.75 )
+
+[node name="Shrub17" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 727.995, 1562.31 )
+
+[node name="Shrub19" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 850.152, 1558 )
+
+[node name="Shrub8" parent="." instance=ExtResource( 10 )]
+material = SubResource( 1 )
+position = Vector2( 740.929, 1730.46 )
+
+[node name="MonsterShooter" parent="." instance=ExtResource( 5 )]
+material = SubResource( 3 )
+position = Vector2( 252.301, 1833.26 )
+
+[node name="MonsterShooter2" parent="." instance=ExtResource( 5 )]
+material = SubResource( 3 )
+position = Vector2( 932.068, 1656.49 )
+direction_to_shoot = Vector2( -1, 0 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
