@@ -15,7 +15,9 @@ extents = Vector2( 956.12, 10 )
 [node name="Main" type="Node2D"]
 position = Vector2( 3.18482, 0 )
 script = ExtResource( 3 )
+debug_already_has_sword = true
 level_scenes = [ "res://levels/Level0Mock.tscn", "res://levels/Level1Mock.tscn", "res://levels/Level2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn" ]
+curr_level_num = 4
 
 [node name="Background" type="Node2D" parent="."]
 

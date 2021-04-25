@@ -85,7 +85,8 @@ func update_wall_positions() -> void:
 
 func _ready():
   if debug_already_has_sword:
-    saved_inventory.append("Sword", "res://components/Sword.tscn")
+    saved_inventory.append("Sword")
+    saved_slots["weapons"] = "res://components/Sword.tscn"
     
   Ui.player = Player
   Player.connect("died", self, "handle_player_died")
