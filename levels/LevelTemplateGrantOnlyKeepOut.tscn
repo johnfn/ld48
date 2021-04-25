@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=2]
@@ -8,13 +8,17 @@
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=8]
+[ext_resource path="res://scripts/DialogTrigger.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 560.875, 217.753 )
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 8 )
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Donut" parent="Items" instance=ExtResource( 6 )]
+[node name="Doggy" parent="Items" instance=ExtResource( 6 )]
 position = Vector2( 907.05, 590.676 )
 
 [node name="Sword" parent="Items" instance=ExtResource( 3 )]
@@ -101,6 +105,12 @@ position = Vector2( 396.294, 663.481 )
 [node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 773.559, 819.66 )
 
+[node name="MonsterWitch" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 345.901, 1614.2 )
+
+[node name="Shrub" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 688.686, 1106.56 )
+
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="LevelBottom" type="Node2D" parent="Markers"]
@@ -112,10 +122,14 @@ position = Vector2( 614.306, 2031.7 )
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
 
-[node name="MonsterWitch" parent="." instance=ExtResource( 4 )]
-position = Vector2( 345.901, 1614.2 )
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="Shrub" parent="." instance=ExtResource( 7 )]
-position = Vector2( 688.686, 1106.56 )
+[node name="DialogTrigger" type="Area2D" parent="Node2D"]
+position = Vector2( 581.51, 869.446 )
+collision_layer = 64
+script = ExtResource( 9 )
 
-[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
+[node name="Area" type="CollisionShape2D" parent="Node2D/DialogTrigger"]
+shape = SubResource( 1 )
+
+[connection signal="tree_exited" from="Items/Doggy" to="." method="_on_Donut_tree_exited"]

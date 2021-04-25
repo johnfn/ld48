@@ -4,15 +4,19 @@ onready var Image: NinePatchRect = $Image
 onready var Text: Label = $Text
 onready var PressXKey: Sprite = $PressXKey
 
-func _ready():
-  PressXKey.visible = false 
-  
-  display_text_sequence_co([
-    "Hewo I am a small child",
-    "blah blah blah my doggy blah oh noooooo no" 
-  ])
+# Here's how you use this:
+#  display_text_sequence_co([
+#    "Hewo I am a small child",
+#    "blah blah blah my doggy blah oh noooooo no" 
+#  ])
 
-func display_text_sequence_co(sequence: Array) -> void:
+func _ready():
+  PressXKey.visible = false
+
+func display_text_sequence_co(target: Node2D, sequence: Array) -> void:
+  target.add_child(self)
+  rect_position = Vector2(0, -120)
+  
   for phrase in sequence:
     yield(display_text_co(phrase), "completed")
     yield(get_tree().create_timer(0.3), "timeout")
