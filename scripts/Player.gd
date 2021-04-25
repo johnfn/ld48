@@ -64,13 +64,24 @@ func _unhandled_input(event: InputEvent) -> void:
   
 
   if input_vec.y < 0:
-    set_direction("up")
+    if input_vec.x > 0:
+      set_direction("upright")
+    elif input_vec.x < 0:
+      set_direction("upleft")
+    else:
+      set_direction("up")
   elif input_vec.y > 0:
-    set_direction("down")
+    if input_vec.x > 0:
+      set_direction("downright")
+    elif input_vec.x < 0:
+      set_direction("downleft")
+    else:
+      set_direction("down")
   elif input_vec.x > 0:
     set_direction("right")
   elif input_vec.x < 0:
     set_direction("left")
+
   if input_vec == Vector2(0, 0) and Sprite.is_playing():
     Sprite.stop()
     Sprite.frame = IDLE_FRAME
@@ -79,7 +90,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func set_direction(dir_name):
   if Sprite.animation != dir_name or not Sprite.playing:
     Sprite.play(dir_name)
-  if dir_name == "up" or dir_name == "left":
+  if dir_name.find("up") >= 0 or dir_name == "left":
     Weapons.z_index = 0
   else:
     Weapons.z_index = 2
@@ -92,9 +103,18 @@ func set_direction(dir_name):
       Weapons.position = $Equipment/rh_left.position
     "right":
       Weapons.position = $Equipment/rh_right.position
+    "upleft":
+      Weapons.position = $Equipment/rh_upleft.position
+    "downleft":
+      Weapons.position = $Equipment/rh_downleft.position
+    "upright":
+      Weapons.position = $Equipment/rh_upright.position
+    "downright":
+      Weapons.position = $Equipment/rh_downright.position
 
 func damage(amount: int, source: Node2D) -> void:
-  if not is_invuln:
+  print('damage', amount)
+  if not is_invuln and health > 0:
     is_invuln = true
     
     # take damage
@@ -103,6 +123,7 @@ func damage(amount: int, source: Node2D) -> void:
     
     if health <= 0:
       emit_signal("died")
+      is_invuln = false
       return
     
     # bump player back a little
@@ -114,6 +135,11 @@ func damage(amount: int, source: Node2D) -> void:
     
     is_invuln = false
 
+
+func reset_equipment():
+  for equipment in equipment_slots.values():
+    equipment.queue_free()
+  equipment_slots = {}
 
 func equip(equipment: Node, slot: String) -> void:
   if equipment.has_method("init"):
