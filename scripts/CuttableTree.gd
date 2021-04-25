@@ -1,9 +1,15 @@
 extends BaseHittable
 
+onready var parent = get_node("../")
+var LogScene = load("res://components/PushableTemplate.tscn")
+
 func _init().():
   self.health = 3
 
 func on_die():
-  print("Dead tree")
+  var new_log = LogScene.instance()
+  
+  parent.add_child(new_log)
+  new_log.position = position
   
   queue_free()

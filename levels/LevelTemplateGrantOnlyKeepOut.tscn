@@ -123,5 +123,6 @@ position = Vector2( 692.302, 250.504 )
 [node name="CuttableTree" parent="." instance=ExtResource( 3 )]
 material = SubResource( 2 )
 position = Vector2( 591.305, 1718.48 )
+health = 3
 
 [connection signal="tree_exited" from="Items/Doggy" to="." method="_on_Donut_tree_exited"]
