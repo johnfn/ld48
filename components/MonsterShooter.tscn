@@ -14,6 +14,7 @@ animations = [ {
 } ]
 
 [node name="MonsterShooter" type="RigidBody2D"]
+material = ExtResource( 1 )
 collision_layer = 4
 collision_mask = 23
 mode = 1
@@ -25,6 +26,7 @@ frames = SubResource( 1 )
 animation = "idle"
 frame = 1
 playing = true
+flip_h = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 visible = false
