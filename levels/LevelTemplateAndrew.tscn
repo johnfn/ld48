@@ -210,7 +210,8 @@ position = Vector2( 1378.43, 1979.5 )
 position = Vector2( 1311.43, 2058.5 )
 
 [node name="TreeA119" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1212.43, 2097.5 )
+position = Vector2( 810.818, 2008.61 )
+solid_leaves = false
 
 [node name="TreeA12" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -21.858, 474.358 )
@@ -399,13 +400,14 @@ position = Vector2( 32.433, 1867.5 )
 position = Vector2( -101.567, 1867.5 )
 
 [node name="TreeA125" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 46.433, 2024.5 )
+position = Vector2( 62.433, 2064.5 )
 
 [node name="TreeA128" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -105.352, 2059.5 )
 
 [node name="TreeFir1" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 1126.1, 1639.78 )
+position = Vector2( 495.486, 2018.07 )
+solid_leaves = false
 
 [node name="Spike" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 436.294, 663.481 )

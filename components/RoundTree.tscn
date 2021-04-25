@@ -1,16 +1,38 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/art/tree1.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/roundtree_top.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/roundtree_bottom.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Tree.gd" type="Script" id=3]
 
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 5
+script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Trunk" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Leaves" type="Sprite" parent="."]
+z_index = 5
 texture = ExtResource( 1 )
 
-[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+[node name="FullHitbox" type="CollisionPolygon2D" parent="."]
 visible = false
-position = Vector2( -2.59488, 2.46559 )
-scale = Vector2( 2.02613, 2.02613 )
-polygon = PoolVector2Array( -1.71233, -63.4574, -45.6492, -40.543, -60.3649, -14.0547, -51.5354, 20.2118, -19.3712, 41.4444, -17.6894, 63.3077, 2.07172, 73.6087, 20.5714, 62.677, 21.2021, 43.3364, 40.5427, 36.6093, 66.6105, -4.17422, 60.3038, -32.134, 26.4577, -54.2076 )
+position = Vector2( -0.805801, 1.47747 )
+scale = Vector2( 1.91319, 1.91319 )
+polygon = PoolVector2Array( 0.0904029, 75.4769, -21.7157, 62.541, -20.4221, 44.0612, -39.4563, 35.5605, -56.2729, 14.3088, -63.8497, -14.1501, -49.9898, -40.2066, -19.8678, -60.1648, 1.75358, -66.0783, 28.3645, -56.0992, 58.1169, -37.6194, 67.7264, -18.5852, 64.5848, 5.80808, 50.1706, 29.0926, 36.8652, 39.4413, 22.4509, 43.8764, 22.8205, 62.541 )
+
+[node name="TrunkHitbox" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -0.805801, 1.47747 )
+scale = Vector2( 1.91319, 1.91319 )
+polygon = PoolVector2Array( 0.275197, 76.0312, -20.7918, 62.1714, -21.1613, 37.7781, -18.759, 31.1254, -0.279185, 23.9183, 19.4942, 29.4622, 22.6357, 35.9301, 23.5597, 62.541 )
+
+[node name="LeafArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeafArea"]
+polygon = PoolVector2Array( -0.986389, -124.236, -41.9986, -113.983, -102.103, -69.7885, -121.902, -23.1195, -113.063, 18.2463, -78.7682, 64.9153, -30.6849, 87.8963, 28.005, 87.8963, 77.1489, 70.9257, 120.282, 19.6605, 128.061, -38.6758, 99.7763, -80.0416, 49.5717, -107.972 )
+
+[node name="Tween" type="Tween" parent="."]
