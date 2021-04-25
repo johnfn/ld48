@@ -25,7 +25,9 @@ func _ready():
   connect("body_exited", self, "on_exit")
 
 func _integrate_forces(state):
-  if Letterbox.in_cinematic: return
+  if Letterbox.in_cinematic: 
+    state.linear_velocity = Vector2.ZERO
+    return
   
   state.linear_velocity = current_movement_direction * speed
   if current_movement_direction.x != 0:
