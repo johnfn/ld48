@@ -59,7 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
         if weapon.has_method("set_in_use"):
           weapon.set_in_use(false)
   
-  print(input_vec)
+
   if input_vec.y < 0:
     set_direction("up")
   elif input_vec.y > 0:

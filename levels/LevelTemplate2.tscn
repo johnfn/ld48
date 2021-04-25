@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Monster.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=8]
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 3 )
@@ -113,5 +114,8 @@ position = Vector2( 677.235, 0 )
 
 [node name="MonsterWitch" parent="." instance=ExtResource( 7 )]
 position = Vector2( 345.901, 1614.2 )
+
+[node name="Shrub" parent="." instance=ExtResource( 8 )]
+position = Vector2( 688.686, 1106.56 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
