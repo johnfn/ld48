@@ -27,14 +27,17 @@ config/icon="res://icon.png"
 
 [autoload]
 
-CombatHelpers="*res://scripts/CombatHelpers.gd"
 Test="*res://compiled/Test.gd"
+CombatHelpers="*res://scripts/CombatHelpers.gd"
 
 [display]
 
-window/size/width=800
-window/size/height=800
-window/size/resizable=false
+window/size/width=1280
+window/size/height=1280
+window/size/test_width=800
+window/size/test_height=800
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [global]
 
