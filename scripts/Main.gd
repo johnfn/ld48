@@ -119,6 +119,7 @@ func _process(delta):
 
   if Player.position.y < teleport_y:
     var teleport_dist = TransitionBottom.position.y - TransitionTop.position.y
+    jump_view(teleport_dist)
     is_transitioning = false
     
   last_player_y = Player.position.y
