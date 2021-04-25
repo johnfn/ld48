@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Monster.tscn" type="PackedScene" id=2]
-[ext_resource path="res://components/Tree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Donut.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
+[ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=7]
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
@@ -20,6 +21,18 @@ position = Vector2( 632.786, 1637.06 )
 rotation = 0.0
 
 [node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Tree" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1242.51, 910.774 )
+
+[node name="Tree2" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1100.93, 1078.78 )
+
+[node name="Tree3" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1206.65, 1412.91 )
+
+[node name="Tree4" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1414.3, 1399.7 )
 
 [node name="TreeA11" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1307.14, 474.358 )
@@ -103,7 +116,7 @@ position = Vector2( 1376.43, 1099.5 )
 position = Vector2( 1247.43, 1296.5 )
 
 [node name="TreeA57" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1376.43, 1299.5 )
+position = Vector2( 1367.46, 1258.26 )
 
 [node name="TreeA60" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1305.43, 1395.5 )
@@ -354,5 +367,11 @@ position = Vector2( 614.306, 2031.7 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
+
+[node name="Tree" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1102.82, 1263.78 )
+
+[node name="Tree2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1316.21, 1196.02 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
