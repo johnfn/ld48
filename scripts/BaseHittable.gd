@@ -4,7 +4,9 @@ extends RigidBody2D
 export(int) var health = 1
 
 onready var sprite = $Sprite
+onready var parent = get_node("../")
 
+var heart_drop = load("res://components/HeartDrop.tscn")
 var being_hit = false
 var knockback_vector: Vector2 = Vector2.ZERO
 var knockback: bool = false
@@ -14,6 +16,10 @@ func is_enemy() -> bool:
 
 # can be overridden if u want custom behavior.
 func on_die():
+  var new_heart = heart_drop.instance()
+  parent.add_child(new_heart)
+  new_heart.position = position
+  
   queue_free()
 
 func damage(amount: int, source: Node2D) -> void:

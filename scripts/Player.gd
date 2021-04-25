@@ -119,6 +119,12 @@ func set_direction(dir_name):
     "downright":
       Weapons.position = $Equipment/rh_downright.position
 
+func get_health(amount: int) -> void:
+  health += amount
+  
+  if health > max_health:
+    health = max_health
+
 func damage(amount: int, source: Node2D) -> void:
   if not is_invuln and health > 0:
     is_invuln = true
