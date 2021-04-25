@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://components/Tree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://components/Donut.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Monster.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
+[ext_resource path="res://components/PushableTemplate.tscn" type="PackedScene" id=7]
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
@@ -97,7 +98,7 @@ position = Vector2( 396.294, 663.481 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
-position = Vector2( 773.559, 819.66 )
+position = Vector2( 648.966, 895.988 )
 
 [node name="Markers" type="Node2D" parent="."]
 
@@ -109,5 +110,8 @@ position = Vector2( 614.306, 2031.7 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
+
+[node name="Pushable" parent="." instance=ExtResource( 7 )]
+position = Vector2( 512, 1280 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
