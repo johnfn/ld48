@@ -117,6 +117,10 @@ func handle_item_body_entered(body: Node, item_node):
       if item_node.is_in_group(poss_slot):
         slot = poss_slot
     if slot != "":
-      var equipment = load(item_node.filename).instance()
+      var equipment: Node2D = load(item_node.filename).instance()
       Player.equip(equipment, slot)
+      if equipment.has_method("on_pick_up"):
+        equipment.call_deferred("on_pick_up") # need to wait for the children to load in, etc
+
+      
     item_node.queue_free()

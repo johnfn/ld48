@@ -47,7 +47,7 @@ anims/Swing = SubResource( 1 )
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 visible = false
-polygon = PoolVector2Array( -9.75, 8.5, -19, -76.25, -0.250005, -109.5, 18.25, -77.75, 13.75, 7.5 )
+polygon = PoolVector2Array( -9.75, 8.5, -49.5623, -85.444, 5.07083, -150.843, 48.9393, -78.9852, 13.75, 7.5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -2.08722e-06, -47.75 )
