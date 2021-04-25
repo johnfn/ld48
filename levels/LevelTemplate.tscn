@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=10]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/art/sample_water.png" type="Texture" id=12]
+[ext_resource path="res://components/FillableArea.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -27,14 +29,26 @@ script = ExtResource( 6 )
 [node name="EditorBackground" parent="." instance=ExtResource( 11 )]
 num_bgs = 1
 
-[node name="Items" type="YSort" parent="."]
+[node name="Holes" type="Node2D" parent="."]
 
-[node name="Donut" parent="Items" instance=ExtResource( 4 )]
-position = Vector2( 907.05, 590.676 )
+[node name="Sprite" type="Sprite" parent="Holes"]
+position = Vector2( 448, 1152 )
+texture = ExtResource( 12 )
 
-[node name="Sword" parent="Items" instance=ExtResource( 2 )]
-position = Vector2( 632.786, 1637.06 )
-rotation = 0.0
+[node name="Fillable" parent="Holes" instance=ExtResource( 13 )]
+position = Vector2( 320, 1152 )
+
+[node name="Fillable2" parent="Holes" instance=ExtResource( 13 )]
+position = Vector2( 384, 1152 )
+
+[node name="Fillable3" parent="Holes" instance=ExtResource( 13 )]
+position = Vector2( 448, 1152 )
+
+[node name="Fillable4" parent="Holes" instance=ExtResource( 13 )]
+position = Vector2( 512, 1152 )
+
+[node name="Fillable5" parent="Holes" instance=ExtResource( 13 )]
+position = Vector2( 576, 1152 )
 
 [node name="Obstacles" type="YSort" parent="."]
 
@@ -102,6 +116,15 @@ position = Vector2( 1114.38, 1807.8 )
 [node name="Spike" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 396.294, 663.481 )
 
+[node name="Items" type="YSort" parent="."]
+
+[node name="Donut" parent="Items" instance=ExtResource( 4 )]
+position = Vector2( 907.05, 590.676 )
+
+[node name="Sword" parent="Items" instance=ExtResource( 2 )]
+position = Vector2( 632.786, 1637.06 )
+rotation = 0.0
+
 [node name="Enemies" type="YSort" parent="."]
 
 [node name="MonsterShooter" parent="Enemies" instance=ExtResource( 9 )]
@@ -114,12 +137,18 @@ position = Vector2( 356.579, 543.067 )
 
 [node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
 material = SubResource( 3 )
-position = Vector2( 648.966, 895.988 )
+position = Vector2( 768, 1023.21 )
 
 [node name="Pushables" type="YSort" parent="."]
 
 [node name="Pushable" parent="Pushables" instance=ExtResource( 7 )]
+position = Vector2( 448, 1280 )
+
+[node name="Pushable2" parent="Pushables" instance=ExtResource( 7 )]
 position = Vector2( 512, 1280 )
+
+[node name="Pushable3" parent="Pushables" instance=ExtResource( 7 )]
+position = Vector2( 576, 1280 )
 
 [node name="Markers" type="Node2D" parent="."]
 

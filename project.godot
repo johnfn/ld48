@@ -40,8 +40,8 @@ config/icon="res://icon.png"
 [autoload]
 
 CombatHelpers="*res://scripts/CombatHelpers.gd"
-Letterbox="*res://scenes/Letterbox.tscn"
 Test="*res://compiled/Test.gd"
+Letterbox="*res://scenes/Letterbox.tscn"
 
 [display]
 
@@ -102,6 +102,8 @@ interact={
 2d_physics/layer_5="Player Weapons"
 2d_physics/layer_6="Enemy Weapons"
 2d_physics/layer_7="Areas"
+2d_physics/layer_8="Flying Enemies"
+2d_physics/layer_9="Holes"
 
 [physics]
 
