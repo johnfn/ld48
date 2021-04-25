@@ -17,6 +17,7 @@ push_distance = 64.0
 texture = ExtResource( 1 )
 
 [node name="PushBounds" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="Box" type="CollisionShape2D" parent="PushBounds"]
@@ -24,4 +25,5 @@ position = Vector2( -0.423523, 0 )
 shape = SubResource( 1 )
 
 [node name="Box" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 2 )

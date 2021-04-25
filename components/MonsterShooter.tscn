@@ -16,7 +16,7 @@ animations = [ {
 [node name="MonsterShooter" type="RigidBody2D"]
 material = ExtResource( 1 )
 collision_layer = 4
-collision_mask = 23
+collision_mask = 407
 mode = 1
 script = ExtResource( 3 )
 
@@ -24,7 +24,6 @@ script = ExtResource( 3 )
 material = ExtResource( 1 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 flip_h = true
 

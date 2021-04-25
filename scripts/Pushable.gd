@@ -14,6 +14,7 @@ var target = null
 export(float) var speed = 300
 export(float) var push_distance = 128
 onready var initial_pos = position
+var pushable = true
 
 func _ready():
   $PushBounds.connect("body_entered", self, "_on_push_entered")
@@ -45,6 +46,8 @@ func _physics_process(delta):
     if move_dist >= position.distance_to(target):
       move_dist = position.distance_to(target) 
       target = null
+      if not pushable:
+        $Box.disabled = true
     move_and_collide(move_dir * move_dist)
 
 
@@ -85,3 +88,12 @@ func attempt_push(push_dir):
   var collision = move_and_collide(target - position, false, true, true)
   if collision != null:
     target = null
+
+
+func is_pushable():
+  return pushable
+  
+  
+func fill_in_hole():
+  $PushBounds/Box.disabled = true
+  pushable = false
