@@ -48,6 +48,7 @@ func is_enemy() -> bool:
 func shoot():
   var new_bullet = BulletScene.instance()
   new_bullet.position += direction_to_shoot * 100
+  new_bullet.shooter = self
   
   add_child(new_bullet)
   new_bullet.direction = direction_to_shoot

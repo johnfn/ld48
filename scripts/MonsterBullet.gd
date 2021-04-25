@@ -5,6 +5,7 @@ extends RigidBody2D
 var direction: Vector2
 var speed = 400
 var exploding = false
+var shooter = null
 
 onready var Sprite = $Sprite
 
@@ -37,14 +38,8 @@ func body_entered(body):
   if body is Player:
     body.damage(1, self)
     bullet_explode_anim_co()
-    
-    return
-  
-  if body is StaticBody2D:
-    if body.get_collision_layer_bit(1): # Wall
-      bullet_explode_anim_co()
-      
-      return
+  elif body != shooter:
+    bullet_explode_anim_co()
 
 func _integrate_forces(state):
   state.linear_velocity = direction * speed
