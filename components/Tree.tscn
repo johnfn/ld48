@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/art/tree.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/tree1.png" type="Texture" id=1]
 
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 2
