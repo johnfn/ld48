@@ -53,8 +53,6 @@ func on_enter(other) -> void:
     if other.get_collision_layer_bit(1): # Wall
       current_movement_direction *= -1
   
-  
-  
   if other.has_method("is_player") and other.is_player():
     player_in_contact = other
 
