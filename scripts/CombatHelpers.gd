@@ -13,7 +13,7 @@ func _damage_anim(target):
   
   target.material.set_shader_param("white", 1.0)
 
-  yield(get_tree().create_timer(0.1), "timeout")
+  yield(get_tree().create_timer(0.05), "timeout")
   
   target.material.set_shader_param("white", 0.0)
 

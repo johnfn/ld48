@@ -2,7 +2,7 @@ extends RigidBody2D
 
 export(int) onready var health = 1
 
-onready var Sprite = $Sprite
+onready var Sprite: Sprite = $Sprite
 
 var dying = false
 
@@ -16,9 +16,9 @@ func damage(amount: int, source: Node2D) -> void:
   
   if health <= 0 and not dying:
     dying = true
-    yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
+    yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
     queue_free()
     
     return      
   
-  CombatHelpers.damage_anim_animated_sprite(Sprite)
+  CombatHelpers.damage_anim_sprite(Sprite)
