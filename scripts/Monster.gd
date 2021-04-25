@@ -62,7 +62,7 @@ func damage(amount: int, source: Node2D) -> void:
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true
   
-  CombatHelpers.damage_anim(Sprite)
+  CombatHelpers.damage_anim_sprite(Sprite)
 
 func animate_and_die():
   if dying: 
@@ -70,7 +70,7 @@ func animate_and_die():
     
   dying = true
   
-  yield(CombatHelpers.damage_anim(Sprite), "completed")
+  yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
   queue_free()
 
 func on_enter(other) -> void:

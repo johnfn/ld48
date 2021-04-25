@@ -1,16 +1,19 @@
 class_name Player
 extends KinematicBody2D
 
+signal died
+
 const IDLE_FRAME = 1
 
 var input_vec : Vector2 = Vector2(0, 0)
 export(float) var max_speed = 600.0
 export(float) var invuln_time = 0.4
-export(int) var health = 6
+export(int) var max_health = 6
 
-onready var Sprite = $Sprite
+onready var Sprite: AnimatedSprite = $Sprite
 onready var Equipment = $Equipment
 onready var Weapons = $Equipment/weapons
+onready var health = max_health
 
 var equipment_slots = {}
 var is_invuln = false
@@ -98,12 +101,16 @@ func damage(amount: int, source: Node2D) -> void:
     
     health -= amount
     
+    if health <= 0:
+      emit_signal("died")
+      return
+    
     # bump player back a little
     
     knockback = true
     knockback_source = source
 
-    yield(CombatHelpers.damage_anim(Sprite), "completed")
+    yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
     
     is_invuln = false
 
@@ -116,7 +123,6 @@ func equip(equipment: Node, slot: String) -> void:
     equipment_slots[slot].queue_free()
   Equipment.get_node(slot).call_deferred("add_child", equipment)
   equipment_slots[slot] = equipment
-
 
 
 func is_player() -> bool:
