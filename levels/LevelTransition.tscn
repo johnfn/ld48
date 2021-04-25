@@ -13,6 +13,9 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 637.477, 1278.94 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -119,6 +122,10 @@ position = Vector2( 628.611, 1054.03 )
 position = Vector2( 663.533, 1435.01 )
 
 [node name="Bounds" type="Area2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Box" type="CollisionShape2D" parent="Bounds"]
 position = Vector2( 640.61, 1280.39 )

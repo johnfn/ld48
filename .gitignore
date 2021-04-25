@@ -24,3 +24,4 @@ mono_crash.*.json
 .directory
 *~
 export/
+assets/.DS_STORE
