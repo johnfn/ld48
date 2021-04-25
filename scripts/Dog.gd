@@ -1,3 +1,4 @@
+class_name Dog
 extends Area2D
 
 export var dog_exit_path: Array
