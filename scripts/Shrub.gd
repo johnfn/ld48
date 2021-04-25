@@ -11,7 +11,6 @@ func is_enemy() -> bool:
   return true
 
 func damage(amount: int, source: Node2D) -> void:
-  print("Hello")
   health -= amount
   
   if health <= 0 and not dying:
