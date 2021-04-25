@@ -13,7 +13,10 @@ func on_enter(other) -> void:
   if not is_in_use:
     return
     
+    
+  print("Hello", other, other.name)
   if other.has_method("is_enemy") and other.is_enemy():
+    print("Damage")
     other.damage(damage, self)
 
 func init(player: Player):
