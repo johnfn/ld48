@@ -20,6 +20,9 @@ export(Array) var level_scenes = ["res://levels/LevelTemplateAndrew.tscn"]
 export(int) var curr_level_num = 0
 
 var inventory = []
+var slots = {}
+var saved_inventory = []
+var saved_slots = {}
 const ALL_SLOTS = ["weapons"]
 var Level = null
 const BASE_VIEWPORT_HEIGHT = 1280 # TODO this sucks
@@ -33,10 +36,25 @@ func add_to_inventory(item_name):
   Ui.display_items(inventory)
 
 
+func checkpoint():
+  saved_inventory = inventory.duplicate()
+  saved_slots = slots.duplicate()
+
+
 func start_level(level_num: int) -> void:
+  if Level != null:
+    Level.queue_free()
   Level = load(level_scenes[level_num]).instance()
   Levels.add_child(Level)
+  
   Player.position = Level.spawn_point
+  Player.health = Player.max_health
+  Player.reset_equipment()
+  inventory = saved_inventory.duplicate()
+  slots = saved_slots.duplicate()
+  for slot in saved_slots.keys():
+    equip_to_slot(slot, saved_slots[slot])
+  
   wire_item_signals() 
   Cam.position.y = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
   last_player_y = Player.position.y
@@ -64,14 +82,12 @@ func update_wall_positions() -> void:
 
 
 func _ready():
-  Ui.player = Player
-  
-  start_level(curr_level_num)
-
   if debug_already_has_sword:
-    var equipment = load("res://components/Sword.tscn").instance()
-    Player.equip(equipment, ALL_SLOTS[0])
-    add_to_inventory("Sword")
+    saved_inventory.append("Sword", "res://components/Sword.tscn")
+    
+  Ui.player = Player
+  Player.connect("died", self, "handle_player_died")
+  start_level(curr_level_num)
 
 
 func _process(delta):
@@ -97,6 +113,7 @@ func _process(delta):
     
   last_player_y = Player.position.y
   
+
 func _physics_process(delta):
   if last_is_top_open != Level.is_top_open:
     last_is_top_open = Level.is_top_open
@@ -109,18 +126,29 @@ func wire_item_signals():
     item_node.connect("body_entered", self, "handle_item_body_entered", [item_node])
 
 
-func handle_item_body_entered(body: Node, item_node):
-  if body == Player and not is_transitioning:
+func equip_to_slot(slot, equipment_filename):
+  var equipment: Node2D = load(equipment_filename).instance()
+  slots[slot] = equipment_filename
+  Player.equip(equipment, slot)
+  if equipment.has_method("on_pick_up"):
+    equipment.call_deferred("on_pick_up") # need to wait for the children to load in, etc
+
+
+func process_item(item_node):
     add_to_inventory(item_node.name)
     var slot = ""
     for poss_slot in ALL_SLOTS:
       if item_node.is_in_group(poss_slot):
         slot = poss_slot
     if slot != "":
-      var equipment: Node2D = load(item_node.filename).instance()
-      Player.equip(equipment, slot)
-      if equipment.has_method("on_pick_up"):
-        equipment.call_deferred("on_pick_up") # need to wait for the children to load in, etc
+      equip_to_slot(slot, item_node.filename)
 
-      
+
+func handle_item_body_entered(body: Node, item_node):
+  if body == Player and not is_transitioning:
+    process_item(item_node)
     item_node.queue_free()
+
+
+func handle_player_died():
+  start_level(curr_level_num)

@@ -115,6 +115,11 @@ func damage(amount: int, source: Node2D) -> void:
     is_invuln = false
 
 
+func reset_equipment():
+  for equipment in equipment_slots.values():
+    equipment.queue_free()
+  equipment_slots = {}
+
 func equip(equipment: Node, slot: String) -> void:
   if equipment.has_method("init"):
     equipment.init(self)
