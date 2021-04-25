@@ -94,7 +94,8 @@ func set_direction(dir_name):
       Weapons.position = $Equipment/rh_right.position
 
 func damage(amount: int, source: Node2D) -> void:
-  if not is_invuln:
+  print('damage', amount)
+  if not is_invuln and health > 0:
     is_invuln = true
     
     # take damage
@@ -103,6 +104,7 @@ func damage(amount: int, source: Node2D) -> void:
     
     if health <= 0:
       emit_signal("died")
+      is_invuln = false
       return
     
     # bump player back a little
