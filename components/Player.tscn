@@ -5,15 +5,14 @@
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 60.8228
+radius = 41.2449
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 46
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -0.420441, 0 )
+position = Vector2( 4.79727, 2.78275 )
 shape = SubResource( 1 )
 
 [node name="Equipment" type="Node2D" parent="."]
