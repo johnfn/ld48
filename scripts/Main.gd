@@ -77,8 +77,8 @@ func _process(delta):
   max_cam = max(max_cam, Cam.position.y)
   var cam_pos = Player.position.y - camera_offset
   var player_moved_y = (Player.position.y - last_player_y)
-  cam_pos = min(Cam.position.y + player_moved_y + max_camera_speed * delta, cam_pos)
-  cam_pos = max(Cam.position.y + player_moved_y - max_camera_speed * delta, cam_pos)
+  cam_pos = min(Cam.position.y + max(0, player_moved_y) + max_camera_speed * delta, cam_pos)
+  cam_pos = max(Cam.position.y + min(0, player_moved_y) - max_camera_speed * delta, cam_pos)
   cam_pos = min(max_cam, cam_pos)
   if not Level.is_top_open and not is_transitioning:
     cam_pos = max(Level.top_wall + BASE_VIEWPORT_HEIGHT / 2, cam_pos)
