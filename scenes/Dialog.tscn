@@ -20,8 +20,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Image" type="NinePatchRect" parent="."]
-margin_right = 132.0
+[node name="ZSorter" type="Node2D" parent="."]
+
+[node name="Image" type="NinePatchRect" parent="ZSorter"]
+margin_left = -1.22864
+margin_right = 130.771
 margin_bottom = 53.0
 texture = ExtResource( 1 )
 patch_margin_left = 28
@@ -32,13 +35,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="Label" parent="."]
+[node name="Text" type="Label" parent="ZSorter"]
 anchor_top = -0.000216526
 anchor_bottom = 0.00134597
 margin_left = 11.0
-margin_top = 13.0
+margin_top = 12.7228
 margin_right = 123.0
-margin_bottom = 39.0
+margin_bottom = 40.7228
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Hewo :^)"

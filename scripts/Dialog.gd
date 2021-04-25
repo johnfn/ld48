@@ -1,7 +1,10 @@
+# TODO: Float on top
+
 extends Control
 
-onready var Image: NinePatchRect = $Image
-onready var Text: Label = $Text
+onready var ZSorter: Node2D = $ZSorter
+onready var Image: NinePatchRect = $ZSorter/Image
+onready var Text: Label = $ZSorter/Text
 onready var PressXKey: Sprite = $PressXKey
 
 # Here's how you use this:
@@ -11,6 +14,7 @@ onready var PressXKey: Sprite = $PressXKey
 #  ])
 
 func _ready():
+  ZSorter.z_index = 500
   PressXKey.visible = false
 
 func display_text_sequence_co(target: Node2D, sequence: Array) -> void:
@@ -26,15 +30,15 @@ func display_text_sequence_co(target: Node2D, sequence: Array) -> void:
 
 func display_text_co(new_text: String) -> void:
   var cur_text = ""
-  var size = $Text.get_font("font").get_string_size(cur_text)
+  var size = Text.get_font("font").get_string_size(cur_text)
   
   PressXKey.visible = false
   
   for x in new_text:
     cur_text += x
     
-    $Text.text = cur_text
-    size = $Text.get_font("font").get_string_size(cur_text)
+    Text.text = cur_text
+    size = Text.get_font("font").get_string_size(cur_text)
     Image.rect_size = (size + Vector2(20, 20))
     
     yield(get_tree().create_timer(0.05), "timeout")
