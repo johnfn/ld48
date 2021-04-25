@@ -12,13 +12,15 @@ func is_enemy() -> bool:
   return true
 
 func damage(amount: int, source: Node2D) -> void:
+  if being_hit:
+    return
+    
   health -= amount
   
-  if health <= 0 and not dying:
-    dying = true
-    yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
+  being_hit = true
+  yield(CombatHelpers.damage_anim_sprite(Sprite), "completed")
+  
+  if health <= 0:
     queue_free()
     
-    return      
-  
-  CombatHelpers.damage_anim_sprite(Sprite)
+  being_hit = false
