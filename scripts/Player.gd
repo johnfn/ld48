@@ -25,6 +25,8 @@ func _process(delta: float) -> void:
   Weapons.look_at(get_global_mouse_position())
 
 func _physics_process(delta: float) -> void:
+  if Letterbox.in_cinematic: return
+  
   var direction = input_vec.normalized() * max_speed
   
   if knockback:
@@ -35,9 +37,10 @@ func _physics_process(delta: float) -> void:
     knockback_source = null
   
   move_and_slide(direction, Vector2(0, 0), false, 4, 0.785398, false)
-  
 
 func _unhandled_input(event: InputEvent) -> void:
+  if Letterbox.in_cinematic: return
+  
   if Input.is_action_just_pressed("move_down"):
     input_vec.y = 1
   elif Input.is_action_just_pressed("move_up"):

@@ -25,6 +25,8 @@ func _ready():
   connect("body_exited", self, "on_exit")
 
 func _integrate_forces(state):
+  if Letterbox.in_cinematic: return
+  
   state.linear_velocity = current_movement_direction * speed
   if current_movement_direction.x != 0:
     Sprite.flip_h = current_movement_direction.x > 0

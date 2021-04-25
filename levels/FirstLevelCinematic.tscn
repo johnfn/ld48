@@ -116,5 +116,6 @@ position = Vector2( 692.302, 250.504 )
 [node name="DialogTrigger" parent="." instance=ExtResource( 7 )]
 position = Vector2( 624.134, 1882.05 )
 dialog = [ "Aww there's my cute doggy! :)", "Yay I should go pet himmm :))" ]
+cinematic_style_dialog = true
 
 [connection signal="tree_exited" from="Items/Doggy" to="." method="_on_Donut_tree_exited"]

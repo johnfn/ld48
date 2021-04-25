@@ -28,7 +28,7 @@ config/icon="res://icon.png"
 [autoload]
 
 CombatHelpers="*res://scripts/CombatHelpers.gd"
-Test="*res://compiled/Test.gd"
+Letterbox="*res://scenes/Letterbox.tscn"
 
 [display]
 

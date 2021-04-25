@@ -82,7 +82,7 @@ position = Vector2( 0, -0.960266 )
 position = Vector2( -583.471, 127.642 )
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 632.449, 632.449 )
+position = Vector2( 629.357, 630.903 )
 current = true
 
 [node name="UI" parent="." instance=ExtResource( 4 )]

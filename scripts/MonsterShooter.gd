@@ -29,6 +29,9 @@ func _process(delta):
   if Engine.editor_hint:
     $Sprite.flip_h = direction_to_shoot.x > 0
     return
+  
+  if Letterbox.in_cinematic: return
+    
   shoot_cooldown_remaining -= delta
   invuln_time_left -= delta
   

@@ -33,6 +33,8 @@ func _process(delta):
 
 
 func _integrate_forces(state):
+  if Letterbox.in_cinematic: return
+  
   count += 1
   var x_vel = noise.get_noise_1d(count)
   var y_vel = noise.get_noise_1d(-count)
