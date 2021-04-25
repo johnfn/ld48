@@ -5,6 +5,7 @@ export(int) onready var health = 1
 onready var Sprite: Sprite = $Sprite
 
 var dying = false
+var being_hit = false
 
 # only in the most general sense 
 func is_enemy() -> bool:
