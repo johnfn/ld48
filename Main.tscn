@@ -6,16 +6,16 @@
 [ext_resource path="res://ui_elements/UiOverlay.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/art/background1.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640.632, 1277.67 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 956.12, 10 )
 
 [node name="Main" type="Node2D"]
 position = Vector2( 4.48926, 0 )
 script = ExtResource( 3 )
-level_scenes = [ "res://levels/LevelTemplateGrantOnlyKeepOut.tscn" ]
+level_scenes = [ "res://levels/LevelTemplateChauncey0.tscn" ]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -29,7 +29,7 @@ texture = ExtResource( 5 )
 [node name="Hitbox" type="CollisionShape2D" parent="Background/Bg1"]
 visible = false
 position = Vector2( 641.382, 1279.99 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Bg2" type="Area2D" parent="Background"]
 position = Vector2( 0, 2560 )
@@ -42,7 +42,7 @@ texture = ExtResource( 5 )
 [node name="Hitbox" type="CollisionShape2D" parent="Background/Bg2"]
 visible = false
 position = Vector2( 641.382, 1279.99 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Bg3" type="Area2D" parent="Background"]
 position = Vector2( 0, 5120 )
@@ -55,7 +55,7 @@ texture = ExtResource( 5 )
 [node name="Hitbox" type="CollisionShape2D" parent="Background/Bg3"]
 visible = false
 position = Vector2( 641.382, 1279.99 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Bg4" type="Area2D" parent="Background"]
 position = Vector2( 0, 7680 )
@@ -68,7 +68,7 @@ texture = ExtResource( 5 )
 [node name="Hitbox" type="CollisionShape2D" parent="Background/Bg4"]
 visible = false
 position = Vector2( 641.382, 1279.99 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Levels" type="Node2D" parent="."]
 
@@ -94,7 +94,7 @@ collision_layer = 2
 
 [node name="Box" type="CollisionShape2D" parent="Walls/BottomWall"]
 position = Vector2( 508.979, 10 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="TopWall" type="StaticBody2D" parent="Walls"]
@@ -102,7 +102,7 @@ collision_layer = 2
 
 [node name="Box" type="CollisionShape2D" parent="Walls/TopWall"]
 position = Vector2( 509.399, -10 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [connection signal="body_entered" from="Background/Bg1" to="." method="_on_background_entered" binds= [ 0 ]]
 [connection signal="body_entered" from="Background/Bg2" to="." method="_on_background_entered" binds= [ 1 ]]
