@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=8]
@@ -90,5 +91,12 @@ position = Vector2( 667.512, 1379.23 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
+
+[node name="DogMoveTrigger" parent="." instance=ExtResource( 2 )]
+position = Vector2( 664.506, 208.441 )
+destinations = [ NodePath("DogDestination") ]
+dog_path = NodePath("../Items/Donut")
+
+[node name="DogDestination" type="Node2D" parent="DogMoveTrigger"]
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
