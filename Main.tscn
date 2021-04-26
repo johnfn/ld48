@@ -132,6 +132,7 @@ position = Vector2( 509.399, -10 )
 shape = SubResource( 2 )
 
 [node name="Audio" type="Node2D" parent="."]
+position = Vector2( 0, 1.85022 )
 
 [node name="Chapter1Song" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 7 )

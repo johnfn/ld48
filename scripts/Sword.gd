@@ -38,6 +38,8 @@ func on_pick_up() -> void:
   Hitbox.set_disabled(true)
   SwordSprite.visible = true
   StickSprite.visible = false
+  
+  SwordSprite.modulate.a = 0.3
 
 func init(player: Player):
   self.player = player
@@ -55,7 +57,7 @@ func set_in_use(in_use: bool) -> void:
   SoundManager.play_sound("Sword")
   swinging = true
   has_raycasted_this_swing = false
-  SwordSprite.visible = true
+  SwordSprite.modulate.a = 1.0
   
   # this is necessary so that we DEFINITELY trigger a body_entered when we start the swing (e.g. if the sword starts IN the enemy it will not trigger body_entered)
   Hitbox.set_disabled(false)
@@ -66,7 +68,7 @@ func set_in_use(in_use: bool) -> void:
 
   Hitbox.set_disabled(true)
   AnimationPlayer.clear_queue()
-  SwordSprite.visible = false
+  SwordSprite.modulate.a = 0.3
   
   swinging = false
 
@@ -88,8 +90,6 @@ func _physics_process(delta):
   var more_hits = SwordArea.get_overlapping_areas()
   
   hits.append_array(more_hits)
-  
-  print(hits)
   
   update()
   
