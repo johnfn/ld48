@@ -1,27 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/ui/play_button.png" type="Texture" id=1]
-[ext_resource path="res://assets/ui/sound_button.png" type="Texture" id=2]
-[ext_resource path="res://assets/ui/quit_button.png" type="Texture" id=3]
-[ext_resource path="res://materials/modulate_shader.tres" type="Material" id=4]
-[ext_resource path="res://assets/ui/title.png" type="Texture" id=5]
-[ext_resource path="res://assets/art/dog_idle3.png" type="Texture" id=6]
-[ext_resource path="res://assets/art/dog_idle1.png" type="Texture" id=7]
-[ext_resource path="res://assets/art/dog_idle4.png" type="Texture" id=8]
-[ext_resource path="res://assets/art/dog_idle2.png" type="Texture" id=9]
+[ext_resource path="res://assets/art/title_farfetchedtext.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/title_art.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/title_play.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/title_play_big.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/title_sound.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/title_credits.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/title_quit_big.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/title_credits_big.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/title_sound_big.png" type="Texture" id=9]
 [ext_resource path="res://levels/MainMenu.gd" type="Script" id=10]
 [ext_resource path="res://assets/music/Care for You.mp3" type="AudioStream" id=11]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.14902, 0.345098, 0.4, 1 )
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-} ]
+[ext_resource path="res://assets/art/title_quit.png" type="Texture" id=12]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -31,7 +21,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="TextureRect" parent="."]
 anchor_left = 0.00078125
 anchor_top = 0.00124016
 anchor_right = 0.00078125
@@ -39,59 +29,72 @@ anchor_bottom = 0.00124016
 margin_right = 1280.0
 margin_bottom = 1280.0
 rect_pivot_offset = Vector2( 897.991, 504.604 )
-custom_styles/panel = SubResource( 1 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="TextureRect" parent="."]
+anchor_left = 0.00078125
+anchor_top = 0.00124016
+anchor_right = 10.0
+anchor_bottom = 0.00124016
+margin_right = 1280.0
+margin_bottom = 1280.0
+rect_pivot_offset = Vector2( 897.991, 504.604 )
+texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 175.0
-margin_top = 752.0
-margin_right = 575.0
-margin_bottom = 1152.0
+margin_left = 130.455
+margin_top = 611.238
+margin_right = 530.455
+margin_bottom = 1011.24
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Play" type="TextureButton" parent="VBoxContainer"]
 margin_right = 400.0
-margin_bottom = 100.0
-texture_normal = ExtResource( 1 )
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 72 )
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
 
-[node name="Volume" type="TextureRect" parent="VBoxContainer"]
-margin_top = 104.0
+[node name="Container" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 92.0
 margin_right = 400.0
-margin_bottom = 204.0
-texture = ExtResource( 2 )
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 72 )
 
-[node name="VolumeBar" type="HScrollBar" parent="VBoxContainer"]
-margin_top = 208.0
+[node name="Volume" type="TextureButton" parent="VBoxContainer/Container"]
+margin_right = 221.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Container"]
+margin_left = 225.0
+margin_right = 225.0
+margin_bottom = 72.0
+
+[node name="Credits" type="TextureButton" parent="VBoxContainer"]
+margin_top = 168.0
 margin_right = 400.0
-margin_bottom = 308.0
-rect_min_size = Vector2( 0, 100 )
-size_flags_vertical = 1
-step = 5.0
-value = 100.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 72 )
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 8 )
 
 [node name="Quit" type="TextureButton" parent="VBoxContainer"]
-margin_top = 312.0
+margin_top = 244.0
 margin_right = 400.0
-margin_bottom = 412.0
-texture_normal = ExtResource( 3 )
-
-[node name="Sprite" type="AnimatedSprite" parent="."]
-material = ExtResource( 4 )
-position = Vector2( 929.565, 953.9 )
-scale = Vector2( 2.73009, 2.73009 )
-frames = SubResource( 2 )
-animation = "idle"
-frame = 3
-playing = true
-
-[node name="title" type="Sprite" parent="."]
-position = Vector2( 634.103, 335.706 )
-scale = Vector2( 0.577783, 0.577783 )
-texture = ExtResource( 5 )
+margin_bottom = 316.0
+rect_min_size = Vector2( 0, 72 )
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=[
 "song",
@@ -99,6 +102,21 @@ texture = ExtResource( 5 )
 stream = ExtResource( 11 )
 autoplay = true
 
+[node name="VolumeBar" type="HScrollBar" parent="."]
+visible = false
+margin_left = 433.826
+margin_top = 721.579
+margin_right = 583.826
+margin_bottom = 736.579
+rect_min_size = Vector2( 150, 15 )
+step = 5.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
-[connection signal="value_changed" from="VBoxContainer/VolumeBar" to="." method="_on_VolumeBar_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Container/Volume" to="." method="_on_Volume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="value_changed" from="VolumeBar" to="." method="_on_VolumeBar_value_changed"]

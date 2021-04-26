@@ -11,6 +11,7 @@ export(float) var max_speed = 420.0
 export(float) var invuln_time = 0.4
 export(int) var max_health = 4
 
+onready var Letterbox = $"/root/Main/Letterbox"
 onready var Sprite: AnimatedSprite = $Sprite
 onready var Hand = $Equipment/weapons/Sprite
 onready var Equipment = $Equipment

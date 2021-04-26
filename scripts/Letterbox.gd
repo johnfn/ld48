@@ -1,7 +1,5 @@
 extends Node2D
 
-# This is an autoload, so anyone can call Letterbox.animate_in or animate_out
-
 onready var TopRect = null
 onready var BottomRect = null
 onready var EntireScreenFadeRect = null
@@ -107,6 +105,7 @@ func unfade_to_black_timed(fade_length):
     
     EntireScreenFadeRect.modulate.a = 1.0 - (float(x) / fade_length)
   
+  EntireScreenFadeRect.visible = false
   is_animating = false
 
 func show_title_card(num: int) -> void:

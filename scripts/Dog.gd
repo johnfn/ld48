@@ -1,12 +1,7 @@
 class_name Dog
 extends Area2D
 
-export var dog_exit_path: Array
+onready var Sprite: AnimatedSprite = $Sprite
 
 func _ready():
-  leave_screen()
-
-func leave_screen():
-  for node_path in dog_exit_path:
-    var node = get_node(node_path)
-
+  Sprite.play("idle")
