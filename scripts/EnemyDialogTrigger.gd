@@ -1,4 +1,4 @@
-extends DialogTrigger
+extends "res://scripts/DialogTrigger.gd"
 
 export(NodePath) var enemy_speaker: NodePath
 
