@@ -16,7 +16,7 @@ export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
 export(bool) var debug_already_has_sword = false
 
-export(Array) var level_scenes = ["res://levels/LevelTemplateAndrew.tscn"]
+export(Array) var level_scenes = ["res://levels/Level0Mock.tscn", "res://levels/Level1Mock.tscn", "res://levels/Level2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn"]
 
 export(int) var curr_level_num = 0
 
