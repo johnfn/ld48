@@ -54,7 +54,7 @@ func _physics_process(delta):
 func get_push_dir():
   if pushing_player == null:
     return null
-  var push_angle = pushing_player.position.angle_to_point(position)
+  var push_angle = pushing_player.global_position.angle_to_point(global_position)
   var dir_i = int((push_angle / TAU + 0.5) * 4 + 0.5) % 4 # im sorry
   return dir_i if dirs_held[dir_i] else null
 
