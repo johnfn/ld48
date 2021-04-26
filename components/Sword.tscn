@@ -14,10 +14,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.14, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 90.0, 45.0, 90.0 ]
+"values": [ 172.304, 14.0354 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -26,18 +26,18 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.14, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 46, 0 ), Vector2( 0, -120 ), Vector2( 46, 0 ) ]
+"values": [ Vector2( 28.9517, 61.0439 ), Vector2( 23.4522, -50.0451 ) ]
 }
 
 [node name="Sword" type="Area2D" groups=[
 "items",
 "weapons",
 ]]
-position = Vector2( 46, 0 )
-rotation = 1.5708
+position = Vector2( 23.4522, -50.0451 )
+rotation = 0.244964
 collision_layer = 24
 collision_mask = 1157
 script = ExtResource( 2 )
