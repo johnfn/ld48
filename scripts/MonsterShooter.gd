@@ -4,6 +4,7 @@ extends BaseHittable
 export(int) onready var damage = 1
 export(int) onready var shoot_cooldown = 1
 export(float) var invuln_time = 0.25
+export(int) var bullet_speed = 400
 export(Vector2) var direction_to_shoot = Vector2.RIGHT
 
 onready var BulletScene = load("res://scenes/MonsterBullet.tscn")
@@ -26,7 +27,8 @@ func _ready():
 
 func _process(delta):
   if Engine.editor_hint:
-    self.sprite.flip_h = direction_to_shoot.x > 0
+    if self.sprite != null:
+      self.sprite.flip_h = direction_to_shoot.x > 0
     return
   
   if Letterbox.in_cinematic: return
@@ -48,6 +50,7 @@ func shoot():
   var new_bullet = BulletScene.instance()
   new_bullet.position += direction_to_shoot * 100
   new_bullet.shooter = self
+  new_bullet.speed = bullet_speed
   
   .add_child(new_bullet)
   new_bullet.direction = direction_to_shoot
