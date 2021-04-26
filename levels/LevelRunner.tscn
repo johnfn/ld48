@@ -752,10 +752,10 @@ z_index = 5
 position = Vector2( 640, -150 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Runner"]
+visible = false
 position = Vector2( 640, -157.711 )
 shape = SubResource( 4 )
 

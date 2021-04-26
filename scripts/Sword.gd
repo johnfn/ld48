@@ -22,6 +22,7 @@ func _ready() -> void:
   raycast_instance.set_collision_mask_bit(1, true)
   raycast_instance.set_collision_mask_bit(2, true)
   raycast_instance.set_collision_mask_bit(7, true) # flying
+  raycast_instance.set_collision_mask_bit(10, true) # boss
   
   raycast_instance.add_exception(player)
   

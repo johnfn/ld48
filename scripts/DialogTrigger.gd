@@ -1,6 +1,8 @@
 class_name DialogTrigger
 extends Area2D
 
+signal cinematic_ended
+
 export var dialog: Array = [
   "I'm some dialog that someone should really rewrite!"
 ]
@@ -33,6 +35,7 @@ func begin_cinematic(player: Player):
   
   if not cinematic_style_dialog:
     new_dialog.display_text_sequence_co(speaker, dialog)
+    emit_signal("cinematic_ended")
     return
   
   Letterbox.in_cinematic = true
@@ -47,3 +50,4 @@ func begin_cinematic(player: Player):
   yield(Letterbox.animate_out(), "completed")
   
   Letterbox.in_cinematic = false
+  emit_signal("cinematic_ended")

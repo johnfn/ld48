@@ -18,6 +18,9 @@ onready var PressXKey: Sprite = $PressXKey
 var max_width = 350
 var min_height = 50
 
+var lifespan = 0.3
+var auto_advance = false
+
 # Here's how you use this:
 #  display_text_sequence_co([
 #    "Hewo I am a small child",
@@ -35,8 +38,9 @@ func hide_everything():
   WhiteText.visible = false
   BlackText.visible = false
 
-func display_text_sequence_co(target: Node2D, sequence: Array) -> void:
-  target.call_deferred("add_child", self)
+func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=false) -> void:
+  if not already_a_child:
+    target.call_deferred("add_child", self)
   
   yield(self, "ready")
   
@@ -57,7 +61,7 @@ func display_text_sequence_co(target: Node2D, sequence: Array) -> void:
   
   for phrase in sequence:
     yield(display_text_co(phrase), "completed")
-    yield(get_tree().create_timer(0.3), "timeout")
+    yield(get_tree().create_timer(lifespan), "timeout")
     
   PressXKey.visible = false
   visible = false
@@ -93,9 +97,12 @@ func display_text_co(new_text: String) -> void:
       break
     
     yield(get_tree(), "idle_frame")
-    if Input.is_action_just_pressed("interact"): one_last_loop = true
+    if Input.is_action_just_pressed("interact") and not auto_advance: one_last_loop = true
     
   active_image.rect_size += Vector2(60, 0)
+  if auto_advance:
+    return
+  
   PressXKey.position = size + Vector2(50, 0)
   PressXKey.visible = true
   

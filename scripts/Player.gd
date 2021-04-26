@@ -22,6 +22,8 @@ var idleCounter = 0
 
 var knockback = false
 var knockback_source: Node2D = null
+const KNOCKBACK_DECAY = 1500
+var knockback_velocity = Vector2(0, 0)
 
 func _process(delta: float) -> void:
   if Letterbox.in_cinematic:
@@ -38,10 +40,11 @@ func _physics_process(delta: float) -> void:
   
   var direction = input_vec.normalized() * max_speed
   
-  if knockback:
-    var bump_direction = (global_position - knockback_source.global_position).normalized()
-    direction += bump_direction * 5000
-    
+  var knockback_strength = knockback_velocity.length()
+  if knockback_strength > 0:
+    knockback_velocity = knockback_velocity.normalized() * max(0, knockback_strength - KNOCKBACK_DECAY * delta)
+    direction += knockback_velocity
+  else:
     knockback = false
     knockback_source = null
 
@@ -136,9 +139,9 @@ func get_health(amount: int) -> void:
   if health > max_health:
     health = max_health
 
-func damage(amount: int, source: Node2D) -> void:
-  if not is_invuln and health > 0:
-    is_invuln = true
+func damage(amount: int, source: Node2D, strength=500) -> void:
+  # returns whether damage was actually taken
+  if not is_invuln and health > 0 and not Letterbox.in_cinematic:
     
     # take damage
     
@@ -153,12 +156,12 @@ func damage(amount: int, source: Node2D) -> void:
     
     # bump player back a little
     
-    knockback = true
-    knockback_source = source
+    knockback_velocity += strength * (global_position - source.global_position).normalized()
 
-    yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
-    
-    is_invuln = false
+    if amount > 0:
+      is_invuln = true
+      yield(CombatHelpers.damage_anim_animated_sprite(Sprite), "completed")
+      is_invuln = false
 
 
 func reset():

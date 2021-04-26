@@ -6,6 +6,8 @@ var direction: Vector2
 var speed = 400
 var exploding = false
 var shooter = null
+var damage = 1
+var active = true
 
 onready var sprite = $Sprite
 
@@ -16,7 +18,7 @@ func _ready():
   connect("body_entered", self, "body_entered")
 
 func bullet_explode_anim_co():
-  if exploding: 
+  if exploding or not active: 
     return
     
   exploding = true
@@ -36,10 +38,11 @@ func bullet_explode_anim_co():
 
 func body_entered(body):
   if body is Player:
-    body.damage(1, self)
+    body.damage(damage, self)
     bullet_explode_anim_co()
   elif body != shooter:
     bullet_explode_anim_co()
 
 func _integrate_forces(state):
-  state.linear_velocity = direction * speed
+  if active:
+    state.linear_velocity = direction * speed
