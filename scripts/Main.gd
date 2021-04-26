@@ -73,11 +73,11 @@ func load_level(level_name: String):
 
 func update_song():
   var song_name = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
-#  if curr_song != song_name:
-#    if curr_song != null:
-#      $Audio.get_node(curr_song).playing = false
-#    curr_song = song_name
-#    $Audio.get_node(curr_song).playing = true
+  if curr_song != song_name:
+    if curr_song != null:
+      $Audio.get_node(curr_song).playing = false
+    curr_song = song_name
+    $Audio.get_node(curr_song).playing = true
 
 
 func start_level(level_num: int) -> void:
