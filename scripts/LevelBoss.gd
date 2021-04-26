@@ -45,6 +45,10 @@ func set_player(p):
   player = p
 
 
+func get_camera_center():
+  return (player.global_position + goblin_king.global_position) / 2
+
+
 func _on_GoblinKing_died():
   main.center_camera = false
   var tween = $HealthBar/Tween
