@@ -217,3 +217,11 @@ func _on_background_entered(body, i):
       var front = bgs.pop_front()
       bgs.push_back(front)
       $Background.get_child(front).position.y += BACKGROUND_HEIGHT * len(bgs)
+
+
+onready var PauseMenu = load("res://scenes/PauseMenu.tscn")
+func _unhandled_input(event):
+  if Input.is_action_just_pressed("pause"):
+    print("pausing")
+    add_child(PauseMenu.instance())
+    
