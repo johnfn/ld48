@@ -602,7 +602,7 @@ material = SubResource( 9 )
 position = Vector2( 965.268, 2442.02 )
 
 [node name="DialogTrigger2" parent="." instance=ExtResource( 16 )]
-position = Vector2( 635.817, 3445.53 )
+position = Vector2( 643.051, 3050.09 )
 dialog = [ "Wow! What are THOSE things??" ]
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 15 )]

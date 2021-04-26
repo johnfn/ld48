@@ -480,8 +480,7 @@ dog_path = NodePath("../Items/Donut")
 position = Vector2( 630.773, -298.896 )
 
 [node name="DialogTrigger2" parent="." instance=ExtResource( 13 )]
-position = Vector2( 625.954, 65.6009 )
+position = Vector2( 628.015, 65.6009 )
 dialog = [ "Winston, is everything okay?", "Are you... taking me somewhere?" ]
-cinematic_style_dialog = true
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
