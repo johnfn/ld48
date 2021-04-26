@@ -32,12 +32,14 @@ func begin_cinematic(player: Player):
   var new_dialog = DialogScene.instance()
   yield(new_dialog.display_text_sequence_co(dog, dog_speak), "completed")
   
+  dog.Sprite.play("run")
+  
   for dest in destinations:
     var dest_node = get_node(dest)
-    var dir = dog.position.direction_to(dest_node.position)
+    var dir = dog.global_position.direction_to(dest_node.global_position)
     
-    while dog.position.distance_to(dest_node.position) > 30:
-      dog.position += dir * 5.0
+    while dog.global_position.distance_to(dest_node.global_position) > 30:
+      dog.global_position += dir * 5.0
       yield(get_tree(), "idle_frame")
       
   dog.visible = false
