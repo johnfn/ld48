@@ -11,7 +11,6 @@ onready var BulletScene = load("res://scenes/MonsterBullet.tscn")
 func _init().():
   self.health = 3
 
-
 var shoot_cooldown_remaining = 1
 var speed = 300.0
 var player_in_contact = null
