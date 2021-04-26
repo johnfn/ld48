@@ -95,3 +95,5 @@ func fill_in_hole():
   $Box.queue_free()
   pushable = false
   SoundManager.play_sound("RockSplash")
+  $Original.visible = false
+  $Plank.visible = true
