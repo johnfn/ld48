@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gk_watchoutbelow.mp3-ac01abac8137a767bd73a2a08398305a.mp3str"
+
+[deps]
+
+source_file="res://assets/music/goblin king/gk_watchoutbelow.mp3"
+dest_files=[ "res://.import/gk_watchoutbelow.mp3-ac01abac8137a767bd73a2a08398305a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
