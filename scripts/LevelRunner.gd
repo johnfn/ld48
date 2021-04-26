@@ -21,6 +21,11 @@ const FOLLOW_DIST = 640
 onready var RUNNER_HEIGHT = 360
 export(float) var cam_speed = 310
 
+
+func get_song():
+  return "BossSong"
+  
+
 func _ready():
   if spawn_point == Vector2(0, 0):
     spawn_point = $Markers/SpawnPoint.position

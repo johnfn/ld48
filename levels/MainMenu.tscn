@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/ui/play_button.png" type="Texture" id=1]
 [ext_resource path="res://assets/ui/sound_button.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/art/dog_idle4.png" type="Texture" id=8]
 [ext_resource path="res://assets/art/dog_idle2.png" type="Texture" id=9]
 [ext_resource path="res://levels/MainMenu.gd" type="Script" id=10]
+[ext_resource path="res://assets/music/Care for You.mp3" type="AudioStream" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.14902, 0.345098, 0.4, 1 )
@@ -84,7 +85,7 @@ position = Vector2( 929.565, 953.9 )
 scale = Vector2( 2.73009, 2.73009 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 3
+frame = 1
 playing = true
 
 [node name="title" type="Sprite" parent="."]
@@ -92,5 +93,12 @@ position = Vector2( 634.103, 335.706 )
 scale = Vector2( 0.577783, 0.577783 )
 texture = ExtResource( 5 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=[
+"song",
+]]
+stream = ExtResource( 11 )
+autoplay = true
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="value_changed" from="VBoxContainer/VolumeBar" to="." method="_on_VolumeBar_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

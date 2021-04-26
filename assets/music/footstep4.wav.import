@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/rosksplash2.wav-d27d9fa59062b924514132e271fcb197.sample"
+path="res://.import/footstep4.wav-ebe9de95e69123b21a9226d06543c028.sample"
 
 [deps]
 
-source_file="res://rosksplash2.wav"
-dest_files=[ "res://.import/rosksplash2.wav-d27d9fa59062b924514132e271fcb197.sample" ]
+source_file="res://assets/music/footstep4.wav"
+dest_files=[ "res://.import/footstep4.wav-ebe9de95e69123b21a9226d06543c028.sample" ]
 
 [params]
 
