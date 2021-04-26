@@ -36,6 +36,7 @@ const TRANSITION_LEN = 380
 var last_player_y = 0
 var is_transitioning = false
 var bgs = [0, 1, 2, 3]
+var curr_song = null
 
 func add_to_inventory(item_name):
   inventory.append(item_name)
@@ -58,6 +59,15 @@ func load_level(level_name: String):
     Level.set_camera(Cam)
 
 
+func update_song():
+  var song_name = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
+  if curr_song != song_name:
+    if curr_song != null:
+      $Audio.get_node(curr_song).playing = false
+    curr_song = song_name
+    $Audio.get_node(curr_song).playing = true
+
+
 func start_level(level_num: int) -> void:
   if Level != null:
     Level.queue_free()
@@ -71,6 +81,7 @@ func start_level(level_num: int) -> void:
   jump_view(Level.spawn_point.y - Player.position.y)
   Player.reset()
   Cam.current = true
+  update_song()
   inventory = saved_inventory.duplicate()
   slots = saved_slots.duplicate()
   for slot in saved_slots.keys():
@@ -114,6 +125,8 @@ func _ready():
   start_level(curr_level_num)
   CloudSpawner.initial_cloud_spawn()
   Letterbox.setup()
+  for audio in $Audio.get_children():
+    audio.volume_db = SoundManager.get_db()
 
 
 func jump_view(dist):
@@ -161,6 +174,7 @@ func _process(delta: float):
     despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + bottom.position.y
     curr_level_num += 1
     is_transitioning = false
+    update_song()
   if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
     OldLevel.queue_free()
     OldLevel = null

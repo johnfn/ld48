@@ -13,6 +13,9 @@ onready var goblin_king = $Enemies/GoblinKing
 onready var main = $"/root/Main"
 var player = null
 
+func get_song():
+  return "BossSong"
+
 func _ready():
   if spawn_point == Vector2(0, 0):
     spawn_point = $Markers/SpawnPoint.position
