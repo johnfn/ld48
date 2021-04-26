@@ -6,7 +6,7 @@ onready var TopRect = $CanvasLayer/TopRect
 onready var BottomRect = $CanvasLayer/BottomRect
 onready var EntireScreenFadeRect = $CanvasLayer/EnterScreenFadeRect
 
-var letterbox_animation_length = 60.0
+var letterbox_animation_length = 30.0
 var fade_length = 120.0
 
 # are we currently in any sort of cinematic at all?
