@@ -78,11 +78,14 @@ func _physics_process(delta):
   
   has_raycasted_this_swing = true
 
-  var hits = SwordArea.get_overlapping_bodies()
+  var hits: Array = SwordArea.get_overlapping_bodies()
+  var more_hits = SwordArea.get_overlapping_areas()
+  
+  hits.append_array(more_hits)
+  
   var enemy_hits = []
   
   update()
-
   for potential_enemy in hits:
     if potential_enemy.has_method("is_enemy") and potential_enemy.is_enemy():
       
