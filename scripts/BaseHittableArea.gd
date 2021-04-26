@@ -1,5 +1,5 @@
-class_name BaseHittable
-extends RigidBody2D
+class_name BaseHittableArea
+extends Area2D
 
 export(int) var health = 1
 
