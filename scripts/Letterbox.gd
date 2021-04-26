@@ -107,6 +107,7 @@ func unfade_to_black_timed(fade_length):
     
     EntireScreenFadeRect.modulate.a = 1.0 - (float(x) / fade_length)
   
+  EntireScreenFadeRect.visible = false
   is_animating = false
 
 func show_title_card(num: int) -> void:
