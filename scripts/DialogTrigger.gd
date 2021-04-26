@@ -36,7 +36,7 @@ func begin_cinematic(player: Player):
   
   Letterbox.in_cinematic = true
   
-  yield(Letterbox.animate_in(), "completed")
+  yield(Letterbox.animate_in(speaker), "completed")
     
   yield(new_dialog.display_text_sequence_co(speaker, dialog), "completed")
   

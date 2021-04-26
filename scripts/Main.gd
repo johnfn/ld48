@@ -1,3 +1,4 @@
+class_name Main
 extends Node2D
 
 onready var Player = $Player
@@ -102,8 +103,7 @@ func jump_view(dist):
     bg.position.y += dist
     bg.get_node('Hitbox').disabled = false
 
-
-func _process(delta):
+func get_desired_cam_position(delta: float):
   var max_cam = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
   max_cam = max(max_cam, Cam.position.y)
   var cam_pos = Player.position.y - camera_offset
@@ -113,7 +113,13 @@ func _process(delta):
   cam_pos = min(max_cam, cam_pos)
   if not Level.is_top_open and not is_transitioning:
     cam_pos = max(Level.top_wall + BASE_VIEWPORT_HEIGHT / 2, cam_pos)
-  Cam.position.y = cam_pos
+  
+  return cam_pos
+
+func _process(delta: float):
+  if not Letterbox.in_cinematic:
+    # In this case, the letterbox takes care of camera location 
+    Cam.position.y = get_desired_cam_position(delta)
   
   if Player.position.y < load_y and not is_transitioning:
     load_new_level(curr_level_num + 1)
