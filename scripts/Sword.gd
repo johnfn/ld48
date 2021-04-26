@@ -18,8 +18,12 @@ func _ready() -> void:
   raycast_instance = RayCast2D.new()
   raycast_instance.enabled = true
   raycast_instance.collide_with_areas = true
+  raycast_instance.set_collision_mask_bit(0, false)
   raycast_instance.set_collision_mask_bit(1, true)
   raycast_instance.set_collision_mask_bit(2, true)
+  raycast_instance.set_collision_mask_bit(7, true) # flying
+  
+  raycast_instance.add_exception(player)
   
   root.add_child(raycast_instance)
   
@@ -75,14 +79,19 @@ func _physics_process(delta):
   var enemy_hits = []
   
   update()
-  
+
   for potential_enemy in hits:
     if potential_enemy.has_method("is_enemy") and potential_enemy.is_enemy():
+      
       raycast_instance.global_position = player.global_position
       raycast_instance.cast_to = (potential_enemy.global_position - player.global_position)
-      raycast_instance.collide_with_areas = true
       raycast_instance.force_raycast_update()
       
       var hit = raycast_instance.get_collider()
+      
+      print(potential_enemy.name)
+      print(hit)
+      
       if hit == potential_enemy:
+        print("Damage")
         hit.damage(damage, self)
