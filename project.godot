@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Dog.gd"
 }, {
+"base": "Node2D",
+"class": "Main",
+"language": "GDScript",
+"path": "res://scripts/Main.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "BaseHittable": "",
 "DialogTrigger": "",
 "Dog": "",
+"Main": "",
 "Player": ""
 }
 

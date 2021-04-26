@@ -1,11 +1,11 @@
 extends Node2D
 
-onready var AnimationPlayer = $Sword/AnimationPlayer
-onready var swing_animation = AnimationPlayer.get_animation("Swing")
-onready var Hitbox: CollisionPolygon2D = $Sword/Hitbox
-onready var SwordSprite = $Sword/SwordSprite
-onready var StickSprite = $Sword/StickSprite
-onready var SwordArea = $Sword
+onready var AnimationPlayer = $AnimationPlayer
+onready var swing_animation = $AnimationPlayer.get_animation("Swing")
+onready var Hitbox: CollisionPolygon2D = $Hitbox
+onready var SwordSprite = $SwordSprite
+onready var StickSprite = $StickSprite
+onready var SwordArea = self
 onready var root = $"/root"
 var raycast_instance: RayCast2D
 
