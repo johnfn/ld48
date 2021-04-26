@@ -11,12 +11,13 @@ onready var TopWall = $Walls/BottomWall
 onready var BottomWall = $Walls/BottomWall
 onready var teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + TransitionTop.position.y
 onready var load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
+onready var despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
 
 export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
 export(bool) var debug_already_has_sword = false
 
-export(Array) var level_scenes = ["res://levels/LevelRunner.tscn", "res://levels/Level1Mock.tscn", "res://levels/Level2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn"]
+export(Array) var level_scenes = ["res://levels/Level0Mock.tscn", "res://levels/Level1Mock.tscn", "res://levels/Level2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn"]
 
 export(int) var curr_level_num = 0
 
@@ -26,8 +27,11 @@ var saved_inventory = []
 var saved_slots = {}
 const ALL_SLOTS = ["weapons"]
 var Level = null
+var OldLevel = null
+var level_height = null
 const BASE_VIEWPORT_HEIGHT = 1280 # TODO this sucks
 const WALL_THICKNESS = 10
+const TRANSITION_LEN = 380
 var last_player_y = 0
 var is_transitioning = false
 var bgs = [0, 1, 2, 3]
@@ -42,24 +46,29 @@ func checkpoint():
   saved_slots = slots.duplicate()
 
 
-func load_level_to_tree(level_num):
+func load_level(level_num):
   Level = load(level_scenes[level_num]).instance()
+  assert(Level.get_node("Markers/LevelBottom") != null)
+  assert(Level.get_node("Markers/LevelTop") != null)
+  level_height = Level.get_node("Markers/LevelBottom").position.y - Level.get_node("Markers/LevelTop").position.y
   if Level.has_method('set_player'):
     Level.set_player(Player)
   if Level.has_method('set_camera'):
     Level.set_camera(Cam)
-  Levels.add_child(Level)
 
 
 func start_level(level_num: int) -> void:
   if Level != null:
     Level.queue_free()
-  load_level_to_tree(level_num)
+  if OldLevel != null:
+    OldLevel.queue_free()
+  load_level(level_num)
+  Levels.add_child(Level)
   
   Player.position.x = Level.spawn_point.x
   jump_view(Level.spawn_point.y - Player.position.y)
-  Player.health = Player.max_health
-  Player.reset_equipment()
+  Player.reset()
+  Cam.current = true
   inventory = saved_inventory.duplicate()
   slots = saved_slots.duplicate()
   for slot in saved_slots.keys():
@@ -72,23 +81,25 @@ func start_level(level_num: int) -> void:
   curr_level_num = level_num
   TransitionBottom.position.y = Level.bottom_wall
   update_wall_positions()
+  is_transitioning = false
 
 
 func load_new_level(level_num: int) -> void:
-  Level.queue_free()
-  load_level_to_tree(level_num)
+  OldLevel = Level
+  load_level(level_num)
+  assert(Level.get_node("Markers/LevelBottom") != null)
+  Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
+  Levels.add_child(Level)
   wire_item_signals() 
-  TransitionBottom.position.y = Level.bottom_wall
-  curr_level_num = level_num
-  is_transitioning = true
   update_wall_positions()
 
 
 func update_wall_positions() -> void:
-  get_node("Walls/BottomWall/Box").position.y = Level.bottom_wall
-  get_node("Walls/TopWall/Box").one_way_collision = Level.is_top_open
-  get_node("Walls/TopWall/Box").position.y = Level.top_wall
-  Level.dirty = false
+  var walled_level = OldLevel if is_transitioning else Level
+  get_node("Walls/BottomWall/Box").position.y = walled_level.bottom_wall + walled_level.position.y
+  get_node("Walls/TopWall/Box").one_way_collision = walled_level.is_top_open
+  get_node("Walls/TopWall/Box").position.y = walled_level.top_wall + walled_level.position.y
+  walled_level.dirty = false
 
 
 func _ready():
@@ -110,18 +121,21 @@ func jump_view(dist):
     bg.position.y += dist
     bg.get_node('Hitbox').disabled = false
 
+
 func get_desired_cam_position(delta: float):
-  var max_cam = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
+  var walled_level = OldLevel if is_transitioning else Level
+  var max_cam = walled_level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2 + walled_level.position.y
   max_cam = max(max_cam, Cam.position.y)
   var cam_pos = Player.position.y - camera_offset
   var player_moved_y = (Player.position.y - last_player_y)
   cam_pos = min(Cam.position.y + max(0, player_moved_y) + max_camera_speed * delta, cam_pos)
   cam_pos = max(Cam.position.y + min(0, player_moved_y) - max_camera_speed * delta, cam_pos)
   cam_pos = min(max_cam, cam_pos)
-  if not Level.is_top_open and not is_transitioning:
-    cam_pos = max(Level.top_wall + BASE_VIEWPORT_HEIGHT / 2, cam_pos)
+  if not walled_level.is_top_open and not is_transitioning:
+    cam_pos = max(walled_level.top_wall + BASE_VIEWPORT_HEIGHT / 2 + walled_level.position.y, cam_pos)
   
   return cam_pos
+
 
 func _process(delta: float):
   if not Letterbox.in_cinematic and Cam.current:
@@ -129,18 +143,27 @@ func _process(delta: float):
     Cam.position.y = get_desired_cam_position(delta)
   
   if Player.position.y < load_y and not is_transitioning:
+    is_transitioning = true
     load_new_level(curr_level_num + 1)
-
   if Player.position.y < teleport_y:
-    var teleport_dist = TransitionBottom.position.y - TransitionTop.position.y
-    jump_view(teleport_dist)
+    var bottom = get_node("Levels/TransitionBottom")
+    var top = get_node("Levels/TransitionTop")
+    bottom.position.y = top.position.y
+    top.position.y -= TRANSITION_LEN + level_height
+    teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + top.position.y
+    load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + top.position.y
+    despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + bottom.position.y
+    curr_level_num += 1
     is_transitioning = false
+  if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
+    OldLevel.queue_free()
+    OldLevel = null
     
   last_player_y = Player.position.y
 
 
 func _physics_process(delta):
-  if Level.dirty:
+  if (is_transitioning and OldLevel.dirty) or (Level.dirty and not is_transitioning):
     update_wall_positions()
 
 

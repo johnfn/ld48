@@ -25,7 +25,7 @@ func _ready() -> void:
   
   raycast_instance.add_exception(player)
   
-  root.add_child(raycast_instance)
+  root.call_deferred("add_child", raycast_instance)
   
   SwordArea.connect("body_entered", SwordArea, "on_enter")
 

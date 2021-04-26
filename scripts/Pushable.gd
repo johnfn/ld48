@@ -46,15 +46,13 @@ func _physics_process(delta):
     if move_dist >= position.distance_to(target):
       move_dist = position.distance_to(target) 
       target = null
-      if not pushable:
-        $Box.disabled = true
     move_and_collide(move_dir * move_dist)
 
 
 func get_push_dir():
   if pushing_player == null:
     return null
-  var push_angle = pushing_player.position.angle_to_point(position)
+  var push_angle = pushing_player.global_position.angle_to_point(global_position)
   var dir_i = int((push_angle / TAU + 0.5) * 4 + 0.5) % 4 # im sorry
   return dir_i if dirs_held[dir_i] else null
 
@@ -68,7 +66,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func attempt_push(push_dir):
-  # check for possible collisions TODO
   target = position * 1
   match push_dir:
     0:
@@ -94,5 +91,6 @@ func is_pushable():
   
   
 func fill_in_hole():
-  $PushBounds/Box.disabled = true
+  $PushBounds.queue_free()
+  $Box.queue_free()
   pushable = false

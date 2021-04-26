@@ -74,10 +74,9 @@ shape = SubResource( 1 )
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="TransitionTop" parent="Levels" instance=ExtResource( 2 )]
-position = Vector2( 0.96, -2558 )
+position = Vector2( 0, -380 )
 
 [node name="TransitionBottom" parent="Levels" instance=ExtResource( 2 )]
-position = Vector2( 0, -0.960266 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -583.471, 127.642 )

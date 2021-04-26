@@ -83,7 +83,7 @@ position = Vector2( 51.4039, 495.127 )
 position = Vector2( 11.3202, 666.216 )
 
 [node name="Tree85" parent="Obstacles" instance=ExtResource( 1 )]
-position = Vector2( 1018.7, 1059.99 )
+position = Vector2( 1024, 1024 )
 
 [node name="Tree50" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( -43.9523, 1059.75 )
@@ -233,7 +233,7 @@ position = Vector2( 1453.12, 2803.64 )
 
 [node name="MonsterShooter" parent="Enemies" instance=ExtResource( 5 )]
 material = SubResource( 1 )
-position = Vector2( 282.8, 632.368 )
+position = Vector2( 256, 576 )
 
 [node name="MonsterWitch3" parent="Enemies" instance=ExtResource( 9 )]
 material = SubResource( 2 )
@@ -241,7 +241,7 @@ position = Vector2( 1026.82, 2014.79 )
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 5 )]
 material = SubResource( 3 )
-position = Vector2( 975.089, 475.893 )
+position = Vector2( 960, 448 )
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="Markers" type="Node2D" parent="."]
@@ -259,10 +259,10 @@ position = Vector2( 677.235, 0 )
 position = Vector2( 512, 1152 )
 
 [node name="Pushable92" parent="Markers" instance=ExtResource( 3 )]
-position = Vector2( 1026.82, 1822.79 )
+position = Vector2( 1024, 1792 )
 
-[node name="Pushable91" parent="Markers" instance=ExtResource( 3 )]
-position = Vector2( 640, 1280 )
+[node name="Pushable93" parent="Markers" instance=ExtResource( 3 )]
+position = Vector2( 896, 1856 )
 
 [node name="Shrub5" parent="." instance=ExtResource( 10 )]
 material = SubResource( 4 )
@@ -418,6 +418,63 @@ position = Vector2( 640, 832 )
 [node name="Fillable38" parent="." instance=ExtResource( 11 )]
 position = Vector2( 576, 832 )
 
+[node name="Fillable39" parent="." instance=ExtResource( 11 )]
+position = Vector2( 512, 768 )
+
+[node name="Fillable40" parent="." instance=ExtResource( 11 )]
+position = Vector2( 448, 768 )
+
+[node name="Fillable41" parent="." instance=ExtResource( 11 )]
+position = Vector2( 384, 768 )
+
+[node name="Fillable42" parent="." instance=ExtResource( 11 )]
+position = Vector2( 320, 768 )
+
+[node name="Fillable43" parent="." instance=ExtResource( 11 )]
+position = Vector2( 256, 768 )
+
+[node name="Fillable44" parent="." instance=ExtResource( 11 )]
+position = Vector2( 192, 768 )
+
+[node name="Fillable45" parent="." instance=ExtResource( 11 )]
+position = Vector2( 128, 768 )
+
+[node name="Fillable46" parent="." instance=ExtResource( 11 )]
+position = Vector2( 64, 768 )
+
+[node name="Fillable47" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1024, 768 )
+
+[node name="Fillable48" parent="." instance=ExtResource( 11 )]
+position = Vector2( 960, 768 )
+
+[node name="Fillable49" parent="." instance=ExtResource( 11 )]
+position = Vector2( 896, 768 )
+
+[node name="Fillable50" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1216, 768 )
+
+[node name="Fillable51" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1152, 768 )
+
+[node name="Fillable52" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1088, 768 )
+
+[node name="Fillable53" parent="." instance=ExtResource( 11 )]
+position = Vector2( 832, 768 )
+
+[node name="Fillable54" parent="." instance=ExtResource( 11 )]
+position = Vector2( 768, 768 )
+
+[node name="Fillable55" parent="." instance=ExtResource( 11 )]
+position = Vector2( 704, 768 )
+
+[node name="Fillable56" parent="." instance=ExtResource( 11 )]
+position = Vector2( 640, 768 )
+
+[node name="Fillable57" parent="." instance=ExtResource( 11 )]
+position = Vector2( 576, 768 )
+
 [node name="Tree" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1060.66, 1540.65 )
 
@@ -425,19 +482,19 @@ position = Vector2( 1060.66, 1540.65 )
 position = Vector2( 936.979, 1561.68 )
 
 [node name="Tree3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 819.477, 1627.23 )
+position = Vector2( 795.475, 1614.52 )
 
 [node name="Tree4" parent="." instance=ExtResource( 12 )]
-position = Vector2( 786.082, 1778.13 )
+position = Vector2( 704, 1792 )
 
 [node name="Tree5" parent="." instance=ExtResource( 12 )]
-position = Vector2( 765.056, 1927.79 )
+position = Vector2( 709.993, 1932.03 )
 
 [node name="Tree6" parent="." instance=ExtResource( 12 )]
-position = Vector2( 799.688, 2088.58 )
+position = Vector2( 730.506, 2089.99 )
 
 [node name="Tree7" parent="." instance=ExtResource( 12 )]
-position = Vector2( 834.32, 2213.5 )
+position = Vector2( 758.117, 2176 )
 
 [node name="CuttableTree" parent="." instance=ExtResource( 13 )]
 material = SubResource( 5 )
