@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=1]
 [ext_resource path="res://assets/art/shooter1.png" type="Texture" id=2]
 [ext_resource path="res://scripts/MonsterShooter.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/shooter2.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/chara_shadow.png" type="Texture" id=5]
+[ext_resource path="res://materials/modulate_shader_red.tres" type="Material" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -36,9 +37,10 @@ texture = ExtResource( 5 )
 offset = Vector2( -40.8246, 0.25412 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-material = ExtResource( 1 )
+material = ExtResource( 6 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 flip_h = true
 

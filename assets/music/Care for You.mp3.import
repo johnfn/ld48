@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Care for You.mp3-5f494e025f4acf697a31690a9046fcd6.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Care for You.mp3"
+dest_files=[ "res://.import/Care for You.mp3-5f494e025f4acf697a31690a9046fcd6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

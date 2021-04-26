@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -489,7 +490,7 @@ rotation = 0.0588478
 
 [node name="Shrub17" parent="." instance=ExtResource( 5 )]
 material = SubResource( 2 )
-position = Vector2( 656.715, 533.011 )
+position = Vector2( 652.283, 592.846 )
 
 [node name="Shrub19" parent="." instance=ExtResource( 5 )]
 material = SubResource( 2 )
@@ -609,43 +610,25 @@ position = Vector2( 925.755, 4613.97 )
 
 [node name="Shrub18" parent="." instance=ExtResource( 5 )]
 material = SubResource( 2 )
-position = Vector2( 1022.8, 484.935 )
+position = Vector2( 1011.48, 661.076 )
 
 [node name="Tree9" parent="." instance=ExtResource( 4 )]
-position = Vector2( 299.949, 317.709 )
+position = Vector2( 201.245, 447.548 )
 
 [node name="Tree10" parent="." instance=ExtResource( 4 )]
-position = Vector2( 392.445, 382.457 )
+position = Vector2( 348.122, 461.991 )
 
 [node name="Tree11" parent="." instance=ExtResource( 4 )]
-position = Vector2( 490.491, 454.604 )
+position = Vector2( 477.194, 498.927 )
 
 [node name="Tree12" parent="." instance=ExtResource( 4 )]
-position = Vector2( 978.871, 289.96 )
+position = Vector2( 1115.42, 430.579 )
 
 [node name="Tree13" parent="." instance=ExtResource( 4 )]
-position = Vector2( 886.375, 362.107 )
+position = Vector2( 962.197, 466.976 )
 
 [node name="Tree14" parent="." instance=ExtResource( 4 )]
-position = Vector2( 812.378, 441.654 )
-
-[node name="Tree16" parent="." instance=ExtResource( 4 )]
-position = Vector2( 298.099, 317.709 )
-
-[node name="Tree17" parent="." instance=ExtResource( 4 )]
-position = Vector2( 390.595, 382.457 )
-
-[node name="Tree18" parent="." instance=ExtResource( 4 )]
-position = Vector2( 488.641, 454.604 )
-
-[node name="Tree19" parent="." instance=ExtResource( 4 )]
-position = Vector2( 977.021, 289.96 )
-
-[node name="Tree20" parent="." instance=ExtResource( 4 )]
-position = Vector2( 884.525, 362.107 )
-
-[node name="Tree21" parent="." instance=ExtResource( 4 )]
-position = Vector2( 810.528, 441.654 )
+position = Vector2( 812.378, 501.489 )
 
 [node name="Tree22" parent="." instance=ExtResource( 4 )]
 position = Vector2( 925.766, 1855.54 )
@@ -657,15 +640,15 @@ solid_leaves = false
 
 [node name="Shrub50" parent="." instance=ExtResource( 5 )]
 material = SubResource( 2 )
-position = Vector2( 1100.15, 577.432 )
+position = Vector2( 1128.96, 734.95 )
 
 [node name="Grass" parent="." instance=ExtResource( 9 )]
 material = SubResource( 4 )
-position = Vector2( 202.131, 463.358 )
+position = Vector2( 196.741, 601.232 )
 
 [node name="Grass2" parent="." instance=ExtResource( 9 )]
 material = SubResource( 4 )
-position = Vector2( 299.895, 524.461 )
+position = Vector2( 306.543, 619.754 )
 
 [node name="Grass4" parent="." instance=ExtResource( 9 )]
 material = SubResource( 4 )
@@ -685,7 +668,7 @@ position = Vector2( 978.133, 1592.74 )
 
 [node name="Grass3" parent="." instance=ExtResource( 9 )]
 material = SubResource( 4 )
-position = Vector2( 172.598, 560.104 )
+position = Vector2( 213.865, 709.898 )
 
 [node name="Grass8" parent="." instance=ExtResource( 9 )]
 material = SubResource( 5 )
@@ -702,5 +685,13 @@ position = Vector2( 360.913, 4595.53 )
 [node name="Grass11" parent="." instance=ExtResource( 9 )]
 material = SubResource( 5 )
 position = Vector2( 326.127, 4678.63 )
+
+[node name="DogMoveTrigger" parent="." instance=ExtResource( 11 )]
+position = Vector2( 644.525, 306.374 )
+destinations = [ NodePath("../dog") ]
+dog_path = NodePath("../Items/Donut")
+
+[node name="dog" type="Node2D" parent="."]
+position = Vector2( 637.338, -266.743 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

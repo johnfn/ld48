@@ -45,7 +45,7 @@ func begin_cinematic(player: Player):
   yield(new_dialog.display_text_sequence_co(speaker, dialog), "completed")
   
   if fade_to_black:
-    yield(Letterbox.fade_to_black(), "completed")
+    yield(Letterbox.fade_to_black(120.0), "completed")
   
   yield(Letterbox.animate_out(), "completed")
   

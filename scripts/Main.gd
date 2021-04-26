@@ -36,6 +36,7 @@ const TRANSITION_LEN = 380
 var last_player_y = 0
 var is_transitioning = false
 var bgs = [0, 1, 2, 3]
+var curr_song = null
 
 func add_to_inventory(item_name):
   inventory.append(item_name)
@@ -58,6 +59,15 @@ func load_level(level_num):
     Level.set_camera(Cam)
 
 
+func update_song():
+  var song_name = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
+  if curr_song != song_name:
+    if curr_song != null:
+      $Audio.get_node(curr_song).playing = false
+    curr_song = song_name
+    $Audio.get_node(curr_song).playing = true
+
+
 func start_level(level_num: int) -> void:
   if Level != null:
     Level.queue_free()
@@ -70,6 +80,7 @@ func start_level(level_num: int) -> void:
   jump_view(Level.spawn_point.y - Player.position.y)
   Player.reset()
   Cam.current = true
+  update_song()
   inventory = saved_inventory.duplicate()
   slots = saved_slots.duplicate()
   for slot in saved_slots.keys():
@@ -113,6 +124,8 @@ func _ready():
   start_level(curr_level_num)
   CloudSpawner.initial_cloud_spawn()
   Letterbox.setup()
+  for audio in $Audio.get_children():
+    audio.volume_db = SoundManager.get_db()
 
 
 func jump_view(dist):
@@ -160,6 +173,7 @@ func _process(delta: float):
     despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + bottom.position.y
     curr_level_num += 1
     is_transitioning = false
+    update_song()
   if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
     OldLevel.queue_free()
     OldLevel = null
@@ -203,9 +217,26 @@ func handle_item_body_entered(body: Node, item_node):
 
 
 func handle_player_died():
+  Letterbox.in_cinematic = true
+  
+  print(Player.modulate.a)
+  
+  for x in range(60):
+    yield(get_tree(), "idle_frame")
+    Player.Sprite.material.set_shader_param("white", min(1.0, x / 30.0))
+    Player.Hand.material.set_shader_param("white", min(1.0, x / 30.0))
+    Player.modulate.a = 1.0 - float(x) / 60.0
+    
+  yield(Letterbox.fade_to_black(120.0), "completed")
+
   start_level(curr_level_num)
-
-
+  Player.modulate.a = 1.0
+  Player.Sprite.material.set_shader_param("white", 0.0)
+  Player.Hand.material.set_shader_param("white", 0.0)
+  yield(get_tree(), "idle_frame")
+  Letterbox.unfade_to_black_instant()
+  Letterbox.in_cinematic = false
+  
 const BACKGROUND_HEIGHT = 2560
 func _on_background_entered(body, i):
   if body.has_method("is_player") and body.is_player():
@@ -217,3 +248,11 @@ func _on_background_entered(body, i):
       var front = bgs.pop_front()
       bgs.push_back(front)
       $Background.get_child(front).position.y += BACKGROUND_HEIGHT * len(bgs)
+
+
+onready var PauseMenu = load("res://scenes/PauseMenu.tscn")
+func _unhandled_input(event):
+  if Input.is_action_just_pressed("pause"):
+    print("pausing")
+    add_child(PauseMenu.instance())
+    
