@@ -437,7 +437,7 @@ position = Vector2( 927.641, 2127.83 )
 
 [node name="MonsterWitch5" parent="Enemies" instance=ExtResource( 8 )]
 material = SubResource( 1 )
-position = Vector2( 705.65, 1321.27 )
+position = Vector2( 705.65, 1272.52 )
 
 [node name="MonsterWitch3" parent="Enemies" instance=ExtResource( 8 )]
 material = SubResource( 1 )
@@ -449,11 +449,6 @@ position = Vector2( 840.695, 912.43 )
 rotation = 0.992316
 
 [node name="MonsterWitch7" parent="Enemies" instance=ExtResource( 8 )]
-material = SubResource( 1 )
-position = Vector2( 340.006, 770.38 )
-rotation = 3.1326
-
-[node name="MonsterWitch8" parent="Enemies" instance=ExtResource( 8 )]
 material = SubResource( 1 )
 position = Vector2( 340.006, 770.38 )
 rotation = 3.1326

@@ -15,7 +15,7 @@ extents = Vector2( 956.12, 10 )
 [node name="Main" type="Node2D"]
 position = Vector2( 3.18482, 0 )
 script = ExtResource( 5 )
-level_scenes = [ "res://levels/Level1-1.tscn", "res://levels/Level1-1.tscn", "res://levels/Level1-2.tscn", "res://levels/Level1-3.tscn", "res://levels/Level1-4.tscn", "res://levels/Level1-5.tscn", null ]
+level_scenes = [ "res://levels/Level1-5.tscn", "res://levels/Level1-1.tscn", "res://levels/Level1-2.tscn", "res://levels/Level1-3.tscn", "res://levels/Level1-4.tscn", "res://levels/Level1-5.tscn", null ]
 
 [node name="Background" type="Node2D" parent="."]
 
