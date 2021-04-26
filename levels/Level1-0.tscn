@@ -8,7 +8,8 @@
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/CardTrigger.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -328,6 +329,8 @@ position = Vector2( 648.739, 3018.5 )
 dialog = [ "Oh, there you are, Winston! C'mere, boy!", "Mom says it's dangerous to go deep in the forest!" ]
 cinematic_style_dialog = true
 
+[node name="CardTrigger" parent="." instance=ExtResource( 9 )]
+
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="LevelBottom" type="Node2D" parent="Markers"]
@@ -551,7 +554,7 @@ position = Vector2( 455.305, 2803.65 )
 material = SubResource( 3 )
 position = Vector2( 327.545, 2746.38 )
 
-[node name="DogMoveTrigger" parent="." instance=ExtResource( 9 )]
+[node name="DogMoveTrigger" parent="." instance=ExtResource( 10 )]
 position = Vector2( 668.876, 522.663 )
 destinations = [ NodePath("../DoggoDesto") ]
 dog_path = NodePath("../Items/Donut")
