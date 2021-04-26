@@ -33,10 +33,10 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/white = null
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 
 [node name="LevelX" type="Node2D"]
@@ -289,7 +289,7 @@ position = Vector2( 1026.4, 1859.45 )
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 5 )]
-material = SubResource( 5 )
+material = SubResource( 4 )
 position = Vector2( 984.382, 493.439 )
 direction_to_shoot = Vector2( -1, 0 )
 
@@ -320,31 +320,31 @@ position = Vector2( 448, 1536 )
 position = Vector2( 320, 1600 )
 
 [node name="Shrub7" parent="." instance=ExtResource( 10 )]
-material = SubResource( 6 )
+material = SubResource( 5 )
 position = Vector2( 272.575, 2392.03 )
 
 [node name="Shrub10" parent="." instance=ExtResource( 10 )]
-material = SubResource( 6 )
+material = SubResource( 5 )
 position = Vector2( 228.153, 2252.76 )
 
 [node name="Shrub15" parent="." instance=ExtResource( 10 )]
-material = SubResource( 6 )
+material = SubResource( 5 )
 position = Vector2( 375.092, 2304 )
 
 [node name="Shrub11" parent="." instance=ExtResource( 10 )]
-material = SubResource( 6 )
+material = SubResource( 5 )
 position = Vector2( 275.761, 392.93 )
 
 [node name="Shrub12" parent="." instance=ExtResource( 10 )]
-material = SubResource( 6 )
+material = SubResource( 5 )
 position = Vector2( 348.481, 309.821 )
 
 [node name="Shrub13" parent="." instance=ExtResource( 10 )]
-material = SubResource( 6 )
+material = SubResource( 5 )
 position = Vector2( 405.618, 402.02 )
 
 [node name="Shrub14" parent="." instance=ExtResource( 10 )]
-material = SubResource( 6 )
+material = SubResource( 5 )
 position = Vector2( 878.297, 312.418 )
 
 [node name="Fillable" parent="." instance=ExtResource( 11 )]
