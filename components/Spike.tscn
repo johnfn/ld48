@@ -8,11 +8,12 @@ collision_layer = 2
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
-position = Vector2( -55.4465, -34.1231 )
+position = Vector2( -40.5204, -30.2533 )
 scale = Vector2( 1.10509, 1 )
 build_mode = 1
-polygon = PoolVector2Array( 1.5701, 29.0274, -2.78943, 57.2479, 52.9882, 73.8325, 108.016, 39.5578, 96.0096, 2.51892, 55.4895, -6.32617, 1.96297, 3.62456 )
+polygon = PoolVector2Array( 1.5701, 29.0274, -2.78943, 57.2479, 42.9833, 71.6212, 71.9977, 44.5331, 73.4984, 20.2091, 55.4895, -6.32617, -6.54126, 8.04712 )
 
 [node name="brambles" type="Sprite" parent="."]
-position = Vector2( 1.6409, -0.91153 )
+position = Vector2( 0.258834, -0.358704 )
+scale = Vector2( 0.772873, 1 )
 texture = ExtResource( 3 )

@@ -15,6 +15,9 @@ var swinging = false
 var has_raycasted_this_swing = true
 
 func _ready() -> void:
+  SwordSprite.visible = false
+  StickSprite.visible = true
+  
   raycast_instance = RayCast2D.new()
   raycast_instance.enabled = true
   raycast_instance.collide_with_areas = true

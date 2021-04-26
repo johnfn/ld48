@@ -11,6 +11,22 @@ var being_hit = false
 var knockback_vector: Vector2 = Vector2.ZERO
 var knockback: bool = false
 
+func _ready() -> void:
+  self.contact_monitor = true
+  self.contacts_reported = true
+  
+  self.connect("body_entered", self, "on_enter")
+  self.connect("body_exited", self, "on_exit")
+  
+  print("Ready up")
+
+func on_enter(other) -> void:
+  if other.has_method("is_player") and other.is_player():
+    other.damage(1, self)
+
+func on_exit(other) -> void:
+  pass
+
 func is_enemy() -> bool:
   return true
 

@@ -1,15 +1,16 @@
 extends Node2D
 
-onready var player = $"/root/Main/Player"
-onready var main = $'/root/Main'
+var player = null
+var main = null
 
 var CloudScene = load("res://scenes/Cloud.tscn")
 var tick = 2.0
 
-func _ready():
-  initial_cloud_spawn()
+var started = false
   
 func initial_cloud_spawn():
+  main = $'/root/Main'
+  player = $"/root/Main/Player"
   yield(get_tree(), "idle_frame")
   
   for i in range(50):
@@ -21,6 +22,7 @@ func spawn_cloud():
   if player == null:
     return
   
+  started = true
   var new_cloud = CloudScene.instance()
   main.add_child(new_cloud)
 
@@ -34,9 +36,10 @@ func spawn_cloud():
   return new_cloud
 
 func _process(delta):
-  tick += delta
+  if started:
+    tick += delta
 
-  if tick > 10.0:
-    tick = 0.0
-    
-    spawn_cloud()
+    if tick > 10.0:
+      tick = 0.0
+      
+      spawn_cloud()

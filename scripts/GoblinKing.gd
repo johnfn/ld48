@@ -64,7 +64,6 @@ func is_enemy() -> bool:
 func set_player(p):
   player = p
 
-var holding_cinematic = false
 func damage(amount: int, source: Node2D) -> void:
   if being_hit or is_invuln:
     return
@@ -74,17 +73,12 @@ func damage(amount: int, source: Node2D) -> void:
   curr_mode = Mode.RETREAT
   reset_jump()
   reset_spear()
-  Letterbox.in_cinematic = true
-  holding_cinematic = true
 
   # TODO also do this for hands and stuff
   yield(CombatHelpers.damage_anim_animated_sprite($Body), "completed")
   
   if health <= 0:
-    if holding_cinematic:
-      Letterbox.in_cinematic = false
-      holding_cinematic = false
-      emit_signal("died")
+    emit_signal("died")
     for child in get_children():
       child.queue_free()
     
@@ -208,8 +202,6 @@ func jump(delta, is_attack):
 
 func handle_jump_completion(is_attack):
   if jump_time >= jump_time_len:
-    Letterbox.in_cinematic = false
-    holding_cinematic = false
     jump_target = null
     if not is_attack:
       curr_mode = Mode.IDLE

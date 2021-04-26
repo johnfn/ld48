@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/PushableTemplate.tscn" type="PackedScene" id=10]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/art/shieldmob_shielded1.png" type="Texture" id=12]
 [ext_resource path="res://components/FillableArea.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/MonsterJump.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/art/river_2tiles.png" type="Texture" id=15]
@@ -218,9 +217,6 @@ position = Vector2( 260.883, 4205.03 )
 position = Vector2( 197.429, 4380.09 )
 
 [node name="Tree127" parent="Obstacles" instance=ExtResource( 2 )]
-position = Vector2( 69.0143, 4599.57 )
-
-[node name="Tree134" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 69.0143, 4599.57 )
 
 [node name="Tree128" parent="Obstacles" instance=ExtResource( 2 )]
@@ -450,48 +446,31 @@ position = Vector2( 1230.22, 6006.54 )
 [node name="Tree82" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 1486.44, 6004.25 )
 
-[node name="shieldmob_shielded1" type="Sprite" parent="."]
-position = Vector2( 492.34, 2402.51 )
-texture = ExtResource( 12 )
-
-[node name="shieldmob_shielded2" type="Sprite" parent="."]
-position = Vector2( 801.421, 2050.18 )
-texture = ExtResource( 12 )
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="MonsterShooter" parent="Enemies" instance=ExtResource( 9 )]
 material = SubResource( 1 )
-position = Vector2( 320, 704 )
+position = Vector2( 404.697, 588.939 )
+direction_to_shoot = Vector2( 0, 1 )
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 9 )]
 material = SubResource( 2 )
-position = Vector2( 960, 576 )
-direction_to_shoot = Vector2( -1, 0 )
+position = Vector2( 875.303, 593.579 )
+direction_to_shoot = Vector2( 0, 1 )
 
 [node name="MonsterShooter3" parent="Enemies" instance=ExtResource( 9 )]
 material = SubResource( 4 )
 position = Vector2( 1076.39, 4378.63 )
 direction_to_shoot = Vector2( -1, 0 )
 
-[node name="MonsterShooter4" parent="Enemies" instance=ExtResource( 9 )]
-material = SubResource( 4 )
-position = Vector2( 1135.99, 4236.46 )
-direction_to_shoot = Vector2( -1, 0 )
-
 [node name="MonsterShooter7" parent="Enemies" instance=ExtResource( 9 )]
 material = SubResource( 4 )
-position = Vector2( 1065.01, 4154.47 )
+position = Vector2( 1063.41, 4152.87 )
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter5" parent="Enemies" instance=ExtResource( 9 )]
 material = SubResource( 4 )
 position = Vector2( 1074.4, 3904 )
-direction_to_shoot = Vector2( -1, 0 )
-
-[node name="MonsterShooter6" parent="Enemies" instance=ExtResource( 9 )]
-material = SubResource( 4 )
-position = Vector2( 1130.31, 4001.44 )
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="Markers" type="Node2D" parent="."]
@@ -579,7 +558,27 @@ position = Vector2( 261.885, 413.573 )
 
 [node name="Grass15" parent="." instance=ExtResource( 6 )]
 material = SubResource( 6 )
-position = Vector2( 408.638, 415.479 )
+position = Vector2( 410.236, 415.479 )
+
+[node name="Grass18" parent="." instance=ExtResource( 6 )]
+material = SubResource( 6 )
+position = Vector2( 1086.22, 2478.58 )
+
+[node name="Grass19" parent="." instance=ExtResource( 6 )]
+material = SubResource( 6 )
+position = Vector2( 980.744, 2483.37 )
+
+[node name="Grass22" parent="." instance=ExtResource( 6 )]
+material = SubResource( 6 )
+position = Vector2( 854.497, 2456.2 )
+
+[node name="Grass20" parent="." instance=ExtResource( 6 )]
+material = SubResource( 6 )
+position = Vector2( 199.292, 2023.13 )
+
+[node name="Grass21" parent="." instance=ExtResource( 6 )]
+material = SubResource( 6 )
+position = Vector2( 306.362, 2023.13 )
 
 [node name="Grass16" parent="." instance=ExtResource( 6 )]
 material = SubResource( 6 )
@@ -592,18 +591,6 @@ position = Vector2( 919.414, 306.844 )
 [node name="Grass12" parent="." instance=ExtResource( 6 )]
 material = SubResource( 6 )
 position = Vector2( 851.323, 3330.73 )
-
-[node name="Grass18" parent="." instance=ExtResource( 6 )]
-material = SubResource( 6 )
-position = Vector2( 1049.89, 1036.45 )
-
-[node name="Grass19" parent="." instance=ExtResource( 6 )]
-material = SubResource( 6 )
-position = Vector2( 1061.68, 936.183 )
-
-[node name="Grass20" parent="." instance=ExtResource( 6 )]
-material = SubResource( 6 )
-position = Vector2( 947.655, 922.421 )
 
 [node name="Grass13" parent="." instance=ExtResource( 6 )]
 material = SubResource( 6 )
@@ -829,318 +816,6 @@ position = Vector2( 512, 3840 )
 [node name="Pushable16" parent="." instance=ExtResource( 10 )]
 position = Vector2( 384, 2816 )
 
-[node name="Pushable21" parent="." instance=ExtResource( 10 )]
-position = Vector2( 320, 896 )
-
-[node name="Pushable22" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 896 )
-
-[node name="Pushable23" parent="." instance=ExtResource( 10 )]
-position = Vector2( 448, 896 )
-
-[node name="Pushable24" parent="." instance=ExtResource( 10 )]
-position = Vector2( 512, 896 )
-
-[node name="Pushable25" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 896 )
-
-[node name="Pushable27" parent="." instance=ExtResource( 10 )]
-position = Vector2( 704, 896 )
-
-[node name="Pushable29" parent="." instance=ExtResource( 10 )]
-position = Vector2( 832, 896 )
-
-[node name="Pushable30" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 896 )
-
-[node name="Pushable36" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 1088 )
-
-[node name="Pushable43" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1024, 1216 )
-
-[node name="Pushable33" parent="." instance=ExtResource( 10 )]
-position = Vector2( 256, 960 )
-
-[node name="Pushable34" parent="." instance=ExtResource( 10 )]
-position = Vector2( 320, 960 )
-
-[node name="Pushable35" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 960 )
-
-[node name="Pushable37" parent="." instance=ExtResource( 10 )]
-position = Vector2( 512, 960 )
-
-[node name="Pushable38" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 960 )
-
-[node name="Pushable39" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 960 )
-
-[node name="Pushable40" parent="." instance=ExtResource( 10 )]
-position = Vector2( 704, 960 )
-
-[node name="Pushable41" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 960 )
-
-[node name="Pushable42" parent="." instance=ExtResource( 10 )]
-position = Vector2( 832, 960 )
-
-[node name="Pushable46" parent="." instance=ExtResource( 10 )]
-position = Vector2( 256, 1024 )
-
-[node name="Pushable48" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 1024 )
-
-[node name="Pushable49" parent="." instance=ExtResource( 10 )]
-position = Vector2( 448, 1024 )
-
-[node name="Pushable50" parent="." instance=ExtResource( 10 )]
-position = Vector2( 512, 1024 )
-
-[node name="Pushable54" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1024 )
-
-[node name="Pushable55" parent="." instance=ExtResource( 10 )]
-position = Vector2( 832, 1024 )
-
-[node name="Pushable56" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1024 )
-
-[node name="Pushable59" parent="." instance=ExtResource( 10 )]
-position = Vector2( 256, 1088 )
-
-[node name="Pushable60" parent="." instance=ExtResource( 10 )]
-position = Vector2( 256, 1152 )
-
-[node name="Pushable62" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 1152 )
-
-[node name="Pushable63" parent="." instance=ExtResource( 10 )]
-position = Vector2( 448, 1152 )
-
-[node name="Pushable70" parent="." instance=ExtResource( 10 )]
-position = Vector2( 512, 1152 )
-
-[node name="Pushable71" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 1152 )
-
-[node name="Pushable73" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 1152 )
-
-[node name="Pushable79" parent="." instance=ExtResource( 10 )]
-position = Vector2( 704, 1152 )
-
-[node name="Pushable84" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1152 )
-
-[node name="Pushable87" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1152 )
-
-[node name="Pushable88" parent="." instance=ExtResource( 10 )]
-position = Vector2( 832, 1152 )
-
-[node name="Pushable89" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 1152 )
-
-[node name="Pushable90" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1024, 1152 )
-
-[node name="Pushable61" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 1088 )
-
-[node name="Pushable64" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 1088 )
-
-[node name="Pushable65" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 1088 )
-
-[node name="Pushable66" parent="." instance=ExtResource( 10 )]
-position = Vector2( 704, 1088 )
-
-[node name="Pushable67" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1088 )
-
-[node name="Pushable68" parent="." instance=ExtResource( 10 )]
-position = Vector2( 832, 1088 )
-
-[node name="Pushable69" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1088 )
-
-[node name="Pushable72" parent="." instance=ExtResource( 10 )]
-position = Vector2( 256, 1216 )
-
-[node name="Pushable74" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 1216 )
-
-[node name="Pushable75" parent="." instance=ExtResource( 10 )]
-position = Vector2( 448, 1216 )
-
-[node name="Pushable76" parent="." instance=ExtResource( 10 )]
-position = Vector2( 512, 1216 )
-
-[node name="Pushable77" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 1216 )
-
-[node name="Pushable78" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 1216 )
-
-[node name="Pushable80" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1216 )
-
-[node name="Pushable81" parent="." instance=ExtResource( 10 )]
-position = Vector2( 832, 1216 )
-
-[node name="Pushable82" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1216 )
-
-[node name="Pushable83" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 1216 )
-
-[node name="Pushable85" parent="." instance=ExtResource( 10 )]
-position = Vector2( 256, 1280 )
-
-[node name="Pushable86" parent="." instance=ExtResource( 10 )]
-position = Vector2( 320, 1280 )
-
-[node name="Pushable91" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 1280 )
-
-[node name="Pushable93" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1280 )
-
-[node name="Pushable94" parent="." instance=ExtResource( 10 )]
-position = Vector2( 832, 1280 )
-
-[node name="Pushable95" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1280 )
-
-[node name="Pushable96" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 1280 )
-
-[node name="Pushable97" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1024, 1280 )
-
-[node name="Pushable100" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 1344 )
-
-[node name="Pushable101" parent="." instance=ExtResource( 10 )]
-position = Vector2( 448, 1344 )
-
-[node name="Pushable102" parent="." instance=ExtResource( 10 )]
-position = Vector2( 512, 1344 )
-
-[node name="Pushable103" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 1344 )
-
-[node name="Pushable104" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 1344 )
-
-[node name="Pushable105" parent="." instance=ExtResource( 10 )]
-position = Vector2( 704, 1344 )
-
-[node name="Pushable106" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1344 )
-
-[node name="Pushable108" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1344 )
-
-[node name="Pushable109" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 1344 )
-
-[node name="Pushable110" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1024, 1344 )
-
-[node name="Pushable111" parent="." instance=ExtResource( 10 )]
-position = Vector2( 256, 1408 )
-
-[node name="Pushable112" parent="." instance=ExtResource( 10 )]
-position = Vector2( 320, 1408 )
-
-[node name="Pushable113" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 1408 )
-
-[node name="Pushable116" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 1408 )
-
-[node name="Pushable119" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1408 )
-
-[node name="Pushable121" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1408 )
-
-[node name="Pushable122" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 1408 )
-
-[node name="Pushable123" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1024, 1408 )
-
-[node name="Pushable125" parent="." instance=ExtResource( 10 )]
-position = Vector2( 320, 1472 )
-
-[node name="Pushable126" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 1472 )
-
-[node name="Pushable127" parent="." instance=ExtResource( 10 )]
-position = Vector2( 448, 1472 )
-
-[node name="Pushable133" parent="." instance=ExtResource( 10 )]
-position = Vector2( 448, 1536 )
-
-[node name="Pushable137" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 1536 )
-
-[node name="Pushable128" parent="." instance=ExtResource( 10 )]
-position = Vector2( 512, 1472 )
-
-[node name="Pushable129" parent="." instance=ExtResource( 10 )]
-position = Vector2( 576, 1472 )
-
-[node name="Pushable130" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 1472 )
-
-[node name="Pushable131" parent="." instance=ExtResource( 10 )]
-position = Vector2( 704, 1472 )
-
-[node name="Pushable132" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1472 )
-
-[node name="Pushable134" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1472 )
-
-[node name="Pushable135" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 1472 )
-
-[node name="Pushable136" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1024, 1472 )
-
-[node name="Pushable139" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 1536 )
-
-[node name="Pushable140" parent="." instance=ExtResource( 10 )]
-position = Vector2( 256, 1472 )
-
-[node name="Pushable141" parent="." instance=ExtResource( 10 )]
-position = Vector2( 512, 1536 )
-
-[node name="Pushable143" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 1536 )
-
-[node name="Pushable144" parent="." instance=ExtResource( 10 )]
-position = Vector2( 704, 1536 )
-
-[node name="Pushable145" parent="." instance=ExtResource( 10 )]
-position = Vector2( 768, 1536 )
-
-[node name="Pushable146" parent="." instance=ExtResource( 10 )]
-position = Vector2( 832, 1536 )
-
-[node name="Pushable147" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 1536 )
-
-[node name="Pushable148" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 1536 )
-
 [node name="Pushable17" parent="." instance=ExtResource( 10 )]
 position = Vector2( 896, 2880 )
 
@@ -1193,15 +868,15 @@ position = Vector2( 336.352, 2115.19 )
 solid_leaves = false
 
 [node name="Tree4" parent="." instance=ExtResource( 8 )]
-position = Vector2( 831.123, 2244.14 )
+position = Vector2( 803.956, 2244.14 )
 solid_leaves = false
 
 [node name="Tree5" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1120.54, 2297.23 )
+position = Vector2( 1117.34, 2292.44 )
 solid_leaves = false
 
 [node name="Tree6" parent="." instance=ExtResource( 8 )]
-position = Vector2( 970.919, 2312.08 )
+position = Vector2( 958.135, 2312.08 )
 solid_leaves = false
 
 [node name="CuttableTree" parent="." instance=ExtResource( 16 )]
@@ -1221,6 +896,48 @@ position = Vector2( 333.533, 5098.05 )
 
 [node name="MonsterJump2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 988.2, 5351.66 )
+
+[node name="MonsterJump3" parent="." instance=ExtResource( 14 )]
+position = Vector2( 465.634, 1479.56 )
+
+[node name="MonsterJump4" parent="." instance=ExtResource( 14 )]
+position = Vector2( 465.634, 1143.96 )
+
+[node name="MonsterJump5" parent="." instance=ExtResource( 14 )]
+position = Vector2( 876.335, 1477.96 )
+
+[node name="MonsterJump6" parent="." instance=ExtResource( 14 )]
+position = Vector2( 852.365, 1135.97 )
+
+[node name="Pushable18" parent="." instance=ExtResource( 10 )]
+position = Vector2( 640.999, 793.898 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 18 )]
+position = Vector2( 217.512, 731.574 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 18 )]
+position = Vector2( 303.808, 784.31 )
+
+[node name="Node2D14" parent="." instance=ExtResource( 18 )]
+position = Vector2( 386.907, 729.976 )
+
+[node name="Node2D15" parent="." instance=ExtResource( 18 )]
+position = Vector2( 468.408, 797.094 )
+
+[node name="Node2D16" parent="." instance=ExtResource( 18 )]
+position = Vector2( 549.909, 728.378 )
+
+[node name="Node2D17" parent="." instance=ExtResource( 18 )]
+position = Vector2( 748.069, 728.378 )
+
+[node name="Node2D18" parent="." instance=ExtResource( 18 )]
+position = Vector2( 832.766, 795.496 )
+
+[node name="Node2D19" parent="." instance=ExtResource( 18 )]
+position = Vector2( 930.248, 718.789 )
+
+[node name="Node2D20" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1019.74, 787.506 )
 
 [node name="Node2D" parent="." instance=ExtResource( 18 )]
 position = Vector2( 874.928, 3916.47 )

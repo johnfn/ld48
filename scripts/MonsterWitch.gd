@@ -16,13 +16,9 @@ var current_movement_direction: Vector2
 var dying = false
 
 func _ready():
-  self.contact_monitor = true
-  self.contacts_reported = true
-  
   current_movement_direction = starting_direction
   
-  .connect("body_entered", self, "on_enter")
-  .connect("body_exited", self, "on_exit")
+  ._ready()
 
 func _integrate_forces(state):
   if Letterbox.in_cinematic: 
@@ -34,11 +30,15 @@ func _integrate_forces(state):
     self.sprite.flip_h = current_movement_direction.x > 0
 
 func on_enter(other) -> void:
+  .on_enter(other)
+  
   if other.has_method("is_player") and other.is_player():
     player_in_contact = other
   else:
     current_movement_direction *= -1
 
 func on_exit(other) -> void:
+  .on_exit(other)
+  
   if other == player_in_contact:
     player_in_contact = null
