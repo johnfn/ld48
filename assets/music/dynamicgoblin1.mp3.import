@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dynamicgoblin1.mp3-7e7db4711a51ec78106154e7c5822a0e.mp3str"
+
+[deps]
+
+source_file="res://assets/music/dynamicgoblin1.mp3"
+dest_files=[ "res://.import/dynamicgoblin1.mp3-7e7db4711a51ec78106154e7c5822a0e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

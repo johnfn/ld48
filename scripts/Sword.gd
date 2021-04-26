@@ -51,6 +51,7 @@ func set_in_use(in_use: bool) -> void:
   if swinging:
     return
   
+  SoundManager.play_sound("Sword")
   swinging = true
   has_raycasted_this_swing = false
   SwordSprite.visible = true

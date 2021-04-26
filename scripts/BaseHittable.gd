@@ -5,6 +5,7 @@ export(int) var health = 1
 
 onready var sprite = $Sprite
 onready var parent = get_node("../")
+var hit_sfx = "Hit"
 
 var heart_drop = load("res://components/HeartDrop.tscn")
 var being_hit = false
@@ -43,6 +44,7 @@ func damage(amount: int, source: Node2D) -> void:
 
   being_hit = true
   health -= amount
+  SoundManager.play_sound(hit_sfx)
   
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true
