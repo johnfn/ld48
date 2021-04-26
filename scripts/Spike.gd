@@ -10,4 +10,3 @@ func _ready() -> void:
 func on_enter(other) -> void:
     if other.has_method("is_player") and other.is_player():
       other.damage(damage, self)
-  

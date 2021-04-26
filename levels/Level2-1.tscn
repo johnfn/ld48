@@ -41,7 +41,7 @@ resource_local_to_scene = true
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
 
 uniform float white;
@@ -51,9 +51,9 @@ void fragment() {
     COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
 }"
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
-shader = SubResource( 7 )
+shader = SubResource( 6 )
 shader_param/white = null
 
 [node name="LevelX" type="Node2D"]
@@ -310,7 +310,7 @@ position = Vector2( 979.61, 2286.91 )
 
 [node name="MonsterWitch2" parent="Enemies" instance=ExtResource( 9 )]
 material = SubResource( 2 )
-position = Vector2( 659.28, 654.63 )
+position = Vector2( 647.399, 652.402 )
 
 [node name="MonsterShooter3" parent="Enemies" instance=ExtResource( 5 )]
 material = SubResource( 3 )
@@ -350,27 +350,27 @@ material = SubResource( 5 )
 position = Vector2( 262.863, 2383.71 )
 
 [node name="Grass" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 8 )
+material = SubResource( 7 )
 position = Vector2( 862.274, -854.643 )
 
 [node name="Grass4" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 8 )
+material = SubResource( 7 )
 position = Vector2( -57.5613, -864.355 )
 
 [node name="Grass5" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 8 )
+material = SubResource( 7 )
 position = Vector2( 57.5915, -896.265 )
 
 [node name="Grass6" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 8 )
+material = SubResource( 7 )
 position = Vector2( -35.3632, -786.661 )
 
 [node name="Grass2" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 8 )
+material = SubResource( 7 )
 position = Vector2( 751.283, -879.616 )
 
 [node name="Grass3" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 8 )
+material = SubResource( 7 )
 position = Vector2( 860.886, -758.914 )
 rotation = 0.0249332
 
@@ -513,16 +513,16 @@ position = Vector2( 640, 1344 )
 position = Vector2( 576, 1344 )
 
 [node name="Node2D3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 836.413, 737.212 )
+position = Vector2( 852.007, 737.955 )
 
 [node name="Node2D10" parent="." instance=ExtResource( 12 )]
-position = Vector2( 753.05, 738.046 )
+position = Vector2( 759.733, 739.531 )
 
 [node name="Node2D5" parent="." instance=ExtResource( 12 )]
-position = Vector2( 470.279, 739.102 )
+position = Vector2( 447.257, 741.129 )
 
 [node name="Node2D9" parent="." instance=ExtResource( 12 )]
-position = Vector2( 549.473, 737.435 )
+position = Vector2( 545.76, 742.633 )
 rotation = -0.0493538
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 14 )]
