@@ -20,19 +20,9 @@ _global_script_classes=[ {
 "path": "res://scripts/BaseHittableArea.gd"
 }, {
 "base": "Area2D",
-"class": "DialogTrigger",
-"language": "GDScript",
-"path": "res://scripts/DialogTrigger.gd"
-}, {
-"base": "Area2D",
 "class": "Dog",
 "language": "GDScript",
 "path": "res://scripts/Dog.gd"
-}, {
-"base": "Node2D",
-"class": "Main",
-"language": "GDScript",
-"path": "res://scripts/Main.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -42,9 +32,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "BaseHittable": "",
 "BaseHittableArea": "",
-"DialogTrigger": "",
 "Dog": "",
-"Main": "",
 "Player": ""
 }
 
@@ -68,7 +56,6 @@ window/size/height=1280
 window/size/resizable=false
 window/size/test_width=800
 window/size/test_height=800
-window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
