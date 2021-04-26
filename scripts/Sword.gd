@@ -1,13 +1,14 @@
 extends Node2D
 
 onready var Letterbox = $"/root/Main/Letterbox"
-onready var AnimationPlayer = $AnimationPlayer
-onready var swing_animation = $AnimationPlayer.get_animation("Swing")
+onready var AnimationPlayer = $SwordObj/AnimationPlayer
+onready var swing_animation = $SwordObj/AnimationPlayer.get_animation("Swing")
 onready var Hitbox: CollisionPolygon2D = $Hitbox
-onready var SwordSprite = $SwordSprite
+onready var SwordSprite = $SwordObj/SwordSprite
 onready var StickSprite = $StickSprite
 onready var SwordArea = self
 onready var root = $"/root"
+onready var Anim = $AnimatedSprite
 var raycast_instance: RayCast2D
 
 var damage = 1
@@ -31,8 +32,13 @@ func _ready() -> void:
   raycast_instance.add_exception(player)
   
   root.call_deferred("add_child", raycast_instance)
+  Anim.visible = false
+  Anim.connect("animation_finished", self, "hide_anim")
   
   SwordArea.connect("body_entered", SwordArea, "on_enter")
+
+func hide_anim():
+  Anim.visible = false
 
 func on_pick_up() -> void:
   Hitbox.set_disabled(true)
@@ -62,12 +68,16 @@ func set_in_use(in_use: bool) -> void:
   # this is necessary so that we DEFINITELY trigger a body_entered when we start the swing (e.g. if the sword starts IN the enemy it will not trigger body_entered)
   Hitbox.set_disabled(false)
   
+  Anim.visible = true
+  Anim.frame = 0
+  Anim.play("slice")
   AnimationPlayer.play("Swing")
 
   yield(AnimationPlayer, "animation_finished")
 
   Hitbox.set_disabled(true)
   AnimationPlayer.clear_queue()
+  AnimationPlayer.seek(0)
   SwordSprite.modulate.a = 0.3
   
   swinging = false
