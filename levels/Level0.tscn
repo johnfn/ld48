@@ -15,7 +15,7 @@ position = Vector2( 1.12231, 1.12225 )
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Donut" parent="Items" instance=ExtResource( 4 )]
-position = Vector2( 683.729, 210.839 )
+position = Vector2( 704, 1024 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -93,7 +93,7 @@ position = Vector2( 667.512, 1379.23 )
 position = Vector2( 677.235, 0 )
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 2 )]
-position = Vector2( 664.506, 208.441 )
+position = Vector2( 640, 1216 )
 destinations = [ NodePath("DogDestination") ]
 dog_path = NodePath("../Items/Donut")
 

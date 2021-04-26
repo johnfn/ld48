@@ -968,10 +968,6 @@ position = Vector2( 955.524, 4455.95 )
 [node name="Node2D9" parent="." instance=ExtResource( 18 )]
 position = Vector2( 873.751, 4149.62 )
 
-[node name="DialogTrigger2" parent="." instance=ExtResource( 17 )]
-position = Vector2( 620.682, 2738.89 )
-dialog = [ "I just hope Winston's okay... It's not like him to just run off like that." ]
-
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 4 )]
 position = Vector2( 676.614, 272.122 )
 destinations = [ NodePath("../dddddddddd") ]
