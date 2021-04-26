@@ -24,18 +24,10 @@ var min_height = 50
 #    "blah blah blah my doggy blah oh noooooo no" 
 #  ])
 
-func _init():
-  print("WTF")
-
 func _ready():
   ZSorter.z_index = 500
   PressXKey.visible = false
-  print("Huh")
-  print(BlackImage)
-  print(PressXKey)
   hide_everything()
-  
-  emit_signal("ready")
   
 func hide_everything():
   BlackImage.visible = false
@@ -44,12 +36,9 @@ func hide_everything():
   BlackText.visible = false
 
 func display_text_sequence_co(target: Node2D, sequence: Array) -> void:
-  print("Add")
   target.call_deferred("add_child", self)
   
-  print("Waiting")
   yield(self, "ready")
-  print("Done")
   
   hide_everything()
   
