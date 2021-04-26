@@ -76,10 +76,11 @@ animations = [ {
 } ]
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( -0.538208, -0.538147 )
 collision_mask = 942
 script = ExtResource( 2 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.294118 )
 position = Vector2( -76.5003, -162.845 )
 rotation = 0.0156109
@@ -93,7 +94,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 3 )
-position = Vector2( 2.88979, -29.1645 )
+position = Vector2( 2.35164, -29.1645 )
 rotation = 0.000139589
 z_index = 1
 frames = SubResource( 2 )

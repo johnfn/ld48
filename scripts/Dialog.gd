@@ -91,12 +91,6 @@ func display_text_co(new_text: String) -> void:
     
     if one_last_loop:
       break
-      
-    yield(get_tree(), "idle_frame")
-    if Input.is_action_just_pressed("interact"): one_last_loop = true
-    
-    yield(get_tree(), "idle_frame")
-    if Input.is_action_just_pressed("interact"): one_last_loop = true
     
     yield(get_tree(), "idle_frame")
     if Input.is_action_just_pressed("interact"): one_last_loop = true
