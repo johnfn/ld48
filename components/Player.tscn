@@ -109,6 +109,7 @@ z_index = 1
 position = Vector2( 38.0235, 20.5912 )
 
 [node name="Sprite" type="Sprite" parent="Equipment/weapons"]
+material = ExtResource( 3 )
 texture = ExtResource( 15 )
 
 [node name="rh_up" type="Node2D" parent="Equipment"]
