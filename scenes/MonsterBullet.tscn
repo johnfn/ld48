@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/art/bullet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/MonsterBullet.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/chara_shadow.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12.9477, 11.8649 )
@@ -11,6 +12,12 @@ collision_layer = 128
 collision_mask = 3
 mode = 2
 script = ExtResource( 2 )
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.109804 )
+position = Vector2( -1.72067, 10.1328 )
+scale = Vector2( 0.497832, 0.497832 )
+texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
