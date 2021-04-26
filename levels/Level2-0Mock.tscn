@@ -379,6 +379,13 @@ position = Vector2( 1450.99, 5477.11 )
 
 [node name="EnemyDialogTrigger" parent="." instance=ExtResource( 9 )]
 position = Vector2( 619.303, 978.393 )
+dialog = [ "Bertha, look at what I can do!" ]
+enemy_speaker = NodePath("../Shrub34/MonsterWitch6")
+
+[node name="EnemyDialogTrigger2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 619.303, 865.548 )
+dialog = [ "I'm doing it too, Mavis!" ]
+enemy_speaker = NodePath("../Shrub34/MonsterWitch7")
 
 [node name="Markers" type="Node2D" parent="."]
 

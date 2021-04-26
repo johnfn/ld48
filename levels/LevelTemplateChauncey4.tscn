@@ -17,13 +17,13 @@
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id=4]
-resource_local_to_scene = true
-
-[sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id=5]
@@ -236,11 +236,11 @@ material = SubResource( 1 )
 position = Vector2( 282.8, 632.368 )
 
 [node name="MonsterWitch3" parent="Enemies" instance=ExtResource( 9 )]
-material = SubResource( 3 )
+material = SubResource( 2 )
 position = Vector2( 1026.82, 2014.79 )
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 5 )]
-material = SubResource( 4 )
+material = SubResource( 3 )
 position = Vector2( 975.089, 475.893 )
 direction_to_shoot = Vector2( -1, 0 )
 
@@ -265,43 +265,43 @@ position = Vector2( 1026.82, 1822.79 )
 position = Vector2( 640, 1280 )
 
 [node name="Shrub5" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 251.895, 2307.32 )
 
 [node name="Shrub6" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 390.423, 2351.84 )
 
 [node name="Shrub7" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 270.448, 2426.06 )
 
 [node name="Shrub8" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 206.132, 1065.52 )
 
 [node name="Shrub9" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 322.396, 1121.17 )
 
 [node name="Shrub10" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 216.027, 1168.18 )
 
 [node name="Shrub11" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 275.761, 392.93 )
 
 [node name="Shrub12" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 348.481, 309.821 )
 
 [node name="Shrub13" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 405.618, 402.02 )
 
 [node name="Shrub14" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 878.297, 312.418 )
 
 [node name="Fillable" parent="." instance=ExtResource( 11 )]
