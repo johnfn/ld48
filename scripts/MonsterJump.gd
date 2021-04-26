@@ -1,13 +1,17 @@
 extends KinematicBody2D
 
-onready var Sprite: Sprite = $Sprite
+onready var sprite: Sprite = $Sprite
 onready var Shadow = $Shadow
+onready var parent = $"../"
 
+var heart_drop = load("res://components/HeartDrop.tscn")
 var height = 0.0
 var initial_sprite_y = 0.0
+var being_hit = false
+var health = 5
 
 func _ready():
-  initial_sprite_y = Sprite.position.y
+  initial_sprite_y = sprite.position.y
   
   resize_shadow()
   
@@ -52,7 +56,7 @@ func go():
     var vy = -1.0
     
     height += vy
-    Sprite.position.y = initial_sprite_y + height
+    sprite.position.y = initial_sprite_y + height
     
     next_dir = Vector2(randf(), randf()).normalized()
 
@@ -63,6 +67,58 @@ func go():
       
       height += vy
       vy += 0.003
-      Sprite.position.y = initial_sprite_y + height
+      sprite.position.y = initial_sprite_y + height
 
       resize_shadow()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# copied from BaseHittable
+
+func is_enemy() -> bool:
+  return true
+
+# can be overridden if u want custom behavior.
+func on_die():
+  if randi() % 5 == 0:
+    var new_heart = heart_drop.instance()
+    parent.add_child(new_heart)
+    new_heart.position = position
+  
+  queue_free()
+
+func damage(amount: int, source: Node2D) -> void:
+  if height < -20.0:
+    return
+    
+  if being_hit:
+    return
+
+  being_hit = true
+  health -= amount
+  
+  if sprite is Sprite:
+    yield(CombatHelpers.damage_anim_sprite(sprite), "completed")
+  # elif sprite is AnimatedSprite:
+  #  yield(CombatHelpers.damage_anim_animated_sprite(sprite), "completed")
+  
+  if health <= 0:
+    on_die()
+    
+  being_hit = false
