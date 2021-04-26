@@ -71,7 +71,7 @@ func _physics_process(delta):
   if Hitbox.disabled:
     return
   
-  if SwordArea.get_overlapping_bodies().size() == 0:
+  if SwordArea.get_overlapping_bodies().size() == 0 and SwordArea.get_overlapping_areas().size() == 0:
     return
     
   if has_raycasted_this_swing:
@@ -84,9 +84,10 @@ func _physics_process(delta):
   
   hits.append_array(more_hits)
   
-  var enemy_hits = []
+  print(hits)
   
   update()
+  
   for potential_enemy in hits:
     if potential_enemy.has_method("is_enemy") and potential_enemy.is_enemy():
       

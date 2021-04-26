@@ -1,17 +1,24 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Monster3x.tscn" type="PackedScene" id=2]
-[ext_resource path="res://components/CuttableTree.tscn" type="PackedScene" id=3]
-[ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=8]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=11]
 
-[sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float white;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+    COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
+}"
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
 
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
@@ -26,21 +33,6 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = SubResource( 3 )
-shader_param/white = null
-
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
-
-uniform float white;
-
-void fragment() {
-    vec4 texture_color = texture(TEXTURE, UV);
-    COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-resource_local_to_scene = true
-shader = SubResource( 5 )
 shader_param/white = null
 
 [node name="Main" type="Node2D"]
@@ -137,27 +129,22 @@ position = Vector2( 677.235, 0 )
 [node name="DogExit1" type="Node2D" parent="Markers"]
 position = Vector2( 692.302, 250.504 )
 
-[node name="CuttableTree" parent="." instance=ExtResource( 3 )]
-material = SubResource( 1 )
-position = Vector2( 591.305, 1718.48 )
-health = 3
-
-[node name="Shrub2" parent="." instance=ExtResource( 4 )]
-material = SubResource( 2 )
-position = Vector2( 796.144, 1729.44 )
-
-[node name="Shrub3" parent="." instance=ExtResource( 4 )]
-material = SubResource( 2 )
-position = Vector2( 776.856, 1609.43 )
-
-[node name="Shrub4" parent="." instance=ExtResource( 4 )]
-material = SubResource( 2 )
-position = Vector2( 652.559, 1591.22 )
-
 [node name="Shrub5" parent="." instance=ExtResource( 11 )]
-material = SubResource( 4 )
+material = SubResource( 2 )
 position = Vector2( 492.68, 1745.04 )
 
+[node name="Shrub6" parent="." instance=ExtResource( 11 )]
+material = SubResource( 2 )
+position = Vector2( 665.163, 1623.4 )
+
+[node name="Shrub7" parent="." instance=ExtResource( 11 )]
+material = SubResource( 2 )
+position = Vector2( 526.79, 1624.69 )
+
+[node name="Shrub8" parent="." instance=ExtResource( 11 )]
+material = SubResource( 2 )
+position = Vector2( 685.114, 1715.43 )
+
 [node name="Monster" parent="." instance=ExtResource( 2 )]
-material = SubResource( 6 )
+material = SubResource( 4 )
 position = Vector2( 677.235, 1380.85 )
