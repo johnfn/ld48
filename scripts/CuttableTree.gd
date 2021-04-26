@@ -1,6 +1,5 @@
 extends BaseHittable
 
-onready var parent = get_node("../")
 var LogScene = load("res://components/PushableTemplate.tscn")
 
 func _init().():

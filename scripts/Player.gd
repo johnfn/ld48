@@ -64,8 +64,8 @@ func _physics_process(delta: float) -> void:
 
 
   if input_vec == Vector2(0, 0) and Sprite.is_playing():
-	# IdleCounter smooths the stopping animation
-	# Also reduces sliding
+  # IdleCounter smooths the stopping animation
+  # Also reduces sliding
     idleCounter += 1
     if idleCounter > 3:
       Sprite.stop()
@@ -127,6 +127,12 @@ func set_direction(dir_name):
       Weapons.position = $Equipment/rh_upright.position
     "downright":
       Weapons.position = $Equipment/rh_downright.position
+
+func get_health(amount: int) -> void:
+  health += amount
+  
+  if health > max_health:
+    health = max_health
 
 func damage(amount: int, source: Node2D) -> void:
   if not is_invuln and health > 0:
