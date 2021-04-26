@@ -12,6 +12,7 @@ export(float) var invuln_time = 0.4
 export(int) var max_health = 4
 
 onready var Sprite: AnimatedSprite = $Sprite
+onready var Hand = $Equipment/weapons/Sprite
 onready var Equipment = $Equipment
 onready var Weapons = $Equipment/weapons
 onready var health = max_health

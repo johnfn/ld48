@@ -217,9 +217,26 @@ func handle_item_body_entered(body: Node, item_node):
 
 
 func handle_player_died():
+  Letterbox.in_cinematic = true
+  
+  print(Player.modulate.a)
+  
+  for x in range(60):
+    yield(get_tree(), "idle_frame")
+    Player.Sprite.material.set_shader_param("white", min(1.0, x / 30.0))
+    Player.Hand.material.set_shader_param("white", min(1.0, x / 30.0))
+    Player.modulate.a = 1.0 - float(x) / 60.0
+    
+  yield(Letterbox.fade_to_black(120.0), "completed")
+
   start_level(curr_level_num)
-
-
+  Player.modulate.a = 1.0
+  Player.Sprite.material.set_shader_param("white", 0.0)
+  Player.Hand.material.set_shader_param("white", 0.0)
+  yield(get_tree(), "idle_frame")
+  Letterbox.unfade_to_black_instant()
+  Letterbox.in_cinematic = false
+  
 const BACKGROUND_HEIGHT = 2560
 func _on_background_entered(body, i):
   if body.has_method("is_player") and body.is_player():

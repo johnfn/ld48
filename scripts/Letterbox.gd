@@ -9,7 +9,6 @@ onready var camera: Camera2D = null
 onready var main = null
 
 var letterbox_animation_length = 45.0
-var fade_length = 120.0
 var zoom_in_amount = 0.8
 
 # are we currently in any sort of cinematic at all?
@@ -73,7 +72,7 @@ func animate_out():
 
   is_animating = false
 
-func fade_to_black():
+func fade_to_black(fade_length):
   if is_animating: 
     return
     
@@ -88,3 +87,7 @@ func fade_to_black():
     EntireScreenFadeRect.modulate.a = (float(x) / fade_length)
   
   is_animating = false
+
+func unfade_to_black_instant():
+  EntireScreenFadeRect.visible = false
+  EntireScreenFadeRect.modulate.a = 0.0
