@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/goblinouch5.wav-7d2c7d04d91095a2989a17e71cd98866.sample"
+
+[deps]
+
+source_file="res://assets/music/goblinouch5.wav"
+dest_files=[ "res://.import/goblinouch5.wav-7d2c7d04d91095a2989a17e71cd98866.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
