@@ -13,10 +13,10 @@ extents = Vector2( 640.632, 1277.67 )
 extents = Vector2( 956.12, 10 )
 
 [node name="Main" type="Node2D"]
-position = Vector2( 3.18482, 0 )
+position = Vector2( 3.18482, -3.61035 )
 script = ExtResource( 3 )
 debug_already_has_sword = true
-curr_level_num = 5
+level_scenes = [ "res://levels/Level1-0Mock.tscn", "res://levels/Level1-1Mock.tscn", "res://levels/Level1-2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn" ]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -91,7 +91,7 @@ current = true
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="BottomWall" type="StaticBody2D" parent="Walls"]
-collision_layer = 2
+collision_layer = 512
 
 [node name="Box" type="CollisionShape2D" parent="Walls/BottomWall"]
 position = Vector2( 508.979, 10 )
@@ -99,7 +99,8 @@ shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="TopWall" type="StaticBody2D" parent="Walls"]
-collision_layer = 2
+position = Vector2( 0, 60 )
+collision_layer = 512
 
 [node name="Box" type="CollisionShape2D" parent="Walls/TopWall"]
 position = Vector2( 509.399, -10 )

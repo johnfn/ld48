@@ -15,9 +15,19 @@ _global_script_classes=[ {
 "path": "res://scripts/BaseHittable.gd"
 }, {
 "base": "Area2D",
+"class": "DialogTrigger",
+"language": "GDScript",
+"path": "res://scripts/DialogTrigger.gd"
+}, {
+"base": "Area2D",
 "class": "Dog",
 "language": "GDScript",
 "path": "res://scripts/Dog.gd"
+}, {
+"base": "Node2D",
+"class": "Main",
+"language": "GDScript",
+"path": "res://scripts/Main.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -26,7 +36,9 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseHittable": "",
+"DialogTrigger": "",
 "Dog": "",
+"Main": "",
 "Player": ""
 }
 
@@ -39,9 +51,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Test="*res://compiled/Test.gd"
 CombatHelpers="*res://scripts/CombatHelpers.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
+Test="*res://compiled/Test.gd"
 
 [display]
 
@@ -50,6 +62,7 @@ window/size/height=1280
 window/size/resizable=false
 window/size/test_width=800
 window/size/test_height=800
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -104,6 +117,7 @@ interact={
 2d_physics/layer_7="Areas"
 2d_physics/layer_8="Flying Enemies"
 2d_physics/layer_9="Holes"
+2d_physics/layer_10="Bounds"
 
 [physics]
 

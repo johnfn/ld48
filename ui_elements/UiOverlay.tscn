@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ui_elements/UIHeart.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/UIHeart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/UiOverlay.gd" type="Script" id=2]
 [ext_resource path="res://ui_elements/UIInventorySlot.tscn" type="PackedScene" id=3]
 
@@ -14,30 +14,21 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hearts" type="HBoxContainer" parent="CanvasLayer"]
-margin_left = 1010.03
-margin_top = 1210.27
-margin_right = 1309.03
-margin_bottom = 1326.27
+margin_left = 961.583
+margin_top = 66.3851
+margin_right = 1260.58
+margin_bottom = 182.385
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Heart" parent="CanvasLayer/Hearts" instance=ExtResource( 1 )]
-margin_right = 97.0
-margin_bottom = 116.0
-size_flags_horizontal = 3
 
 [node name="Heart2" parent="CanvasLayer/Hearts" instance=ExtResource( 1 )]
-margin_left = 101.0
-margin_right = 198.0
-margin_bottom = 116.0
-size_flags_horizontal = 3
+position = Vector2( 100, 0 )
 
 [node name="Heart3" parent="CanvasLayer/Hearts" instance=ExtResource( 1 )]
-margin_left = 202.0
-margin_right = 299.0
-margin_bottom = 116.0
-size_flags_horizontal = 3
+position = Vector2( 200, 0 )
 
 [node name="InventorySlots" type="HBoxContainer" parent="CanvasLayer"]
 margin_left = 36.0

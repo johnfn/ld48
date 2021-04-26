@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
-[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=5]
@@ -293,10 +292,6 @@ position = Vector2( 1182.8, 3379.1 )
 position = Vector2( 1439.02, 3376.81 )
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="DogMoveTrigger" parent="." instance=ExtResource( 2 )]
-position = Vector2( 620.355, 311.233 )
-dog_path = NodePath("../Items/Donut")
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 8 )]
 position = Vector2( 648.739, 3018.5 )

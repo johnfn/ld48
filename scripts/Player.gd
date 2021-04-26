@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
     
     knockback = false
     knockback_source = null
-  
 
   if input_vec.y < 0:
     if input_vec.x > 0:
