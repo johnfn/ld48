@@ -24,6 +24,9 @@ var knockback = false
 var knockback_source: Node2D = null
 
 func _process(delta: float) -> void:
+  if Letterbox.in_cinematic:
+    return
+    
   Weapons.look_at(get_global_mouse_position())
 
 func _physics_process(delta: float) -> void:

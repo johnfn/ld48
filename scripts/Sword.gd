@@ -41,6 +41,9 @@ func set_in_use(in_use: bool) -> void:
   if not in_use:
     return
     
+  if Letterbox.in_cinematic:
+    return
+    
   if swinging:
     return
   
@@ -93,5 +96,4 @@ func _physics_process(delta):
       print(hit)
       
       if hit == potential_enemy:
-        print("Damage")
         hit.damage(damage, self)
