@@ -67,7 +67,6 @@ CombatHelpers="*res://scripts/CombatHelpers.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
 CloudSpawner="*res://scenes/CloudSpawner.tscn"
 Test="*res://compiled/Test.gd"
-SoundManager="*res://scripts/SoundManager.gd"
 
 [display]
 
