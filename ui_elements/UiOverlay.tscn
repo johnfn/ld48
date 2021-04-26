@@ -14,10 +14,10 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hearts" type="HBoxContainer" parent="CanvasLayer"]
-margin_left = 961.583
-margin_top = 66.3851
-margin_right = 1260.58
-margin_bottom = 182.385
+margin_left = 1061.58
+margin_top = 1205.05
+margin_right = 1360.58
+margin_bottom = 1321.05
 __meta__ = {
 "_edit_use_anchors_": false
 }
