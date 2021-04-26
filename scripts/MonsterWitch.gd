@@ -34,12 +34,10 @@ func _integrate_forces(state):
     self.sprite.flip_h = current_movement_direction.x > 0
 
 func on_enter(other) -> void:
-  if other is StaticBody2D:
-    if other.get_collision_layer_bit(1): # Wall
-      current_movement_direction *= -1
-  
   if other.has_method("is_player") and other.is_player():
     player_in_contact = other
+  else:
+    current_movement_direction *= -1
 
 func on_exit(other) -> void:
   if other == player_in_contact:

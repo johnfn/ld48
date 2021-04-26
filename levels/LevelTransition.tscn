@@ -9,7 +9,7 @@ extents = Vector2( 640, 1280 )
 [node name="LevelTransition" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Tree18" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( -98.4561, 49.5802 )

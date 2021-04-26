@@ -16,7 +16,7 @@ export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
 export(bool) var debug_already_has_sword = false
 
-export(Array) var level_scenes = ["res://levels/Level0Mock.tscn", "res://levels/Level1Mock.tscn", "res://levels/Level2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn"]
+export(Array) var level_scenes = ["res://levels/LevelRunner.tscn", "res://levels/Level1Mock.tscn", "res://levels/Level2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn"]
 
 export(int) var curr_level_num = 0
 
@@ -29,7 +29,6 @@ var Level = null
 const BASE_VIEWPORT_HEIGHT = 1280 # TODO this sucks
 const WALL_THICKNESS = 10
 var last_player_y = 0
-var last_is_top_open = false
 var is_transitioning = false
 var bgs = [0, 1, 2, 3]
 
@@ -43,11 +42,19 @@ func checkpoint():
   saved_slots = slots.duplicate()
 
 
+func load_level_to_tree(level_num):
+  Level = load(level_scenes[level_num]).instance()
+  if Level.has_method('set_player'):
+    Level.set_player(Player)
+  if Level.has_method('set_camera'):
+    Level.set_camera(Cam)
+  Levels.add_child(Level)
+
+
 func start_level(level_num: int) -> void:
   if Level != null:
     Level.queue_free()
-  Level = load(level_scenes[level_num]).instance()
-  Levels.add_child(Level)
+  load_level_to_tree(level_num)
   
   Player.position.x = Level.spawn_point.x
   jump_view(Level.spawn_point.y - Player.position.y)
@@ -69,8 +76,7 @@ func start_level(level_num: int) -> void:
 
 func load_new_level(level_num: int) -> void:
   Level.queue_free()
-  Level = load(level_scenes[level_num]).instance()
-  Levels.add_child(Level)
+  load_level_to_tree(level_num)
   wire_item_signals() 
   TransitionBottom.position.y = Level.bottom_wall
   curr_level_num = level_num
@@ -82,6 +88,7 @@ func update_wall_positions() -> void:
   get_node("Walls/BottomWall/Box").position.y = Level.bottom_wall
   get_node("Walls/TopWall/Box").one_way_collision = Level.is_top_open
   get_node("Walls/TopWall/Box").position.y = Level.top_wall
+  Level.dirty = false
 
 
 func _ready():
@@ -117,7 +124,7 @@ func get_desired_cam_position(delta: float):
   return cam_pos
 
 func _process(delta: float):
-  if not Letterbox.in_cinematic:
+  if not Letterbox.in_cinematic and Cam.current:
     # In this case, the letterbox takes care of camera location 
     Cam.position.y = get_desired_cam_position(delta)
   
@@ -130,11 +137,10 @@ func _process(delta: float):
     is_transitioning = false
     
   last_player_y = Player.position.y
-  
+
 
 func _physics_process(delta):
-  if last_is_top_open != Level.is_top_open:
-    last_is_top_open = Level.is_top_open
+  if Level.dirty:
     update_wall_positions()
 
 
