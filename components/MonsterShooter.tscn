@@ -20,6 +20,8 @@ material = ExtResource( 1 )
 collision_layer = 4
 collision_mask = 407
 script = ExtResource( 3 )
+health = 3
+deals_damage = true
 
 [node name="Right Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.207843 )

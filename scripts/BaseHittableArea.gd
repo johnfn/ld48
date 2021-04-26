@@ -12,6 +12,7 @@ var heart_drop = load("res://components/HeartDrop.tscn")
 var being_hit = false
 var knockback_vector: Vector2 = Vector2.ZERO
 var knockback: bool = false
+var hit_sfx = "Hit"
 
 func _ready() -> void:
   self.connect("body_entered", self, "on_enter")
@@ -42,6 +43,7 @@ func damage(amount: int, source: Node2D) -> void:
 
   being_hit = true
   health -= amount
+  SoundManager.play_sound(hit_sfx)
   
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true

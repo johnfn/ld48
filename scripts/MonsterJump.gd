@@ -112,6 +112,7 @@ func damage(amount: int, source: Node2D) -> void:
 
   being_hit = true
   health -= amount
+  SoundManager.play_sound("Hit")
   
   if sprite is Sprite:
     yield(CombatHelpers.damage_anim_sprite(sprite), "completed")

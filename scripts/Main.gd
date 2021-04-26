@@ -61,11 +61,11 @@ func load_level(level_num):
 
 func update_song():
   var song_name = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
-  if curr_song != song_name:
-    if curr_song != null:
-      $Audio.get_node(curr_song).playing = false
-    curr_song = song_name
-    $Audio.get_node(curr_song).playing = true
+#  if curr_song != song_name:
+#    if curr_song != null:
+#      $Audio.get_node(curr_song).playing = false
+#    curr_song = song_name
+#    $Audio.get_node(curr_song).playing = true
 
 
 func start_level(level_num: int) -> void:
@@ -87,6 +87,7 @@ func start_level(level_num: int) -> void:
     equip_to_slot(slot, saved_slots[slot])
   
   wire_item_signals() 
+  SoundManager.update_possible_rivers()
   Cam.position.y = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
   last_player_y = Player.position.y
   TransitionBottom.position.y = Level.bottom_wall
@@ -102,6 +103,7 @@ func load_new_level(level_num: int) -> void:
   assert(Level.get_node("Markers/LevelBottom") != null)
   Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
   Levels.add_child(Level)
+  SoundManager.update_possible_rivers()
   wire_item_signals() 
   update_wall_positions()
 
@@ -125,7 +127,11 @@ func _ready():
   CloudSpawner.initial_cloud_spawn()
   Letterbox.setup()
   for audio in $Audio.get_children():
-    audio.volume_db = SoundManager.get_db()
+    if audio as AudioStreamPlayer != null:
+      audio.volume_db = SoundManager.get_db()
+    for child in audio.get_children():
+      if child as AudioStreamPlayer != null:
+        child.volume_db = SoundManager.get_db()
 
 
 func jump_view(dist):
@@ -179,6 +185,7 @@ func _process(delta: float):
     OldLevel = null
     
   last_player_y = Player.position.y
+  SoundManager.update_river_volume(Player.global_position.y)
 
 
 func _physics_process(delta):
