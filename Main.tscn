@@ -19,7 +19,7 @@ position = Vector2( 6.34852, -2.43603 )
 script = ExtResource( 3 )
 debug_already_has_sword = true
 level_scenes = [ "res://levels/Level0.tscn", "res://levels/Level1-0.tscn", "res://levels/Level1-2.tscn", "res://levels/Level2-1.tscn", "res://levels/Level4Mock.tscn", "res://levels/LevelTemplateGrantOnlyKeepOut.tscn" ]
-curr_level_num = 2
+curr_level_num = 4
 
 [node name="Background" type="Node2D" parent="."]
 

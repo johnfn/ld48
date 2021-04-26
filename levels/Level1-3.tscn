@@ -5,7 +5,7 @@
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=5]
-[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=10]
@@ -507,11 +507,6 @@ position = Vector2( 1036.05, 5835.22 )
 material = SubResource( 2 )
 position = Vector2( 402.305, 6403.47 )
 
-[node name="DialogTrigger" parent="." instance=ExtResource( 1 )]
-position = Vector2( 652.684, 7135.18 )
-dialog = [ "Looks like I'm gonna have to fight some more evil witches to get to Winston...", "But with my trusty sword, nothing can go wrong!" ]
-cinematic_style_dialog = true
-
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="LevelBottom" type="Node2D" parent="Markers"]
@@ -617,9 +612,6 @@ position = Vector2( 1113.86, 4089.52 )
 [node name="Shrub3" parent="." instance=ExtResource( 9 )]
 material = SubResource( 3 )
 position = Vector2( 645.189, 4649.25 )
-
-[node name="Sword" parent="." instance=ExtResource( 7 )]
-position = Vector2( 892.116, 6825.33 )
 
 [node name="Shrub4" parent="." instance=ExtResource( 9 )]
 material = SubResource( 4 )
@@ -899,5 +891,18 @@ position = Vector2( 968.137, 5050.4 )
 [node name="Grass14" parent="." instance=ExtResource( 11 )]
 material = SubResource( 7 )
 position = Vector2( 968.137, 5050.4 )
+
+[node name="DogMoveTrigger" parent="." instance=ExtResource( 6 )]
+position = Vector2( 72.4411, 549.499 )
+destinations = [ NodePath("../dog") ]
+dog_path = NodePath("../Items/Donut")
+dog_speak = [ "Yip!!", "(Can't catch me!)" ]
+
+[node name="DialogTrigger" parent="DogMoveTrigger" instance=ExtResource( 1 )]
+position = Vector2( 40.1714, -98.386 )
+dialog = [ "*grumble grumble*" ]
+
+[node name="dog" type="Node2D" parent="."]
+position = Vector2( 633.209, -250.22 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
