@@ -13,6 +13,8 @@ func _damage_anim(target):
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
   
+  # Prevent crash
+  if target == null: return 
   target.material.set_shader_param("white", 1.0)
   target.material.set_shader_param("red", 1.0)
   

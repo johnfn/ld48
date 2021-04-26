@@ -17,7 +17,12 @@ export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
 export(bool) var debug_already_has_sword = false
 
-export(Array) var level_scenes = ["res://levels/Level0Mock.tscn", "res://levels/Level1Mock.tscn", "res://levels/Level2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn"]
+# Uncomment one of the level_scenes variables: 1 OR 2
+# 1: Chauncey's list of levels. DO NOT EDIT UNLESS YOU INTEND TO CHANGE THE STANDARD LEVEL ORDER.
+export(Array) var level_scenes = ["res://levels/Level0.tscn","res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn","res://levels/Level1-2.tscn", "res://levels/Level1-3.tscn","res://levels/Level1-4.tscn", "res://levels/Level1-5.tscn","res://levels/LevelRunner.tscn", "res://levels/Level2-1.tscn","res://levels/Level2-2.tscn", "res://levels/Level2-3.tscn" , "res://levels/Level2-4.tscn", "res://levels/LevelBoss.tscn"   ]
+
+# 2: PLAY LEVELS. FEEL FREE TO EDIT THIS LIST.
+#export(Array) var level_scenes = ["res://levels/Level0.tscn", "res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn", "res://levels/Level1-3Mock.tscn", "res://levels/LevelMock.tscn", "res://levels/Level5Mock.tscn"]
 
 export(int) var curr_level_num = 0
 
@@ -36,6 +41,9 @@ const TRANSITION_LEN = 380
 var last_player_y = 0
 var is_transitioning = false
 var bgs = [0, 1, 2, 3]
+# new_scene and loaded_scene are temp vars
+var new_scene = null
+var loaded_scene = null
 var curr_song = null
 
 func add_to_inventory(item_name):
@@ -48,8 +56,11 @@ func checkpoint():
   saved_slots = slots.duplicate()
 
 
-func load_level(level_num):
-  Level = load(level_scenes[level_num]).instance()
+func load_level(level_name: String):
+  loaded_scene = load(level_name)
+  assert(loaded_scene != null, "ERROR: %s not a valid level. Check Main->Inspector->Level Scenes (sometimes from level_scenes) matches available names in /levels." % new_scene)
+  Level = loaded_scene.instance()
+  loaded_scene = null
   assert(Level.get_node("Markers/LevelBottom") != null)
   assert(Level.get_node("Markers/LevelTop") != null)
   level_height = Level.get_node("Markers/LevelBottom").position.y - Level.get_node("Markers/LevelTop").position.y
@@ -73,7 +84,8 @@ func start_level(level_num: int) -> void:
     Level.queue_free()
   if OldLevel != null:
     OldLevel.queue_free()
-  load_level(level_num)
+    
+  load_level(level_scenes[level_num])
   Levels.add_child(Level)
   
   Player.position.x = Level.spawn_point.x
@@ -98,7 +110,7 @@ func start_level(level_num: int) -> void:
 
 func load_new_level(level_num: int) -> void:
   OldLevel = Level
-  load_level(level_num)
+  load_level(level_scenes[level_num])
   assert(Level.get_node("Markers/LevelBottom") != null)
   Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
   Levels.add_child(Level)
@@ -230,6 +242,7 @@ func handle_player_died():
   yield(Letterbox.fade_to_black(120.0), "completed")
 
   start_level(curr_level_num)
+  
   Player.modulate.a = 1.0
   Player.Sprite.material.set_shader_param("white", 0.0)
   Player.Hand.material.set_shader_param("white", 0.0)

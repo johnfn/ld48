@@ -43,7 +43,11 @@ cinematic_style_dialog = true
 position = Vector2( 0.941772, -1361.57 )
 destinations = [ NodePath("../../dog") ]
 dog_path = NodePath("../../Items/Donut")
-dog_speak = [  ]
+dog_speak = [ "Yip yap!" ]
+
+[node name="DialogTrigger" parent="DialogTrigger2" instance=ExtResource( 8 )]
+position = Vector2( -20.2881, -1402.6 )
+dialog = [ "Hey, come back! That's no fair!", "Huh, I wonder if there are any cool monsters here? Winston, stay safe!" ]
 
 [node name="Items" type="Node2D" parent="."]
 

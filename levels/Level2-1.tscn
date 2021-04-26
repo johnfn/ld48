@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=12]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/CardTrigger.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -315,11 +316,15 @@ position = Vector2( 647.399, 652.402 )
 [node name="MonsterShooter3" parent="Enemies" instance=ExtResource( 5 )]
 material = SubResource( 3 )
 position = Vector2( 1026.4, 1859.45 )
+health = 3
+deals_damage = true
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 5 )]
 material = SubResource( 4 )
 position = Vector2( 984.382, 493.439 )
+health = 3
+deals_damage = true
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="Markers" type="Node2D" parent="."]
@@ -526,7 +531,11 @@ position = Vector2( 545.76, 742.633 )
 rotation = -0.0493538
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 14 )]
-position = Vector2( 671.972, 2684.47 )
+position = Vector2( 677.387, 2592.42 )
 dialog = [ "Whoa... I've never been in *this* part of the forest before.", "Winston, where are we going? I hope he gets tired soon..." ]
+
+[node name="CardTrigger" parent="." instance=ExtResource( 15 )]
+position = Vector2( 681.228, 2958.94 )
+which_card = 2
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
