@@ -15,19 +15,9 @@ _global_script_classes=[ {
 "path": "res://scripts/BaseHittable.gd"
 }, {
 "base": "Area2D",
-"class": "DialogTrigger",
-"language": "GDScript",
-"path": "res://scripts/DialogTrigger.gd"
-}, {
-"base": "Area2D",
 "class": "Dog",
 "language": "GDScript",
 "path": "res://scripts/Dog.gd"
-}, {
-"base": "Node2D",
-"class": "Main",
-"language": "GDScript",
-"path": "res://scripts/Main.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -36,9 +26,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseHittable": "",
-"DialogTrigger": "",
 "Dog": "",
-"Main": "",
 "Player": ""
 }
 
@@ -51,9 +39,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Test="*res://compiled/Test.gd"
 CombatHelpers="*res://scripts/CombatHelpers.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
-Test="*res://compiled/Test.gd"
 
 [display]
 

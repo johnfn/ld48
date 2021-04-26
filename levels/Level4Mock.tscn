@@ -27,7 +27,7 @@ resource_local_to_scene = true
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 
-[node name="LevelX" type="Node2D"]
+[node name="LevelX2" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="EditorBackground" parent="." instance=ExtResource( 12 )]
