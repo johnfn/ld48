@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/EnemyDialogTrigger.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -375,6 +376,9 @@ position = Vector2( 1194.77, 5479.4 )
 position = Vector2( 1450.99, 5477.11 )
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyDialogTrigger" parent="." instance=ExtResource( 9 )]
+position = Vector2( 619.303, 978.393 )
 
 [node name="Markers" type="Node2D" parent="."]
 
