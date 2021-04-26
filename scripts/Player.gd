@@ -137,7 +137,7 @@ func get_health(amount: int) -> void:
     health = max_health
 
 func damage(amount: int, source: Node2D) -> void:
-  if not is_invuln and health > 0:
+  if not is_invuln and health > 0 and not Letterbox.in_cinematic:
     is_invuln = true
     
     # take damage

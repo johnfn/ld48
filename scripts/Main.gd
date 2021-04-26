@@ -21,6 +21,7 @@ export(Array) var level_scenes = ["res://levels/Level0Mock.tscn", "res://levels/
 
 export(int) var curr_level_num = 0
 
+var center_camera = false
 var inventory = []
 var slots = {}
 var saved_inventory = []
@@ -126,7 +127,7 @@ func get_desired_cam_position(delta: float):
   var walled_level = OldLevel if is_transitioning else Level
   var max_cam = walled_level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2 + walled_level.position.y
   max_cam = max(max_cam, Cam.position.y)
-  var cam_pos = Player.position.y - camera_offset
+  var cam_pos = Player.position.y - (camera_offset if not center_camera else 0)
   var player_moved_y = (Player.position.y - last_player_y)
   cam_pos = min(Cam.position.y + max(0, player_moved_y) + max_camera_speed * delta, cam_pos)
   cam_pos = max(Cam.position.y + min(0, player_moved_y) - max_camera_speed * delta, cam_pos)

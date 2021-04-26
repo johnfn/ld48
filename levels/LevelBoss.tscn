@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://components/GoblinKing.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui/boss_bar_bg.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/boss_bar_fill.png" type="Texture" id=4]
+[ext_resource path="res://levels/LevelBoss.gd" type="Script" id=5]
+[ext_resource path="res://scenes/EnemyDialogTrigger.tscn" type="PackedScene" id=6]
+[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float white;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+    COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/white = null
+
+[node name="LevelBoss" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="EditorBackground" parent="." instance=ExtResource( 11 )]
+num_bgs = 1
+
+[node name="Obstacles" type="YSort" parent="."]
+
+[node name="Enemies" type="YSort" parent="."]
+
+[node name="EnemyDialogTrigger" parent="Enemies" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 628.689, 791.59 )
+scale = Vector2( 1.24, 1 )
+dialog = [ "yo i straight up kill kids", "get at me" ]
+cinematic_style_dialog = true
+enemy_speaker = NodePath("../GoblinKing")
+
+[node name="GoblinKing" parent="Enemies" instance=ExtResource( 2 )]
+material = SubResource( 2 )
+position = Vector2( 658.5, 286.957 )
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="LevelBottom" type="Node2D" parent="Markers"]
+position = Vector2( 611.31, 2283.42 )
+
+[node name="SpawnPoint" type="Node2D" parent="Markers"]
+position = Vector2( 614.306, 2031.7 )
+
+[node name="LevelTop" type="Node2D" parent="Markers"]
+position = Vector2( 677.235, 0 )
+
+[node name="LeftJumpTarget" type="Node2D" parent="Markers"]
+position = Vector2( 223.678, 290.95 )
+
+[node name="LeftJumpTarget2" type="Node2D" parent="Markers"]
+position = Vector2( 212.987, 1488.32 )
+
+[node name="RightJumpTarget" type="Node2D" parent="Markers"]
+position = Vector2( 1035.98, 297.677 )
+
+[node name="RightJumpTarget2" type="Node2D" parent="Markers"]
+position = Vector2( 1071.62, 1477.23 )
+
+[node name="HealthBar" type="CanvasLayer" parent="."]
+
+[node name="TextureProgress" type="TextureProgress" parent="HealthBar"]
+margin_left = 264.064
+margin_top = 1124.59
+margin_right = 1014.06
+margin_bottom = 1324.59
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="HealthBar"]
+
+[connection signal="cinematic_ended" from="Enemies/EnemyDialogTrigger" to="." method="_on_cinematic_ended"]
+[connection signal="died" from="Enemies/GoblinKing" to="." method="_on_GoblinKing_died"]

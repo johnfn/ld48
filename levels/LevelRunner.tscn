@@ -756,6 +756,7 @@ frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Runner"]
+visible = false
 position = Vector2( 640, -157.711 )
 shape = SubResource( 4 )
 
