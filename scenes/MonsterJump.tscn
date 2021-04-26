@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/art/frogman_crouch1.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/chara_shadow_centered.png" type="Texture" id=2]
 [ext_resource path="res://scripts/MonsterJump.gd" type="Script" id=3]
+[ext_resource path="res://materials/modulate_shader.tres" type="Material" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 72.999, 43.9879 )
 
 [node name="MonsterJump" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 3 )
 
 [node name="Shadow" type="Sprite" parent="."]
@@ -17,6 +19,7 @@ scale = Vector2( 2.9611, 2.18515 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 4 )
 position = Vector2( 6.44757, -141.847 )
 texture = ExtResource( 1 )
 
