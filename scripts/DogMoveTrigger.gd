@@ -6,7 +6,7 @@ export var dog_path: NodePath
 var DialogScene = load("res://scenes/Dialog.tscn")
 var triggered = false
 onready var area = $DialogTrigger
-var dog: Dog
+var dog
 
 func _ready():
   connect("body_entered", self, "body_entered")
@@ -24,7 +24,7 @@ func body_entered(other: Node2D):
 func begin_cinematic(player: Player):
   Letterbox.in_cinematic = true
   
-  yield(Letterbox.animate_in(), "completed")
+  yield(Letterbox.animate_in(dog), "completed")
   
   var new_dialog = DialogScene.instance()
   yield(new_dialog.display_text_sequence_co(dog, ["Yip yip!"]), "completed")

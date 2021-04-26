@@ -24,7 +24,7 @@ resource_local_to_scene = true
 resource_local_to_scene = true
 
 [node name="LevelX" type="Node2D"]
-position = Vector2( -1.79102, -0.868958 )
+position = Vector2( -1.79102, -1.72052 )
 script = ExtResource( 8 )
 
 [node name="Items" type="Node2D" parent="."]

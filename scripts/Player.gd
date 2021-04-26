@@ -24,6 +24,9 @@ var knockback = false
 var knockback_source: Node2D = null
 
 func _process(delta: float) -> void:
+  if Letterbox.in_cinematic:
+    return
+    
   Weapons.look_at(get_global_mouse_position())
 
 func _physics_process(delta: float) -> void:
@@ -145,6 +148,8 @@ func damage(amount: int, source: Node2D) -> void:
     if health <= 0:
       emit_signal("died")
       is_invuln = false
+      Sprite.stop()
+      Sprite.frame = IDLE_FRAME
       return
     
     # bump player back a little
@@ -157,10 +162,19 @@ func damage(amount: int, source: Node2D) -> void:
     is_invuln = false
 
 
+func reset():
+  reset_equipment()
+  Sprite.animation = "up"
+  Sprite.stop()
+  Sprite.frame = IDLE_FRAME
+  health = max_health
+
+
 func reset_equipment():
   for equipment in equipment_slots.values():
     equipment.queue_free()
   equipment_slots = {}
+
 
 func equip(equipment: Node, slot: String) -> void:
   if equipment.has_method("init"):
