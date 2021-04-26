@@ -59,8 +59,8 @@ config/icon="res://icon.png"
 
 CombatHelpers="*res://scripts/CombatHelpers.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
-CloudSpawner="*res://scenes/CloudSpawner.tscn"
 Test="*res://compiled/Test.gd"
+CloudSpawner="*res://scenes/CloudSpawner.tscn"
 
 [display]
 
