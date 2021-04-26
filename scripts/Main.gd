@@ -203,6 +203,9 @@ func handle_item_body_entered(body: Node, item_node):
 
 
 func handle_player_died():
+  yield(Letterbox.fade_to_black(20.0), "completed")
+  Letterbox.unfade_to_black_instant()
+  
   start_level(curr_level_num)
 
 
