@@ -1,5 +1,5 @@
 tool
-extends BaseHittable
+extends BaseHittableArea
 
 export(int) onready var damage = 1
 export(int) onready var shoot_cooldown = 1
@@ -11,6 +11,7 @@ onready var BulletScene = load("res://scenes/MonsterBullet.tscn")
 
 func _init().():
   self.health = 3
+  self.deals_damage = true
 
 var shoot_cooldown_remaining = 1
 var speed = 300.0
@@ -20,11 +21,14 @@ var invuln_time_left = 0.0
 var dying = false
 
 func _ready():
-  .connect("body_entered", self, "on_enter")
-  .connect("body_exited", self, "on_exit")
+  ._ready()
+  
   if direction_to_shoot.x > 0:
     self.sprite.flip_h = true
-
+    
+func _integrate_forces(state):
+  state.linear_velocity = Vector2.ZERO
+  
 func _process(delta):
   if Engine.editor_hint:
     if self.sprite != null:
@@ -56,10 +60,13 @@ func shoot():
   new_bullet.direction = direction_to_shoot
 
 func on_enter(other) -> void:
+  .on_enter(other)
+  
   if other.has_method("is_player") and other.is_player():
     player_in_contact = other
-    
 
 func on_exit(other) -> void:
+  .on_exit(other)
+  
   if other == player_in_contact:
     player_in_contact = null

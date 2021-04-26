@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
-[ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=8]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=11]
 
@@ -145,6 +145,8 @@ position = Vector2( 526.79, 1624.69 )
 material = SubResource( 2 )
 position = Vector2( 685.114, 1715.43 )
 
-[node name="MonsterWitch" parent="." instance=ExtResource( 2 )]
+[node name="MonsterShooter" parent="." instance=ExtResource( 3 )]
 material = SubResource( 6 )
-position = Vector2( 892.12, 1189.54 )
+position = Vector2( 352.624, 1476.61 )
+contacts_reported = 1
+contact_monitor = true

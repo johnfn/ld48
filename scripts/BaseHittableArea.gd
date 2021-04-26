@@ -2,14 +2,27 @@ class_name BaseHittableArea
 extends Area2D
 
 export(int) var health = 1
+export(bool) var deals_damage = false
 
 onready var sprite = $Sprite
 onready var parent = get_node("../")
+
 
 var heart_drop = load("res://components/HeartDrop.tscn")
 var being_hit = false
 var knockback_vector: Vector2 = Vector2.ZERO
 var knockback: bool = false
+
+func _ready() -> void:
+  self.connect("body_entered", self, "on_enter")
+  self.connect("body_exited", self, "on_exit")
+
+func on_enter(other) -> void:
+  if other.has_method("is_player") and other.is_player() and deals_damage:
+    other.damage(1, self)
+    
+func on_exit(other) -> void:
+  pass
 
 func is_enemy() -> bool:
   return true

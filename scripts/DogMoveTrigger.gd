@@ -39,6 +39,8 @@ func begin_cinematic(player: Player):
     while dog.position.distance_to(dest_node.position) > 30:
       dog.position += dir * 5.0
       yield(get_tree(), "idle_frame")
+      
+  dog.visible = false
   
   yield(Letterbox.animate_out(), "completed")
   
