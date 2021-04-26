@@ -17,8 +17,6 @@ func _ready() -> void:
   
   self.connect("body_entered", self, "on_enter")
   self.connect("body_exited", self, "on_exit")
-  
-  print("Ready up")
 
 func on_enter(other) -> void:
   if other.has_method("is_player") and other.is_player():

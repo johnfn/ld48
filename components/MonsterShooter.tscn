@@ -14,13 +14,11 @@ animations = [ {
 "speed": 1.6
 } ]
 
-[node name="MonsterShooter" type="RigidBody2D"]
+[node name="MonsterShooter" type="Area2D"]
 material = ExtResource( 1 )
 collision_layer = 4
 collision_mask = 407
-mode = 1
 script = ExtResource( 3 )
-health = 3
 
 [node name="Right Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.207843 )
