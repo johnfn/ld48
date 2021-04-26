@@ -1,15 +1,29 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=1]
 [ext_resource path="res://assets/art/choppable_tree.png" type="Texture" id=2]
 [ext_resource path="res://scripts/CuttableTree.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/tree_shadow.png" type="Texture" id=4]
 
 [node name="CuttableTree" type="RigidBody2D"]
 material = ExtResource( 1 )
+position = Vector2( -0.5513, 0 )
 collision_layer = 4
 collision_mask = 23
 mode = 1
 script = ExtResource( 3 )
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.317647 )
+position = Vector2( -17.0904, 106.952 )
+scale = Vector2( 1.35634, 1.55679 )
+texture = ExtResource( 4 )
+
+[node name="Shadow2" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.317647 )
+position = Vector2( 80.4899, 143.056 )
+scale = Vector2( 0.524707, 0.591246 )
+texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 1 )
