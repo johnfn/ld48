@@ -19,9 +19,8 @@ func body_entered(other: Node2D):
   if triggered:
     return
   
-  triggered = true
-  
   if other is Player:
+    triggered = true
     begin_cinematic(other)
     
 func begin_cinematic(player: Player):

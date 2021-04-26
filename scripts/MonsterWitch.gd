@@ -18,6 +18,7 @@ var dying = false
 func _ready():
   self.contact_monitor = true
   self.contacts_reported = true
+  
   current_movement_direction = starting_direction
   
   .connect("body_entered", self, "on_enter")

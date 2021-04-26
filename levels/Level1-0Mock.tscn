@@ -1,0 +1,387 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
+[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=5]
+[ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=8]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
+[node name="LevelX" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="EditorBackground" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, 7.51172 )
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Donut" parent="Items" instance=ExtResource( 6 )]
+position = Vector2( 640.263, 210.839 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Tree7" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 397.05, 19.9244 )
+
+[node name="Tree8" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 160.833, 15.4771 )
+
+[node name="Tree9" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -90.5859, 22.6785 )
+
+[node name="Tree10" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 303.246, 92.9071 )
+
+[node name="Tree11" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 51.2485, 102.546 )
+
+[node name="Tree12" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 154.526, 203.07 )
+
+[node name="Tree22" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -100.225, 208.578 )
+
+[node name="Tree21" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 25.985, 317.195 )
+
+[node name="Tree62" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -42.0342, 2893.77 )
+
+[node name="Tree66" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 24.3087, 3042.47 )
+
+[node name="Tree67" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -94.651, 3184.31 )
+
+[node name="Tree69" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -94.651, 3184.31 )
+
+[node name="Tree68" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 161.57, 3163.72 )
+
+[node name="Tree70" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 10.5825, 3291.83 )
+
+[node name="Tree71" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 253.078, 3296.4 )
+
+[node name="Tree72" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -87.7881, 3424.51 )
+
+[node name="Tree73" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 163.858, 3422.23 )
+
+[node name="Tree74" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 408.64, 3413.08 )
+
+[node name="Tree23" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 862.56, 20.581 )
+
+[node name="Tree24" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1117.73, 20.581 )
+
+[node name="Tree25" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1376.8, 23.514 )
+
+[node name="Tree26" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 984.766, 120.301 )
+
+[node name="Tree27" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1238.96, 127.145 )
+
+[node name="Tree28" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1119.68, 240.553 )
+
+[node name="Tree29" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1372.89, 249.351 )
+
+[node name="Tree30" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1270.24, 376.446 )
+
+[node name="Tree84" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 14.4666, 551.026 )
+
+[node name="Tree85" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -25.6171, 722.116 )
+
+[node name="Tree86" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 24.2431, 850.186 )
+
+[node name="Tree87" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 24.2431, 850.186 )
+
+[node name="Tree90" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1203.05, 619.321 )
+
+[node name="Tree91" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1297.88, 749.351 )
+
+[node name="Tree92" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1205.34, 889.272 )
+
+[node name="Tree93" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -46.709, 1012.24 )
+
+[node name="Tree94" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 24.0142, 1164.47 )
+
+[node name="Tree95" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -16.0695, 1335.56 )
+
+[node name="Tree96" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 33.7907, 1463.63 )
+
+[node name="Tree97" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 33.7907, 1463.63 )
+
+[node name="Tree98" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -27.6138, 1647.15 )
+
+[node name="Tree103" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 43.1094, 1799.38 )
+
+[node name="Tree104" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 3.02575, 1970.47 )
+
+[node name="Tree105" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 52.8859, 2098.54 )
+
+[node name="Tree106" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 52.8859, 2098.54 )
+
+[node name="Tree107" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( -15.6792, 2255.81 )
+
+[node name="Tree108" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 55.044, 2410.29 )
+
+[node name="Tree133" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 256.911, 2549.35 )
+
+[node name="Tree137" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 875.97, 2031.23 )
+
+[node name="Tree134" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 261.397, 2892.53 )
+
+[node name="Tree135" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 366.817, 2385.61 )
+
+[node name="Tree109" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 14.9603, 2579.13 )
+
+[node name="Tree110" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 64.8205, 2707.2 )
+
+[node name="Tree111" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 64.8205, 2707.2 )
+
+[node name="Tree99" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1310.91, 1031.56 )
+
+[node name="Tree100" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1210.21, 1163.54 )
+
+[node name="Tree101" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1305.04, 1293.57 )
+
+[node name="Tree102" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1212.5, 1433.49 )
+
+[node name="Tree112" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1310.91, 1031.56 )
+
+[node name="Tree113" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1210.21, 1163.54 )
+
+[node name="Tree114" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1305.04, 1293.57 )
+
+[node name="Tree115" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1212.5, 1433.49 )
+
+[node name="Tree116" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1334.78, 1578.16 )
+
+[node name="Tree117" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1234.08, 1710.14 )
+
+[node name="Tree118" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1328.91, 1840.17 )
+
+[node name="Tree119" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1236.37, 1980.09 )
+
+[node name="Tree120" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1334.78, 1578.16 )
+
+[node name="Tree121" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1234.08, 1710.14 )
+
+[node name="Tree138" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1038.94, 1559.86 )
+
+[node name="Tree139" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1061.37, 1880.61 )
+
+[node name="Tree122" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1328.91, 1840.17 )
+
+[node name="Tree123" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1236.37, 1980.09 )
+
+[node name="Tree124" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1310.91, 2139.09 )
+
+[node name="Tree125" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1210.21, 2271.07 )
+
+[node name="Tree126" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1305.04, 2401.1 )
+
+[node name="Tree127" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1212.5, 2541.02 )
+
+[node name="Tree128" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1310.91, 2139.09 )
+
+[node name="Tree129" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1210.21, 2271.07 )
+
+[node name="Tree130" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1305.04, 2401.1 )
+
+[node name="Tree131" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1212.5, 2541.02 )
+
+[node name="Tree136" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1091.38, 2718.21 )
+
+[node name="Tree132" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1288.89, 2717.65 )
+
+[node name="Tree64" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1283.46, 2971.89 )
+
+[node name="Tree75" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1374.97, 3122.88 )
+
+[node name="Tree76" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1116.46, 3118.3 )
+
+[node name="Tree77" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1004.36, 3241.84 )
+
+[node name="Tree79" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1519.09, 3241.84 )
+
+[node name="Tree78" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1258.29, 3239.55 )
+
+[node name="Tree80" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 935.735, 3376.81 )
+
+[node name="Tree81" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1182.8, 3379.1 )
+
+[node name="Tree82" parent="Obstacles" instance=ExtResource( 3 )]
+position = Vector2( 1439.02, 3376.81 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="DogMoveTrigger" parent="." instance=ExtResource( 2 )]
+position = Vector2( 620.355, 311.233 )
+dog_path = NodePath("../Items/Donut")
+
+[node name="DialogTrigger" parent="." instance=ExtResource( 8 )]
+position = Vector2( 648.739, 3018.5 )
+dialog = [ "Oh, there you are, Winston! C'mere, boy!", "You don't want to get lost in the forest, do you?" ]
+cinematic_style_dialog = true
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="LevelBottom" type="Node2D" parent="Markers"]
+position = Vector2( 671.904, 3649.36 )
+
+[node name="SpawnPoint" type="Node2D" parent="Markers"]
+position = Vector2( 658.435, 3032.6 )
+
+[node name="LevelTop" type="Node2D" parent="Markers"]
+position = Vector2( 677.235, 0 )
+
+[node name="Tree" parent="." instance=ExtResource( 4 )]
+position = Vector2( 219.607, 1586.54 )
+
+[node name="Tree2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 388.645, 1534.23 )
+
+[node name="Tree3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 302.513, 1682.08 )
+
+[node name="Tree4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 458.154, 1672.74 )
+
+[node name="Tree5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 416.221, 1765.26 )
+
+[node name="Tree14" parent="." instance=ExtResource( 4 )]
+position = Vector2( 584.443, 1758.53 )
+
+[node name="Tree6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 784.068, 912.931 )
+
+[node name="Tree10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 218.839, 547.327 )
+
+[node name="Tree11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 398.277, 542.841 )
+
+[node name="Tree12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 315.287, 650.504 )
+
+[node name="Tree13" parent="." instance=ExtResource( 4 )]
+position = Vector2( 479.024, 648.26 )
+
+[node name="Tree7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 974.721, 901.716 )
+
+[node name="Tree8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 896.217, 1043.02 )
+
+[node name="Tree9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1059.95, 1038.54 )
+
+[node name="Shrub" parent="." instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 886.496, 2449.45 )
+
+[node name="Shrub2" parent="." instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 977.259, 2533.57 )
+
+[node name="Shrub3" parent="." instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 1035.67, 2399.91 )
+
+[node name="Shrub7" parent="." instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 1053.62, 2101.6 )
+
+[node name="Shrub4" parent="." instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 215.848, 1085.73 )
+
+[node name="Shrub5" parent="." instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 338.012, 1104.79 )
+
+[node name="Shrub6" parent="." instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 365.024, 991.324 )
+
+[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
