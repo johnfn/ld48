@@ -13,6 +13,7 @@ collision_layer = 4
 script = ExtResource( 3 )
 
 [node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.235294 )
 position = Vector2( -4.57059, 25.3392 )
 rotation = 0.0156109
 scale = Vector2( 2.9611, 2.18515 )

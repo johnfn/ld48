@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/art/chapter 1 title.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 27.8121, 52.3121 )
+position = Vector2( 28.703, 52.3121 )
 script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
