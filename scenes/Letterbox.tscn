@@ -12,14 +12,14 @@ script = ExtResource( 1 )
 pause_mode = 1
 
 [node name="Title2" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 392.5, 278.5 )
 z_index = 4096
 texture = ExtResource( 2 )
+centered = false
 
 [node name="Title1" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 390.792, 278.807 )
 z_index = 4096
 texture = ExtResource( 3 )
+centered = false
 
 [node name="TopRect" type="ColorRect" parent="CanvasLayer"]
 margin_left = -2.23508
