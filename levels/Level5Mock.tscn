@@ -10,13 +10,13 @@
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=9]
 
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 
 [node name="LevelX" type="Node2D"]
@@ -189,7 +189,7 @@ position = Vector2( 1234.16, 654.096 )
 position = Vector2( 1202.52, 778.261 )
 
 [node name="MonsterWitch" parent="Obstacles/Tree33" instance=ExtResource( 8 )]
-material = SubResource( 3 )
+material = SubResource( 1 )
 position = Vector2( -296.948, 1478.4 )
 
 [node name="Tree34" parent="Obstacles" instance=ExtResource( 4 )]
@@ -530,15 +530,15 @@ position = Vector2( 962.039, 2563.23 )
 position = Vector2( 604.191, 2721.31 )
 
 [node name="Shrub" parent="." instance=ExtResource( 9 )]
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 523.921, 1730.46 )
 
 [node name="Shrub4" parent="." instance=ExtResource( 9 )]
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 983.806, 2737.89 )
 
 [node name="Shrub5" parent="." instance=ExtResource( 9 )]
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 335.656, 2814.06 )
 
 [node name="Shrub6" parent="." instance=ExtResource( 9 )]
@@ -562,11 +562,11 @@ material = SubResource( 1 )
 position = Vector2( 735.531, 1564.45 )
 
 [node name="Shrub18" parent="." instance=ExtResource( 9 )]
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 794.103, 1645.66 )
 
 [node name="Shrub13" parent="." instance=ExtResource( 9 )]
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 502.364, 1563.75 )
 
 [node name="Shrub15" parent="." instance=ExtResource( 9 )]
@@ -574,16 +574,18 @@ material = SubResource( 1 )
 position = Vector2( 620.139, 1563.75 )
 
 [node name="Shrub19" parent="." instance=ExtResource( 9 )]
-material = SubResource( 1 )
+material = SubResource( 2 )
 position = Vector2( 850.152, 1558 )
 
 [node name="MonsterShooter" parent="." instance=ExtResource( 5 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( 252.301, 1833.26 )
+health = 3
 
 [node name="MonsterShooter2" parent="." instance=ExtResource( 5 )]
-material = SubResource( 2 )
+material = SubResource( 3 )
 position = Vector2( 932.068, 1656.49 )
+health = 3
 direction_to_shoot = Vector2( -1, 0 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

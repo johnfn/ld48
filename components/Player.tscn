@@ -28,8 +28,8 @@
 [ext_resource path="res://assets/art/chara_upright1.png" type="Texture" id=26]
 [ext_resource path="res://assets/art/chara_downleft2.png" type="Texture" id=27]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 16.0
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 12 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -48,21 +48,6 @@ animations = [ {
 "name": "up",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "down",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "downright",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "upleft",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 23 ), ExtResource( 27 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "downleft",
@@ -72,6 +57,21 @@ animations = [ {
 "loop": true,
 "name": "upright",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "upleft",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "down",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "downright",
+"speed": 12.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -79,7 +79,7 @@ collision_mask = 430
 script = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( 0.342758, -0.335419 )
+position = Vector2( 9.34276, 9.66458 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
