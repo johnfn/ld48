@@ -627,27 +627,23 @@ position = Vector2( 1033.95, 662.246 )
 [node name="MonsterShooter" parent="Enemies" instance=ExtResource( 5 )]
 material = SubResource( 7 )
 position = Vector2( 252.301, 1833.26 )
-health = 3
-deals_damage = true
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 5 )]
 material = SubResource( 7 )
 position = Vector2( 1006.85, 1658.31 )
-health = 3
-deals_damage = true
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 3 )]
 position = Vector2( 660.045, 264.562 )
 destinations = [ NodePath("../doggg") ]
 dog_path = NodePath("../Items/Donut")
-dog_speak = [  ]
+dog_speak = [ "Yippie yip!", "(Can't catch meeee)" ]
 
 [node name="doggg" type="Node2D" parent="."]
 position = Vector2( 645.978, -461.774 )
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 12 )]
-position = Vector2( 604.281, 22.0767 )
+position = Vector2( 624.468, 82.6371 )
 dialog = [ "Arggh, I was so close that time!!", "Where could you be now, ya silly puppy?" ]
 cinematic_style_dialog = true
 
