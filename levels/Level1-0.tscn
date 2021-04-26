@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/CardTrigger.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -359,6 +360,8 @@ position = Vector2( 1439.02, 3376.81 )
 position = Vector2( 648.739, 3018.5 )
 dialog = [ "Oh, there you are, Winston! C'mere, boy!", "You don't want to get lost in the forest, do you?" ]
 cinematic_style_dialog = true
+
+[node name="CardTrigger" parent="." instance=ExtResource( 9 )]
 
 [node name="Markers" type="Node2D" parent="."]
 

@@ -47,8 +47,8 @@ func checkpoint():
   saved_slots = slots.duplicate()
 
 
-func load_level(level_num):
-  Level = load(level_scenes[level_num]).instance()
+func load_level(level_name: String):
+  Level = load(level_name).instance()
   assert(Level.get_node("Markers/LevelBottom") != null)
   assert(Level.get_node("Markers/LevelTop") != null)
   level_height = Level.get_node("Markers/LevelBottom").position.y - Level.get_node("Markers/LevelTop").position.y
@@ -63,7 +63,8 @@ func start_level(level_num: int) -> void:
     Level.queue_free()
   if OldLevel != null:
     OldLevel.queue_free()
-  load_level(level_num)
+    
+  load_level(level_scenes[level_num])
   Levels.add_child(Level)
   
   Player.position.x = Level.spawn_point.x
@@ -87,7 +88,7 @@ func start_level(level_num: int) -> void:
 
 func load_new_level(level_num: int) -> void:
   OldLevel = Level
-  load_level(level_num)
+  load_level(level_scenes[level_num])
   assert(Level.get_node("Markers/LevelBottom") != null)
   Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
   Levels.add_child(Level)
@@ -216,6 +217,7 @@ func handle_player_died():
   yield(Letterbox.fade_to_black(120.0), "completed")
 
   start_level(curr_level_num)
+  
   Player.modulate.a = 1.0
   Player.Sprite.material.set_shader_param("white", 0.0)
   Player.Hand.material.set_shader_param("white", 0.0)
