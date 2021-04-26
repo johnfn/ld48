@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/art/chocolate.png" type="Texture" id=1]
 [ext_resource path="res://scripts/HeartDrop.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/chara_shadow.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.5087, 26.0414 )
 
 [node name="HeartDrop" type="Area2D"]
 script = ExtResource( 2 )
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.235294 )
+position = Vector2( -0.925621, -5.90085 )
+scale = Vector2( 0.697549, 0.721659 )
+texture = ExtResource( 3 )
 
 [node name="heart_full" type="Sprite" parent="."]
 texture = ExtResource( 1 )
