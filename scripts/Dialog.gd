@@ -60,7 +60,6 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=f
   rect_position = Vector2(0, -120)
   
   for phrase in sequence:
-    print('attempt ', phrase)
     yield(display_text_co(phrase), "completed")
     yield(get_tree().create_timer(lifespan), "timeout")
     

@@ -41,7 +41,6 @@ func body_entered(body):
     body.damage(damage, self)
     bullet_explode_anim_co()
   elif body != shooter:
-    print(body.name)
     bullet_explode_anim_co()
 
 func _integrate_forces(state):

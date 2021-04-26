@@ -15,7 +15,7 @@ var player_in_contact = null
 var is_invuln = false
 var being_hit = false
 var timer = Timer.new()
-export(float) var pause_between_attacks = 1.0
+export(float) var pause_between_attacks = 2.0
 var time_until_attack = pause_between_attacks
 var curr_attack = 0
 var player = null
@@ -66,12 +66,13 @@ func set_player(p):
 
 var holding_cinematic = false
 func damage(amount: int, source: Node2D) -> void:
-  if being_hit:
+  if being_hit or is_invuln:
     return
 
   being_hit = true
   health -= amount
   curr_mode = Mode.RETREAT
+  reset_jump()
   reset_spear()
   Letterbox.in_cinematic = true
   holding_cinematic = true
@@ -92,11 +93,14 @@ func damage(amount: int, source: Node2D) -> void:
 
 func _process(delta):
   if health <= 0: return
+  if colliding_player != null and not Letterbox.in_cinematic and not is_invuln and not colliding_player.is_invuln and colliding_player.health > 0 and not has_damaged_player:
+    colliding_player.damage(1, self)
+    has_damaged_player = true
   match curr_mode:
     Mode.IDLE:
       time_until_attack -= delta
       if time_until_attack < 0:
-        curr_mode = Mode.SPEAR + curr_attack
+        curr_mode = Mode.JUMP + curr_attack
         curr_attack = (curr_attack + 1) % 1 # TODO once there are more attacks
         time_until_attack = pause_between_attacks
       if abs(position.x - player.position.x) > 200:
@@ -104,11 +108,16 @@ func _process(delta):
     Mode.SPEAR:
       enforce_flip(player.position.x > position.x)
       spear_attack(delta)
+    Mode.JUMP:
+      enforce_flip(player.position.x > position.x)
+      jump_attack(delta)
     Mode.RETREAT:
       jump_to_corner(delta)
 
 
-var JUMP_WINDUP = 0.5
+export(Array) var jump_lines = ["What goes up-!", "Sky's the limit!", "Let's see you dodge this!"]
+var last_jump_line = 0
+var JUMP_WINDUP = 1.0
 var jump_windup = null
 var jump_target = null
 var jump_start = null
@@ -116,6 +125,13 @@ var jump_time = 0
 var jump_speed = 1000
 var poss_jump_targets = []
 var jump_time_len = 0
+var downforce = 3000
+var jump_v = 0
+var jump_v_acc = 0
+var min_shadow = 0.7
+var jump_max_height = 0
+onready var shadow_base_scale = $Shadow.scale
+onready var shadow_base_position = $Shadow.position
 func jump_to_corner(delta):
   if jump_target == null:
     var min_dist = null
@@ -128,20 +144,68 @@ func jump_to_corner(delta):
     var target_i = randi() % (len(poss_jump_targets) - 1)
     if worst_i <= target_i:
       target_i += 1
-    jump_target = poss_jump_targets[target_i]
-    jump_start = global_position
-    jump_time = 0
-    jump_time_len = (jump_target - jump_start).length() / jump_speed
-    jump_windup = JUMP_WINDUP
+    init_jump(poss_jump_targets[target_i], jump_speed)
+  jump(delta, false)
+
+
+var JUMPS_DONE = 2
+var jumps_done = 0
+var jump_attack_speed = 0
+var jump_attack_time = 1.5
+var shockwave_radius = 550
+var max_shockwave_power = 1200
+var min_shockwave_power = 800
+var damage_radius = 240
+func jump_attack(delta):
+  if jump_target == null:
+    if jumps_done == JUMPS_DONE:
+      reset_jump()
+      curr_mode = Mode.IDLE
+      return
+    jumps_done += 1
+    last_jump_line = (last_jump_line + 1) % len(jump_lines)
+    play_line(jump_lines[last_jump_line])
+    init_jump(player.global_position, (global_position - player.global_position).length() / jump_attack_time)
+  jump(delta, true)
+
+
+func init_jump(target, speed):
+  jump_target = target
+  jump_start = global_position
+  jump_time = 0
+  jump_time_len = (jump_target - jump_start).length() / speed
+  jump_windup = JUMP_WINDUP
+  jump_v = jump_time_len / 2 * downforce
+  jump_v_acc = 0
+  jump_max_height = jump_v * jump_v / 2 / downforce
+
+
+func reset_jump():
+  jump_target = null
+  jumps_done = 0
+
+
+func jump(delta, is_attack):
   if jump_windup != null:
     if jump_windup < delta:
       jump_windup = null
     else:
       jump_windup -= delta
       return
+  is_invuln = is_attack
   jump_time += delta
-  global_position = jump_start.linear_interpolate(jump_target, min(1, jump_time / jump_time_len))
+  jump_v -= delta * downforce
+  jump_v_acc += jump_v * delta
+  global_position = jump_start.linear_interpolate(jump_target, min(1, jump_time / jump_time_len)) - Vector2(0, jump_v_acc)
+  $Shadow.position = shadow_base_position + Vector2(0, jump_v_acc)
   
+  var sca = 1 - (1 - min_shadow) * (jump_v_acc / jump_max_height)
+  $Shadow.scale = shadow_base_scale * sca
+  
+  handle_jump_completion(is_attack)
+
+
+func handle_jump_completion(is_attack):
   if jump_time >= jump_time_len:
     Letterbox.in_cinematic = false
     holding_cinematic = false
@@ -149,6 +213,17 @@ func jump_to_corner(delta):
     curr_mode = Mode.IDLE
     enforce_flip(player.position.x > position.x)
     time_until_attack = pause_between_attacks / 3
+    $Shadow.scale = shadow_base_scale
+    $Shadow.position = shadow_base_position
+    is_invuln = false
+    
+    if is_attack:
+      var p_dist = player.global_position.distance_to($ShockwaveCenter.global_position)
+      if p_dist < shockwave_radius:
+        var damage = 0 if p_dist > damage_radius else 1
+        var power = min_shockwave_power + (max_shockwave_power - min_shockwave_power) * min(1, (shockwave_radius - p_dist) / (shockwave_radius - damage_radius))
+        player.damage(damage, $ShockwaveCenter, power)
+      
 
 
 export(Array) var spear_lines = ["That's the spear-it!", "How about a game of catch?"]
@@ -236,3 +311,17 @@ func play_line(line):
 func activate():
   if curr_mode == Mode.WAITING:
     curr_mode = Mode.IDLE
+
+
+var colliding_player = null
+var has_damaged_player = false
+func _on_Area2D_body_entered(body):
+  if body.has_method("is_player") and body.is_player():
+    colliding_player = body
+    has_damaged_player = false
+
+
+func _on_Area2D_body_exited(body):
+  if colliding_player == body:
+    colliding_player = null
+    has_damaged_player = false

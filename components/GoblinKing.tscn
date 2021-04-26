@@ -16,8 +16,8 @@ animations = [ {
 
 [node name="GoblinKing" type="KinematicBody2D"]
 material = ExtResource( 1 )
-collision_layer = 4
-collision_mask = 19
+collision_layer = 1024
+collision_mask = 16
 script = ExtResource( 3 )
 
 [node name="Shadow" type="Sprite" parent="."]
@@ -34,9 +34,9 @@ playing = true
 
 [node name="Spears" type="Node2D" parent="."]
 
-[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+[node name="Hurtbox" type="CollisionPolygon2D" parent="."]
 visible = false
-polygon = PoolVector2Array( -196.678, -232.709, -77.8769, -252.064, 74.9623, -234.711, 82.9713, -133.931, 110.336, -14.4625, 149.713, 145.051, 45.5958, 253.173, 12.8922, 208.456, -29.8226, 195.107, -65.1959, 213.795, -169.981, 109.678, -161.304, 41.6008, -135.942, -8.45569, -173.318, -58.5122, -232.718, -55.8425, -247.402, -76.5325, -226.712, -107.901, -199.347, -113.241, -179.325, -151.951, -195.343, -207.347 )
+polygon = PoolVector2Array( -196.678, -232.709, -137.99, -174.65, -48.092, -171.653, 12.5895, -209.86, 74.9623, -234.711, 27.5726, -155.172, 69.5251, -149.927, 84.5082, -103.48, 110.336, -14.4625, 149.713, 145.051, 45.5958, 253.173, 12.8922, 208.456, -29.8226, 195.107, -65.1959, 213.795, -196.424, 147.487, -161.304, 41.6008, -135.942, -8.45569, -173.318, -58.5122, -232.718, -55.8425, -247.402, -76.5325, -226.712, -107.901, -199.347, -113.241, -179.325, -151.951, -195.343, -207.347 )
 
 [node name="Arm" type="Node2D" parent="."]
 position = Vector2( -94.941, -83.95 )
@@ -49,3 +49,14 @@ texture = ExtResource( 6 )
 
 [node name="SpearPoint" type="Node2D" parent="Arm"]
 position = Vector2( -64.886, 174.499 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -240.5, -84.5, -171.5, -119, -147.5, -169.5, -88.5, -178, -32, -168, 24.5, -151, 72, -149, 85.5, -72.5, 125.5, 37.5, 152.5, 143.5, 107, 183.5, 84, 186.5, 60, 228, 22.5, 174.5, 27, 127.5, -35, 166, -34, 166, -24, 178.5, -62, 212.5, -45, 180, -136.5, 184, -190, 140.5, -164, 42.5, -102.5, 36.5, -134.5, -9, -161.5, -60, -226, -61, -244.5, -72.5 )
+
+[node name="ShockwaveCenter" type="Node2D" parent="."]
+position = Vector2( -14.2339, 231.488 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
