@@ -26,6 +26,10 @@ var knockback_source: Node2D = null
 const KNOCKBACK_DECAY = 1500
 var knockback_velocity = Vector2(0, 0)
 
+var FOOTSTEP_RATE = 0.25
+var FOOTSTEP_RANGE = 0.03
+var footstep_target = 0.0
+
 func _process(delta: float) -> void:
   if Letterbox.in_cinematic:
     return
@@ -77,6 +81,13 @@ func _physics_process(delta: float) -> void:
       Sprite.stop()
       Sprite.frame = IDLE_FRAME
       idleCounter = 0
+    footstep_target = 0.0
+  elif input_vec != Vector2(0, 0) and footstep_target >= 0.0:
+    footstep_target -= delta
+    if footstep_target < 0:
+      footstep_target += FOOTSTEP_RATE + (randf() * 2 - 1) * FOOTSTEP_RANGE
+      SoundManager.play_sound("Footstep")
+    
   
   move_and_slide(direction, Vector2(0, 0), false, 4, 0.785398, false)
 
@@ -147,6 +158,7 @@ func damage(amount: int, source: Node2D, strength=500) -> void:
     # take damage
     
     health -= amount
+    SoundManager.play_sound("Hit")
     
     if health <= 0:
       emit_signal("died")

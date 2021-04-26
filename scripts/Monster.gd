@@ -7,6 +7,9 @@ var count = 0
 var speed = 300.0
 var player_in_contact = null
 
+func damage(amount, other):
+  .damage(amount, other)
+  SoundManager.play_sound("Bush")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

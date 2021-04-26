@@ -94,3 +94,4 @@ func fill_in_hole():
   $PushBounds.queue_free()
   $Box.queue_free()
   pushable = false
+  SoundManager.play_sound("RockSplash")

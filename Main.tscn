@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/LevelTransition.tscn" type="PackedScene" id=2]
@@ -7,6 +7,24 @@
 [ext_resource path="res://assets/art/background1.png" type="Texture" id=5]
 [ext_resource path="res://assets/music/Bossfight.mp3" type="AudioStream" id=6]
 [ext_resource path="res://assets/music/Chapter 1.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/music/rosksplash1.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/music/rosksplash2.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/music/sword2.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/sword3.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/music/sword4.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/sword1.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/music/river.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/music/hit1.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/music/footstep6.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/music/footstep5.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/music/footstep3.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/music/footstep2.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/music/footstep1.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/music/footstep4.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/music/footstep7.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/music/bush2.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/music/bush1.wav" type="AudioStream" id=24]
+[ext_resource path="res://assets/music/bush3.wav" type="AudioStream" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640.632, 1277.67 )
@@ -116,6 +134,78 @@ stream = ExtResource( 7 )
 
 [node name="BossSong" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 6 )
+
+[node name="RockSplash" type="Node2D" parent="Audio"]
+
+[node name="Splash1" type="AudioStreamPlayer" parent="Audio/RockSplash"]
+stream = ExtResource( 8 )
+
+[node name="Splash2" type="AudioStreamPlayer" parent="Audio/RockSplash"]
+stream = ExtResource( 9 )
+
+[node name="Sword" type="Node2D" parent="Audio"]
+
+[node name="Sword1" type="AudioStreamPlayer" parent="Audio/Sword"]
+stream = ExtResource( 13 )
+
+[node name="Sword2" type="AudioStreamPlayer" parent="Audio/Sword"]
+stream = ExtResource( 10 )
+
+[node name="Sword3" type="AudioStreamPlayer" parent="Audio/Sword"]
+stream = ExtResource( 11 )
+
+[node name="Sword4" type="AudioStreamPlayer" parent="Audio/Sword"]
+stream = ExtResource( 12 )
+
+[node name="River" type="Node2D" parent="Audio"]
+
+[node name="River" type="AudioStreamPlayer" parent="Audio/River"]
+stream = ExtResource( 14 )
+
+[node name="Hit" type="Node2D" parent="Audio"]
+
+[node name="Hit1" type="AudioStreamPlayer" parent="Audio/Hit"]
+stream = ExtResource( 15 )
+
+[node name="Hit2" type="AudioStreamPlayer" parent="Audio/Hit"]
+stream = ExtResource( 14 )
+
+[node name="Hit3" type="AudioStreamPlayer" parent="Audio/Hit"]
+stream = ExtResource( 14 )
+
+[node name="Footstep" type="Node2D" parent="Audio"]
+
+[node name="Footstep1" type="AudioStreamPlayer" parent="Audio/Footstep"]
+stream = ExtResource( 20 )
+
+[node name="Footstep2" type="AudioStreamPlayer" parent="Audio/Footstep"]
+stream = ExtResource( 19 )
+
+[node name="Footstep3" type="AudioStreamPlayer" parent="Audio/Footstep"]
+stream = ExtResource( 18 )
+
+[node name="Footstep4" type="AudioStreamPlayer" parent="Audio/Footstep"]
+stream = ExtResource( 21 )
+
+[node name="Footstep5" type="AudioStreamPlayer" parent="Audio/Footstep"]
+stream = ExtResource( 17 )
+
+[node name="Footstep6" type="AudioStreamPlayer" parent="Audio/Footstep"]
+stream = ExtResource( 16 )
+
+[node name="Footstep7" type="AudioStreamPlayer" parent="Audio/Footstep"]
+stream = ExtResource( 22 )
+
+[node name="Bush" type="Node2D" parent="Audio"]
+
+[node name="Bush1" type="AudioStreamPlayer" parent="Audio/Bush"]
+stream = ExtResource( 24 )
+
+[node name="Bush2" type="AudioStreamPlayer" parent="Audio/Bush"]
+stream = ExtResource( 23 )
+
+[node name="Bush3" type="AudioStreamPlayer" parent="Audio/Bush"]
+stream = ExtResource( 25 )
 
 [connection signal="body_entered" from="Background/Bg1" to="." method="_on_background_entered" binds= [ 0 ]]
 [connection signal="body_entered" from="Background/Bg2" to="." method="_on_background_entered" binds= [ 1 ]]

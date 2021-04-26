@@ -12,3 +12,4 @@ func on_die():
   new_log.position = position
   
   queue_free()
+  SoundManager.play_sound("Hit")
