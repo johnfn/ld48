@@ -1,10 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
-[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/art/shieldmob_shielded1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=4]
-[ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
 [ext_resource path="res://scenes/MonsterJump.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=8]
@@ -34,9 +32,6 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/white = null
 
-[sub_resource type="ShaderMaterial" id=4]
-resource_local_to_scene = true
-
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
 
@@ -45,34 +40,33 @@ script = ExtResource( 6 )
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Donut" parent="Items" instance=ExtResource( 4 )]
-position = Vector2( 640.263, 210.839 )
-
-[node name="Sword" parent="Items" instance=ExtResource( 2 )]
-position = Vector2( 818.567, 3168.2 )
-rotation = 0.0
+position = Vector2( 640, 128 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Pushable" parent="Obstacles" instance=ExtResource( 11 )]
-position = Vector2( 718.5, 967.735 )
+position = Vector2( 704, 960 )
 
 [node name="Pushable4" parent="Obstacles" instance=ExtResource( 11 )]
-position = Vector2( 782.5, 967.735 )
+position = Vector2( 768, 960 )
 
 [node name="Pushable2" parent="Obstacles" instance=ExtResource( 11 )]
-position = Vector2( 654.5, 967.735 )
+position = Vector2( 640, 960 )
 
 [node name="Pushable7" parent="Obstacles" instance=ExtResource( 11 )]
-position = Vector2( 654.5, 839.735 )
+position = Vector2( 640, 832 )
 
 [node name="Pushable8" parent="Obstacles" instance=ExtResource( 11 )]
-position = Vector2( 718.5, 775.735 )
+position = Vector2( 704, 768 )
 
 [node name="Pushable6" parent="Obstacles" instance=ExtResource( 11 )]
-position = Vector2( 782.5, 903.735 )
+position = Vector2( 768, 896 )
 
 [node name="Pushable3" parent="Obstacles" instance=ExtResource( 11 )]
-position = Vector2( 590.5, 967.735 )
+position = Vector2( 576, 960 )
+
+[node name="Pushable5" parent="Obstacles" instance=ExtResource( 11 )]
+position = Vector2( 512, 960 )
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 397.05, 19.9244 )
@@ -311,14 +305,6 @@ position = Vector2( 677.235, 0 )
 [node name="SpawnPoint" type="Node2D" parent="Markers"]
 position = Vector2( 668.32, 3376.79 )
 
-[node name="shieldmob_shielded1" type="Sprite" parent="."]
-position = Vector2( -755.493, 2030.06 )
-texture = ExtResource( 3 )
-
-[node name="shieldmob_shielded2" type="Sprite" parent="."]
-position = Vector2( -751.031, 1636.57 )
-texture = ExtResource( 3 )
-
 [node name="Node2D" parent="." instance=ExtResource( 12 )]
 position = Vector2( 678.468, 1538.23 )
 
@@ -478,16 +464,24 @@ position = Vector2( 950.181, 1354.48 )
 [node name="MonsterJump2" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 458.68, 1781.77 )
 
-[node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 5 )]
-material = SubResource( 4 )
-position = Vector2( 927.119, 412.913 )
-direction_to_shoot = Vector2( -1, 0 )
-
 [node name="MonsterJump3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 740.745, 2786.92 )
+position = Vector2( 832, 2816 )
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 13 )]
 position = Vector2( 678.846, 3444.95 )
-dialog = [ "AAAAH! Freaky frog people! Maybe they're friendly?" ]
+dialog = [ "AAAAH! Freaky frog person!! ...Maybe they're friendly?" ]
+
+[node name="DogMoveTrigger" parent="." instance=ExtResource( 2 )]
+position = Vector2( 642.444, 390.057 )
+destinations = [ NodePath("../dddoggg") ]
+dog_path = NodePath("../Items/Donut")
+
+[node name="dddoggg" type="Node2D" parent="."]
+position = Vector2( 630.773, -298.896 )
+
+[node name="DialogTrigger2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 625.954, 65.6009 )
+dialog = [ "Winston, is everything okay?", "Are you... taking me somewhere?" ]
+cinematic_style_dialog = true
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
