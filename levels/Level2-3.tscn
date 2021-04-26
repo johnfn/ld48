@@ -14,7 +14,7 @@
 [ext_resource path="res://components/Monster3x.tscn" type="PackedScene" id=12]
 [ext_resource path="res://components/FillableArea.tscn" type="PackedScene" id=13]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=14]
-[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Shader" id=1]
@@ -71,11 +71,7 @@ position = Vector2( -1.74792, 0 )
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Donut" parent="Items" instance=ExtResource( 7 )]
-position = Vector2( 640.263, 210.839 )
-
-[node name="Sword" parent="Items" instance=ExtResource( 15 )]
-position = Vector2( 870.4, 3226.51 )
-rotation = 0.0
+position = Vector2( 637.852, 73.3996 )
 
 [node name="river_3tiles" type="Sprite" parent="."]
 position = Vector2( 640, 813 )
@@ -606,7 +602,20 @@ material = SubResource( 9 )
 position = Vector2( 965.268, 2442.02 )
 
 [node name="DialogTrigger2" parent="." instance=ExtResource( 16 )]
-position = Vector2( 635.817, 3447.94 )
+position = Vector2( 635.817, 3445.53 )
 dialog = [ "Wow! What are THOSE things??" ]
+
+[node name="DogMoveTrigger" parent="." instance=ExtResource( 15 )]
+position = Vector2( 644.978, 138.785 )
+destinations = [ NodePath("../ddddgogogogdogdo") ]
+dog_path = NodePath("../Items/Donut")
+dog_speak = [ "Yipyip! Yipyip!!" ]
+
+[node name="DialogTrigger" parent="DogMoveTrigger" instance=ExtResource( 16 )]
+position = Vector2( -36.6497, -178.43 )
+dialog = [ "He seemed more urgent that time...", "Winston? Buddy? Where are you going?" ]
+
+[node name="ddddgogogogdogdo" type="Node2D" parent="."]
+position = Vector2( 667.908, -434.019 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

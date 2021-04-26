@@ -752,7 +752,6 @@ z_index = 5
 position = Vector2( 640, -150 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Runner"]
@@ -763,25 +762,37 @@ shape = SubResource( 4 )
 [node name="MonsterShooter" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 324.854, 8031.78 )
+health = 3
+deals_damage = true
 
 [node name="MonsterShooter3" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 351.763, 8576.68 )
+health = 3
+deals_damage = true
 
 [node name="MonsterShooter5" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 348.399, 9202.3 )
+health = 3
+deals_damage = true
 
 [node name="MonsterShooter2" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 990.844, 8347.95 )
+health = 3
+deals_damage = true
 
 [node name="MonsterShooter4" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 987.48, 8902.95 )
+health = 3
+deals_damage = true
 
 [node name="MonsterShooter6" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 963.936, 9410.85 )
+health = 3
+deals_damage = true
 
 [connection signal="body_entered" from="Runner" to="." method="_on_body_entered"]
