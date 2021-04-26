@@ -23,14 +23,15 @@ script = ExtResource( 3 )
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 0.294118 )
-position = Vector2( 12.2079, 55.899 )
-scale = Vector2( 2.7008, 0.886066 )
+position = Vector2( 13.0394, 83.6911 )
+scale = Vector2( 2.39705, 0.435929 )
 texture = ExtResource( 5 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 2 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
