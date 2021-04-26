@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gk_grunt3.mp3-9267173d227ae518bb4033342e005391.mp3str"
+
+[deps]
+
+source_file="res://assets/music/goblin king/gk_grunt3.mp3"
+dest_files=[ "res://.import/gk_grunt3.mp3-9267173d227ae518bb4033342e005391.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
