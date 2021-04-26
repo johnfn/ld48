@@ -1,6 +1,7 @@
 class_name Main
 extends Node2D
 
+onready var Letterbox = $"/root/Main/Letterbox"
 onready var Player = $Player
 onready var Cam = $Camera
 onready var Ui = $UI
@@ -19,7 +20,7 @@ export(bool) var debug_already_has_sword = false
 
 # Uncomment one of the level_scenes variables: 1 OR 2
 # 1: Chauncey's list of levels. DO NOT EDIT UNLESS YOU INTEND TO CHANGE THE STANDARD LEVEL ORDER.
-export(Array) var level_scenes = ["res://levels/Level0.tscn","res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn","res://levels/Level1-2.tscn", "res://levels/Level1-3.tscn","res://levels/Level1-4.tscn", "res://levels/Level1-5.tscn","res://levels/LevelRunner.tscn", "res://levels/Level2-1.tscn","res://levels/Level2-2.tscn", "res://levels/Level2-3.tscn" , "res://levels/Level2-4.tscn", "res://levels/LevelBoss.tscn"   ]
+export(Array) var level_scenes = ["res://levels/Level0.tscn","res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn","res://levels/Level1-2.tscn", "res://levels/Level1-3.tscn","res://levels/Level1-4.tscn", "res://levels/Level1-5.tscn","res://levels/LevelRunner.tscn", "res://levels/Level2-1.tscn","res://levels/Level2-2.tscn", "res://levels/Level2-3.tscn" , "res://levels/Level2-4.tscn", "res://levels/LevelBoss.tscn"]
 
 # 2: PLAY LEVELS. FEEL FREE TO EDIT THIS LIST.
 #export(Array) var level_scenes = ["res://levels/Level0.tscn", "res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn", "res://levels/Level1-3Mock.tscn", "res://levels/LevelMock.tscn", "res://levels/Level5Mock.tscn"]
@@ -58,7 +59,7 @@ func checkpoint():
 
 func load_level(level_name: String):
   loaded_scene = load(level_name)
-  assert(loaded_scene != null, "ERROR: %s not a valid level. Check Main->Inspector->Level Scenes (sometimes from level_scenes) matches available names in /levels." % new_scene)
+  assert(loaded_scene != null, "ERROR: %s not a valid level. Check Main->Inspector->Level Scenes (sometimes from level_scenes) matches available names in /levels." % level_name)
   Level = loaded_scene.instance()
   loaded_scene = null
   assert(Level.get_node("Markers/LevelBottom") != null)

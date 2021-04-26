@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/art/dog_idle1.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/dog_idle3.png" type="Texture" id=2]
@@ -6,9 +6,19 @@
 [ext_resource path="res://assets/art/dog_idle4.png" type="Texture" id=4]
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=5]
 [ext_resource path="res://assets/art/tree_shadow.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/dog_leap_right2.png" type="Texture" id=10]
+[ext_resource path="res://assets/art/dog_leap_right3.png" type="Texture" id=11]
+[ext_resource path="res://assets/art/dog_leap_right4.png" type="Texture" id=12]
+[ext_resource path="res://assets/art/dog_leap_right1.png" type="Texture" id=13]
+[ext_resource path="res://scripts/Dog.gd" type="Script" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "idle",
@@ -19,6 +29,7 @@ animations = [ {
 "items",
 ]]
 collision_layer = 8
+script = ExtResource( 15 )
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.278431 )
@@ -29,8 +40,10 @@ texture = ExtResource( 6 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 5 )
+position = Vector2( -0.346649, 0 )
 frames = SubResource( 1 )
-animation = "idle"
+animation = "run"
+frame = 2
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

@@ -5,6 +5,7 @@ signal died
 const MAX_HEALTH = 8
 var health = MAX_HEALTH
 
+onready var Letterbox = $"/root/Main/Letterbox"
 export(int) onready var damage = 1
 export(int) onready var shoot_cooldown = 1
 export(Vector2) var starting_direction = Vector2.RIGHT
