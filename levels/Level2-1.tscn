@@ -41,7 +41,7 @@ resource_local_to_scene = true
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
 
 uniform float white;
@@ -51,9 +51,9 @@ void fragment() {
     COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=8]
 resource_local_to_scene = true
-shader = SubResource( 6 )
+shader = SubResource( 7 )
 shader_param/white = null
 
 [node name="LevelX" type="Node2D"]
@@ -350,27 +350,27 @@ material = SubResource( 5 )
 position = Vector2( 262.863, 2383.71 )
 
 [node name="Grass" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
+material = SubResource( 8 )
 position = Vector2( 862.274, -854.643 )
 
 [node name="Grass4" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
+material = SubResource( 8 )
 position = Vector2( -57.5613, -864.355 )
 
 [node name="Grass5" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
+material = SubResource( 8 )
 position = Vector2( 57.5915, -896.265 )
 
 [node name="Grass6" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
+material = SubResource( 8 )
 position = Vector2( -35.3632, -786.661 )
 
 [node name="Grass2" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
+material = SubResource( 8 )
 position = Vector2( 751.283, -879.616 )
 
 [node name="Grass3" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
+material = SubResource( 8 )
 position = Vector2( 860.886, -758.914 )
 rotation = 0.0249332
 
@@ -527,6 +527,6 @@ rotation = -0.0493538
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 14 )]
 position = Vector2( 671.972, 2684.47 )
-dialog = [ "Oh, Winston... ", null ]
+dialog = [ "Whoa... I've never been in *this* part of the forest before.", "Winston, where are we going? I hope he gets tired soon..." ]
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
