@@ -42,7 +42,7 @@ func display_text_sequence_co(target: Node2D, sequence: Array) -> void:
   
   hide_everything()
   
-  if target is Player:
+  if target is Player or target is Dog:
     BlackText.visible = true
     WhiteImage.visible = true
     active_text = BlackText
