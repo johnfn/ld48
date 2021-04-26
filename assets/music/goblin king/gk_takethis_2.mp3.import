@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gk_takethis_2.mp3-3237d82a20e84de0655905ff95806521.mp3str"
+
+[deps]
+
+source_file="res://assets/music/goblin king/gk_takethis_2.mp3"
+dest_files=[ "res://.import/gk_takethis_2.mp3-3237d82a20e84de0655905ff95806521.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

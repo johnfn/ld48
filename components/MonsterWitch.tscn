@@ -23,8 +23,8 @@ script = ExtResource( 3 )
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 0.294118 )
-position = Vector2( 12.2079, 55.899 )
-scale = Vector2( 2.7008, 0.886066 )
+position = Vector2( 2.64589, 80.9888 )
+scale = Vector2( 1.18875, 0.669549 )
 texture = ExtResource( 5 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]

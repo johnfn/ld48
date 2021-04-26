@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=1]
 [ext_resource path="res://assets/art/bush.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Shrub.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/chara_shadow.png" type="Texture" id=4]
 
 [node name="Shrub" type="RigidBody2D"]
 material = ExtResource( 1 )
@@ -10,6 +11,12 @@ collision_layer = 4
 collision_mask = 151
 mode = 1
 script = ExtResource( 3 )
+
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.278431 )
+position = Vector2( -1.9, -18.7288 )
+scale = Vector2( 1.69127, 1.09702 )
+texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 1 )

@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/art/mob2.png" type="Texture" id=4]
-[ext_resource path="res://assets/art/mob1.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/horde1.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/horde2.png" type="Texture" id=5]
 [ext_resource path="res://scripts/LevelRunner.gd" type="Script" id=6]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/art/horde3.png" type="Texture" id=9]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -18,14 +19,14 @@ resource_local_to_scene = true
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "idle",
 "speed": 1.6
 } ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 640, 60 )
+extents = Vector2( 640, 154.813 )
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
@@ -737,7 +738,10 @@ position = Vector2( 659.363, 1172.09 )
 position = Vector2( 644.617, 12581.7 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
-position = Vector2( 647.343, 11546.9 )
+position = Vector2( 640, 0 )
+
+[node name="CamTop" type="Node2D" parent="Markers"]
+position = Vector2( 645.339, 11575.7 )
 
 [node name="Camera" type="Camera2D" parent="."]
 
@@ -745,45 +749,41 @@ position = Vector2( 647.343, 11546.9 )
 z_index = 5
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Runner"]
-position = Vector2( 640, -180 )
+position = Vector2( 640, -150 )
 frames = SubResource( 3 )
 animation = "idle"
 frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Runner"]
-position = Vector2( 640, -60 )
+position = Vector2( 640, -157.711 )
 shape = SubResource( 4 )
 
 [node name="MonsterShooter" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 324.854, 8031.78 )
-health = 3
 
 [node name="MonsterShooter3" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 351.763, 8576.68 )
-health = 3
 
 [node name="MonsterShooter5" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 348.399, 9202.3 )
-health = 3
 
 [node name="MonsterShooter2" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 990.844, 8347.95 )
-health = 3
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter4" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 987.48, 8902.95 )
-health = 3
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter6" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 963.936, 9410.85 )
-health = 3
 direction_to_shoot = Vector2( -1, 0 )
+
+[connection signal="body_entered" from="Runner" to="." method="_on_body_entered"]

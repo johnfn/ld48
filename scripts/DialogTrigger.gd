@@ -24,13 +24,15 @@ func body_entered(other: Node2D):
     begin_cinematic(other)
     
 func begin_cinematic(player: Player):
+  yield(get_tree(), "idle_frame")
+  
   var new_dialog = DialogScene.instance()
   
   if speaker == null:
     speaker = player
   
   if not cinematic_style_dialog:
-    new_dialog.display_text_sequence_co(player, dialog)
+    new_dialog.display_text_sequence_co(speaker, dialog)
     return
   
   Letterbox.in_cinematic = true

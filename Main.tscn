@@ -13,10 +13,10 @@ extents = Vector2( 640.632, 1277.67 )
 extents = Vector2( 956.12, 10 )
 
 [node name="Main" type="Node2D"]
-position = Vector2( 3.18482, -3.61035 )
+position = Vector2( 6.34852, -2.43603 )
 script = ExtResource( 3 )
 debug_already_has_sword = true
-level_scenes = [ "res://levels/Level1-0Mock.tscn", "res://levels/Level1-1Mock.tscn", "res://levels/Level1-2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn" ]
+level_scenes = [ "res://levels/Level1-5.tscn", "res://levels/Level1-1Mock.tscn", "res://levels/Level1-2Mock.tscn", "res://levels/Level3Mock.tscn", "res://levels/Level4Mock.tscn", "res://levels/Level5Mock.tscn" ]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -74,10 +74,9 @@ shape = SubResource( 1 )
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="TransitionTop" parent="Levels" instance=ExtResource( 2 )]
-position = Vector2( 0.96, -2558 )
+position = Vector2( 0, -380 )
 
 [node name="TransitionBottom" parent="Levels" instance=ExtResource( 2 )]
-position = Vector2( 0, -0.960266 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -583.471, 127.642 )

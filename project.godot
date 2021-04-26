@@ -20,11 +20,6 @@ _global_script_classes=[ {
 "path": "res://scripts/BaseHittableArea.gd"
 }, {
 "base": "Area2D",
-"class": "DialogTrigger",
-"language": "GDScript",
-"path": "res://scripts/DialogTrigger.gd"
-}, {
-"base": "Area2D",
 "class": "Dog",
 "language": "GDScript",
 "path": "res://scripts/Dog.gd"
@@ -42,7 +37,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "BaseHittable": "",
 "BaseHittableArea": "",
-"DialogTrigger": "",
 "Dog": "",
 "Main": "",
 "Player": ""
@@ -60,6 +54,7 @@ config/icon="res://icon.png"
 CombatHelpers="*res://scripts/CombatHelpers.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
 Test="*res://compiled/Test.gd"
+CloudSpawner="*res://scenes/CloudSpawner.tscn"
 
 [display]
 
@@ -68,6 +63,7 @@ window/size/height=1280
 window/size/resizable=false
 window/size/test_width=800
 window/size/test_height=800
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

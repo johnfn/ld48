@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/art/sword.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/ui_item_container.png" type="Texture" id=1]
 [ext_resource path="res://scripts/UIInventoryNode.gd" type="Script" id=2]
-[ext_resource path="res://assets/ui/inventory_bg.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/ui_leafcoin.png" type="Texture" id=3]
 [ext_resource path="res://assets/art/donut.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/ui_fishing_rod.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/ui_sword.png" type="Texture" id=6]
 
 [node name="UIInventorySlot" type="Control"]
 anchor_right = 1.0
@@ -18,21 +20,45 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Items" type="Control" parent="."]
 margin_right = 194.0
 margin_bottom = 426.0
 
 [node name="Sword" type="TextureRect" parent="Items"]
-margin_left = 50.4871
-margin_top = -15.6274
-margin_right = 102.487
-margin_bottom = 102.373
-rect_rotation = 23.2
+margin_right = 94.0
+margin_bottom = 118.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
-texture = ExtResource( 1 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeafCoin" type="TextureRect" parent="Items"]
+visible = false
+margin_left = 2.24493
+margin_top = 16.8369
+margin_right = 96.2449
+margin_bottom = 134.837
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FishingRod" type="TextureRect" parent="Items"]
+visible = false
+margin_right = 94.0
+margin_bottom = 118.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

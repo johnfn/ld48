@@ -24,16 +24,16 @@ health = 3
 
 [node name="Right Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.207843 )
-position = Vector2( 22, 2 )
-rotation = -0.210617
-scale = Vector2( 1.02601, 0.816109 )
+position = Vector2( 32.0843, 24.2397 )
+rotation = -0.0217459
+scale = Vector2( 1.13184, 0.725921 )
 texture = ExtResource( 5 )
 
 [node name="Left Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.207843 )
-position = Vector2( 22.5387, 10.8283 )
-rotation = 0.341394
-scale = Vector2( 1.23886, 0.816053 )
+position = Vector2( 14.8475, 29.5365 )
+rotation = 0.0876099
+scale = Vector2( 1.30293, 0.702185 )
 texture = ExtResource( 5 )
 offset = Vector2( -40.8246, 0.25412 )
 
@@ -41,7 +41,6 @@ offset = Vector2( -40.8246, 0.25412 )
 material = ExtResource( 1 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 flip_h = true
 

@@ -15,6 +15,8 @@ func render_hearts():
       hearts[i].set_status("half")
     else:
       hearts[i].set_status("empty")
+    hearts[i].visible = (i + 1) * 2 <= player.max_health
+      
 
 func display_items(item_names):
   for i in range(min(len(slots), len(item_names))):
