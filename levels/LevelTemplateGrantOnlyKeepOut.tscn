@@ -28,7 +28,7 @@ resource_local_to_scene = true
 shader = SubResource( 5 )
 shader_param/white = null
 
-[node name="LevelX2" type="Node2D"]
+[node name="Main" type="Node2D"]
 position = Vector2( -1.79102, -1.72052 )
 script = ExtResource( 8 )
 

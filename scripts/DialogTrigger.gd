@@ -26,8 +26,6 @@ func body_entered(other: Node2D):
 func begin_cinematic(player: Player):
   yield(get_tree(), "idle_frame")
   
-  print("speaker is..." , speaker.name)
-  
   var new_dialog = DialogScene.instance()
   
   if speaker == null:

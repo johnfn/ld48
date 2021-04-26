@@ -95,8 +95,5 @@ func _physics_process(delta):
       
       var hit = raycast_instance.get_collider()
       
-      print(potential_enemy.name)
-      print(hit)
-      
       if hit == potential_enemy:
         hit.damage(damage, self)

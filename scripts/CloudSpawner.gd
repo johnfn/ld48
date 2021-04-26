@@ -15,10 +15,12 @@ func initial_cloud_spawn():
   for i in range(50):
     var c = spawn_cloud()
     
-    print(1, player.position)
     c.position = player.position + Vector2(randf() * 1000.0 - 1000.0, - randf() * 20000.0)
 
 func spawn_cloud():
+  if player == null:
+    return
+  
   var new_cloud = CloudScene.instance()
   main.add_child(new_cloud)
 
