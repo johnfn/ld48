@@ -12,7 +12,7 @@ extents = Vector2( 640.632, 1277.67 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 956.12, 10 )
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 position = Vector2( 3.18482, -3.61035 )
 script = ExtResource( 3 )
 debug_already_has_sword = true
