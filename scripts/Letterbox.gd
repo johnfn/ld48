@@ -2,11 +2,11 @@ extends Node2D
 
 # This is an autoload, so anyone can call Letterbox.animate_in or animate_out
 
-onready var TopRect = $CanvasLayer/TopRect
-onready var BottomRect = $CanvasLayer/BottomRect
-onready var EntireScreenFadeRect = $CanvasLayer/EnterScreenFadeRect
-onready var camera: Camera2D = $"/root/Main/Camera"
-onready var main = $"/root/Main"
+onready var TopRect = null
+onready var BottomRect = null
+onready var EntireScreenFadeRect = null
+onready var camera: Camera2D = null
+onready var main = null
 
 var letterbox_animation_length = 45.0
 var fade_length = 120.0
@@ -18,7 +18,13 @@ var in_cinematic = false
 # are we currently animating the letterbox? (are the boxes actually moving?)
 var is_animating = false
   
-func _ready():
+func setup():
+    TopRect = $CanvasLayer/TopRect
+    BottomRect = $CanvasLayer/BottomRect
+    EntireScreenFadeRect = $CanvasLayer/EnterScreenFadeRect
+    camera = $"/root/Main/Camera"
+    main = $"/root/Main"
+  
     z_index = 1000
     
     TopRect.rect_position.y -= TopRect.rect_size.y
