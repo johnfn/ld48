@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/footstep1.wav-ef93d996ecf55aaa2242fa478dd3fda3.sample"
+path="res://.import/footstep3.wav-3daa5b4242be260fcc2f3bf4e4e43d5c.sample"
 
 [deps]
 
-source_file="res://footstep1.wav"
-dest_files=[ "res://.import/footstep1.wav-ef93d996ecf55aaa2242fa478dd3fda3.sample" ]
+source_file="res://assets/music/footstep3.wav"
+dest_files=[ "res://.import/footstep3.wav-3daa5b4242be260fcc2f3bf4e4e43d5c.sample" ]
 
 [params]
 

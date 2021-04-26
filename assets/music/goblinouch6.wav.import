@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/rosksplash1.wav-d91d4c4ded01f685e3ffe01316575a09.sample"
+path="res://.import/goblinouch6.wav-b8959af81fc77383d398bd56888cdc2d.sample"
 
 [deps]
 
-source_file="res://rosksplash1.wav"
-dest_files=[ "res://.import/rosksplash1.wav-d91d4c4ded01f685e3ffe01316575a09.sample" ]
+source_file="res://assets/music/goblinouch6.wav"
+dest_files=[ "res://.import/goblinouch6.wav-b8959af81fc77383d398bd56888cdc2d.sample" ]
 
 [params]
 

@@ -41,8 +41,10 @@ const TRANSITION_LEN = 380
 var last_player_y = 0
 var is_transitioning = false
 var bgs = [0, 1, 2, 3]
+# new_scene and loaded_scene are temp vars
 var new_scene = null
 var loaded_scene = null
+var curr_song = null
 
 func add_to_inventory(item_name):
   inventory.append(item_name)
@@ -54,14 +56,11 @@ func checkpoint():
   saved_slots = slots.duplicate()
 
 
-func load_level(level_num):
-  new_scene = level_scenes[level_num]
-  loaded_scene = load(new_scene)
+func load_level(level_name: String):
+  loaded_scene = load(level_name)
   assert(loaded_scene != null, "ERROR: %s not a valid level. Check Main->Inspector->Level Scenes (sometimes from level_scenes) matches available names in /levels." % new_scene)
   Level = loaded_scene.instance()
-  new_scene = null
   loaded_scene = null
-  
   assert(Level.get_node("Markers/LevelBottom") != null)
   assert(Level.get_node("Markers/LevelTop") != null)
   level_height = Level.get_node("Markers/LevelBottom").position.y - Level.get_node("Markers/LevelTop").position.y
@@ -71,18 +70,29 @@ func load_level(level_num):
     Level.set_camera(Cam)
 
 
+func update_song():
+  var song_name = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
+  if curr_song != song_name:
+    if curr_song != null:
+      $Audio.get_node(curr_song).playing = false
+    curr_song = song_name
+    $Audio.get_node(curr_song).playing = true
+
+
 func start_level(level_num: int) -> void:
   if Level != null:
     Level.queue_free()
   if OldLevel != null:
     OldLevel.queue_free()
-  load_level(level_num)
+    
+  load_level(level_scenes[level_num])
   Levels.add_child(Level)
   
   Player.position.x = Level.spawn_point.x
   jump_view(Level.spawn_point.y - Player.position.y)
   Player.reset()
   Cam.current = true
+  update_song()
   inventory = saved_inventory.duplicate()
   slots = saved_slots.duplicate()
   for slot in saved_slots.keys():
@@ -100,7 +110,7 @@ func start_level(level_num: int) -> void:
 
 func load_new_level(level_num: int) -> void:
   OldLevel = Level
-  load_level(level_num)
+  load_level(level_scenes[level_num])
   assert(Level.get_node("Markers/LevelBottom") != null)
   Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
   Levels.add_child(Level)
@@ -126,6 +136,8 @@ func _ready():
   start_level(curr_level_num)
   CloudSpawner.initial_cloud_spawn()
   Letterbox.setup()
+  for audio in $Audio.get_children():
+    audio.volume_db = SoundManager.get_db()
 
 
 func jump_view(dist):
@@ -173,6 +185,7 @@ func _process(delta: float):
     despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + bottom.position.y
     curr_level_num += 1
     is_transitioning = false
+    update_song()
   if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
     OldLevel.queue_free()
     OldLevel = null
@@ -229,6 +242,7 @@ func handle_player_died():
   yield(Letterbox.fade_to_black(120.0), "completed")
 
   start_level(curr_level_num)
+  
   Player.modulate.a = 1.0
   Player.Sprite.material.set_shader_param("white", 0.0)
   Player.Hand.material.set_shader_param("white", 0.0)

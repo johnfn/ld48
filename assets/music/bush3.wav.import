@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/footstep5.wav-dd4ca3c9baf40ee221edd20c71d9beb6.sample"
+path="res://.import/bush3.wav-f6d132952594be1a02adf8f28bac1175.sample"
 
 [deps]
 
-source_file="res://footstep5.wav"
-dest_files=[ "res://.import/footstep5.wav-dd4ca3c9baf40ee221edd20c71d9beb6.sample" ]
+source_file="res://assets/music/bush3.wav"
+dest_files=[ "res://.import/bush3.wav-f6d132952594be1a02adf8f28bac1175.sample" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/bush1.wav-f2fc986c0eb471c3141995ab2e50c95f.sample"
+path="res://.import/rosksplash2.wav-b2ce6b73d9923b7bd35ea28c2397977c.sample"
 
 [deps]
 
-source_file="res://bush1.wav"
-dest_files=[ "res://.import/bush1.wav-f2fc986c0eb471c3141995ab2e50c95f.sample" ]
+source_file="res://assets/music/rosksplash2.wav"
+dest_files=[ "res://.import/rosksplash2.wav-b2ce6b73d9923b7bd35ea28c2397977c.sample" ]
 
 [params]
 

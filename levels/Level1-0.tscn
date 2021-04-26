@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/CardTrigger.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -247,18 +249,6 @@ position = Vector2( 1305.04, 1293.57 )
 [node name="Tree102" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1212.5, 1433.49 )
 
-[node name="Tree112" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1310.91, 1031.56 )
-
-[node name="Tree113" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1210.21, 1163.54 )
-
-[node name="Tree114" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1305.04, 1293.57 )
-
-[node name="Tree115" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1212.5, 1433.49 )
-
 [node name="Tree116" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1334.78, 1578.16 )
 
@@ -270,12 +260,6 @@ position = Vector2( 1328.91, 1840.17 )
 
 [node name="Tree119" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1236.37, 1980.09 )
-
-[node name="Tree120" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1334.78, 1578.16 )
-
-[node name="Tree121" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1234.08, 1710.14 )
 
 [node name="Tree138" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1038.94, 1555.45 )
@@ -289,12 +273,6 @@ solid_leaves = false
 position = Vector2( 1061.37, 1878.41 )
 solid_leaves = false
 
-[node name="Tree122" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1328.91, 1840.17 )
-
-[node name="Tree123" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1236.37, 1980.09 )
-
 [node name="Tree124" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1310.91, 2139.09 )
 
@@ -306,15 +284,6 @@ position = Vector2( 1305.04, 2401.1 )
 
 [node name="Tree127" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1212.5, 2541.02 )
-
-[node name="Tree128" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1310.91, 2139.09 )
-
-[node name="Tree129" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1210.21, 2271.07 )
-
-[node name="Tree130" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 1305.04, 2401.1 )
 
 [node name="Tree131" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1212.5, 2541.02 )
@@ -357,8 +326,10 @@ position = Vector2( 1439.02, 3376.81 )
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 8 )]
 position = Vector2( 648.739, 3018.5 )
-dialog = [ "Oh, there you are, Winston! C'mere, boy!", "You don't want to get lost in the forest, do you?" ]
+dialog = [ "Oh, there you are, Winston! C'mere, boy!", "Mom says it's dangerous to go deep in the forest!" ]
 cinematic_style_dialog = true
+
+[node name="CardTrigger" parent="." instance=ExtResource( 9 )]
 
 [node name="Markers" type="Node2D" parent="."]
 
@@ -582,5 +553,18 @@ position = Vector2( 455.305, 2803.65 )
 [node name="Grass11" parent="." instance=ExtResource( 2 )]
 material = SubResource( 3 )
 position = Vector2( 327.545, 2746.38 )
+
+[node name="DogMoveTrigger" parent="." instance=ExtResource( 10 )]
+position = Vector2( 668.876, 522.663 )
+destinations = [ NodePath("../DoggoDesto") ]
+dog_path = NodePath("../Items/Donut")
+dog_speak = [ "Yip yip!", "(Come follow me!)" ]
+
+[node name="DoggoDesto" type="Node2D" parent="."]
+position = Vector2( 636.598, -392.091 )
+
+[node name="DialogTrigger2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 645.086, 205.466 )
+dialog = [ "Winston? Where'd you go??", "Okay, we can play ONE game of hide and seek!" ]
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

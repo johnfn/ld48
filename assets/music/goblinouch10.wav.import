@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/footstep7.wav-c7bf76cd71c915475f395e4bc388abac.sample"
+path="res://.import/goblinouch10.wav-a9694b95faec91ed64b174ea900a31eb.sample"
 
 [deps]
 
-source_file="res://footstep7.wav"
-dest_files=[ "res://.import/footstep7.wav-c7bf76cd71c915475f395e4bc388abac.sample" ]
+source_file="res://assets/music/goblinouch10.wav"
+dest_files=[ "res://.import/goblinouch10.wav-a9694b95faec91ed64b174ea900a31eb.sample" ]
 
 [params]
 
