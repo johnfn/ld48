@@ -67,8 +67,8 @@ func start_level(level_num: int) -> void:
   
   Player.position.x = Level.spawn_point.x
   jump_view(Level.spawn_point.y - Player.position.y)
-  Player.health = Player.max_health
-  Player.reset_equipment()
+  Player.reset()
+  Cam.current = true
   inventory = saved_inventory.duplicate()
   slots = saved_slots.duplicate()
   for slot in saved_slots.keys():
