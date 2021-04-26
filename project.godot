@@ -71,6 +71,7 @@ window/stretch/aspect="keep"
 scale=false
 a=false
 asdf=false
+fps=false
 
 [input]
 
