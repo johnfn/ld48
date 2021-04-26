@@ -6,6 +6,7 @@ func _init().():
 export(int) onready var damage = 1
 export(int) onready var shoot_cooldown = 1
 export(Vector2) var starting_direction = Vector2.RIGHT
+onready var Letterbox = $"/root/Main/Letterbox"
 
 var shoot_cooldown_remaining = 1
 var speed = 300.0
