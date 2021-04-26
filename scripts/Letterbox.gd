@@ -17,7 +17,7 @@ var in_cinematic = false
 # are we currently animating the letterbox? (are the boxes actually moving?)
 var is_animating = false
   
-func setup():
+func _ready():
   TopRect = $CanvasLayer/TopRect
   BottomRect = $CanvasLayer/BottomRect
   EntireScreenFadeRect = $CanvasLayer/EnterScreenFadeRect
@@ -32,6 +32,7 @@ func setup():
   
   for card in Cards:
     card.visible = false
+    print(card.name, card.visible)
 
 func animate_in(target: Node2D):
   if is_animating: 
