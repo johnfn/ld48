@@ -6,7 +6,7 @@ onready var TopRect = $CanvasLayer/TopRect
 onready var BottomRect = $CanvasLayer/BottomRect
 onready var EntireScreenFadeRect = $CanvasLayer/EnterScreenFadeRect
 onready var camera: Camera2D = $"/root/Main/Camera"
-onready var main: Main = $"/root/Main"
+onready var main = $"/root/Main"
 
 var letterbox_animation_length = 45.0
 var fade_length = 120.0
