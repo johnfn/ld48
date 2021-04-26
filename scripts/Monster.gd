@@ -1,6 +1,7 @@
 extends BaseHittable
 
 export(int) onready var damage = 1
+onready var Letterbox = $"/root/Main/Letterbox"
 
 var noise = OpenSimplexNoise.new()
 var count = 0
