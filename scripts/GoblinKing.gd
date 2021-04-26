@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal died
 
-const MAX_HEALTH = 10
+const MAX_HEALTH = 8
 var health = MAX_HEALTH
 
 export(int) onready var damage = 1
@@ -91,7 +91,12 @@ func damage(amount: int, source: Node2D) -> void:
   being_hit = false
 
 
+var particle_time = 0
 func _process(delta):
+  if particle_time > 0:
+    particle_time -= delta
+    if particle_time <= 0:
+      $ShockwaveCenter/Particles2D.emitting = false
   if health <= 0: return
   if colliding_player != null and not Letterbox.in_cinematic and not is_invuln and not colliding_player.is_invuln and colliding_player.health > 0 and not has_damaged_player:
     colliding_player.damage(1, self)
@@ -100,8 +105,8 @@ func _process(delta):
     Mode.IDLE:
       time_until_attack -= delta
       if time_until_attack < 0:
-        curr_mode = Mode.JUMP + curr_attack
-        curr_attack = (curr_attack + 1) % 1 # TODO once there are more attacks
+        curr_mode = Mode.SPEAR + curr_attack
+        curr_attack = (curr_attack + 1) % 2 # TODO once there are more attacks
         time_until_attack = pause_between_attacks
       if abs(position.x - player.position.x) > 200:
         enforce_flip(player.position.x > position.x)
@@ -117,7 +122,7 @@ func _process(delta):
 
 export(Array) var jump_lines = ["What goes up-!", "Sky's the limit!", "Let's see you dodge this!"]
 var last_jump_line = 0
-var JUMP_WINDUP = 1.0
+var JUMP_WINDUP = 0.2
 var jump_windup = null
 var jump_target = null
 var jump_start = null
@@ -134,17 +139,13 @@ onready var shadow_base_scale = $Shadow.scale
 onready var shadow_base_position = $Shadow.position
 func jump_to_corner(delta):
   if jump_target == null:
-    var min_dist = null
-    var worst_i = 0
+    var distant_targets = []
     for i in range(len(poss_jump_targets)):
-      var d = player.global_position.distance_to(poss_jump_targets[i]) 
-      if min_dist == null or d < min_dist:
-        min_dist = d
-        worst_i = i
-    var target_i = randi() % (len(poss_jump_targets) - 1)
-    if worst_i <= target_i:
-      target_i += 1
-    init_jump(poss_jump_targets[target_i], jump_speed)
+      var d = abs(global_position.y - poss_jump_targets[i].y) 
+      if d > 600:
+        distant_targets.append(poss_jump_targets[i])
+    var target_i = randi() % (len(distant_targets))
+    init_jump(distant_targets[target_i], jump_speed)
   jump(delta, false)
 
 
@@ -210,7 +211,8 @@ func handle_jump_completion(is_attack):
     Letterbox.in_cinematic = false
     holding_cinematic = false
     jump_target = null
-    curr_mode = Mode.IDLE
+    if not is_attack:
+      curr_mode = Mode.IDLE
     enforce_flip(player.position.x > position.x)
     time_until_attack = pause_between_attacks / 3
     $Shadow.scale = shadow_base_scale
@@ -223,7 +225,8 @@ func handle_jump_completion(is_attack):
         var damage = 0 if p_dist > damage_radius else 1
         var power = min_shockwave_power + (max_shockwave_power - min_shockwave_power) * min(1, (shockwave_radius - p_dist) / (shockwave_radius - damage_radius))
         player.damage(damage, $ShockwaveCenter, power)
-      
+        particle_time = 0.1
+        $ShockwaveCenter/Particles2D.emitting = true      
 
 
 export(Array) var spear_lines = ["That's the spear-it!", "How about a game of catch?"]
