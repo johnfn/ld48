@@ -1,7 +1,9 @@
 extends Area2D
 
+onready var camera: Camera2D = $"/root/Main/Camera"
 export var destinations: Array
 export var dog_path: NodePath
+export(Array) var dog_speak: Array = ["Yip yip!"]
 
 var DialogScene = load("res://scenes/Dialog.tscn")
 var triggered = false
@@ -10,6 +12,7 @@ var dog
 
 func _ready():
   connect("body_entered", self, "body_entered")
+  
   dog = get_node(dog_path)
 
 func body_entered(other: Node2D):
@@ -27,7 +30,7 @@ func begin_cinematic(player: Player):
   yield(Letterbox.animate_in(dog), "completed")
   
   var new_dialog = DialogScene.instance()
-  yield(new_dialog.display_text_sequence_co(dog, ["Yip yip!"]), "completed")
+  yield(new_dialog.display_text_sequence_co(dog, dog_speak), "completed")
   
   for dest in destinations:
     var dest_node = get_node(dest)
