@@ -87,6 +87,7 @@ position = Vector2( 629.357, 630.903 )
 current = true
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
+pause_mode = 1
 
 [node name="Walls" type="Node2D" parent="."]
 
