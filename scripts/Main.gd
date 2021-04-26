@@ -111,6 +111,8 @@ func _ready():
   Ui.player = Player
   Player.connect("died", self, "handle_player_died")
   start_level(curr_level_num)
+  CloudSpawner.initial_cloud_spawn()
+  Letterbox.setup()
 
 
 func jump_view(dist):
