@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://components/FillableArea.tscn" type="PackedScene" id=11]
 [ext_resource path="res://components/Spike.tscn" type="PackedScene" id=12]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -327,7 +328,7 @@ direction_to_shoot = Vector2( -1, 0 )
 position = Vector2( 669.949, 3035.61 )
 
 [node name="SpawnPoint" type="Node2D" parent="Markers"]
-position = Vector2( 672.53, 2459.43 )
+position = Vector2( 670.655, 2678.84 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
@@ -523,5 +524,9 @@ position = Vector2( 470.279, 739.102 )
 [node name="Node2D9" parent="." instance=ExtResource( 12 )]
 position = Vector2( 549.473, 737.435 )
 rotation = -0.0493538
+
+[node name="DialogTrigger" parent="." instance=ExtResource( 14 )]
+position = Vector2( 671.972, 2684.47 )
+dialog = [ "Oh, Winston... ", null ]
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
