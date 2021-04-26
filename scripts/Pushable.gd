@@ -46,8 +46,6 @@ func _physics_process(delta):
     if move_dist >= position.distance_to(target):
       move_dist = position.distance_to(target) 
       target = null
-      if not pushable:
-        $Box.disabled = true
     move_and_collide(move_dir * move_dist)
 
 
@@ -94,5 +92,6 @@ func is_pushable():
   
   
 func fill_in_hole():
-  $PushBounds/Box.disabled = true
+  $PushBounds.queue_free()
+  $Box.queue_free()
   pushable = false
