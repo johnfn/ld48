@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/art/title_farfetchedtext.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/title_art.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/title_play.png" type="Texture" id=3]
-[ext_resource path="res://assets/art/title_quit.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/title_play_big.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/title_sound.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/title_credits.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/title_quit_big.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/title_credits_big.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/title_sound_big.png" type="Texture" id=9]
 [ext_resource path="res://levels/MainMenu.gd" type="Script" id=10]
 [ext_resource path="res://assets/music/Care for You.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/art/title_quit.png" type="Texture" id=12]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -44,10 +48,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 175.0
-margin_top = 752.0
-margin_right = 575.0
-margin_bottom = 1152.0
+margin_left = 130.455
+margin_top = 611.238
+margin_right = 530.455
+margin_bottom = 1011.24
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -55,45 +59,42 @@ __meta__ = {
 [node name="Play" type="TextureButton" parent="VBoxContainer"]
 margin_right = 400.0
 margin_bottom = 88.0
+rect_min_size = Vector2( 0, 72 )
 texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
 
 [node name="Container" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 92.0
 margin_right = 400.0
-margin_bottom = 156.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 72 )
 
 [node name="Volume" type="TextureButton" parent="VBoxContainer/Container"]
 margin_right = 221.0
-margin_bottom = 64.0
+margin_bottom = 72.0
 texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 9 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Container"]
 margin_left = 225.0
-margin_right = 325.0
-margin_bottom = 64.0
-
-[node name="VolumeBar" type="HScrollBar" parent="VBoxContainer/Container/MarginContainer"]
-margin_right = 100.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 100, 0 )
-size_flags_vertical = 1
-step = 5.0
-value = 100.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 225.0
+margin_bottom = 72.0
 
 [node name="Credits" type="TextureButton" parent="VBoxContainer"]
-margin_top = 160.0
+margin_top = 168.0
 margin_right = 400.0
-margin_bottom = 215.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 72 )
 texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 8 )
 
 [node name="Quit" type="TextureButton" parent="VBoxContainer"]
-margin_top = 219.0
+margin_top = 244.0
 margin_right = 400.0
-margin_bottom = 286.0
-texture_normal = ExtResource( 4 )
+margin_bottom = 316.0
+rect_min_size = Vector2( 0, 72 )
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=[
 "song",
@@ -101,7 +102,21 @@ texture_normal = ExtResource( 4 )
 stream = ExtResource( 11 )
 autoplay = true
 
+[node name="VolumeBar" type="HScrollBar" parent="."]
+visible = false
+margin_left = 433.826
+margin_top = 721.579
+margin_right = 583.826
+margin_bottom = 736.579
+rect_min_size = Vector2( 150, 15 )
+step = 5.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
-[connection signal="value_changed" from="VBoxContainer/Container/MarginContainer/VolumeBar" to="." method="_on_VolumeBar_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Container/Volume" to="." method="_on_Volume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="value_changed" from="VolumeBar" to="." method="_on_VolumeBar_value_changed"]
