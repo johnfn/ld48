@@ -95,10 +95,11 @@ func load_new_level(level_num: int) -> void:
 
 
 func update_wall_positions() -> void:
-  get_node("Walls/BottomWall/Box").position.y = Level.bottom_wall
-  get_node("Walls/TopWall/Box").one_way_collision = Level.is_top_open
-  get_node("Walls/TopWall/Box").position.y = Level.top_wall
-  Level.dirty = false
+  var walled_level = OldLevel if is_transitioning else Level
+  get_node("Walls/BottomWall/Box").position.y = walled_level.bottom_wall + walled_level.position.y
+  get_node("Walls/TopWall/Box").one_way_collision = walled_level.is_top_open
+  get_node("Walls/TopWall/Box").position.y = walled_level.top_wall + walled_level.position.y
+  walled_level.dirty = false
 
 
 func _ready():
@@ -122,15 +123,16 @@ func jump_view(dist):
 
 
 func get_desired_cam_position(delta: float):
-  var max_cam = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
+  var walled_level = OldLevel if is_transitioning else Level
+  var max_cam = walled_level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2 + walled_level.position.y
   max_cam = max(max_cam, Cam.position.y)
   var cam_pos = Player.position.y - camera_offset
   var player_moved_y = (Player.position.y - last_player_y)
   cam_pos = min(Cam.position.y + max(0, player_moved_y) + max_camera_speed * delta, cam_pos)
   cam_pos = max(Cam.position.y + min(0, player_moved_y) - max_camera_speed * delta, cam_pos)
   cam_pos = min(max_cam, cam_pos)
-  if not Level.is_top_open and not is_transitioning:
-    cam_pos = max(Level.top_wall + BASE_VIEWPORT_HEIGHT / 2, cam_pos)
+  if not walled_level.is_top_open and not is_transitioning:
+    cam_pos = max(walled_level.top_wall + BASE_VIEWPORT_HEIGHT / 2 + walled_level.position.y, cam_pos)
   
   return cam_pos
 
@@ -141,8 +143,8 @@ func _process(delta: float):
     Cam.position.y = get_desired_cam_position(delta)
   
   if Player.position.y < load_y and not is_transitioning:
-    load_new_level(curr_level_num + 1)
     is_transitioning = true
+    load_new_level(curr_level_num + 1)
   if Player.position.y < teleport_y:
     var bottom = get_node("Levels/TransitionBottom")
     var top = get_node("Levels/TransitionTop")
@@ -161,7 +163,7 @@ func _process(delta: float):
 
 
 func _physics_process(delta):
-  if Level.dirty:
+  if (is_transitioning and OldLevel.dirty) or (Level.dirty and not is_transitioning):
     update_wall_positions()
 
 

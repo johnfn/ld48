@@ -10,8 +10,8 @@ var player = null
 var main_cam = null
 var player_min_y = null
 
-onready var cam_steal_y = $Markers/CameraSteal.position.y
-onready var cam_return_y = $Markers/CameraReturn.position.y
+onready var cam_steal_y = $Markers/CameraSteal.global_position.y
+onready var cam_return_y = $Markers/CameraReturn.global_position.y
 onready var Cam = $Camera
 onready var Runner = $Runner
 
@@ -24,19 +24,20 @@ export(float) var cam_speed = 310
 func _ready():
   if spawn_point == Vector2(0, 0):
     spawn_point = $Markers/SpawnPoint.position
-  top_wall = $Markers/LevelTop.position.y
+  top_wall = $Markers/CamTop.position.y
   bottom_wall = $Markers/LevelBottom.position.y
   player_min_y = spawn_point.y
   dirty = true
 
 
 func _process(delta):
-  if player_min_y > player.position.y:
-    if player_min_y > cam_steal_y and player.position.y <= cam_steal_y:
+  var player_y = player.global_position.y
+  if player_min_y > player_y:
+    if player_min_y > cam_steal_y and player_y <= cam_steal_y:
       start_runner_cam()
-    elif player_min_y > cam_return_y and player.position.y <= cam_return_y:
+    elif player_min_y > cam_return_y and player_y <= cam_return_y:
       end_runner_cam()
-    player_min_y = player.position.y
+    player_min_y = player_y
   
   if is_running:
     Cam.position.y -= delta * cam_speed
@@ -55,7 +56,9 @@ func _process(delta):
 
 
 func start_runner_cam():
-  Cam.position = main_cam.position
+  print(Cam.global_position, main_cam.global_position)
+  Cam.global_position = main_cam.global_position
+  print(Cam.global_position, main_cam.global_position)
   main_cam.current = false
   Cam.current = true
   is_beginning_running = true
@@ -66,7 +69,7 @@ func start_runner_cam():
 func end_runner_cam():
   is_top_open = true
   dirty = true
-  main_cam.position = Cam.position
+  main_cam.global_position = Cam.global_position
   Cam.current = false
   main_cam.current = true
   is_running = false

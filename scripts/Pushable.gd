@@ -66,7 +66,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func attempt_push(push_dir):
-  # check for possible collisions TODO
   target = position * 1
   match push_dir:
     0:

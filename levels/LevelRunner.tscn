@@ -737,7 +737,10 @@ position = Vector2( 659.363, 1172.09 )
 position = Vector2( 644.617, 12581.7 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
-position = Vector2( 647.343, 11546.9 )
+position = Vector2( 640, 0 )
+
+[node name="CamTop" type="Node2D" parent="Markers"]
+position = Vector2( 645.339, 11575.7 )
 
 [node name="Camera" type="Camera2D" parent="."]
 
@@ -758,32 +761,28 @@ shape = SubResource( 4 )
 [node name="MonsterShooter" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 324.854, 8031.78 )
-health = 3
 
 [node name="MonsterShooter3" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 351.763, 8576.68 )
-health = 3
 
 [node name="MonsterShooter5" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 348.399, 9202.3 )
-health = 3
 
 [node name="MonsterShooter2" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 990.844, 8347.95 )
-health = 3
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter4" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 987.48, 8902.95 )
-health = 3
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter6" parent="." instance=ExtResource( 8 )]
 material = SubResource( 5 )
 position = Vector2( 963.936, 9410.85 )
-health = 3
 direction_to_shoot = Vector2( -1, 0 )
+
+[connection signal="body_entered" from="Runner" to="." method="_on_body_entered"]
