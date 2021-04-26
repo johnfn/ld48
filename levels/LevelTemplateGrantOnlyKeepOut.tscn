@@ -12,6 +12,9 @@
 [ext_resource path="res://scripts/Dog.gd" type="Script" id=10]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=11]
 
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 
@@ -21,10 +24,7 @@ resource_local_to_scene = true
 [sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 
-[sub_resource type="ShaderMaterial" id=5]
-resource_local_to_scene = true
-
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
 
 uniform float white;
@@ -36,10 +36,10 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
-shader = SubResource( 1 )
+shader = SubResource( 5 )
 shader_param/white = null
 
-[node name="LevelX" type="Node2D"]
+[node name="LevelX2" type="Node2D"]
 position = Vector2( -1.79102, -1.72052 )
 script = ExtResource( 8 )
 
@@ -128,7 +128,7 @@ position = Vector2( 396.294, 663.481 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Monster" parent="Enemies" instance=ExtResource( 5 )]
-material = SubResource( 2 )
+material = SubResource( 1 )
 position = Vector2( 773.559, 819.66 )
 
 [node name="Markers" type="Node2D" parent="."]
@@ -146,28 +146,28 @@ position = Vector2( 677.235, 0 )
 position = Vector2( 692.302, 250.504 )
 
 [node name="CuttableTree" parent="." instance=ExtResource( 3 )]
-material = SubResource( 3 )
+material = SubResource( 2 )
 position = Vector2( 591.305, 1718.48 )
 health = 3
 
 [node name="Shrub" parent="." instance=ExtResource( 4 )]
-material = SubResource( 4 )
+material = SubResource( 3 )
 position = Vector2( 688.991, 1685.51 )
 
 [node name="Shrub2" parent="." instance=ExtResource( 4 )]
-material = SubResource( 4 )
+material = SubResource( 3 )
 position = Vector2( 796.144, 1729.44 )
 
 [node name="Shrub3" parent="." instance=ExtResource( 4 )]
-material = SubResource( 4 )
+material = SubResource( 3 )
 position = Vector2( 776.856, 1609.43 )
 
 [node name="Shrub4" parent="." instance=ExtResource( 4 )]
-material = SubResource( 4 )
+material = SubResource( 3 )
 position = Vector2( 652.559, 1591.22 )
 
 [node name="MonsterShooter" parent="." instance=ExtResource( 7 )]
-material = SubResource( 5 )
+material = SubResource( 4 )
 position = Vector2( 381.8, 1213.59 )
 health = 3
 
