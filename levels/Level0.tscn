@@ -94,8 +94,10 @@ position = Vector2( 677.235, 0 )
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 2 )]
 position = Vector2( 664.506, 208.441 )
+destinations = [ NodePath("DogDestination") ]
 dog_path = NodePath("../Items/Donut")
 
 [node name="DogDestination" type="Node2D" parent="DogMoveTrigger"]
+position = Vector2( 15.8087, -368.542 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

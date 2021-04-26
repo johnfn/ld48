@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/LevelTransition.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/music/bush2.wav" type="AudioStream" id=23]
 [ext_resource path="res://assets/music/bush1.wav" type="AudioStream" id=24]
 [ext_resource path="res://assets/music/bush3.wav" type="AudioStream" id=25]
+[ext_resource path="res://scenes/Letterbox.tscn" type="PackedScene" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640.632, 1277.67 )
@@ -33,11 +34,14 @@ extents = Vector2( 640.632, 1277.67 )
 extents = Vector2( 956.12, 10 )
 
 [node name="Main" type="Node2D"]
-position = Vector2( 6.34852, -2.43603 )
+position = Vector2( 3.25965, -2.43603 )
 script = ExtResource( 3 )
 debug_already_has_sword = true
 level_scenes = [ "res://levels/Level0.tscn", "res://levels/Level1-0.tscn", "res://levels/Level1-2.tscn", "res://levels/Level2-1.tscn", "res://levels/Level4Mock.tscn", "res://levels/LevelTemplateGrantOnlyKeepOut.tscn" ]
-curr_level_num = 4
+curr_level_num = 1
+
+[node name="Letterbox" parent="." instance=ExtResource( 26 )]
+position = Vector2( 27.8121, 50.462 )
 
 [node name="Background" type="Node2D" parent="."]
 

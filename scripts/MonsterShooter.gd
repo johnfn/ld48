@@ -1,6 +1,7 @@
 tool
 extends BaseHittableArea
 
+onready var Letterbox = $"/root/Main/Letterbox"
 export(int) onready var damage = 1
 export(int) onready var shoot_cooldown = 1
 export(float) var invuln_time = 0.25
