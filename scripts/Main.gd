@@ -138,7 +138,6 @@ func _ready():
   Player.connect("died", self, "handle_player_died")
   start_level(curr_level_num)
   CloudSpawner.initial_cloud_spawn()
-  Letterbox.setup()
   for audio in $Audio.get_children():
     if audio as AudioStreamPlayer != null:
       audio.volume_db = SoundManager.get_db()
