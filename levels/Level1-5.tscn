@@ -115,21 +115,27 @@ position = Vector2( 31.4405, 1411.96 )
 
 [node name="Tree83" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 222.58, 1557.11 )
+solid_leaves = false
 
 [node name="Tree84" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 373.48, 1639.03 )
+solid_leaves = false
 
 [node name="Tree89" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 392.163, 1996.88 )
+solid_leaves = false
 
 [node name="Tree90" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 236.952, 2055.8 )
+solid_leaves = false
 
 [node name="Tree85" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 1015.88, 1475.2 )
+solid_leaves = false
 
 [node name="Tree86" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 956.959, 1848.85 )
+solid_leaves = false
 
 [node name="Tree50" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( -46.7716, 1550.79 )

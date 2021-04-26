@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -10,22 +10,38 @@
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=10]
+[ext_resource path="res://components/Grass.tscn" type="PackedScene" id=11]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=12]
-
-[sub_resource type="ShaderMaterial" id=1]
-resource_local_to_scene = true
-
-[sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
-
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-
-[sub_resource type="ShaderMaterial" id=4]
-resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform float white;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+    COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+shader_param/white = null
 
 [node name="LevelX2" type="Node2D"]
 script = ExtResource( 6 )
@@ -139,6 +155,14 @@ position = Vector2( 33.8244, 867.823 )
 [node name="Tree87" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 33.8244, 867.823 )
 
+[node name="Tree112" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 181.09, 1022.1 )
+solid_leaves = false
+
+[node name="Tree113" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1078.71, 947.3 )
+solid_leaves = false
+
 [node name="Tree90" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1203.05, 619.321 )
 
@@ -195,6 +219,7 @@ position = Vector2( 186.713, 2072.26 )
 
 [node name="Tree312" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 186.713, 2072.26 )
+solid_leaves = false
 
 [node name="Tree282" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( -89.5321, 2244.29 )
@@ -724,22 +749,22 @@ position = Vector2( 1427.97, 5920.55 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="MonsterShooter" parent="Enemies" instance=ExtResource( 8 )]
-material = SubResource( 1 )
+material = SubResource( 5 )
 position = Vector2( 1062.24, 4156.31 )
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 8 )]
-material = SubResource( 1 )
+material = SubResource( 5 )
 position = Vector2( 717.4, 2297.15 )
 direction_to_shoot = Vector2( 0, 1 )
 
 [node name="MonsterShooter3" parent="Enemies" instance=ExtResource( 8 )]
-material = SubResource( 1 )
+material = SubResource( 5 )
 position = Vector2( 599.263, 2465.52 )
 direction_to_shoot = Vector2( 0, 1 )
 
 [node name="MonsterShooter4" parent="Enemies" instance=ExtResource( 8 )]
-material = SubResource( 1 )
+material = SubResource( 5 )
 position = Vector2( 1088, 768 )
 direction_to_shoot = Vector2( -1, 0 )
 
@@ -751,7 +776,7 @@ cinematic_style_dialog = true
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="LevelBottom" type="Node2D" parent="Markers"]
-position = Vector2( 660.851, 6193.1 )
+position = Vector2( 663.189, 6118.3 )
 
 [node name="SpawnPoint" type="Node2D" parent="Markers"]
 position = Vector2( 647.382, 5576.34 )
@@ -759,76 +784,60 @@ position = Vector2( 647.382, 5576.34 )
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
 
-[node name="Shrub24" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
-position = Vector2( 844.626, 256.016 )
-
-[node name="Shrub25" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
-position = Vector2( 944.878, 338.04 )
-
 [node name="Shrub39" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 362.672, 521.922 )
 
 [node name="Shrub40" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 425.531, 372.663 )
 
 [node name="Shrub41" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 504.472, 472.378 )
 
 [node name="Shrub26" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 1002.43, 2135.1 )
 
 [node name="Shrub29" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 1077.77, 2211.98 )
 
-[node name="Shrub37" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
-position = Vector2( 140.788, 2265.51 )
-
-[node name="Shrub38" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
-position = Vector2( 209.142, 2334.24 )
-
 [node name="Shrub36" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 1159.49, 2132.71 )
 
 [node name="Shrub27" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 608.794, 3341 )
 
 [node name="Shrub28" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 712.565, 3336.98 )
 
 [node name="Shrub33" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 278.201, 3623.65 )
 
 [node name="Shrub34" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 215.78, 3710.38 )
 
 [node name="Shrub35" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 386.673, 3710.38 )
 
 [node name="Shrub30" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 191.617, 5241.33 )
 
 [node name="Shrub31" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 292.62, 5126.39 )
 
 [node name="Shrub32" parent="." instance=ExtResource( 10 )]
-material = SubResource( 2 )
+material = SubResource( 6 )
 position = Vector2( 420.402, 5188.12 )
 
 [node name="Sword" parent="." instance=ExtResource( 2 )]
@@ -836,18 +845,22 @@ position = Vector2( 879.394, 5252.39 )
 
 [node name="Tree5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 496.526, 1160.66 )
+solid_leaves = false
 
 [node name="Tree6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 469.613, 1285.12 )
+solid_leaves = false
 
 [node name="Tree4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 842.566, 1142.89 )
+solid_leaves = false
 
 [node name="Tree14" parent="." instance=ExtResource( 5 )]
 position = Vector2( 895.092, 1291.32 )
+solid_leaves = false
 
 [node name="MonsterShooter" parent="." instance=ExtResource( 8 )]
-material = SubResource( 3 )
+material = SubResource( 7 )
 position = Vector2( 240.247, 4597.72 )
 
 [node name="Pushable" parent="." instance=ExtResource( 7 )]
@@ -884,15 +897,75 @@ position = Vector2( 832, 1792 )
 position = Vector2( 896, 1792 )
 
 [node name="MonsterWitch" parent="." instance=ExtResource( 9 )]
-material = SubResource( 4 )
+material = SubResource( 8 )
 position = Vector2( 278.64, 1268.52 )
 
 [node name="MonsterWitch2" parent="." instance=ExtResource( 9 )]
-material = SubResource( 5 )
+material = SubResource( 9 )
 position = Vector2( 986.28, 1112.95 )
 
 [node name="MonsterShooter2" parent="." instance=ExtResource( 8 )]
-material = SubResource( 3 )
+material = SubResource( 7 )
 position = Vector2( 192, 768 )
+
+[node name="Grass" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 1058.03, 4527.67 )
+
+[node name="Grass2" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 1125.82, 4628.18 )
+
+[node name="Grass3" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 994.917, 4649.22 )
+
+[node name="Grass4" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 335.727, 4165.35 )
+
+[node name="Grass7" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 125.347, 2271.93 )
+
+[node name="Grass8" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 214.174, 2351.4 )
+
+[node name="Grass9" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 298.326, 2264.91 )
+
+[node name="Grass10" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 347.415, 1554.3 )
+
+[node name="Grass12" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 861.677, 273.318 )
+
+[node name="Grass13" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 987.905, 331.757 )
+
+[node name="Grass14" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 882.715, 385.521 )
+
+[node name="Grass15" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 978.555, 464.997 )
+
+[node name="Grass11" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 471.305, 1582.35 )
+
+[node name="Grass5" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 239.887, 4263.52 )
+
+[node name="Grass6" parent="." instance=ExtResource( 11 )]
+material = SubResource( 10 )
+position = Vector2( 380.14, 4268.2 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
