@@ -9,7 +9,7 @@ var input_vec : Vector2 = Vector2(0, 0)
 # Old max 600.0
 export(float) var max_speed = 420.0
 export(float) var invuln_time = 0.4
-export(int) var max_health = 6
+export(int) var max_health = 4
 
 onready var Sprite: AnimatedSprite = $Sprite
 onready var Equipment = $Equipment
