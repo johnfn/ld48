@@ -1,6 +1,7 @@
 class_name Main
 extends Node2D
 
+onready var Letterbox = $"/root/Main/Letterbox"
 onready var Player = $Player
 onready var Cam = $Camera
 onready var Ui = $UI

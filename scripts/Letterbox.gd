@@ -1,7 +1,5 @@
 extends Node2D
 
-# This is an autoload, so anyone can call Letterbox.animate_in or animate_out
-
 onready var TopRect = null
 onready var BottomRect = null
 onready var EntireScreenFadeRect = null

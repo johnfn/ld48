@@ -1,6 +1,7 @@
 class_name CardTrigger
 extends Area2D
 
+onready var Letterbox = $"/root/Main/Letterbox"
 var triggered = false
 export(int) var which_card = 1
 

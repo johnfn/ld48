@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var Letterbox = $"/root/Main/Letterbox"
 onready var AnimationPlayer = $AnimationPlayer
 onready var swing_animation = $AnimationPlayer.get_animation("Swing")
 onready var Hitbox: CollisionPolygon2D = $Hitbox

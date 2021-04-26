@@ -1,5 +1,6 @@
 extends Area2D
 
+onready var Letterbox = $"/root/Main/Letterbox"
 onready var camera: Camera2D = $"/root/Main/Camera"
 export var destinations: Array
 export var dog_path: NodePath
