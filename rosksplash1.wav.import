@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rosksplash1.wav-d91d4c4ded01f685e3ffe01316575a09.sample"
+
+[deps]
+
+source_file="res://rosksplash1.wav"
+dest_files=[ "res://.import/rosksplash1.wav-d91d4c4ded01f685e3ffe01316575a09.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
