@@ -23,7 +23,7 @@ export(float) var cam_speed = 310
 
 
 func get_song():
-  return "BossSong"
+  return "RunnerSong"
   
 
 func _ready():

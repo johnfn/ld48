@@ -10,6 +10,7 @@
 
 [node name="LevelX2" type="Node2D"]
 script = ExtResource( 6 )
+song = "ForestAmbiance"
 
 [node name="EditorBackground" parent="." instance=ExtResource( 8 )]
 
