@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal died
 
-const MAX_HEALTH = 2
+const MAX_HEALTH = 8
 var health = MAX_HEALTH
 
 onready var Letterbox = $"/root/Main/Letterbox"

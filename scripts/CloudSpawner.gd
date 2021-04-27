@@ -24,7 +24,11 @@ func spawn_cloud():
   
   started = true
   var new_cloud = CloudScene.instance()
+  
   if main == null:
+    return
+    
+  if not is_instance_valid(main):
     return
   main.add_child(new_cloud)
 
