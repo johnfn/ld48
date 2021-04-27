@@ -13,8 +13,6 @@ onready var BlackText: Label = $ZSorter/BlackText
 var active_text: Label
 var active_image: NinePatchRect
 
-onready var PressXKey: Sprite = $PressXKey
-
 var max_width = 350
 var min_height = 50
 
@@ -29,7 +27,6 @@ var auto_advance = false
 
 func _ready():
   ZSorter.z_index = 500
-  PressXKey.visible = false
   hide_everything()
   
 func hide_everything():
@@ -63,14 +60,12 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=f
     yield(display_text_co(phrase), "completed")
     yield(get_tree().create_timer(lifespan), "timeout")
     
-  PressXKey.visible = false
   visible = false
 
 func display_text_co(new_text: String) -> void:
   var cur_text = ""
   var size = active_text.get_font("font").get_string_size(cur_text)
   
-  PressXKey.visible = false
   var one_last_loop = false
   
   for x in new_text:
@@ -103,18 +98,16 @@ func display_text_co(new_text: String) -> void:
   if auto_advance:
     return
   
-  PressXKey.position = size + Vector2(50, 0)
-  PressXKey.visible = true
   
   while true:
-    PressXKey.visible = true
+
     
     for x in range(20):
       yield(get_tree(), "idle_frame")
       if Input.is_action_just_pressed("interact"):
         return
 
-    PressXKey.visible = false
+
     
     for x in range(20):
       yield(get_tree(), "idle_frame")

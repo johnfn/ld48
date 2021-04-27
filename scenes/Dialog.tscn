@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/ui/dialog_panel_white_9slice.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/BalsamiqSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/Dialog.gd" type="Script" id=3]
-[ext_resource path="res://assets/ui/notch.png" type="Texture" id=4]
-[ext_resource path="res://assets/ui/press_x_key.png" type="Texture" id=5]
 [ext_resource path="res://assets/ui/dialog_panel_black_9slice.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -23,6 +21,7 @@ __meta__ = {
 }
 
 [node name="ZSorter" type="Node2D" parent="."]
+position = Vector2( -156.682, 0 )
 
 [node name="BlackImage" type="NinePatchRect" parent="ZSorter"]
 margin_left = -1.22864
@@ -80,11 +79,3 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Notch" type="Sprite" parent="."]
-position = Vector2( 29.1037, 66.117 )
-texture = ExtResource( 4 )
-
-[node name="PressXKey" type="Sprite" parent="."]
-position = Vector2( 185.26, 23.42 )
-texture = ExtResource( 5 )
