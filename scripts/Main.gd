@@ -219,6 +219,7 @@ func _process(delta: float):
     curr_level_num += 1
     is_transitioning = false
     update_song()
+    checkpoint()
   if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
     OldLevel.queue_free()
     OldLevel = null
