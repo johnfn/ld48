@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/art/goblinmob1.png" type="Texture" id=8]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=11]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": true,
@@ -18,10 +18,10 @@ animations = [ {
 "speed": 1.6
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 664.93, 10 )
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 uniform float white;
@@ -31,9 +31,9 @@ void fragment() {
     COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
-shader = SubResource( 1 )
+shader = SubResource( 3 )
 shader_param/white = null
 
 [node name="LevelBoss" type="Node2D"]
@@ -167,13 +167,14 @@ collision_layer = 512
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Mob"]
 position = Vector2( 623.144, -74.92 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mob"]
 position = Vector2( 621.955, 91.5689 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Enemies" type="YSort" parent="."]
 position = Vector2( 0, 228 )
@@ -182,12 +183,12 @@ position = Vector2( 0, 228 )
 visible = false
 position = Vector2( 628.689, 791.59 )
 scale = Vector2( 1.24, 1 )
-dialog = [ "why does everyone hate me", "maybe it's because I kill kids" ]
+dialog = [ "Human child. This is OUR forest", "You had your chance to run, but you are still here", "Why? You call yourself an explorer, an adventurer", "Well... what kind of adventurer...", "couldn't keep an eye on her own beloved pet?", "Your dog does not deserve you, no one does", "Your only purpose....", "...is   D I N N E R .", "(........and after this is over, maybe we'll even pack up a doggy bag for dessert)" ]
 cinematic_style_dialog = true
 enemy_speaker = NodePath("../GoblinKing")
 
 [node name="GoblinKing" parent="Enemies" instance=ExtResource( 2 )]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 658.5, 372.957 )
 
 [node name="Markers" type="Node2D" parent="."]
