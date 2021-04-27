@@ -38,7 +38,7 @@ func on_die():
   queue_free()
 
 func damage(amount: int, source: Node2D) -> void:
-  if being_hit:
+  if being_hit or health <= 0:
     return
 
   being_hit = true
@@ -57,5 +57,5 @@ func damage(amount: int, source: Node2D) -> void:
   
   if health <= 0:
     on_die()
-    
-  being_hit = false
+  else:  
+    being_hit = false
