@@ -125,10 +125,13 @@ func start_level(level_num: int) -> void:
   SoundManager.update_possible_rivers()
   Cam.position.y = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
   last_player_y = Player.position.y
-  TransitionBottom.position.y = Level.bottom_wall
+  TransitionBottom.global_position.y = Level.get_node("Markers/LevelBottom").position.y
   curr_level_num = level_num
-  TransitionTop.position.y = Level.top_wall
+  TransitionTop.global_position.y = Level.get_node("Markers/LevelTop").position.y - TRANSITION_LEN
   update_wall_positions()
+  teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + TransitionTop.position.y
+  load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
+  despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
   is_transitioning = false
 
 
@@ -207,9 +210,11 @@ func _process(delta: float):
     Cam.position.y = get_desired_cam_position(delta)
   
   if Player.position.y < load_y and not is_transitioning:
+    print('a')
     is_transitioning = true
     load_new_level(curr_level_num + 1)
   if Player.position.y < teleport_y:
+    print('b')
     var bottom = get_node("Levels/TransitionBottom")
     var top = get_node("Levels/TransitionTop")
     bottom.position.y = top.position.y
@@ -222,6 +227,7 @@ func _process(delta: float):
     update_song()
     checkpoint()
   if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
+    print('c')
     OldLevel.queue_free()
     OldLevel = null
     
