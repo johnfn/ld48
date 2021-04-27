@@ -158,9 +158,6 @@ position = Vector2( -2.40598, 2468.91 )
 [node name="Tree61" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 47.4542, 2596.98 )
 
-[node name="Tree65" parent="Obstacles" instance=ExtResource( 4 )]
-position = Vector2( 47.4542, 2596.98 )
-
 [node name="Tree62" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( -30.7579, 2735.81 )
 

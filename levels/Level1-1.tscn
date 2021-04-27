@@ -173,10 +173,6 @@ solid_leaves = false
 [node name="Tree114" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 193.225, 717.158 )
 
-[node name="Tree115" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 193.225, 717.158 )
-solid_leaves = false
-
 [node name="Tree90" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1203.05, 619.321 )
 
