@@ -30,6 +30,8 @@ var knockback_velocity = Vector2(0, 0)
 var FOOTSTEP_RATE = 0.25
 var FOOTSTEP_RANGE = 0.03
 var footstep_target = 0.0
+var SPAWN_INVULN = 1.0 # seconds
+var spawn_invuln_left = SPAWN_INVULN
 
 func _process(delta: float) -> void:
   if Letterbox.in_cinematic:
@@ -44,6 +46,7 @@ func _physics_process(delta: float) -> void:
         
     return
   
+  spawn_invuln_left -= delta
   var direction = input_vec.normalized() * max_speed
   
   var knockback_strength = knockback_velocity.length()
@@ -154,7 +157,7 @@ func get_health(amount: int) -> void:
 
 func damage(amount: int, source: Node2D, strength=500) -> void:
   # returns whether damage was actually taken
-  if not is_invuln and health > 0 and not Letterbox.in_cinematic:
+  if not is_invuln and health > 0 and not Letterbox.in_cinematic and spawn_invuln_left <= 0.0:
     
     # take damage
     
@@ -184,6 +187,7 @@ func reset():
   Sprite.stop()
   Sprite.frame = IDLE_FRAME
   health = max_health
+  spawn_invuln_left = SPAWN_INVULN
 
 
 func reset_equipment():
