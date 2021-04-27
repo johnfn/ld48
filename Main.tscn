@@ -28,7 +28,7 @@
 [ext_resource path="res://scenes/Letterbox.tscn" type="PackedScene" id=26]
 [ext_resource path="res://assets/music/Bossfight New.mp3" type="AudioStream" id=27]
 [ext_resource path="res://assets/music/Chapter 2.mp3" type="AudioStream" id=28]
-[ext_resource path="res://assets/music/Chapter 1 Goblin Ver.mp3" type="AudioStream" id=29]
+[ext_resource path="res://assets/music/Goblin Runner.mp3" type="AudioStream" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640.632, 1277.67 )
