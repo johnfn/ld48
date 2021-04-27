@@ -13,6 +13,8 @@ onready var BottomWall = $Walls/BottomWall
 onready var teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + TransitionTop.position.y
 onready var load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
 onready var despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
+onready var FireflySpawner = $"/root/Main/FireflySpawner"
+onready var CanvasModulate = $CanvasModulate
 
 export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
@@ -20,7 +22,7 @@ export(bool) var debug_already_has_sword = false
 
 # Uncomment one of the level_scenes variables: 1 OR 2
 # 1: Chauncey's list of levels. DO NOT EDIT UNLESS YOU INTEND TO CHANGE THE STANDARD LEVEL ORDER.
-export(Array) var level_scenes = ["res://levels/Level0.tscn","res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn","res://levels/Level1-2.tscn", "res://levels/Level1-3.tscn","res://levels/Level1-4.tscn", "res://levels/Level1-5.tscn","res://levels/LevelRunner.tscn", "res://levels/Level2-1.tscn","res://levels/Level2-2.tscn", "res://levels/Level2-3.tscn" , "res://levels/Level2-4.tscn", "res://levels/LevelBoss.tscn"]
+export(Array) var level_scenes = ["res://levels/Level0.tscn","res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn","res://levels/Level1-2.tscn", "res://levels/Level1-3.tscn","res://levels/Level1-4.tscn", "res://levels/Level1-5.tscn","res://levels/LevelRunner.tscn", "res://levels/Level2-1.tscn","res://levels/Level2-2.tscn", "res://levels/Level2-3.tscn" , "res://levels/Level2-4.tscn", "res://levels/LevelBoss.tscn", "res://levels/LevelOutro.tscn"]
 
 # 2: PLAY LEVELS. FEEL FREE TO EDIT THIS LIST.
 #export(Array) var level_scenes = ["res://levels/Level0.tscn", "res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn", "res://levels/Level1-3Mock.tscn", "res://levels/LevelMock.tscn", "res://levels/Level5Mock.tscn"]
@@ -132,6 +134,8 @@ func start_level(level_num: int) -> void:
 
 func load_new_level(level_num: int) -> void:
   OldLevel = Level
+  if level_num == len(level_scenes):
+    return
   load_level(level_scenes[level_num])
   assert(Level.get_node("Markers/LevelBottom") != null)
   Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
@@ -148,8 +152,10 @@ func update_wall_positions() -> void:
   get_node("Walls/TopWall/Box").position.y = walled_level.top_wall + walled_level.position.y
   walled_level.dirty = false
 
-
 func _ready():
+  CanvasModulate.visible = false
+  $Player/Light2D.visible = false
+  
   if debug_already_has_sword:
     saved_inventory.append("Sword")
     saved_slots["weapons"] = "res://components/Sword.tscn"
@@ -158,6 +164,7 @@ func _ready():
   Player.connect("died", self, "handle_player_died")
   start_level(curr_level_num)
   CloudSpawner.initial_cloud_spawn()
+  
   for audio in $Audio.get_children():
     if audio as AudioStreamPlayer != null:
       audio.volume_db = SoundManager.get_db()

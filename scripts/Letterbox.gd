@@ -16,7 +16,10 @@ var in_cinematic = false
 
 # are we currently animating the letterbox? (are the boxes actually moving?)
 var is_animating = false
-  
+
+var max_dusk = 0.2
+var max_night = 0.3
+
 func _ready():
   TopRect = $CanvasLayer/TopRect
   BottomRect = $CanvasLayer/BottomRect
@@ -34,6 +37,13 @@ func _ready():
     card.visible = false
     print(card.name, card.visible)
 
+#  DuskOverlay.modulate.a = 0.0
+#  NightOverlay.modulate.a = 0.0
+
+#func _process(f: float):
+#  DuskOverlay.modulate.a = 0.2
+#  NightOverlay.modulate.a = 1
+  
 func animate_in(target: Node2D):
   if is_animating: 
     return
