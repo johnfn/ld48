@@ -127,7 +127,7 @@ func start_level(level_num: int) -> void:
   last_player_y = Player.position.y
   TransitionBottom.position.y = Level.bottom_wall
   curr_level_num = level_num
-  TransitionBottom.position.y = Level.bottom_wall
+  TransitionTop.position.y = Level.top_wall
   update_wall_positions()
   is_transitioning = false
 
