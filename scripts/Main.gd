@@ -76,10 +76,30 @@ func load_level(level_name: String):
 func update_song():
   var song_name = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
   if curr_song != song_name:
+    var to_shut_down = null
+    var og_volume = null
+    var fade_out_len = 1
+    if curr_song != null and song_name == null:
+      fade_out_len = 3
     if curr_song != null:
-      $Audio.get_node(curr_song).playing = false
+      og_volume = $Audio.get_node(curr_song).volume_db
+      to_shut_down = $Audio.get_node(curr_song)
+      $Audio/OutTween.interpolate_property(to_shut_down, "volume_db", og_volume, og_volume-30, fade_out_len, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+      $Audio/OutTween.start()
     curr_song = song_name
-    $Audio.get_node(curr_song).playing = true
+    if song_name != null:
+      var curr_node = $Audio.get_node(curr_song)
+      if to_shut_down != null:
+        var volume = $Audio.get_node(curr_song).volume_db
+        curr_node.volume_db = volume-30
+        $Audio/InTween.interpolate_property(curr_node, "volume_db", volume-30, volume, 1.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
+        $Audio/InTween.start()
+        yield(get_tree().create_timer(0.1), "timeout")
+      curr_node.playing = true
+    if to_shut_down != null:
+      yield(get_tree().create_timer(fade_out_len), "timeout")
+      to_shut_down.volume_db = og_volume
+      to_shut_down.playing = false
 
 
 func start_level(level_num: int) -> void:

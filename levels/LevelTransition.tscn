@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/LevelTransition.gd" type="Script" id=1]
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 562.266, 10 )
 
 [node name="LevelTransition" type="Node2D"]
 script = ExtResource( 1 )
@@ -69,3 +72,11 @@ position = Vector2( 640, -480 )
 
 [node name="Bottom" type="Node2D" parent="Markers"]
 position = Vector2( 640, 530 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 667.865, 299.697 )
+shape = SubResource( 1 )
+one_way_collision = true

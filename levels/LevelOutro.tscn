@@ -1,0 +1,167 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/Dog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
+[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=8]
+
+[node name="LevelX2" type="Node2D"]
+script = ExtResource( 6 )
+song = "ForestAmbiance"
+
+[node name="EditorBackground" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1.12231, 1.12225 )
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Donut" parent="Items" instance=ExtResource( 4 )]
+position = Vector2( 648.426, 742.901 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Tree3" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 99.8102, 4.5744 )
+
+[node name="Tree10" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -154.4, 12.4305 )
+
+[node name="Tree4" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 320, 0 )
+
+[node name="Tree16" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 537.934, -75.9507 )
+
+[node name="Tree17" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 756.524, -70.3933 )
+
+[node name="Tree11" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 221.869, 121.313 )
+
+[node name="Tree12" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 6.71931, 119.619 )
+
+[node name="Tree5" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1463.35, -2.15939 )
+
+[node name="Tree6" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1207.47, -3.85278 )
+
+[node name="Tree9" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 942.544, -2.15939 )
+
+[node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -77.7994, 261.141 )
+
+[node name="Tree8" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 109.151, 258.842 )
+
+[node name="Tree13" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 13.1065, 382.349 )
+
+[node name="Tree14" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -8.90851, 516.133 )
+
+[node name="Tree15" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -7.05603, 720.867 )
+
+[node name="Tree24" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1025.22, 82.0395 )
+
+[node name="Tree25" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1272.97, 92.1401 )
+
+[node name="Tree26" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1131.56, 241.919 )
+
+[node name="Tree27" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( 1385.2, 242.528 )
+
+[node name="Tree28" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1253.86, 375.59 )
+
+[node name="Tree29" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1284.35, 517.841 )
+
+[node name="Tree30" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1297.89, 703.908 )
+
+[node name="Tree" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -1276.2, 238.563 )
+
+[node name="Tree18" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -1272.49, 357.12 )
+
+[node name="Tree2" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -1302.13, 503.464 )
+
+[node name="Tree7" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -1185.43, 507.169 )
+
+[node name="Tree3" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -1253.97, 636.841 )
+
+[node name="Tree6" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -1102.07, 657.218 )
+
+[node name="Tree8" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -981.656, 735.021 )
+
+[node name="Tree9" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -10.9696, 195.957 )
+
+[node name="Tree19" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -16.527, 295.989 )
+
+[node name="DialogTrigger" parent="Tree30/Tree19" instance=ExtResource( 3 )]
+position = Vector2( -626.292, -299.453 )
+scale = Vector2( -0.255897, -0.633898 )
+dialog = [ "WINSTON! Oh, I'm so happy you're okay!", "I thought that the Goblin King had eaten you or something!!", "(Bark!)", "Heh. Yeah, you're right.", "He's luck you didn't take a bite out of him.", "But come on, it's getting late. We should head back.", "...", "...", "I'm glad you're okay, buddy." ]
+cinematic_style_dialog = true
+fade_to_black = true
+
+[node name="Tree10" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -107.297, 396.022 )
+
+[node name="Tree11" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( 29.7845, 384.907 )
+
+[node name="Tree12" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -194.363, 514.579 )
+
+[node name="Tree13" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -36.9039, 516.432 )
+
+[node name="Tree14" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -270.313, 662.776 )
+
+[node name="Tree17" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -355.526, 699.825 )
+
+[node name="Tree15" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -125.822, 662.776 )
+
+[node name="Tree16" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( 14.965, 638.694 )
+
+[node name="Tree4" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -1322.51, 764.661 )
+
+[node name="Tree5" parent="Tree30" instance=ExtResource( 2 )]
+position = Vector2( -1178.02, 736.874 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="LevelBottom" type="Node2D" parent="Markers"]
+position = Vector2( 671.308, 1497.95 )
+
+[node name="SpawnPoint" type="Node2D" parent="Markers"]
+position = Vector2( 667.512, 1261.08 )
+
+[node name="LevelTop" type="Node2D" parent="Markers"]
+position = Vector2( 677.235, 0 )
+
+[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
