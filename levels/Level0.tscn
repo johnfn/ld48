@@ -56,8 +56,17 @@ position = Vector2( 13.1065, 382.349 )
 [node name="Tree14" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( -8.90851, 516.133 )
 
+[node name="Tree18" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -8.90851, 676.133 )
+
 [node name="Tree15" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( -8.90851, 841.277 )
+
+[node name="Tree16" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -8.90851, 1082.28 )
+
+[node name="Tree17" parent="Obstacles" instance=ExtResource( 1 )]
+position = Vector2( -8.90851, 1330.28 )
 
 [node name="Tree24" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1015.96, 82.0395 )
@@ -74,12 +83,6 @@ position = Vector2( 1385.2, 242.528 )
 [node name="Tree28" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1253.86, 375.59 )
 
-[node name="Tree29" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1284.35, 517.841 )
-
-[node name="Tree30" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1297.89, 726.137 )
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Markers" type="Node2D" parent="."]
@@ -94,7 +97,8 @@ position = Vector2( 667.512, 1261.08 )
 position = Vector2( 677.235, 0 )
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 3 )]
-position = Vector2( 664, 1072 )
+position = Vector2( 635.505, 1222.04 )
+scale = Vector2( 1.21311, 0.260445 )
 dialog = [ "Winston!", "Wiiiiinstooooon!!!!" ]
 cinematic_style_dialog = true
 
@@ -115,6 +119,24 @@ cinematic_style_dialog = true
 
 [node name="Fillable" parent="DialogTrigger3" instance=ExtResource( 5 )]
 position = Vector2( 635.021, 1039.01 )
+
+[node name="Fillable45" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 975.01 )
+
+[node name="Fillable46" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 911.01 )
+
+[node name="Fillable47" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 847.01 )
+
+[node name="Fillable48" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 783.01 )
+
+[node name="Fillable49" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 719.01 )
+
+[node name="Fillable50" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 625.021, 655.01 )
 
 [node name="Fillable2" parent="DialogTrigger3" instance=ExtResource( 5 )]
 position = Vector2( 635.021, 1103.01 )
@@ -154,6 +176,9 @@ position = Vector2( -644.979, 1071.01 )
 
 [node name="Fillable14" parent="DialogTrigger3" instance=ExtResource( 5 )]
 position = Vector2( -644.979, 1135.01 )
+
+[node name="Fillable44" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 806.01 )
 
 [node name="Fillable15" parent="DialogTrigger3" instance=ExtResource( 5 )]
 position = Vector2( -644.979, 1199.01 )
