@@ -31,6 +31,7 @@ position = Vector2( 100, 0 )
 position = Vector2( 200, 0 )
 
 [node name="InventorySlots" type="HBoxContainer" parent="CanvasLayer"]
+visible = false
 margin_left = 36.0
 margin_top = 1159.0
 margin_right = 669.0

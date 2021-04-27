@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/FillableArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=6]
 [ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=8]
 
@@ -10,12 +12,11 @@
 script = ExtResource( 6 )
 
 [node name="EditorBackground" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1.12231, 1.12225 )
 
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Donut" parent="Items" instance=ExtResource( 4 )]
-position = Vector2( 683.729, 210.839 )
+position = Vector2( 793.215, 310.279 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -84,20 +85,164 @@ position = Vector2( 1297.89, 726.137 )
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="LevelBottom" type="Node2D" parent="Markers"]
-position = Vector2( 671.308, 1673.97 )
+position = Vector2( 671.308, 1497.95 )
 
 [node name="SpawnPoint" type="Node2D" parent="Markers"]
-position = Vector2( 667.512, 1379.23 )
+position = Vector2( 667.512, 1261.08 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
 
+[node name="DialogTrigger" parent="." instance=ExtResource( 3 )]
+position = Vector2( 664, 1072 )
+dialog = [ "Winston!", "Wiiiiinstooooon!!!!" ]
+cinematic_style_dialog = true
+
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 2 )]
-position = Vector2( 664.506, 208.441 )
-destinations = [ NodePath("DogDestination") ]
+position = Vector2( 688.224, 241.868 )
+destinations = [ NodePath("../dddddog") ]
 dog_path = NodePath("../Items/Donut")
 
-[node name="DogDestination" type="Node2D" parent="DogMoveTrigger"]
-position = Vector2( 15.8087, -368.542 )
+[node name="DialogTrigger2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 664, 360 )
+dialog = [ "Winston, c'mon! Let's go back!", "Mom says we're not supposed to go this far from home...", ".....aw.", "You're just too cute!", "Okay, fiiiiiine. We can go a LITTLE further.", "I mean, we're trained explorers! ", "(....at least, that's what my Girl Scouts troop leader said.)", "If there's anything scary out there, we'll handle it for sure!", "And when we get back, maybe Mom can make some of her famous hot chocolate to celebrate our awesome exploring skills!" ]
+cinematic_style_dialog = true
+
+[node name="DialogTrigger3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 644.979, -111.013 )
+dialog = [ "Hey, Winston, wait for me!!", "...", "...Winston?", "...alright, alright, I'll play along! Here I come!" ]
+cinematic_style_dialog = true
+
+[node name="Fillable" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1039.01 )
+
+[node name="Fillable2" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1103.01 )
+
+[node name="Fillable3" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1167.01 )
+
+[node name="Fillable4" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1231.01 )
+
+[node name="Fillable5" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1295.01 )
+
+[node name="Fillable6" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1359.01 )
+
+[node name="Fillable7" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1423.01 )
+
+[node name="Fillable8" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1487.01 )
+
+[node name="Fillable9" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1551.01 )
+
+[node name="Fillable10" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1615.01 )
+
+[node name="Fillable11" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1679.01 )
+
+[node name="Fillable12" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 635.021, 1743.01 )
+
+[node name="Fillable13" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1071.01 )
+
+[node name="Fillable14" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1135.01 )
+
+[node name="Fillable15" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1199.01 )
+
+[node name="Fillable16" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1263.01 )
+
+[node name="Fillable17" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1327.01 )
+
+[node name="Fillable18" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1391.01 )
+
+[node name="Fillable19" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1455.01 )
+
+[node name="Fillable20" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1519.01 )
+
+[node name="Fillable21" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1583.01 )
+
+[node name="Fillable22" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1647.01 )
+
+[node name="Fillable23" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1711.01 )
+
+[node name="Fillable24" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -644.979, 1775.01 )
+
+[node name="Fillable25" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -580.979, 1775.01 )
+
+[node name="Fillable26" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -516.979, 1775.01 )
+
+[node name="Fillable27" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -452.979, 1775.01 )
+
+[node name="Fillable28" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -388.979, 1775.01 )
+
+[node name="Fillable29" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -324.979, 1775.01 )
+
+[node name="Fillable30" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -260.979, 1775.01 )
+
+[node name="Fillable31" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -196.979, 1775.01 )
+
+[node name="Fillable32" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -132.979, 1775.01 )
+
+[node name="Fillable33" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -68.9789, 1775.01 )
+
+[node name="Fillable34" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( -4.97894, 1775.01 )
+
+[node name="Fillable35" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 59.0211, 1775.01 )
+
+[node name="Fillable36" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 123.021, 1775.01 )
+
+[node name="Fillable37" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 187.021, 1775.01 )
+
+[node name="Fillable38" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 251.021, 1775.01 )
+
+[node name="Fillable39" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 315.021, 1775.01 )
+
+[node name="Fillable40" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 379.021, 1775.01 )
+
+[node name="Fillable41" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 443.021, 1775.01 )
+
+[node name="Fillable42" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 507.021, 1775.01 )
+
+[node name="Fillable43" parent="DialogTrigger3" instance=ExtResource( 5 )]
+position = Vector2( 571.021, 1775.01 )
+
+[node name="dddddog" type="Node2D" parent="."]
+position = Vector2( 638.539, -387.398 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

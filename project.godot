@@ -64,10 +64,10 @@ config/icon="res://icon.png"
 [autoload]
 
 CombatHelpers="*res://scripts/CombatHelpers.gd"
-CloudSpawner="*res://scenes/CloudSpawner.tscn"
-Test="*res://compiled/Test.gd"
-SoundManager="*res://scripts/SoundManager.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
+Test="*res://compiled/Test.gd"
+CloudSpawner="*res://scenes/CloudSpawner.tscn"
+SoundManager="*res://scripts/SoundManager.gd"
 
 [display]
 

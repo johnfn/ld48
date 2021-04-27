@@ -77,7 +77,7 @@ func set_in_use(in_use: bool) -> void:
 
   Hitbox.set_disabled(true)
   AnimationPlayer.clear_queue()
-  AnimationPlayer.seek(0)
+
   SwordSprite.modulate.a = 0.3
   
   swinging = false
