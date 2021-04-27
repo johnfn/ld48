@@ -153,8 +153,9 @@ func update_wall_positions() -> void:
   walled_level.dirty = false
 
 func _ready():
-  CanvasModulate.visible = false
-  $Player/Light2D.visible = false
+  if CanvasModulate != null:
+    CanvasModulate.visible = false
+    $Player/Light2D.visible = false
   
   if debug_already_has_sword:
     saved_inventory.append("Sword")
