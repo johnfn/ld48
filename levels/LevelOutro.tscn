@@ -165,3 +165,4 @@ position = Vector2( 667.512, 1261.08 )
 position = Vector2( 677.235, 0 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
+[connection signal="cinematic_ended" from="Tree30/Tree19/DialogTrigger" to="." method="_on_DialogTrigger_cinematic_ended"]
