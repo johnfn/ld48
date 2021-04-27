@@ -12,7 +12,6 @@
 script = ExtResource( 6 )
 
 [node name="EditorBackground" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1.12231, 1.12225 )
 
 [node name="Items" type="Node2D" parent="."]
 
