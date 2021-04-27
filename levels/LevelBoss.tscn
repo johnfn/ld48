@@ -138,7 +138,7 @@ position = Vector2( 1274.84, 24.0837 )
 visible = false
 position = Vector2( 628.689, 791.59 )
 scale = Vector2( 1.24, 1 )
-dialog = [ "why does everyone hate me", "maybe it's because I kill kids" ]
+dialog = [ "Human child. This is OUR forest", "You had your chance to run, but you are still here", "Why? You call yourself an explorer, an adventurer", "Well... what kind of adventurer...", "couldn't keep an eye on her own beloved pet?", "Your dog does not deserve you, no one does", "Your only purpose....", "...is   D I N N E R .", "........and after this is over, maybe we'll even pack up a doggy bag for dessert." ]
 cinematic_style_dialog = true
 enemy_speaker = NodePath("../GoblinKing")
 

@@ -1229,6 +1229,7 @@ z_index = 5
 position = Vector2( 640, -150 )
 frames = SubResource( 3 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Runner"]
@@ -1307,17 +1308,17 @@ position = Vector2( 3.13226, -283.712 )
 dialog = [ "AAAAAA GET AWAY FROM ME!!!!!!!!" ]
 
 [node name="EnemyDialogTrigger5" parent="." instance=ExtResource( 12 )]
-position = Vector2( 650.874, 8470.02 )
+position = Vector2( 645.652, 8887.76 )
 dialog = [ "YOU CAN'T RUN, AND YOU CAN'T HIDE!!", "(wait, guys, she can run)", "(oh, wait. yeah.)" ]
 enemy_speaker = NodePath("../Runner/AnimatedSprite")
 
 [node name="EnemyDialogTrigger6" parent="." instance=ExtResource( 12 )]
-position = Vector2( 696.128, 5654.43 )
+position = Vector2( 697.869, 6096.54 )
 dialog = [ "I DON'T KNOW WHAT A MENU IS, BUT MEAT IS PROBABLY BACK ON IT!", "(you serious? an orc reference?)", "(bruh, i don't know. she's 8. what media has she even watched)" ]
 enemy_speaker = NodePath("../Runner/AnimatedSprite")
 
 [node name="EnemyDialogTrigger" parent="EnemyDialogTrigger6" instance=ExtResource( 12 )]
-position = Vector2( -13.9248, -2650.93 )
+position = Vector2( -13.9248, -3070.42 )
 dialog = [ "THERE'S NO ESCAAAAAAAAPE", "(welp. maybe there is)" ]
 enemy_speaker = NodePath("../../Runner/AnimatedSprite")
 
