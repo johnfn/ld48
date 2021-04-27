@@ -13,8 +13,9 @@ onready var goblin_king = $Enemies/GoblinKing
 onready var main = $"/root/Main"
 var player = null
 
+var song = "BossSong"
 func get_song():
-  return "BossSong"
+  return song
 
 func _ready():
   if spawn_point == Vector2(0, 0):
@@ -59,3 +60,9 @@ func _on_GoblinKing_died():
   tween.start()
   is_top_open = true
   dirty = true
+  $Mob/CollisionShape2D.disabled = true
+  var tween2 = $HealthBar/Tween2
+  tween.interpolate_property($Mob/AnimatedSprite, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 3.0, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+  tween.start()
+  song = null
+  main.update_song()
