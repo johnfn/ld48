@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/art/monster.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/goblin_trenchcoat2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Monster3x.gd" type="Script" id=2]
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=3]
 [ext_resource path="res://materials/modulate_shader_red.tres" type="Material" id=4]
+[ext_resource path="res://assets/art/goblin_trenchcoat1.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.6
+} ]
 
 [node name="Monster" type="RigidBody2D"]
 material = ExtResource( 4 )
@@ -12,10 +21,12 @@ collision_mask = 151
 mode = 2
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.0862745, 0.219608, 0.831373, 1 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 3 )
-texture = ExtResource( 1 )
+position = Vector2( 0, -0.378769 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 visible = false
