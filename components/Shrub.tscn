@@ -20,6 +20,7 @@ texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 1 )
+position = Vector2( 0.415039, 0 )
 texture = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]

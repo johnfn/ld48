@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/art/pinetree_top.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/pinetree_bottom.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Tree.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/tree_shadow.png" type="Texture" id=4]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -18.9979, 156.654, 96.0604, 134.009, 108.301, 59.3435, 17.7228, -25.7263, -75.3031, 28.1308, -84.4833, 116.873, -27.5661, 168.894, -13.4898, 151.145 )
 
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 2
@@ -43,3 +46,6 @@ collision_layer = 2
 polygon = PoolVector2Array( -80.674, 45.1262, -76.6695, 3.41237, -42.631, -70.6713, -5.25546, -123.398, 35.7909, -71.6725, 87.516, 28.4406, 87.8497, 56.4723, 65.1574, 86.1725, -2.25208, 99.1873, -45.6344, 93.1805, -71.9976, 76.1613 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 1 )

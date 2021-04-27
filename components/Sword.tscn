@@ -66,7 +66,8 @@ texture = ExtResource( 1 )
 anims/Swing = SubResource( 1 )
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0, 0.340393 )
+position = Vector2( 9.47534, 43.0772 )
+rotation = 1.35024
 polygon = PoolVector2Array( -53.1036, 8.22645, -49.5623, -85.444, 5.07083, -150.843, 48.9393, -78.9852, 50.3801, 6.18365 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

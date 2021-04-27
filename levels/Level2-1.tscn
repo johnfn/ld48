@@ -534,6 +534,7 @@ dialog = [ "Hey, what a cute little river! I wonder if I can get across it?" ]
 
 [node name="CardTrigger" parent="." instance=ExtResource( 15 )]
 position = Vector2( 681.228, 2958.94 )
+scale = Vector2( 1.00088, 1 )
 which_card = 2
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 2 )]

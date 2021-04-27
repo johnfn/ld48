@@ -13,6 +13,8 @@ onready var BottomWall = $Walls/BottomWall
 onready var teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + TransitionTop.position.y
 onready var load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
 onready var despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
+onready var FireflySpawner = $"/root/Main/FireflySpawner"
+onready var CanvasModulate = $CanvasModulate
 
 export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
@@ -128,8 +130,10 @@ func update_wall_positions() -> void:
   get_node("Walls/TopWall/Box").position.y = walled_level.top_wall + walled_level.position.y
   walled_level.dirty = false
 
-
 func _ready():
+  CanvasModulate.visible = false
+  $Player/Light2D.visible = false
+  
   if debug_already_has_sword:
     saved_inventory.append("Sword")
     saved_slots["weapons"] = "res://components/Sword.tscn"
@@ -138,6 +142,7 @@ func _ready():
   Player.connect("died", self, "handle_player_died")
   start_level(curr_level_num)
   CloudSpawner.initial_cloud_spawn()
+  
   for audio in $Audio.get_children():
     if audio as AudioStreamPlayer != null:
       audio.volume_db = SoundManager.get_db()
