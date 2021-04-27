@@ -18,3 +18,7 @@ func _ready():
   top_wall = $Markers/LevelTop.position.y
   bottom_wall = $Markers/LevelBottom.position.y
   dirty = true
+
+
+func _on_DialogTrigger_cinematic_ended():
+  get_tree().change_scene("res://scenes/Credits.tscn")
