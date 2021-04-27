@@ -42,9 +42,11 @@ func begin_cinematic(player: Player):
   
   Letterbox.in_cinematic = true
   
+  if not is_instance_valid(speaker): return
   yield(Letterbox.animate_in(speaker), "completed")
     
-  yield(new_dialog.display_text_sequence_co(speaker, dialog), "completed")
+  if is_instance_valid(speaker):
+    yield(new_dialog.display_text_sequence_co(speaker, dialog), "completed")
   
   if fade_to_black:
     yield(Letterbox.fade_to_black(120.0), "completed")

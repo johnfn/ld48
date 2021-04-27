@@ -169,6 +169,10 @@ func damage(amount: int, source: Node2D, strength=500) -> void:
       is_invuln = false
       Sprite.stop()
       Sprite.frame = IDLE_FRAME
+      Input.action_press("interact")
+      for child in get_children():
+        if "Dialog" in child.name:
+          child.queue_free()
       return
     
     # bump player back a little
