@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui/firefly.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Firefly.gd" type="Script" id=2]
+
+[node name="Firefly" type="Node2D"]
+scale = Vector2( 0.499698, 0.5 )
+z_index = 1000
+script = ExtResource( 2 )
+
+[node name="firefly" type="Sprite" parent="."]
+position = Vector2( 2.79443, -5.82526 )
+texture = ExtResource( 1 )
