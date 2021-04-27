@@ -21,8 +21,8 @@ func get_db():
   return -25 + volume / 4
 
 
-func play_sound(sound, volume = 1.0):
-  if volume < 0.05: return
+func play_sound(sound):
+  if volume < 5: return
   var main_audio = $"/root/Main/Audio"
   var sounds = main_audio.get_node(sound).get_children()
   var unused = []
