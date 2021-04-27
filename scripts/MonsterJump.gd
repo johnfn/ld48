@@ -121,5 +121,5 @@ func damage(amount: int, source: Node2D) -> void:
   
   if health <= 0:
     on_die()
-    
-  being_hit = false
+  else:
+    being_hit = false
