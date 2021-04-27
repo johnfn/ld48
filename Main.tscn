@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=31 format=2]
-=======
 [gd_scene load_steps=32 format=2]
->>>>>>> 143c1c87980cfba8415a310e1f3e49d204c56b63
 
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/LevelTransition.tscn" type="PackedScene" id=2]
