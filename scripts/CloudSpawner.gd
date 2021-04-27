@@ -24,6 +24,8 @@ func spawn_cloud():
   
   started = true
   var new_cloud = CloudScene.instance()
+  if main == null:
+    return
   main.add_child(new_cloud)
 
   var scale = 2.0 + randf() * 2.0
