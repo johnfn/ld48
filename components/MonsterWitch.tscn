@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/art/witch2.png" type="Texture" id=1]
-[ext_resource path="res://materials/modulate_shader.tres" type="Material" id=2]
 [ext_resource path="res://scripts/MonsterWitch.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/witch1.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/chara_shadow.png" type="Texture" id=5]
@@ -29,7 +28,7 @@ scale = Vector2( 1.18875, 0.669549 )
 texture = ExtResource( 5 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-material = ExtResource( 2 )
+material = ExtResource( 6 )
 frames = SubResource( 1 )
 animation = "idle"
 frame = 1
