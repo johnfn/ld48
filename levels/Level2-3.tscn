@@ -64,6 +64,7 @@ shader_param/white = null
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 4 )
+song = "Chapter2Song"
 
 [node name="EditorBackground" parent="." instance=ExtResource( 8 )]
 position = Vector2( -1.74792, 0 )
