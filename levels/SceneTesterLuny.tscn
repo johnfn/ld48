@@ -37,7 +37,7 @@ extents = Vector2( 956.12, 10 )
 position = Vector2( 6.34852, -2.43603 )
 script = ExtResource( 3 )
 debug_already_has_sword = true
-level_scenes = [ "res://levels/LevelRunner.tscn", "res://levels/Level1-0.tscn", "res://levels/Level2-2.tscn", "res://levels/Level2-3.tscn", "res://levels/Level2-4.tscn", "res://levels/Level1-0.tscn" ]
+level_scenes = [ "res://levels/LevelTemplate.tscn", "res://levels/LevelRunner.tscn", "res://levels/Level2-2.tscn", "res://levels/Level2-3.tscn", "res://levels/Level2-4.tscn", "res://levels/Level1-0.tscn" ]
 
 [node name="Letterbox" parent="." instance=ExtResource( 8 )]
 position = Vector2( 27.8121, 50.462 )
