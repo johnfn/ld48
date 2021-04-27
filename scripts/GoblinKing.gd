@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal died
 
-const MAX_HEALTH = 8
+const MAX_HEALTH = 2
 var health = MAX_HEALTH
 
 onready var Letterbox = $"/root/Main/Letterbox"
@@ -16,7 +16,7 @@ var player_in_contact = null
 var is_invuln = false
 var being_hit = false
 var timer = Timer.new()
-export(float) var pause_between_attacks = 2.0
+export(float) var pause_between_attacks = 2.5
 var time_until_attack = pause_between_attacks
 var curr_attack = 0
 var player = null
@@ -117,7 +117,7 @@ func _process(delta):
 
 export(Array) var jump_lines = ["What goes up-!", "Sky's the limit!", "Let's see you dodge this!"]
 var last_jump_line = 0
-var JUMP_WINDUP = 0.2
+var JUMP_WINDUP = 0.3
 var jump_windup = null
 var jump_target = null
 var jump_start = null
@@ -151,7 +151,7 @@ var jump_attack_time = 1.5
 var shockwave_radius = 550
 var max_shockwave_power = 1200
 var min_shockwave_power = 800
-var damage_radius = 240
+var damage_radius = 200
 func jump_attack(delta):
   if jump_target == null:
     if jumps_done == JUMPS_DONE:
