@@ -57,17 +57,17 @@ _global_script_class_icons={
 [application]
 
 config/name="ld48"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://levels/MainMenu.tscn"
 boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
 CombatHelpers="*res://scripts/CombatHelpers.gd"
-CloudSpawner="*res://scenes/CloudSpawner.tscn"
-Test="*res://compiled/Test.gd"
-SoundManager="*res://scripts/SoundManager.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
+Test="*res://compiled/Test.gd"
+CloudSpawner="*res://scenes/CloudSpawner.tscn"
+SoundManager="*res://scripts/SoundManager.gd"
 
 [display]
 

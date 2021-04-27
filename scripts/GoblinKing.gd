@@ -218,8 +218,8 @@ func handle_jump_completion(is_attack):
         var damage = 0 if p_dist > damage_radius else 1
         var power = min_shockwave_power + (max_shockwave_power - min_shockwave_power) * min(1, (shockwave_radius - p_dist) / (shockwave_radius - damage_radius))
         player.damage(damage, $ShockwaveCenter, power)
-        particle_time = 0.1
-        $ShockwaveCenter/Particles2D.emitting = true      
+      particle_time = 0.2
+      $ShockwaveCenter/Particles2D.emitting = true      
 
 
 export(Array) var spear_lines = ["That's the spear-it!", "How about a game of catch?"]

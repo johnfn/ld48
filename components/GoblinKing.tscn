@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=1]
 [ext_resource path="res://assets/art/goblin_king_placeholder.png" type="Texture" id=2]
@@ -15,21 +15,6 @@ animations = [ {
 "speed": 1.6
 } ]
 
-[sub_resource type="ParticlesMaterial" id=2]
-lifetime_randomness = 0.55
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 630.16
-initial_velocity_random = 0.55
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 500.0
-angle = -37.7
-scale = 2.0
-scale_random = 0.49
-color = Color( 1, 1, 1, 0.231373 )
-
 [node name="GoblinKing" type="KinematicBody2D"]
 material = ExtResource( 1 )
 collision_layer = 1024
@@ -41,6 +26,25 @@ self_modulate = Color( 0, 0, 0, 0.207843 )
 position = Vector2( -19.3071, 135.031 )
 scale = Vector2( 5.61301, 2.63088 )
 texture = ExtResource( 5 )
+
+[node name="ShockwaveCenter" type="Node2D" parent="."]
+position = Vector2( -14.2339, 231.488 )
+
+[node name="Particles2D" type="CPUParticles2D" parent="ShockwaveCenter"]
+emitting = false
+lifetime = 0.6
+explosiveness = 1.0
+lifetime_randomness = 0.55
+texture = ExtResource( 4 )
+spread = 180.0
+initial_velocity = 630.16
+initial_velocity_random = 0.55
+damping = 500.0
+damping_random = 0.2
+angle = -37.7
+scale_amount = 2.0
+scale_amount_random = 0.49
+color = Color( 1, 1, 1, 0.231373 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
 material = ExtResource( 1 )
@@ -70,16 +74,6 @@ position = Vector2( -64.886, 174.499 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PoolVector2Array( -240.5, -84.5, -171.5, -119, -147.5, -169.5, -88.5, -178, -32, -168, 24.5, -151, 72, -149, 85.5, -72.5, 125.5, 37.5, 152.5, 143.5, 107, 183.5, 84, 186.5, 60, 228, 22.5, 174.5, 27, 127.5, -35, 166, -34, 166, -24, 178.5, -62, 212.5, -45, 180, -136.5, 184, -190, 140.5, -164, 42.5, -102.5, 36.5, -134.5, -9, -161.5, -60, -226, -61, -244.5, -72.5 )
-
-[node name="ShockwaveCenter" type="Node2D" parent="."]
-position = Vector2( -14.2339, 231.488 )
-
-[node name="Particles2D" type="Particles2D" parent="ShockwaveCenter"]
-emitting = false
-lifetime = 0.6
-explosiveness = 1.0
-process_material = SubResource( 2 )
-texture = ExtResource( 4 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
