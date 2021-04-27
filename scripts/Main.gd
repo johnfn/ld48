@@ -95,7 +95,7 @@ func update_song():
         $Audio/InTween.interpolate_property(curr_node, "volume_db", volume-30, volume, 1.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
         $Audio/InTween.start()
         yield(get_tree().create_timer(0.1), "timeout")
-      curr_node.playing = true
+      curr_node.playing = SoundManager.volume > 5
     if to_shut_down != null:
       yield(get_tree().create_timer(fade_out_len), "timeout")
       to_shut_down.volume_db = og_volume

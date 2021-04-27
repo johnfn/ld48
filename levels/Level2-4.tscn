@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=6]
+[ext_resource path="res://components/RiverSounds.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/PushableTemplate.tscn" type="PackedScene" id=10]
@@ -982,5 +983,11 @@ cinematic_style_dialog = true
 
 [node name="dddddddddd" type="Node2D" parent="."]
 position = Vector2( 662.231, -384.682 )
+
+[node name="RiverSounds" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1272.38, 1886.83 )
+
+[node name="RiverSounds2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1275.05, 2657.03 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

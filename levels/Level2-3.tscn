@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=16]
+[ext_resource path="res://components/RiverSounds.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -618,5 +619,8 @@ dialog = [ "He seemed more urgent that time...", "Winston? Buddy? Where are you 
 
 [node name="ddddgogogogdogdo" type="Node2D" parent="."]
 position = Vector2( 667.908, -434.019 )
+
+[node name="RiverSounds" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1280, 832 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

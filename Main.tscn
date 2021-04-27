@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/LevelTransition.tscn" type="PackedScene" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://assets/music/Bossfight New.mp3" type="AudioStream" id=29]
 [ext_resource path="res://assets/music/Chapter 2.mp3" type="AudioStream" id=30]
 [ext_resource path="res://assets/music/Goblin Runner.mp3" type="AudioStream" id=31]
+[ext_resource path="res://assets/music/hit2.wav" type="AudioStream" id=32]
+[ext_resource path="res://assets/music/hit3.wav" type="AudioStream" id=33]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640.632, 1277.67 )
@@ -192,10 +194,10 @@ stream = ExtResource( 14 )
 stream = ExtResource( 15 )
 
 [node name="Hit2" type="AudioStreamPlayer" parent="Audio/Hit"]
-stream = ExtResource( 14 )
+stream = ExtResource( 32 )
 
 [node name="Hit3" type="AudioStreamPlayer" parent="Audio/Hit"]
-stream = ExtResource( 14 )
+stream = ExtResource( 33 )
 
 [node name="Footstep" type="Node2D" parent="Audio"]
 

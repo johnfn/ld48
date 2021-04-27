@@ -22,6 +22,7 @@ func get_db():
 
 
 func play_sound(sound, volume = 1.0):
+  if volume < 0.05: return
   var main_audio = $"/root/Main/Audio"
   var sounds = main_audio.get_node(sound).get_children()
   var unused = []
@@ -33,9 +34,8 @@ func play_sound(sound, volume = 1.0):
 
 
 func set_river_volume(vol):
-  return
   var river_audio = $"/root/Main/Audio/River/River"
-  if vol <= 0.1:
+  if vol <= 0.05:
     river_audio.playing = false
   else:
     if not river_audio.playing:
