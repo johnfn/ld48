@@ -211,6 +211,10 @@ stream = ExtResource( 23 )
 [node name="Bush3" type="AudioStreamPlayer" parent="Audio/Bush"]
 stream = ExtResource( 25 )
 
+[node name="InTween" type="Tween" parent="Audio"]
+
+[node name="OutTween" type="Tween" parent="Audio"]
+
 [connection signal="body_entered" from="Background/Bg1" to="." method="_on_background_entered" binds= [ 0 ]]
 [connection signal="body_entered" from="Background/Bg2" to="." method="_on_background_entered" binds= [ 1 ]]
 [connection signal="body_entered" from="Background/Bg3" to="." method="_on_background_entered" binds= [ 2 ]]
