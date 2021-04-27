@@ -107,6 +107,8 @@ func start_level(level_num: int) -> void:
     Level.queue_free()
   if OldLevel != null:
     OldLevel.queue_free()
+    OldLevel = null
+  is_transitioning = false
     
   load_level(level_scenes[level_num])
   Levels.add_child(Level)
@@ -132,7 +134,6 @@ func start_level(level_num: int) -> void:
   teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + TransitionTop.position.y
   load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
   despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
-  is_transitioning = false
 
 
 func load_new_level(level_num: int) -> void:
@@ -227,7 +228,6 @@ func _process(delta: float):
     update_song()
     checkpoint()
   if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
-    print('c')
     OldLevel.queue_free()
     OldLevel = null
     
