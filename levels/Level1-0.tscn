@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=2]
@@ -325,11 +325,11 @@ position = Vector2( 1439.02, 3376.81 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="DialogTrigger" parent="." instance=ExtResource( 8 )]
-position = Vector2( 648.739, 3018.5 )
-dialog = [ "Oh, there you are, Winston! C'mere, boy!", "Mom says it's dangerous to go deep in the forest!" ]
-cinematic_style_dialog = true
+position = Vector2( 648.739, 3016.3 )
+dialog = [ "Wiiiiinstoooon!!!!", "Come out, come out, wherever you are!" ]
 
 [node name="CardTrigger" parent="." instance=ExtResource( 9 )]
+position = Vector2( 674.008, 3393.53 )
 
 [node name="Markers" type="Node2D" parent="."]
 
@@ -565,6 +565,6 @@ position = Vector2( 636.598, -392.091 )
 
 [node name="DialogTrigger2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 645.086, 205.466 )
-dialog = [ "Winston? Where'd you go??", "Okay, we can play ONE game of hide and seek!" ]
+dialog = [ "Winston? Where'd you go??", "Okay, we can play ONE more game of hide and seek!" ]
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

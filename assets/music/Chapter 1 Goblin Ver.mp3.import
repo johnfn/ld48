@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Chapter 1 Goblin Ver.mp3-2c938ccd5dc1bf44bbe2415da35994a6.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Chapter 1 Goblin Ver.mp3"
+dest_files=[ "res://.import/Chapter 1 Goblin Ver.mp3-2c938ccd5dc1bf44bbe2415da35994a6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
