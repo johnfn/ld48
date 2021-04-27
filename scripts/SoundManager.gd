@@ -33,6 +33,7 @@ func play_sound(sound, volume = 1.0):
 
 
 func set_river_volume(vol):
+  return
   var river_audio = $"/root/Main/Audio/River/River"
   if vol <= 0.1:
     river_audio.playing = false
