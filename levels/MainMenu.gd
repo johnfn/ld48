@@ -20,7 +20,7 @@ func _on_VolumeBar_value_changed(value):
 
 
 func _on_Credits_pressed():
-  get_tree().change_scene("res://Credits.tscn")
+  get_tree().change_scene("res://scenes/Credits.tscn")
 
 
 func _on_Volume_pressed():
