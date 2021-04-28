@@ -11,5 +11,5 @@ dest_files=[ "res://.import/gk_hello.mp3-c6f620494f03ab189b1b3856b8be7c8b.mp3str
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

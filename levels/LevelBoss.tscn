@@ -169,7 +169,6 @@ collision_layer = 512
 position = Vector2( 623.144, -74.92 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mob"]
@@ -185,6 +184,7 @@ position = Vector2( 628.689, 791.59 )
 scale = Vector2( 1.24, 1 )
 dialog = [ "Human child. This is OUR forest", "You had your chance to run, but you are still here", "Why? You call yourself an explorer, an adventurer", "Well... what kind of adventurer...", "couldn't keep an eye on her own beloved pet?", "Your dog does not deserve you, no one does", "Your only purpose....", "...is   D I N N E R .", "(........and after this is over, maybe we'll even pack up a doggy bag for dessert)" ]
 cinematic_style_dialog = true
+sfx = "GoblinKingHello"
 enemy_speaker = NodePath("../GoblinKing")
 
 [node name="GoblinKing" parent="Enemies" instance=ExtResource( 2 )]

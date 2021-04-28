@@ -74,6 +74,7 @@ func damage(amount: int, source: Node2D) -> void:
   curr_mode = Mode.RETREAT
   reset_jump()
   reset_spear()
+  SoundManager.play_sound("GoblinKingGrunt")
 
   # TODO also do this for hands and stuff
   yield(CombatHelpers.damage_anim_animated_sprite($Body), "completed")
@@ -144,7 +145,8 @@ func jump_to_corner(delta):
   jump(delta, false)
 
 
-var JUMPS_DONE = 2
+const JUMP_AUDIO_PADDING = 0.7
+const JUMPS_DONE = 2
 var jumps_done = 0
 var jump_attack_speed = 0
 var jump_attack_time = 1.5
@@ -152,12 +154,15 @@ var shockwave_radius = 550
 var max_shockwave_power = 1200
 var min_shockwave_power = 800
 var damage_radius = 200
+var jump_has_played_landing_sound = false
 func jump_attack(delta):
   if jump_target == null:
     if jumps_done == JUMPS_DONE:
       reset_jump()
       curr_mode = Mode.IDLE
       return
+    if jumps_done == 0:
+      SoundManager.play_sound("GoblinKingJumpAttack")
     jumps_done += 1
     last_jump_line = (last_jump_line + 1) % len(jump_lines)
     play_line(jump_lines[last_jump_line])
@@ -174,6 +179,8 @@ func init_jump(target, speed):
   jump_v = jump_time_len / 2 * downforce
   jump_v_acc = 0
   jump_max_height = jump_v * jump_v / 2 / downforce
+  jump_has_played_landing_sound = false
+  SoundManager.play_sound("GoblinKingJump")
 
 
 func reset_jump():
@@ -202,6 +209,10 @@ func jump(delta, is_attack):
 
 
 func handle_jump_completion(is_attack):
+  if jump_time >= jump_time_len - JUMP_AUDIO_PADDING and not jump_has_played_landing_sound and is_attack:
+    SoundManager.play_sound("GoblinKingLand", 20)
+    jump_has_played_landing_sound = true
+    
   if jump_time >= jump_time_len:
     jump_target = null
     if not is_attack:
@@ -250,6 +261,7 @@ func spear_attack(delta):
     if spears_thrown == 0:
       last_line = (last_line + 1) % len(spear_lines)
       play_line(spear_lines[last_line])
+      SoundManager.play_sound("GoblinKingSpearAttack")
     spear = SpearScene.instance()
     spear.shooter = self
     spear.active = false

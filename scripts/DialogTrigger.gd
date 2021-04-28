@@ -9,6 +9,7 @@ export var dialog: Array = [
   "I'm some dialog that someone should really rewrite!"
 ]
 export var cinematic_style_dialog = false
+export(String) var sfx = ""
 export var fade_to_black = false
 var speaker = null # null implies player - otherwise this will be passed down by someone who inherits us
 
@@ -29,6 +30,10 @@ func body_entered(other: Node2D):
     
 func begin_cinematic(player: Player):
   yield(get_tree(), "idle_frame")
+  
+  if sfx != "":
+    SoundManager.play_sound(sfx)
+    print("playing")
   
   var new_dialog = DialogScene.instance()
   

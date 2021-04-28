@@ -11,5 +11,5 @@ dest_files=[ "res://.import/gk_jumping-grunt.mp3-4f813abfb0f583602bc88a9c3090e0b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

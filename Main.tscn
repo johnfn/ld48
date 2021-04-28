@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/LevelTransition.tscn" type="PackedScene" id=2]
@@ -33,6 +33,18 @@
 [ext_resource path="res://assets/music/Goblin Runner.mp3" type="AudioStream" id=31]
 [ext_resource path="res://assets/music/hit2.wav" type="AudioStream" id=32]
 [ext_resource path="res://assets/music/hit3.wav" type="AudioStream" id=33]
+[ext_resource path="res://assets/music/goblin king/gk_grunt5.mp3" type="AudioStream" id=34]
+[ext_resource path="res://assets/music/goblin king/gk_grunt3.mp3" type="AudioStream" id=35]
+[ext_resource path="res://assets/music/goblin king/gk_noooo.mp3" type="AudioStream" id=36]
+[ext_resource path="res://assets/music/goblin king/gk_hello.mp3" type="AudioStream" id=37]
+[ext_resource path="res://assets/music/goblin king/gk_jumping-grunt.mp3" type="AudioStream" id=38]
+[ext_resource path="res://assets/music/goblin king/gk_takethis_1.mp3" type="AudioStream" id=39]
+[ext_resource path="res://assets/music/goblin king/gk_takethis_2.mp3" type="AudioStream" id=40]
+[ext_resource path="res://assets/music/goblin king/gk_grunt1.mp3" type="AudioStream" id=41]
+[ext_resource path="res://assets/music/goblin king/gk_watchoutbelow.mp3" type="AudioStream" id=42]
+[ext_resource path="res://assets/music/goblin king/gk_grunt4.mp3" type="AudioStream" id=43]
+[ext_resource path="res://assets/music/goblin king/gk_landing-grunt.mp3" type="AudioStream" id=44]
+[ext_resource path="res://assets/music/goblin king/gk_grunt2.mp3" type="AudioStream" id=45]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640.632, 1277.67 )
@@ -236,6 +248,56 @@ stream = ExtResource( 25 )
 [node name="InTween" type="Tween" parent="Audio"]
 
 [node name="OutTween" type="Tween" parent="Audio"]
+
+[node name="GoblinKingGrunt" type="Node2D" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/GoblinKingGrunt"]
+stream = ExtResource( 41 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio/GoblinKingGrunt"]
+stream = ExtResource( 45 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio/GoblinKingGrunt"]
+stream = ExtResource( 35 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio/GoblinKingGrunt"]
+stream = ExtResource( 43 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audio/GoblinKingGrunt"]
+stream = ExtResource( 34 )
+
+[node name="GoblinKingHello" type="Node2D" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/GoblinKingHello"]
+stream = ExtResource( 37 )
+
+[node name="GoblinKingJump" type="Node2D" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/GoblinKingJump"]
+stream = ExtResource( 38 )
+
+[node name="GoblinKingLand" type="Node2D" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/GoblinKingLand"]
+stream = ExtResource( 44 )
+
+[node name="GoblinKingDeath" type="Node2D" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/GoblinKingDeath"]
+stream = ExtResource( 36 )
+
+[node name="GoblinKingSpearAttack" type="Node2D" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/GoblinKingSpearAttack"]
+stream = ExtResource( 39 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio/GoblinKingSpearAttack"]
+stream = ExtResource( 40 )
+
+[node name="GoblinKingJumpAttack" type="Node2D" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/GoblinKingJumpAttack"]
+stream = ExtResource( 42 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.486275, 0.486275, 0.486275, 1 )

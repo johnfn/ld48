@@ -11,5 +11,5 @@ dest_files=[ "res://.import/gk_watchoutbelow.mp3-ac01abac8137a767bd73a2a08398305
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

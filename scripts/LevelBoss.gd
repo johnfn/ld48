@@ -66,3 +66,4 @@ func _on_GoblinKing_died():
   tween.start()
   song = null
   main.update_song()
+  SoundManager.play_sound("GoblinKingDeath")

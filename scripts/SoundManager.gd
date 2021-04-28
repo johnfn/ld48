@@ -17,11 +17,11 @@ func set_volume(val):
       song.stream_paused = muted
 
 
-func get_db():
-  return -25 + volume / 4
+func get_db(vol_boost=0.0):
+  return -25 + (volume + vol_boost) / 4
 
 
-func play_sound(sound):
+func play_sound(sound, vol_boost=0.0):
   if volume < 5: return
   var main_audio = $"/root/Main/Audio"
   var sounds = main_audio.get_node(sound).get_children()
@@ -31,6 +31,7 @@ func play_sound(sound):
       unused.append(s)
   if len(unused) > 0:
     unused[randi() % len(unused)].playing = true
+    unused[randi() % len(unused)].volume_db = get_db(vol_boost)
 
 
 func set_river_volume(vol):
