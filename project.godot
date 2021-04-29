@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ld48"
-run/main_scene="res://levels/MainMenu.tscn"
+run/main_scene="res://Main.tscn"
 boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
 config/icon="res://icon.png"
 

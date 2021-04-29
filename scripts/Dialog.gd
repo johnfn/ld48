@@ -98,18 +98,8 @@ func display_text_co(new_text: String) -> void:
   if auto_advance:
     return
   
-  
-  while true:
-
-    
-    for x in range(20):
-      yield(get_tree(), "idle_frame")
-      if Input.is_action_just_pressed("interact"):
-        return
-
-
-    
-    for x in range(20):
-      yield(get_tree(), "idle_frame")
-      if Input.is_action_just_pressed("interact"):
-        return
+  # autodismiss after 3 sec roughly
+  for x in range(180):
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("interact"):
+      return
