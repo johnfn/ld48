@@ -35,7 +35,7 @@ func hover(obj: TextureButton) -> void:
     0.1,
     Tween.TRANS_LINEAR, 
     Tween.EASE_IN_OUT
-    )
+  )
   $Tween.start()
 
   $ColorTween.interpolate_property(

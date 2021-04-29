@@ -39,6 +39,8 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=f
   if not already_a_child:
     target.call_deferred("add_child", self)
   
+  self.modulate = Color.white
+  
   yield(self, "ready")
   
   hide_everything()
@@ -59,7 +61,20 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=f
   for phrase in sequence:
     yield(display_text_co(phrase), "completed")
     yield(get_tree().create_timer(lifespan), "timeout")
-    
+  
+  $Tween.interpolate_property(
+    self, 
+    "modulate",
+    self.modulate,
+    Color(1, 1, 1, 0),
+    1.0,
+    Tween.TRANS_LINEAR, 
+    Tween.EASE_IN_OUT
+  )
+  $Tween.start()
+  
+  yield($Tween, "tween_completed")
+  
   visible = false
 
 func display_text_co(new_text: String) -> void:
