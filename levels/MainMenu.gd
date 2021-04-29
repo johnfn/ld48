@@ -25,3 +25,75 @@ func _on_Credits_pressed():
 
 func _on_Volume_pressed():
   $VolumeBar.visible = not $VolumeBar.visible
+
+func hover(obj: TextureButton) -> void:
+  $Tween.interpolate_property(
+    obj, 
+    "rect_scale",
+    obj.rect_scale, 
+    Vector2(1.2, 1.2), 
+    0.1,
+    Tween.TRANS_LINEAR, 
+    Tween.EASE_IN_OUT
+    )
+  $Tween.start()
+
+  $ColorTween.interpolate_property(
+    obj,
+    "modulate",
+    obj.modulate,
+    Color.white,
+    0.1
+   )
+  $ColorTween.start()
+  
+func unhover(obj: TextureButton) -> void:
+  $Tween.interpolate_property(
+    obj, 
+    "rect_scale",
+    obj.rect_scale, 
+    Vector2(1, 1), 
+    0.1,
+    Tween.TRANS_LINEAR, 
+    Tween.EASE_IN_OUT
+    )
+  $Tween.start()
+  
+  $ColorTween.interpolate_property(
+    obj,
+    "modulate",
+    obj.modulate,
+    Color.black,
+    0.1
+   )
+  $ColorTween.start()
+  
+func _on_Credits_mouse_entered():
+  hover($VBoxContainer/Credits)
+
+func _on_Credits_mouse_exited():
+  unhover($VBoxContainer/Credits)
+  
+
+
+func _on_Quit_mouse_entered():
+  hover($VBoxContainer/Quit)
+
+func _on_Quit_mouse_exited():
+  unhover($VBoxContainer/Quit)
+
+
+func _on_Play_mouse_entered():
+  hover($VBoxContainer/Play)
+
+
+func _on_Play_mouse_exited():
+  unhover($VBoxContainer/Play)
+
+
+func _on_Volume_mouse_entered():
+  hover($VBoxContainer/Container/Volume)
+
+
+func _on_Volume_mouse_exited():
+  unhover($VBoxContainer/Container/Volume)
