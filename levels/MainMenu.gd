@@ -1,4 +1,8 @@
 extends Control
+onready var FadeToBlack = $CanvasLayer/FadeToBlack
+
+func _ready():
+  FadeToBlack.modulate.a = 0
 
 func _process(delta):
   var mouse_vec = get_global_mouse_position()
@@ -12,7 +16,14 @@ func _on_Quit_pressed():
 
 
 func _on_Play_pressed():
+  
+  for x in range(60):
+    FadeToBlack.modulate.a = float(x) / 60.0
+  var fader = FadeToBlack
+  fader.get_parent().remove_child(fader)
+  
   get_tree().change_scene("res://Main.tscn")
+  get_tree().get_current_scene().add_child(fader)
 
 
 func _on_VolumeBar_value_changed(value):

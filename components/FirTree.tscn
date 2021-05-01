@@ -9,10 +9,28 @@
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -18.9979, 156.654, 96.0604, 134.009, 108.301, 59.3435, 17.7228, -25.7263, -75.3031, 28.1308, -84.4833, 116.873, -27.5661, 168.894, -13.4898, 151.145 )
 
-[node name="Tree" type="StaticBody2D"]
+[node name="FirTree" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="LeafArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 2048
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeafArea"]
+polygon = PoolVector2Array( -80.674, 45.1262, -76.6695, 3.41237, -42.631, -70.6713, -5.25546, -123.398, 35.7909, -71.6725, 87.516, 28.4406, 87.8497, 56.4723, 65.1574, 86.1725, -2.25208, 99.1873, -45.6344, 93.1805, -71.9976, 76.1613 )
+
+[node name="TreeTrunk" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 133
-script = ExtResource( 3 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="TreeTrunk"]
+occluder = SubResource( 1 )
+
+[node name="TrunkHitbox" type="CollisionPolygon2D" parent="TreeTrunk"]
+visible = false
+position = Vector2( -0.805801, 1.47747 )
+scale = Vector2( 1.91319, 1.91319 )
+polygon = PoolVector2Array( -18.7219, 57.351, -13.1402, 32.4081, -5.29104, 25.431, 8.66306, 25.0822, 15.4657, 31.5359, 22.2683, 56.8277, 14.768, 63.1071, -8.08185, 64.328 )
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.329412 )
@@ -29,26 +47,12 @@ material = ExtResource( 5 )
 z_index = 5
 texture = ExtResource( 1 )
 
-[node name="FullHitbox" type="CollisionPolygon2D" parent="."]
+[node name="Tree" type="StaticBody2D" parent="."]
+
+[node name="FullHitbox" type="CollisionPolygon2D" parent="Tree"]
 visible = false
 position = Vector2( -0.805801, 1.47747 )
 scale = Vector2( 1.91319, 1.91319 )
 polygon = PoolVector2Array( -4.42491, -61.3063, -21.2809, -33.7749, -27.6487, -15.0461, -38.6987, 2.74629, -40.197, 26.1573, -31.0199, 45.448, -18.8461, 48.2574, -17.3478, 56.4981, 4.00307, 63.615, 23.6609, 59.234, 33.4073, 44.3243, 44.6446, 27.4684, 42.7718, 11.3615, 33.22, -3.43423, 26.665, -21.4139, 17.3005, -39.5809, 1.7556, -61.6809 )
 
-[node name="TrunkHitbox" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2( -0.805801, 1.47747 )
-scale = Vector2( 1.91319, 1.91319 )
-polygon = PoolVector2Array( -18.7219, 57.351, -13.1402, 32.4081, -5.29104, 25.431, 8.66306, 25.0822, 15.4657, 31.5359, 22.2683, 56.8277, 14.768, 63.1071, -8.08185, 64.328 )
-
-[node name="LeafArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 2
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeafArea"]
-polygon = PoolVector2Array( -80.674, 45.1262, -76.6695, 3.41237, -42.631, -70.6713, -5.25546, -123.398, 35.7909, -71.6725, 87.516, 28.4406, 87.8497, 56.4723, 65.1574, 86.1725, -2.25208, 99.1873, -45.6344, 93.1805, -71.9976, 76.1613 )
-
 [node name="Tween" type="Tween" parent="."]
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource( 1 )

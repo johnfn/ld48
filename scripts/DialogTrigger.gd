@@ -3,7 +3,6 @@ extends Area2D
 
 signal cinematic_ended
 
-
 onready var Letterbox = $"/root/Main/Letterbox"
 export var dialog: Array = [
   "I'm some dialog that someone should really rewrite!"
@@ -24,6 +23,11 @@ func body_entered(other: Node2D):
   if triggered:
     return
   
+  if Globals.seen_dialogs.has(dialog):
+    return
+    
+  Globals.seen_dialogs[dialog] = true
+  
   if other is Player:
     triggered = true
     begin_cinematic(other)
@@ -33,7 +37,6 @@ func begin_cinematic(player: Player):
   
   if sfx != "":
     SoundManager.play_sound(sfx)
-    print("playing")
   
   var new_dialog = DialogScene.instance()
   

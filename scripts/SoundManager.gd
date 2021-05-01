@@ -5,6 +5,7 @@ var muted = false
 
 
 func set_volume(val):
+  if Globals.mute_sound: return
   volume = val
   var old_mute = muted
   if volume <= 5:
@@ -23,6 +24,8 @@ func get_db(vol_boost=0.0):
 
 func play_sound(sound, vol_boost=0.0):
   if volume < 5: return
+  if Globals.mute_sound: return
+  
   var main_audio = $"/root/Main/Audio"
   var sounds = main_audio.get_node(sound).get_children()
   var unused = []
@@ -35,6 +38,8 @@ func play_sound(sound, vol_boost=0.0):
 
 
 func set_river_volume(vol):
+  if Globals.mute_sound: return
+  
   var river_audio = $"/root/Main/Audio/River/River"
   if vol <= 0.05:
     river_audio.playing = false

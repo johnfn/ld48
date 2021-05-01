@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/art/grass.png" type="Texture" id=1]
-[ext_resource path="res://materials/modulate_shader.tres" type="Material" id=2]
 [ext_resource path="res://scripts/Grass.gd" type="Script" id=3]
 [ext_resource path="res://assets/shaders/WindSwept.tres" type="Material" id=4]
 
 [node name="Grass" type="Area2D"]
-material = ExtResource( 2 )
-collision_layer = 4
+material = ExtResource( 4 )
+position = Vector2( -1.24521, -0.830139 )
+collision_layer = 2048
 collision_mask = 151
 script = ExtResource( 3 )
 

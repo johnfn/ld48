@@ -55,7 +55,7 @@ __meta__ = {
 
 [node name="Play" type="TextureButton" parent="VBoxContainer"]
 modulate = Color( 0, 0, 0, 1 )
-margin_right = 200.0
+margin_right = 400.0
 margin_bottom = 88.0
 rect_min_size = Vector2( 0, 72 )
 rect_pivot_offset = Vector2( 100, 50 )
@@ -92,7 +92,7 @@ texture_normal = ExtResource( 6 )
 [node name="Quit" type="TextureButton" parent="VBoxContainer"]
 modulate = Color( 0, 0, 0, 1 )
 margin_top = 244.0
-margin_right = 220.0
+margin_right = 400.0
 margin_bottom = 316.0
 rect_min_size = Vector2( 0, 72 )
 rect_pivot_offset = Vector2( 80, 30 )
@@ -120,6 +120,17 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="ColorTween" type="Tween" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 1
+
+[node name="FadeToBlack" type="ColorRect" parent="CanvasLayer"]
+margin_right = 1500.0
+margin_bottom = 1500.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="mouse_entered" from="VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Play" to="." method="_on_Play_mouse_exited"]
