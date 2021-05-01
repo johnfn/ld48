@@ -302,6 +302,9 @@ stream = ExtResource( 42 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.486275, 0.486275, 0.486275, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="FireflySpawner" parent="." instance=ExtResource( 28 )]
 

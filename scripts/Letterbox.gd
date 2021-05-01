@@ -106,7 +106,6 @@ func unfade_to_black_timed(fade_length):
     return
     
   is_animating = true
-  
   EntireScreenFadeRect.visible = true
   EntireScreenFadeRect.modulate.a = 1.0
   
