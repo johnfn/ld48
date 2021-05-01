@@ -15,9 +15,4 @@ func body_entered(other: Node2D):
   
   if other is Player:
     triggered = true
-    Letterbox.show_title_card(which_card)
-    
-    if which_card == 2:
-      FireflySpawner.initial_firefly_spawn()
-      $"/root/Main/CanvasModulate".visible = true
-      $"/root/Main/Player/Light2D".visible = true
+    Letterbox.show_title_card(which_card, which_card == 2) # true -> turn on lighting

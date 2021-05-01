@@ -312,6 +312,5 @@ func _on_background_entered(body, i):
 onready var PauseMenu = load("res://scenes/PauseMenu.tscn")
 func _unhandled_input(event):
   if Input.is_action_just_pressed("pause"):
-    print("pausing")
     add_child(PauseMenu.instance())
     

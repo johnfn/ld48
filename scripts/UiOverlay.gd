@@ -2,6 +2,7 @@ extends Control
 
 onready var hearts: Array = $CanvasLayer/Hearts.get_children()
 onready var slots: Array = $CanvasLayer/InventorySlots.get_children()
+onready var CoinText = $CanvasLayer/Coins/CoinText
 
 # passed in by Main
 var player: Player
@@ -21,9 +22,13 @@ func render_hearts():
 func display_items(item_names):
   for i in range(min(len(slots), len(item_names))):
     slots[i].set_contents(item_names[i])
-    
+
+func render_coins():
+  CoinText.text = str(player.coins)
 
 func _process(delta: float) -> void:
   if player.health != old_player_health:
     render_hearts()
     old_player_health = player.health
+    
+  render_coins()

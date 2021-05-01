@@ -7,8 +7,7 @@ onready var sprite = $Sprite
 onready var parent = get_node("../")
 var hit_sfx = "Hit"
 
-var heart_drop = load("res://components/HeartDrop.tscn")
-var coin_drop = load("res://components/CoinDrop.tscn")
+
 var being_hit = false
 var knockback_vector: Vector2 = Vector2.ZERO
 var knockback: bool = false
@@ -32,17 +31,7 @@ func is_enemy() -> bool:
 
 # can be overridden if u want custom behavior.
 func on_die():
-  if randi() % 4 == 0:
-    var which_drop = randi() % 2
-    
-    if which_drop == 0:
-      var new_heart = heart_drop.instance()
-      parent.add_child(new_heart)
-      new_heart.position = position
-    elif which_drop == 1:
-      var new_coin = coin_drop.instance()
-      parent.add_child(new_coin)
-      new_coin.position = position
+  CombatHelpers.drop_item(self)
   
   queue_free()
 
