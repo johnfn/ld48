@@ -100,5 +100,6 @@ scale = Vector2( 2, 2 )
 
 [node name="HitsparkAnimation" type="AnimatedSprite" parent="Hitspark"]
 rotation = 1.5708
+z_index = 1000
 frames = SubResource( 3 )
 animation = "hitspark"
