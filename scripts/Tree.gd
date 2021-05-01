@@ -1,14 +1,15 @@
-extends StaticBody2D
+extends Node2D
 
 export(bool) var solid_leaves = true
 const MAX_OPACITY = 0.6
 
 func _ready():
   if solid_leaves:
-    $TrunkHitbox.queue_free()
+    print(name)
+    $TreeTrunk/TrunkHitbox.queue_free()
     $LeafArea.queue_free()
   else:
-    $FullHitbox.queue_free()
+    $Tree/FullHitbox.queue_free()
     $LeafArea.connect("body_entered", self, "_on_body_entered")
     $LeafArea.connect("body_exited", self, "_on_body_exited")
 

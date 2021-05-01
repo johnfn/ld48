@@ -73,6 +73,7 @@ func load_level(level_name: String):
 
 
 func update_song():
+  if Globals.mute_sound: return
   var song_name = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
   if curr_song != song_name:
     var to_shut_down = null

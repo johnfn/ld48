@@ -28,7 +28,8 @@ func _ready() -> void:
   raycast_instance.set_collision_mask_bit(2, true)
   raycast_instance.set_collision_mask_bit(7, true) # flying
   raycast_instance.set_collision_mask_bit(10, true) # boss
-  
+#  raycast_instance.set_collision_mask_bit(11, true) # sword passthrough (grass)
+    
   raycast_instance.add_exception(player)
   
   root.call_deferred("add_child", raycast_instance)
@@ -105,12 +106,17 @@ func _physics_process(delta):
   
   for potential_enemy in hits:
     if potential_enemy.has_method("is_enemy") and potential_enemy.is_enemy():
-      
       raycast_instance.global_position = player.global_position
       raycast_instance.cast_to = (potential_enemy.global_position - player.global_position)
       raycast_instance.force_raycast_update()
       
       var hit = raycast_instance.get_collider()
       
+      if hit != null:
+        print("actually hit", hit.name)
+      
       if hit == potential_enemy:
         hit.damage(damage, self)
+      
+      if hit == null and potential_enemy.get_collision_layer_bit(11):
+        potential_enemy.damage(damage, self)

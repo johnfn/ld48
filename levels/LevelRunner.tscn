@@ -59,7 +59,6 @@ position = Vector2( 276.443, 643.383 )
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 432.813, 857.69 )
-solid_leaves = false
 
 [node name="Tree8" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 300.024, 255.977 )
@@ -90,7 +89,6 @@ position = Vector2( 257.468, 12553.1 )
 
 [node name="Tree255" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1080.84, 12052 )
-solid_leaves = false
 
 [node name="Tree233" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 63.1931, 12661.6 )
@@ -100,7 +98,6 @@ position = Vector2( 430.889, 12663 )
 
 [node name="Tree235" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1130.34, 12286.8 )
-solid_leaves = false
 
 [node name="Tree236" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1106.88, 12624.8 )
@@ -110,27 +107,21 @@ position = Vector2( 1207.29, 11821.5 )
 
 [node name="Tree238" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 319.994, 11947.4 )
-solid_leaves = false
 
 [node name="Tree239" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 385.048, 11438.3 )
-solid_leaves = false
 
 [node name="Tree256" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 705.965, 11175.9 )
-solid_leaves = false
 
 [node name="Tree257" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 541.843, 10535.9 )
-solid_leaves = false
 
 [node name="Tree274" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 851.843, 9505.92 )
-solid_leaves = false
 
 [node name="Tree272" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 224.701, 9996.03 )
-solid_leaves = false
 
 [node name="Tree242" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1285.07, 12595.1 )
@@ -143,15 +134,12 @@ position = Vector2( 1345.88, 12272.7 )
 
 [node name="Tree244" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 834.768, 12450.8 )
-solid_leaves = false
 
 [node name="Tree246" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1087.91, 11591 )
-solid_leaves = false
 
 [node name="Tree80" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 738.578, 2035.95 )
-solid_leaves = false
 
 [node name="Tree57" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( -2804.15, 5679.34 )
@@ -194,7 +182,6 @@ position = Vector2( 1063.62, 810.027 )
 
 [node name="Tree22" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 766.044, 80.1633 )
-solid_leaves = false
 
 [node name="Tree23" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 412.005, 80.8517 )

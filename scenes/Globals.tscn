@@ -6,3 +6,4 @@
 script = ExtResource( 1 )
 skip_cinematics = true
 has_sword = true
+mute_sound = true
