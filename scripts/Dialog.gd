@@ -149,7 +149,7 @@ func display_text_co(new_text: String) -> void:
   active_press_space.position = active_image.rect_position + active_image.rect_size - Vector2(160, -10)
   
   # autodismiss after 3 sec roughly
-  for x in range(180):
+  for x in range(1800):
     yield(get_tree(), "idle_frame")
     
     if Input.is_action_just_pressed("ui_accept"):

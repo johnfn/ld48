@@ -161,6 +161,10 @@ func _ready():
     CanvasModulate.visible = false
     $Player/Light2D.visible = false
   
+  if Globals.debug_lighting_on:
+    CanvasModulate.visible = true
+    $Player/Light2D.visible = true
+  
   if Globals.has_sword:
     saved_inventory.append("Sword")
     saved_slots["weapons"] = "res://components/Sword.tscn"

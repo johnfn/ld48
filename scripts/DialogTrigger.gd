@@ -29,6 +29,9 @@ func body_entered(other: Node2D):
   Globals.seen_dialogs[dialog] = true
   
   if other is Player:
+    if Globals.skip_cinematics:
+      return
+    
     triggered = true
     begin_cinematic(other)
     
