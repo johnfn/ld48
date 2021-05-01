@@ -32,7 +32,14 @@ var auto_advance = false
 func _ready():
   ZSorter.z_index = 500
   hide_everything()
-  
+
+var tick = 0
+
+func _process(delta):
+  tick += delta
+  PressSpaceBlack.modulate.a = 0.5 + (sin(tick * 5.0) + 1) / 4.0
+  PressSpaceWhite.modulate.a = 0.5 + (sin(tick * 5.0) + 1) / 4.0
+
 func hide_everything():
   BlackImage.visible = false
   WhiteImage.visible = false
@@ -111,7 +118,7 @@ func display_text_co(new_text: String) -> void:
     active_text.rect_size  = Vector2(max_width, 1000)
     active_image.rect_size = (Vector2(size_w, size_h) + Vector2(20, 40))
     
-    rect_position.y = -size_h - 150
+    rect_position.y = -size_h - 200
     
     if one_last_loop:
       break
