@@ -75,14 +75,13 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=f
   
   for phrase in sequence:
     yield(display_text_co(phrase), "completed")
-    yield(get_tree().create_timer(lifespan), "timeout")
   
   $Tween.interpolate_property(
     self, 
     "modulate",
-    self.modulate,
+    Color(modulate.r, modulate.g, modulate.b, 0.6),
     Color(1, 1, 1, 0),
-    1.0,
+    0.5,
     Tween.TRANS_LINEAR, 
     Tween.EASE_IN_OUT
   )
@@ -96,40 +95,43 @@ func display_text_co(new_text: String) -> void:
   var cur_text = ""
   var size = active_text.get_font("font").get_string_size(cur_text)
   
-  var one_last_loop = false
+  var skipped_dialog = false
   
   active_press_space.visible = false
   
   for x in new_text:
     cur_text += x
     
-    if one_last_loop:
+    if skipped_dialog:
       cur_text = new_text
     
     active_text.text = cur_text
-    var size_w = active_text.get_font("font").get_string_size(cur_text).x
-    var size_h = min_height
     
-    if size_w > max_width:
-      size_w = max_width
-      size = active_text.get_font("font").get_wordwrap_string_size(cur_text, max_width)
-      size_h = size.y
+    var text_size = active_text.get_font("font").get_wordwrap_string_size(cur_text, max_width)
+    text_size.x = min(text_size.x, active_text.get_font("font").get_string_size(cur_text).x)
     
     active_text.rect_size  = Vector2(max_width, 1000)
-    active_image.rect_size = (Vector2(size_w, size_h) + Vector2(20, 40))
+    active_image.rect_size = Vector2(min(text_size.x + 40, max_width), text_size.y + 40)
     
-    rect_position.y = -size_h - 200
+    rect_position.y = -text_size.y - 200
     
-    if one_last_loop:
+    if skipped_dialog:
       break
     
     yield(get_tree(), "idle_frame")
-    if Input.is_action_just_pressed("interact") and not auto_advance: one_last_loop = true
+    if Input.is_action_just_pressed("interact") and not auto_advance: skipped_dialog = true
+    yield(get_tree(), "idle_frame")
+    if Input.is_action_just_pressed("interact") and not auto_advance: skipped_dialog = true
     
-  active_image.rect_size += Vector2(60, 0)
+  active_image.rect_size += Vector2(20, 0)
   
   if auto_advance:
     return
+  
+  if not skipped_dialog:
+    for x in range(60):
+      yield(get_tree(), "idle_frame")
+      if Input.is_action_just_pressed("interact"): break
   
   active_press_space.visible = true
   active_press_space.position = active_image.rect_position + active_image.rect_size - Vector2(160, 0)
