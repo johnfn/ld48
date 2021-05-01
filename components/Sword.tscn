@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/art/crayonsword.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Sword.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/art/swordslice1.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/swordslice0.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/swordslice2 copy.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/hitspark/hitspark_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/hitspark/hitspark_3.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/hitspark/hitspark_2.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Swing"
@@ -44,19 +47,26 @@ animations = [ {
 "speed": 30.0
 } ]
 
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "hitspark",
+"speed": 15.0
+} ]
+
 [node name="Sword" type="Area2D" groups=[
 "items",
 "weapons",
 ]]
 position = Vector2( 23.4522, -50.0451 )
-rotation = 0.244964
 collision_layer = 24
-collision_mask = 1157
+collision_mask = 1159
 script = ExtResource( 2 )
 
 [node name="SwordObj" type="Node2D" parent="."]
 position = Vector2( 27.4796, 40.6522 )
-rotation = -4.93087
+rotation = -6.41259
 
 [node name="SwordSprite" type="Sprite" parent="SwordObj"]
 position = Vector2( -0.340401, -47.75 )
@@ -70,7 +80,7 @@ position = Vector2( 9.47534, 43.0772 )
 rotation = 1.35024
 polygon = PoolVector2Array( -130.637, 3.24905, -155.573, -73.9408, 5.07083, -150.843, 115.051, -44.0493, 102.972, 51.3328 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="SliceAnimation" type="AnimatedSprite" parent="."]
 position = Vector2( 93.4528, 8.74492 )
 rotation = -0.0847218
 scale = Vector2( 1.26272, -1.50001 )
@@ -83,3 +93,12 @@ position = Vector2( -0.667091, 44.3539 )
 texture = ExtResource( 3 )
 
 [node name="SwordRoot" type="Node2D" parent="."]
+
+[node name="Hitspark" type="Node2D" parent="."]
+position = Vector2( -18.3739, -86.6395 )
+scale = Vector2( 2, 2 )
+
+[node name="HitsparkAnimation" type="AnimatedSprite" parent="Hitspark"]
+rotation = 1.5708
+frames = SubResource( 3 )
+animation = "hitspark"

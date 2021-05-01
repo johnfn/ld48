@@ -5,7 +5,6 @@ const MAX_OPACITY = 0.6
 
 func _ready():
   if solid_leaves:
-    print(name)
     $TreeTrunk/TrunkHitbox.queue_free()
     $LeafArea.queue_free()
   else:

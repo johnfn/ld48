@@ -211,11 +211,9 @@ func _process(delta: float):
     Cam.position.y = get_desired_cam_position(delta)
   
   if Player.position.y < load_y and not is_transitioning:
-    print('a')
     is_transitioning = true
     load_new_level(curr_level_num + 1)
   if Player.position.y < teleport_y:
-    print('b')
     var bottom = get_node("Levels/TransitionBottom")
     var top = get_node("Levels/TransitionTop")
     bottom.position.y = top.position.y

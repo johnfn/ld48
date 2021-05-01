@@ -8,7 +8,8 @@ onready var SwordSprite = $SwordObj/SwordSprite
 onready var StickSprite = $StickSprite
 onready var SwordArea = self
 onready var root = $"/root"
-onready var Anim = $AnimatedSprite
+onready var SliceAnimation = $SliceAnimation
+onready var HitsparkAnimation = $Hitspark/HitsparkAnimation
 var raycast_instance: RayCast2D
 
 var damage = 1
@@ -20,12 +21,14 @@ func _ready() -> void:
   SwordSprite.visible = false
   StickSprite.visible = true
   
+  HitsparkAnimation.visible = false
+  
   raycast_instance = RayCast2D.new()
   raycast_instance.enabled = true
   raycast_instance.collide_with_areas = true
   raycast_instance.set_collision_mask_bit(0, false)
   raycast_instance.set_collision_mask_bit(1, true)
-  raycast_instance.set_collision_mask_bit(2, true)
+  raycast_instance.set_collision_mask_bit(2, true) # obstacle
   raycast_instance.set_collision_mask_bit(7, true) # flying
   raycast_instance.set_collision_mask_bit(10, true) # boss
 #  raycast_instance.set_collision_mask_bit(11, true) # sword passthrough (grass)
@@ -33,13 +36,13 @@ func _ready() -> void:
   raycast_instance.add_exception(player)
   
   root.call_deferred("add_child", raycast_instance)
-  Anim.visible = false
-  Anim.connect("animation_finished", self, "hide_anim")
+  SliceAnimation.visible = false
+  SliceAnimation.connect("animation_finished", self, "hide_anim")
   
   SwordArea.connect("body_entered", SwordArea, "on_enter")
 
 func hide_anim():
-  Anim.visible = false
+  SliceAnimation.visible = false
 
 func on_pick_up() -> void:
   Hitbox.set_disabled(true)
@@ -69,9 +72,9 @@ func set_in_use(in_use: bool) -> void:
   # this is necessary so that we DEFINITELY trigger a body_entered when we start the swing (e.g. if the sword starts IN the enemy it will not trigger body_entered)
   Hitbox.set_disabled(false)
   
-  Anim.visible = true
-  Anim.frame = 0
-  Anim.play("slice")
+  SliceAnimation.visible = true
+  SliceAnimation.frame = 0
+  SliceAnimation.play("slice")
   AnimationPlayer.play("Swing")
 
   yield(AnimationPlayer, "animation_finished")
@@ -104,6 +107,8 @@ func _physics_process(delta):
   
   update()
   
+  var successful_hits = []
+  
   for potential_enemy in hits:
     if potential_enemy.has_method("is_enemy") and potential_enemy.is_enemy():
       raycast_instance.global_position = player.global_position
@@ -112,11 +117,36 @@ func _physics_process(delta):
       
       var hit = raycast_instance.get_collider()
       
-      if hit != null:
-        print("actually hit", hit.name)
+      var damaged = false
       
       if hit == potential_enemy:
         hit.damage(damage, self)
+        successful_hits.push_back(potential_enemy)
       
       if hit == null and potential_enemy.get_collision_layer_bit(11):
         potential_enemy.damage(damage, self)
+        successful_hits.push_back(potential_enemy)
+  
+  # render hitspark
+  
+  for hit in hits:
+    raycast_instance.global_position = player.global_position
+    raycast_instance.cast_to = hit.global_position - player.global_position
+    raycast_instance.force_raycast_update()
+    
+    if raycast_instance.get_collider() == null:
+      continue
+    
+    HitsparkAnimation.global_position = raycast_instance.get_collision_point()
+    HitsparkAnimation.visible = true
+    HitsparkAnimation.frame = 0
+    HitsparkAnimation.play("hitspark")
+    
+    yield(HitsparkAnimation, "animation_finished")
+    
+    HitsparkAnimation.visible = false
+    
+    HitsparkAnimation.look_at(player.global_position)
+    HitsparkAnimation.rotation_degrees -= 90
+    
+    break

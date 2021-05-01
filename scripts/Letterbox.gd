@@ -35,7 +35,6 @@ func _ready():
   
   for card in Cards:
     card.visible = false
-    print(card.name, card.visible)
 
 #  DuskOverlay.modulate.a = 0.0
 #  NightOverlay.modulate.a = 0.0
