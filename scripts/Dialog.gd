@@ -91,6 +91,8 @@ func display_text_co(new_text: String) -> void:
   
   var one_last_loop = false
   
+  active_press_space.visible = false
+  
   for x in new_text:
     cur_text += x
     
@@ -109,7 +111,7 @@ func display_text_co(new_text: String) -> void:
     active_text.rect_size  = Vector2(max_width, 1000)
     active_image.rect_size = (Vector2(size_w, size_h) + Vector2(20, 40))
     
-    rect_position.y = -size_h - 100
+    rect_position.y = -size_h - 150
     
     if one_last_loop:
       break
@@ -118,11 +120,12 @@ func display_text_co(new_text: String) -> void:
     if Input.is_action_just_pressed("interact") and not auto_advance: one_last_loop = true
     
   active_image.rect_size += Vector2(60, 0)
+  
   if auto_advance:
     return
   
   active_press_space.visible = true
-  active_press_space.position = active_image.rect_position + Vector2(0, active_image.rect_size.y) + Vector2(8, 0)
+  active_press_space.position = active_image.rect_position + active_image.rect_size - Vector2(160, 0)
   
   # autodismiss after 3 sec roughly
   for x in range(180):
