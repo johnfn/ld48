@@ -31,7 +31,6 @@ texture = ExtResource( 5 )
 material = ExtResource( 6 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
