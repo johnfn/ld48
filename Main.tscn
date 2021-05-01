@@ -55,7 +55,6 @@ extents = Vector2( 956.12, 10 )
 [node name="Main" type="Node2D"]
 position = Vector2( 1.43592, -2.43603 )
 script = ExtResource( 3 )
-debug_already_has_sword = true
 curr_level_num = 1
 
 [node name="Letterbox" parent="." instance=ExtResource( 26 )]

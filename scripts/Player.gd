@@ -38,6 +38,9 @@ func _process(delta: float) -> void:
     return
     
   Weapons.look_at(get_global_mouse_position())
+  
+  if Input.is_key_pressed(KEY_F):
+    damage(9999, self)
 
 func _physics_process(delta: float) -> void:
   if Letterbox.in_cinematic: 

@@ -3,7 +3,6 @@ extends Area2D
 
 signal cinematic_ended
 
-
 onready var Letterbox = $"/root/Main/Letterbox"
 export var dialog: Array = [
   "I'm some dialog that someone should really rewrite!"

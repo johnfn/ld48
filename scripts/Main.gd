@@ -18,7 +18,6 @@ onready var CanvasModulate = $CanvasModulate
 
 export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
-export(bool) var debug_already_has_sword = false
 
 # Uncomment one of the level_scenes variables: 1 OR 2
 # 1: Chauncey's list of levels. DO NOT EDIT UNLESS YOU INTEND TO CHANGE THE STANDARD LEVEL ORDER.
@@ -161,7 +160,7 @@ func _ready():
     CanvasModulate.visible = false
     $Player/Light2D.visible = false
   
-  if debug_already_has_sword:
+  if Globals.has_sword:
     saved_inventory.append("Sword")
     saved_slots["weapons"] = "res://components/Sword.tscn"
     
@@ -271,9 +270,11 @@ func handle_item_body_entered(body: Node, item_node):
 
 
 func handle_player_died():
+  if Globals.skip_cinematics:
+    start_level(curr_level_num)
+    return
+    
   Letterbox.in_cinematic = true
-  
-  print(Player.modulate.a)
   
   for x in range(60):
     yield(get_tree(), "idle_frame")

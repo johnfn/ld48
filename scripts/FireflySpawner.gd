@@ -9,7 +9,6 @@ var tick = 2.0
 var started = false
 
 func initial_firefly_spawn():
-  print("What")
   main = $'/root/Main'
   player = $"/root/Main/Player"
   yield(get_tree(), "idle_frame")
