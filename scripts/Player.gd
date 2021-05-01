@@ -17,6 +17,7 @@ onready var Hand = $Equipment/weapons/Sprite
 onready var Equipment = $Equipment
 onready var Weapons = $Equipment/weapons
 onready var health = max_health
+onready var coins = 0
 
 var equipment_slots = {}
 var is_invuln = false
@@ -151,6 +152,9 @@ func set_direction(dir_name):
       Weapons.position = $Equipment/rh_upright.position
     "downright":
       Weapons.position = $Equipment/rh_downright.position
+
+func get_coin(amount: int) -> void:
+  coins += amount
 
 func get_health(amount: int) -> void:
   health += amount
