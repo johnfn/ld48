@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/ui/dialog_panel_white_9slice.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/BalsamiqSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/Dialog.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/dialog_advance_arrow.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/dialog_panel_black_9slice.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -137,5 +138,10 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DialogAdvanceArrow" type="Sprite" parent="ZSorter"]
+position = Vector2( 68.9616, 69.1973 )
+scale = Vector2( 0.641073, 0.641073 )
+texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]

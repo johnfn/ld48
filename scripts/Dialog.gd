@@ -13,6 +13,8 @@ onready var BlackText: Label = $ZSorter/BlackText
 onready var PressSpaceBlack = $ZSorter/PressSpaceBlack
 onready var PressSpaceWhite = $ZSorter/PressSpaceWhite
 
+onready var DialogAdvanceArrow = $ZSorter/DialogAdvanceArrow
+
 var active_text: Label
 var active_image: NinePatchRect
 var active_press_space: Node2D
@@ -39,6 +41,12 @@ func _process(delta):
   tick += delta
   PressSpaceBlack.modulate.a = 0.5 + (sin(tick * 5.0) + 1) / 4.0
   PressSpaceWhite.modulate.a = 0.5 + (sin(tick * 5.0) + 1) / 4.0
+  DialogAdvanceArrow.modulate = Color(
+    0 + (sin(tick * 5.0) + 1) / 6.0,
+    0 + (sin(tick * 5.0) + 1) / 6.0,
+    1.0,
+    1.0
+   )
 
 func hide_everything():
   BlackImage.visible = false
@@ -47,6 +55,7 @@ func hide_everything():
   BlackText.visible = false
   PressSpaceWhite.visible = false
   PressSpaceBlack.visible = false
+  DialogAdvanceArrow.visible = false
 
 func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=false) -> void:
   if not already_a_child:
@@ -98,6 +107,7 @@ func display_text_co(new_text: String) -> void:
   var skipped_dialog = false
   
   active_press_space.visible = false
+  DialogAdvanceArrow.visible = false
   
   for x in new_text:
     cur_text += x
@@ -119,9 +129,9 @@ func display_text_co(new_text: String) -> void:
       break
     
     yield(get_tree(), "idle_frame")
-    if Input.is_action_just_pressed("interact") and not auto_advance: skipped_dialog = true
+    if Input.is_action_just_pressed("ui_accept") and not auto_advance: skipped_dialog = true
     yield(get_tree(), "idle_frame")
-    if Input.is_action_just_pressed("interact") and not auto_advance: skipped_dialog = true
+    if Input.is_action_just_pressed("ui_accept") and not auto_advance: skipped_dialog = true
     
   active_image.rect_size += Vector2(20, 0)
   
@@ -131,14 +141,16 @@ func display_text_co(new_text: String) -> void:
   if not skipped_dialog:
     for x in range(60):
       yield(get_tree(), "idle_frame")
-      if Input.is_action_just_pressed("interact"): break
+      if Input.is_action_just_pressed("ui_accept"): break
   
-  active_press_space.visible = true
-  active_press_space.position = active_image.rect_position + active_image.rect_size - Vector2(160, 0)
+  DialogAdvanceArrow.visible = true
+  DialogAdvanceArrow.position = active_image.rect_position + Vector2(active_image.rect_size.x / 2.0, active_image.rect_size.y)
+  # active_press_space.visible = true
+  active_press_space.position = active_image.rect_position + active_image.rect_size - Vector2(160, -10)
   
   # autodismiss after 3 sec roughly
   for x in range(180):
     yield(get_tree(), "idle_frame")
     
-    if Input.is_action_just_pressed("interact"):
+    if Input.is_action_just_pressed("ui_accept"):
       return
