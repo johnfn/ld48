@@ -61,11 +61,6 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child =
   if not already_a_child:
     target.call_deferred("add_child", self)
   
-  if Globals.seen_dialogs.has(sequence):
-    return
-    
-  Globals.seen_dialogs[sequence] = true
-  
   self.modulate = Color.white
   
   yield(self, "ready")
