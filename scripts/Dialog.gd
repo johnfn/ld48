@@ -10,8 +10,12 @@ onready var WhiteImage: NinePatchRect = $ZSorter/WhiteImage
 onready var WhiteText: Label = $ZSorter/WhiteText
 onready var BlackText: Label = $ZSorter/BlackText
 
+onready var PressSpaceBlack = $ZSorter/PressSpaceBlack
+onready var PressSpaceWhite = $ZSorter/PressSpaceWhite
+
 var active_text: Label
 var active_image: NinePatchRect
+var active_press_space: Node2D
 
 var max_width = 350
 var min_height = 50
@@ -34,6 +38,8 @@ func hide_everything():
   WhiteImage.visible = false
   WhiteText.visible = false
   BlackText.visible = false
+  PressSpaceWhite.visible = false
+  PressSpaceBlack.visible = false
 
 func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=false) -> void:
   if not already_a_child:
@@ -50,11 +56,13 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child=f
     WhiteImage.visible = true
     active_text = BlackText
     active_image = WhiteImage
+    active_press_space = PressSpaceBlack
   else:
     WhiteText.visible = true
     BlackImage.visible = true
     active_text = WhiteText
     active_image = BlackImage
+    active_press_space = PressSpaceBlack
   
   rect_position = Vector2(0, -120)
   
@@ -113,8 +121,12 @@ func display_text_co(new_text: String) -> void:
   if auto_advance:
     return
   
+  active_press_space.visible = true
+  active_press_space.position = active_image.rect_position + Vector2(0, active_image.rect_size.y) + Vector2(8, 0)
+  
   # autodismiss after 3 sec roughly
   for x in range(180):
     yield(get_tree(), "idle_frame")
+    
     if Input.is_action_just_pressed("interact"):
       return

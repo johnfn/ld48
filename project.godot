@@ -69,6 +69,10 @@ Test="*res://compiled/Test.gd"
 SoundManager="*res://scripts/SoundManager.gd"
 Letterbox="*res://scenes/Letterbox.tscn"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1280
