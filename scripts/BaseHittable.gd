@@ -5,8 +5,8 @@ export(int) var health = 1
 
 onready var sprite = $Sprite
 onready var parent = get_node("../")
+onready var Hitbox = $Hitbox
 var hit_sfx = "Hit"
-
 
 var being_hit = false
 var knockback_vector: Vector2 = Vector2.ZERO
@@ -45,6 +45,10 @@ func damage(amount: int, source: Node2D) -> void:
   
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true
+  
+  # instantly turn off collisions, even before death animation
+  collision_layer = 0
+  collision_mask = 0
 
   if sprite is Sprite:
     yield(CombatHelpers.damage_anim_sprite(sprite), "completed")
