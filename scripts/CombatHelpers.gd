@@ -11,9 +11,14 @@ func damage_anim_animated_sprite(target: AnimatedSprite):
 
 func drop_item(target: Node2D):
   var parent = target.get_parent()
+  var player = $"/root/Main/Player"
   
   if randi() % 4 == 0:
     var which_drop = randi() % 2
+    
+    # re-roll so we don't get hearts at max hearts
+    while which_drop == 0 and player.health == player.max_health:
+      which_drop = randi() % 2
     
     if which_drop == 0:
       var new_heart = heart_drop.instance()
