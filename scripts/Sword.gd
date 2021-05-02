@@ -11,6 +11,7 @@ onready var root = $"/root"
 onready var SliceAnimation = $SliceAnimation
 onready var HitsparkAnimation = $Hitspark/HitsparkAnimation
 var raycast_instance: RayCast2D
+var HitsparkScene = load("res://scenes/Hitspark.tscn")
 
 var damage = 1
 var player: Player
@@ -20,8 +21,6 @@ var has_raycasted_this_swing = true
 func _ready() -> void:
   SwordSprite.visible = false
   StickSprite.visible = true
-  
-  HitsparkAnimation.visible = false
   
   raycast_instance = RayCast2D.new()
   raycast_instance.enabled = true
@@ -137,20 +136,26 @@ func _physics_process(delta):
     if raycast_instance.get_collider() == null:
       continue
     
-    HitsparkAnimation.global_position = raycast_instance.get_collision_point()
-    HitsparkAnimation.visible = true
-    HitsparkAnimation.frame = 0
-    HitsparkAnimation.play("hitspark")
+    var hitspark = HitsparkScene.instance()
+    
+    $"/root/Main".add_child(hitspark)
+    
+    hitspark.global_position = hit.global_position
+    
+#    yield(hitspark, "ready")
+    
+    hitspark.global_position = raycast_instance.get_collision_point()
+    hitspark.visible = true
+    hitspark.HitsparkAnimation.frame = 0
+    hitspark.HitsparkAnimation.play("hitspark")
+        
+    hitspark.look_at(player.global_position)
+    hitspark.rotation_degrees += 180
     
     SoundManager.play_sound("OOT_Sword_Smack1")
     
-    yield(HitsparkAnimation, "animation_finished")
+    yield(hitspark.HitsparkAnimation, "animation_finished")
     
-    HitsparkAnimation.visible = false
-    
-    HitsparkAnimation.look_at(player.global_position)
-    HitsparkAnimation.rotation_degrees -= 90
-    
+    hitspark.queue_free()
 
-    
     break

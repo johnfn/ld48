@@ -3,6 +3,7 @@ extends Node2D
 onready var black_tex: Texture = load("res://assets/black_square.png")
 onready var white_tex: Texture = load("res://assets/white_square.png")
 onready var sq: Sprite = $Sprite/white_square
+
 var color = "white"
 
 func set_color(new_color: String) -> void:

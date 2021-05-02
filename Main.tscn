@@ -185,15 +185,19 @@ stream = ExtResource( 9 )
 
 [node name="Sword1" type="AudioStreamPlayer" parent="Audio/Sword"]
 stream = ExtResource( 13 )
+volume_db = -10.0
 
 [node name="Sword2" type="AudioStreamPlayer" parent="Audio/Sword"]
 stream = ExtResource( 10 )
+volume_db = -10.0
 
 [node name="Sword3" type="AudioStreamPlayer" parent="Audio/Sword"]
 stream = ExtResource( 11 )
+volume_db = -10.0
 
 [node name="Sword4" type="AudioStreamPlayer" parent="Audio/Sword"]
 stream = ExtResource( 12 )
+volume_db = -10.0
 
 [node name="River" type="Node2D" parent="Audio"]
 
