@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/LevelTransition.tscn" type="PackedScene" id=2]
@@ -45,6 +45,7 @@
 [ext_resource path="res://assets/music/goblin king/gk_grunt4.mp3" type="AudioStream" id=43]
 [ext_resource path="res://assets/music/goblin king/gk_landing-grunt.mp3" type="AudioStream" id=44]
 [ext_resource path="res://assets/music/goblin king/gk_grunt2.mp3" type="AudioStream" id=45]
+[ext_resource path="res://assets/music/OOT_Sword_Smack1.wav" type="AudioStream" id=46]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640.632, 1277.67 )
@@ -299,6 +300,11 @@ stream = ExtResource( 40 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/GoblinKingJumpAttack"]
 stream = ExtResource( 42 )
+
+[node name="OOT_Sword_Smack1" type="Node2D" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/OOT_Sword_Smack1"]
+stream = ExtResource( 46 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.486275, 0.486275, 0.486275, 1 )

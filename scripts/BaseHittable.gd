@@ -46,9 +46,12 @@ func damage(amount: int, source: Node2D) -> void:
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true
   
+  var dead = health <= 0
+  
   # instantly turn off collisions, even before death animation
-  collision_layer = 0
-  collision_mask = 0
+  if dead:
+    collision_layer = 0
+    collision_mask = 0
 
   if sprite is Sprite:
     yield(CombatHelpers.damage_anim_sprite(sprite), "completed")
@@ -57,7 +60,7 @@ func damage(amount: int, source: Node2D) -> void:
   else:
     print("unhandled sprite type in damage()")
   
-  if health <= 0:
+  if dead:
     on_die()
   else:
     being_hit = false

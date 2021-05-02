@@ -24,7 +24,7 @@ func get_db(vol_boost=0.0):
 
 func play_sound(sound, vol_boost=0.0):
   if volume < 5: return
-  if Globals.mute_sound: return
+#  if Globals.mute_sound: return
   
   var main_audio = $"/root/Main/Audio"
   var sounds = main_audio.get_node(sound).get_children()
