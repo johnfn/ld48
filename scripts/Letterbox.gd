@@ -6,6 +6,7 @@ onready var EntireScreenFadeRect = null
 onready var camera: Camera2D = null
 onready var main = null
 onready var Cards = [$CanvasLayer/Title1, $CanvasLayer/Title2]
+onready var FireflySpawner = $"/root/Main/FireflySpawner"
 
 var shown_card = [false, false, false, false]
 var letterbox_animation_length = 45.0
@@ -117,7 +118,7 @@ func unfade_to_black_timed(fade_length):
   EntireScreenFadeRect.visible = false
   is_animating = false
 
-func show_title_card(num: int) -> void:
+func show_title_card(num: int, trigger_lighting = false) -> void:
   if shown_card[num + 1]:
     return
   
@@ -135,6 +136,11 @@ func show_title_card(num: int) -> void:
     yield(get_tree(), "idle_frame")
   
   yield(get_tree().create_timer(2.0), "timeout")
+
+  if trigger_lighting:
+    FireflySpawner.initial_firefly_spawn()
+    $"/root/Main/CanvasModulate".visible = true
+    $"/root/Main/Player/Light2D".visible = true
   
   for x in range(30):
     c.modulate.a = 1.0 - x / 30.0

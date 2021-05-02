@@ -5,10 +5,9 @@ export(int) var health = 1
 
 onready var sprite = $Sprite
 onready var parent = get_node("../")
+onready var Hitbox = $Hitbox
 var hit_sfx = "Hit"
 
-var heart_drop = load("res://components/HeartDrop.tscn")
-var coin_drop = load("res://components/CoinDrop.tscn")
 var being_hit = false
 var knockback_vector: Vector2 = Vector2.ZERO
 var knockback: bool = false
@@ -32,18 +31,8 @@ func is_hittable() -> bool:
 
 # can be overridden if u want custom behavior.
 func on_die():
-  if randi() % 6 == 0:
-    var which_drop = randi() % 2
-    
-    if which_drop == 0:
-      var new_heart = heart_drop.instance()
-      parent.add_child(new_heart)
-      new_heart.position = position
-    elif which_drop == 1:
-      var new_coin = coin_drop.instance()
-      parent.add_child(new_coin)
-      new_coin.position = position
-  
+  CombatHelpers.drop_item(self)
+
   queue_free()
 
 func damage(amount: int, source: Node2D) -> void:
@@ -56,6 +45,13 @@ func damage(amount: int, source: Node2D) -> void:
   
   knockback_vector = position.direction_to(source.position) * 10000
   knockback = true
+  
+  var dead = health <= 0
+  
+  # instantly turn off collisions, even before death animation
+  if dead:
+    collision_layer = 0
+    collision_mask = 0
 
   if sprite is Sprite:
     yield(CombatHelpers.damage_anim_sprite(sprite), "completed")
@@ -64,7 +60,7 @@ func damage(amount: int, source: Node2D) -> void:
   else:
     print("unhandled sprite type in damage()")
   
-  if health <= 0:
+  if dead:
     on_die()
   else:
     being_hit = false

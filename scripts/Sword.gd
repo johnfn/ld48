@@ -142,11 +142,15 @@ func _physics_process(delta):
     HitsparkAnimation.frame = 0
     HitsparkAnimation.play("hitspark")
     
+    SoundManager.play_sound("OOT_Sword_Smack1")
+    
     yield(HitsparkAnimation, "animation_finished")
     
     HitsparkAnimation.visible = false
     
     HitsparkAnimation.look_at(player.global_position)
     HitsparkAnimation.rotation_degrees -= 90
+    
+
     
     break

@@ -30,11 +30,8 @@ func is_hittable() -> bool:
 
 # can be overridden if u want custom behavior.
 func on_die():
-  if randi() % 6 == 0:
-    var new_heart = heart_drop.instance()
-    parent.add_child(new_heart)
-    new_heart.position = position
-  
+  CombatHelpers.drop_item(self)
+
   queue_free()
 
 func damage(amount: int, source: Node2D) -> void:

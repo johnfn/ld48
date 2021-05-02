@@ -25,7 +25,6 @@ func _on_Play_pressed():
   
 #  var lb = get_tree().get_current_scene().get_node("Letterbox")
   var lb = $"/root/Letterbox"
-  print(lb)
   
   lb.in_cinematic = true
   lb.unfade_to_black_timed(60.0)

@@ -9,3 +9,4 @@ func _init().():
 func _ready():
   grassMaterial = $Sprite.material
   grassMaterial.set_shader_param("global_xy", global_position)
+
