@@ -78,7 +78,7 @@ func update_song():
   if curr_song != song_name:
     var to_shut_down = null
     var og_volume = null
-    var fade_out_len = 1
+    var fade_out_len = 3
     if curr_song != null and song_name == null:
       fade_out_len = 3
     if curr_song != null:
@@ -92,7 +92,7 @@ func update_song():
       if to_shut_down != null:
         var volume = $Audio.get_node(curr_song).volume_db
         curr_node.volume_db = volume-30
-        $Audio/InTween.interpolate_property(curr_node, "volume_db", volume-30, volume, 1.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
+        $Audio/InTween.interpolate_property(curr_node, "volume_db", volume-30, volume, 5.0, Tween.TRANS_CUBIC, Tween.EASE_IN)
         $Audio/InTween.start()
         yield(get_tree().create_timer(0.1), "timeout")
       curr_node.playing = SoundManager.volume > 5

@@ -90,41 +90,36 @@ autoplay = true
 [node name="Musicians" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="Taroth" type="AnimatedSprite" parent="Delete"]
-position = Vector2( 640, 640 )
+position = Vector2( 640, 641 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Miyo" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="LunacyEcho" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 
 [node name="Johnfn" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Fawn" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="Arch" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
