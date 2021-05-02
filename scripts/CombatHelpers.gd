@@ -12,6 +12,7 @@ func damage_anim_animated_sprite(target: AnimatedSprite):
 func drop_item(target: Node2D):
   var parent = target.get_parent()
   
+  
   if randi() % 4 == 0:
     var which_drop = randi() % 2
     
@@ -19,12 +20,12 @@ func drop_item(target: Node2D):
       var new_heart = heart_drop.instance()
       
       parent.add_child(new_heart)
-      new_heart.position = position
+      new_heart.position = target.position
     elif which_drop == 1:
       var new_coin = coin_drop.instance()
       
       parent.add_child(new_coin)
-      new_coin.position = position
+      new_coin.position = target.position
 
 func _damage_anim(target):
   assert(target != null, "null target in _damage_anim")
