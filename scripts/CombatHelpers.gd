@@ -12,7 +12,6 @@ func damage_anim_animated_sprite(target: AnimatedSprite):
 func drop_item(target: Node2D):
   var parent = target.get_parent()
   
-  
   if randi() % 4 == 0:
     var which_drop = randi() % 2
     
@@ -37,7 +36,6 @@ func _damage_anim(target):
   # Prevent crash, no catches in gdscript
 
   if is_enemy(target):
-      print("is enemy")
       target.material.set_shader_param("red", 1.0)
       yield(get_tree().create_timer(0.1), "timeout")
       target.material.set_shader_param("red", 0.0)
