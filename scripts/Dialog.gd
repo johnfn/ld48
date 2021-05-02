@@ -112,6 +112,8 @@ func display_text_co(new_text: String) -> void:
   for x in new_text:
     cur_text += x
     
+    SoundManager.play_sound("OliveSpeakSound")
+    
     if skipped_dialog:
       cur_text = new_text
     
@@ -143,6 +145,8 @@ func display_text_co(new_text: String) -> void:
       yield(get_tree(), "idle_frame")
       if Input.is_action_just_pressed("ui_accept"): break
   
+  
+  SoundManager.play_sound("SpeakCompleteSound")
   DialogAdvanceArrow.visible = true
   DialogAdvanceArrow.position = active_image.rect_position + Vector2(active_image.rect_size.x / 2.0, active_image.rect_size.y)
   # active_press_space.visible = true

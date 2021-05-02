@@ -5,3 +5,4 @@
 [node name="Globals" type="Node2D"]
 script = ExtResource( 1 )
 has_sword = true
+mute_sound = true

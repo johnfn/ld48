@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/voice withers.mp3-9a1188355df4c9d0af553807a423c0c2.mp3str"
+
+[deps]
+
+source_file="res://assets/music/voicefx/voice withers.mp3"
+dest_files=[ "res://.import/voice withers.mp3-9a1188355df4c9d0af553807a423c0c2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

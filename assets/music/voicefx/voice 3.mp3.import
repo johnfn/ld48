@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/voice 3.mp3-746d32d4cd3e08791f8c8f3d7494cc5a.mp3str"
+
+[deps]
+
+source_file="res://assets/music/voicefx/voice 3.mp3"
+dest_files=[ "res://.import/voice 3.mp3-746d32d4cd3e08791f8c8f3d7494cc5a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
