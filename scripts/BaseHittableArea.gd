@@ -25,12 +25,12 @@ func on_enter(other) -> void:
 func on_exit(other) -> void:
   pass
 
-func is_enemy() -> bool:
+func is_hittable() -> bool:
   return true
 
 # can be overridden if u want custom behavior.
 func on_die():
-  if randi() % 5 == 0:
+  if randi() % 6 == 0:
     var new_heart = heart_drop.instance()
     parent.add_child(new_heart)
     new_heart.position = position

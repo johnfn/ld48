@@ -16,9 +16,13 @@ export(float) var push_distance = 128
 onready var initial_pos = position
 var pushable = true
 
+var textures = [preload("res://assets/art/rock1.png"), preload("res://assets/art/rock2.png"), preload("res://assets/art/rock3.png")]
+
 func _ready():
   $PushBounds.connect("body_entered", self, "_on_push_entered")
   $PushBounds.connect("body_exited", self, "_on_push_exited")
+  
+  $Original.texture = textures[floor(randf()*len(textures))]
 
 
 func _on_push_entered(body):

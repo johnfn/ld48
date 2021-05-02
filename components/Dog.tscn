@@ -14,14 +14,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "run",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "run",
 "speed": 5.0
 } ]
 
@@ -33,9 +33,9 @@ script = ExtResource( 15 )
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.278431 )
-position = Vector2( 5.34556, 16.5731 )
-rotation = -0.690681
-scale = Vector2( 0.701936, 0.377633 )
+position = Vector2( 10.1729, 24.691 )
+rotation = -0.00201461
+scale = Vector2( 0.541855, 0.640612 )
 texture = ExtResource( 6 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -43,7 +43,7 @@ material = ExtResource( 5 )
 position = Vector2( -0.346649, 0 )
 frames = SubResource( 1 )
 animation = "run"
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

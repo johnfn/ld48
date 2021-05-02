@@ -8,6 +8,4 @@ func _init().():
   
 func _ready():
   grassMaterial = $Sprite.material
-  # $Sprite.material = grassMaterial.duplicate()
-  var random_offset = float(rand_range(0.0, 2.0*PI))
-  grassMaterial.set_shader_param("wind_magnitude", 1.0)
+  grassMaterial.set_shader_param("global_xy", global_position)

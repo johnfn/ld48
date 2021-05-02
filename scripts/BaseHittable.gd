@@ -27,12 +27,12 @@ func on_enter(other) -> void:
 func on_exit(other) -> void:
   pass
 
-func is_enemy() -> bool:
+func is_hittable() -> bool:
   return true
 
 # can be overridden if u want custom behavior.
 func on_die():
-  if randi() % 4 == 0:
+  if randi() % 6 == 0:
     var which_drop = randi() % 2
     
     if which_drop == 0:

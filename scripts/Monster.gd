@@ -50,3 +50,6 @@ func on_enter(other) -> void:
 func on_exit(other) -> void:
   if other == player_in_contact:
     player_in_contact = null
+    
+func is_enemy() -> bool:
+  return true

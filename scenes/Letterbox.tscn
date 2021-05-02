@@ -22,20 +22,20 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="TopRect" type="ColorRect" parent="CanvasLayer"]
-margin_left = -2.23508
-margin_top = -1.11761
-margin_right = 1497.76
-margin_bottom = 98.8824
+margin_left = -2.0
+margin_top = -1.0
+margin_right = 1498.0
+margin_bottom = 157.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BottomRect" type="ColorRect" parent="CanvasLayer"]
-margin_left = -5.79868
-margin_top = 1189.08
-margin_right = 1494.2
-margin_bottom = 1289.08
+margin_left = -6.0
+margin_top = 1115.0
+margin_right = 1494.0
+margin_bottom = 1289.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

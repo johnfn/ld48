@@ -42,9 +42,9 @@ func _process(delta):
   PressSpaceBlack.modulate.a = 0.5 + (sin(tick * 5.0) + 1) / 4.0
   PressSpaceWhite.modulate.a = 0.5 + (sin(tick * 5.0) + 1) / 4.0
   DialogAdvanceArrow.modulate = Color(
-    0 + (sin(tick * 5.0) + 1) / 6.0,
-    0 + (sin(tick * 5.0) + 1) / 6.0,
-    1.0,
+    1.0, # - (sin(tick * 5.0) + 1) / 6.0,
+    0 + (sin(tick * 5.0) + 1) / 4.0,
+    0.0,
     1.0
    )
 

@@ -1,7 +1,10 @@
 extends Area2D
 
+var textures = [preload("res://assets/art/cupcake.png"), preload("res://assets/art/donut.png"), preload("res://assets/art/chocolate.png")]
+
 func _ready():
     connect("body_entered", self, "on_enter")
+    $heart_full.texture = textures[floor(randf()*len(textures))]
   
 func on_enter(other: Node2D):
   if other is Player:

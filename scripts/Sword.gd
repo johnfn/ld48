@@ -110,7 +110,7 @@ func _physics_process(delta):
   var successful_hits = []
   
   for potential_enemy in hits:
-    if potential_enemy.has_method("is_enemy") and potential_enemy.is_enemy():
+    if potential_enemy.has_method("is_hittable") and potential_enemy.is_hittable():
       raycast_instance.global_position = player.global_position
       raycast_instance.cast_to = (potential_enemy.global_position - player.global_position)
       raycast_instance.force_raycast_update()

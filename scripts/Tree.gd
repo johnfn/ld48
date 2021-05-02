@@ -11,8 +11,14 @@ func _ready():
     $Tree/FullHitbox.queue_free()
     $LeafArea.connect("body_entered", self, "_on_body_entered")
     $LeafArea.connect("body_exited", self, "_on_body_exited")
-
-
+  
+  var trunkMaterial = $Trunk.material
+  var leavesMaterial = $Leaves.material
+  var shadowMaterial = $Shadow.material
+  trunkMaterial.set_shader_param("global_xy", global_position)
+  leavesMaterial.set_shader_param("global_xy", global_position)
+  shadowMaterial.set_shader_param("global_xy", global_position)
+  
 
 func _on_body_entered(body):
   if body.has_method("is_player") and body.is_player():

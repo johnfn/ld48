@@ -34,6 +34,7 @@ polygon = PoolVector2Array( 0.275197, 76.0312, -20.7918, 62.1714, -21.1613, 37.7
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.34902 )
+material = ExtResource( 5 )
 position = Vector2( -2.48791, 114.765 )
 scale = Vector2( 1.45771, 1.45771 )
 texture = ExtResource( 4 )
