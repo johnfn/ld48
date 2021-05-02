@@ -3,5 +3,6 @@
 [ext_resource path="res://assets/fonts/BalsamiqSans-Regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 80
+resource_local_to_scene = true
+size = 30
 font_data = ExtResource( 1 )
