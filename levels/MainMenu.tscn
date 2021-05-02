@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/art/title_farfetchedtext.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/title_art.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/title_play.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Dialog.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/art/title_sound.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/title_credits.png" type="Texture" id=6]
+[ext_resource path="res://scripts/PulseText.gd" type="Script" id=7]
 [ext_resource path="res://levels/MainMenu.gd" type="Script" id=10]
 [ext_resource path="res://assets/music/Care for You.mp3" type="AudioStream" id=11]
 [ext_resource path="res://assets/art/title_quit.png" type="Texture" id=12]
@@ -133,6 +135,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ClickToPlay" type="ColorRect" parent="CanvasLayer"]
+margin_right = 1500.0
+margin_bottom = 1500.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/ClickToPlay"]
+margin_left = 415.661
+margin_top = 419.409
+margin_right = 866.661
+margin_bottom = 515.409
+rect_pivot_offset = Vector2( 200, 50 )
+custom_fonts/font = ExtResource( 4 )
+text = "Click to play."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="mouse_entered" from="VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Play" to="." method="_on_Play_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
@@ -146,3 +169,4 @@ __meta__ = {
 [connection signal="mouse_exited" from="VBoxContainer/Quit" to="." method="_on_Quit_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="value_changed" from="VolumeBar" to="." method="_on_VolumeBar_value_changed"]
+[connection signal="gui_input" from="CanvasLayer/ClickToPlay" to="CanvasLayer/ClickToPlay" method="_on_ClickToPlay_gui_input"]

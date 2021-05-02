@@ -70,9 +70,12 @@ rotation = 1.35024
 polygon = PoolVector2Array( -130.637, 3.24905, -155.573, -73.9408, 5.07083, -150.843, 115.051, -44.0493, 102.972, 51.3328 )
 
 [node name="SliceAnimation" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 1, 1, 0.733333 )
 position = Vector2( 93.4528, 8.74492 )
 rotation = -0.0847218
 scale = Vector2( 1.26272, -1.50001 )
+z_index = 2000
+z_as_relative = false
 frames = SubResource( 2 )
 animation = "slice"
 

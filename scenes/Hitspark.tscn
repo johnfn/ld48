@@ -19,6 +19,7 @@ scale = Vector2( 2, 2 )
 script = ExtResource( 4 )
 
 [node name="HitsparkAnimation" type="AnimatedSprite" parent="."]
+position = Vector2( -15.123, 2.64053 )
 rotation = 1.5708
 z_index = 1000
 frames = SubResource( 1 )
