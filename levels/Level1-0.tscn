@@ -40,281 +40,495 @@ position = Vector2( 0, 0.903444 )
 [node name="Donut" parent="Items" instance=ExtResource( 6 )]
 position = Vector2( 640.263, 210.839 )
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="YSort" type="YSort" parent="."]
 
-[node name="Tree7" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Obstacles" type="Node2D" parent="YSort"]
+
+[node name="Tree7" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 397.05, 19.9244 )
 
-[node name="Tree8" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree8" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 160.833, 15.4771 )
 
-[node name="Tree9" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree9" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -90.5859, 22.6785 )
 
-[node name="Tree10" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree10" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 303.246, 92.9071 )
 
-[node name="Tree11" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree11" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 51.2485, 102.546 )
 
-[node name="Tree12" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree12" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 154.526, 203.07 )
 
-[node name="Tree22" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree22" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -100.225, 208.578 )
 
-[node name="Tree21" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree21" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 25.985, 317.195 )
 
-[node name="Tree62" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree62" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -42.0342, 2893.77 )
 
-[node name="Tree66" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree66" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 24.3087, 3042.47 )
 
-[node name="Tree67" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree67" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -94.651, 3184.31 )
 
-[node name="Tree68" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree68" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 161.57, 3163.72 )
 
-[node name="Tree70" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree70" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 10.5825, 3291.83 )
 
-[node name="Tree71" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree71" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 253.078, 3296.4 )
 
-[node name="Tree72" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree72" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -87.7881, 3424.51 )
 
-[node name="Tree73" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree73" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 163.858, 3422.23 )
 
-[node name="Tree74" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree74" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 408.64, 3413.08 )
 
-[node name="Tree23" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree23" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 862.56, 20.581 )
 
-[node name="Tree24" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree24" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1117.73, 20.581 )
 
-[node name="Tree25" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree25" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1376.8, 23.514 )
 
-[node name="Tree26" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree26" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 984.766, 120.301 )
 
-[node name="Tree27" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree27" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1238.96, 127.145 )
 
-[node name="Tree28" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree28" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1119.68, 240.553 )
 
-[node name="Tree29" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree29" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1372.89, 249.351 )
 
-[node name="Tree30" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree30" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1270.24, 376.446 )
 
-[node name="Tree31" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree31" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1116.05, 453.543 )
 
-[node name="Tree32" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree32" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1098.42, 753.118 )
 solid_leaves = false
 
-[node name="Tree84" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree84" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 14.4666, 551.026 )
 
-[node name="Tree85" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree85" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -25.6171, 722.116 )
 
-[node name="Tree86" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree86" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 24.2431, 850.186 )
 
-[node name="Tree87" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree87" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 24.2431, 850.186 )
 
-[node name="Tree90" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree90" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1203.05, 619.321 )
 
-[node name="Tree91" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree91" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1297.88, 749.351 )
 
-[node name="Tree92" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree92" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1205.34, 889.272 )
 
-[node name="Tree93" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree93" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -46.709, 1012.24 )
 
-[node name="Tree94" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree94" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 24.0142, 1164.47 )
 
-[node name="Tree95" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree95" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -16.0695, 1335.56 )
 
-[node name="Tree96" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree96" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 33.7907, 1463.63 )
 
-[node name="Tree97" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree97" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 33.7907, 1463.63 )
 
-[node name="Tree88" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree88" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 182.842, 768.684 )
 solid_leaves = false
 
-[node name="Tree89" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree89" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 182.842, 768.684 )
 solid_leaves = false
 
-[node name="Tree140" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree140" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 111.89, 930.738 )
 solid_leaves = false
 
-[node name="Tree141" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree141" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 182.613, 1082.97 )
 solid_leaves = false
 
-[node name="Tree142" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree142" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 142.529, 1254.06 )
 solid_leaves = false
 
-[node name="Tree143" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree143" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 192.389, 1382.13 )
 solid_leaves = false
 
-[node name="Tree144" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree144" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 192.389, 1382.13 )
 solid_leaves = false
 
-[node name="Tree98" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree98" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -27.6138, 1647.15 )
 
-[node name="Tree103" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree103" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 43.1094, 1799.38 )
 
-[node name="Tree104" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree104" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 3.02575, 1970.47 )
 
-[node name="Tree105" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree105" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 52.8859, 2098.54 )
 
-[node name="Tree107" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree107" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -15.6792, 2255.81 )
 
-[node name="Tree108" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree108" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 55.044, 2410.29 )
 
-[node name="Tree133" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree133" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 256.911, 2549.35 )
 solid_leaves = false
 
-[node name="Tree137" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree137" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 851.74, 2068.68 )
 solid_leaves = false
 
-[node name="Tree134" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree134" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 261.397, 2892.53 )
 solid_leaves = false
 
-[node name="Tree135" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree135" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 366.817, 2385.61 )
 solid_leaves = false
 
-[node name="Tree109" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree109" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 14.9603, 2579.13 )
 
-[node name="Tree110" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree110" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 64.8205, 2707.2 )
 
-[node name="Tree111" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree111" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 64.8205, 2707.2 )
 
-[node name="Tree99" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree99" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1310.91, 1031.56 )
 
-[node name="Tree100" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree100" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1210.21, 1163.54 )
 
-[node name="Tree101" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree101" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1305.04, 1293.57 )
 
-[node name="Tree102" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree102" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1212.5, 1433.49 )
 
-[node name="Tree116" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree116" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1334.78, 1578.16 )
 
-[node name="Tree117" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree117" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1234.08, 1710.14 )
 
-[node name="Tree118" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree118" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1328.91, 1840.17 )
 
-[node name="Tree119" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree119" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1236.37, 1980.09 )
 
-[node name="Tree138" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree138" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1038.94, 1555.45 )
 solid_leaves = false
 
-[node name="Tree145" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree145" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 536.71, 1128.12 )
 solid_leaves = false
 
-[node name="Tree139" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree139" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1061.37, 1878.41 )
 solid_leaves = false
 
-[node name="Tree124" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree124" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1310.91, 2139.09 )
 
-[node name="Tree125" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree125" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1210.21, 2271.07 )
 
-[node name="Tree126" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree126" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1305.04, 2401.1 )
 
-[node name="Tree127" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree127" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1212.5, 2541.02 )
 
-[node name="Tree131" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree131" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1212.5, 2541.02 )
 
-[node name="Tree136" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree136" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1091.38, 2718.21 )
 solid_leaves = false
 
-[node name="Tree132" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree132" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1288.89, 2717.65 )
 
-[node name="Tree64" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree64" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1283.46, 2971.89 )
 
-[node name="Tree75" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree75" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1374.97, 3122.88 )
 
-[node name="Tree76" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree76" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1116.46, 3118.3 )
 
-[node name="Tree77" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree77" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1004.36, 3241.84 )
 
-[node name="Tree79" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree79" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1519.09, 3241.84 )
 
-[node name="Tree78" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree78" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1258.29, 3239.55 )
 
-[node name="Tree80" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree80" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 935.735, 3376.81 )
 
-[node name="Tree81" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree81" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1182.8, 3379.1 )
 
-[node name="Tree82" parent="Obstacles" instance=ExtResource( 3 )]
+[node name="Tree82" parent="YSort/Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 1439.02, 3376.81 )
+
+[node name="Tree" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 219.607, 1586.54 )
+solid_leaves = false
+
+[node name="Tree2" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 388.645, 1534.23 )
+solid_leaves = false
+
+[node name="Tree3" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 302.513, 1682.08 )
+solid_leaves = false
+
+[node name="Tree4" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 458.154, 1672.74 )
+solid_leaves = false
+
+[node name="Tree5" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 416.221, 1765.26 )
+solid_leaves = false
+
+[node name="Tree14" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 584.443, 1758.53 )
+solid_leaves = false
+
+[node name="Tree6" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 784.068, 912.931 )
+solid_leaves = false
+
+[node name="Tree13" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 218.839, 547.327 )
+solid_leaves = false
+
+[node name="Tree15" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 398.277, 542.841 )
+solid_leaves = false
+
+[node name="Tree16" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 315.287, 650.504 )
+solid_leaves = false
+
+[node name="Tree17" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 479.024, 648.26 )
+solid_leaves = false
+
+[node name="Tree18" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 880.681, 223.441 )
+solid_leaves = false
+
+[node name="Tree19" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 961.428, 328.86 )
+solid_leaves = false
+
+[node name="Tree20" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 974.721, 901.716 )
+solid_leaves = false
+
+[node name="Tree33" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 896.217, 1043.02 )
+solid_leaves = false
+
+[node name="Tree34" parent="YSort/Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 1059.95, 1038.54 )
+solid_leaves = false
+
+[node name="Shrub7" parent="YSort/Obstacles" instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 531.566, 1980.45 )
+
+[node name="Shrub8" parent="YSort/Obstacles" instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 390.589, 2174.29 )
+
+[node name="Shrub9" parent="YSort/Obstacles" instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 980.929, 1220.5 )
+
+[node name="Shrub10" parent="YSort/Obstacles" instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 1075.65, 1306.4 )
+
+[node name="Shrub4" parent="YSort/Obstacles" instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 352.419, 957.97 )
+
+[node name="Shrub6" parent="YSort/Obstacles" instance=ExtResource( 5 )]
+material = SubResource( 1 )
+position = Vector2( 413.485, 861.361 )
+
+[node name="Grass" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 1069.88, 2116.39 )
+
+[node name="Grass5" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 217.407, 1860.87 )
+
+[node name="Grass6" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 327.545, 1918.14 )
+
+[node name="Grass26" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 713.028, 1744.12 )
+
+[node name="Grass27" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 770.3, 1656.01 )
+
+[node name="Grass28" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 862.816, 1726.5 )
+
+[node name="Grass29" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 887.046, 1605.35 )
+
+[node name="Grass12" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 373.803, 1400.49 )
+
+[node name="Grass13" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 483.941, 1486.4 )
+
+[node name="Grass14" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 353.978, 1290.35 )
+
+[node name="Grass15" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 475.13, 1369.65 )
+
+[node name="Grass17" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 871.627, 832.18 )
+
+[node name="Grass18" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 966.345, 748.475 )
+
+[node name="Grass19" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 726.245, 803.544 )
+
+[node name="Grass20" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 858.41, 722.042 )
+
+[node name="Grass22" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 177.757, 437.886 )
+
+[node name="Grass23" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 292.301, 488.549 )
+
+[node name="Grass24" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 287.895, 369.6 )
+
+[node name="Grass25" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 437.683, 420.264 )
+
+[node name="Grass21" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 983.968, 625.12 )
+
+[node name="Grass30" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 825.369, 413.655 )
+
+[node name="Grass31" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 913.479, 503.969 )
+
+[node name="Grass16" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 345.167, 1510.63 )
+
+[node name="Grass7" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 217.407, 1968.8 )
+
+[node name="Grass8" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 230.623, 2063.52 )
+
+[node name="Grass2" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 1050.05, 2422.57 )
+
+[node name="Grass3" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 1041.24, 2543.73 )
+
+[node name="Grass4" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 944.318, 2462.22 )
+
+[node name="Grass9" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 437.683, 2675.89 )
+
+[node name="Grass10" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 455.305, 2803.65 )
+
+[node name="Grass11" parent="YSort/Obstacles" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+position = Vector2( 327.545, 2746.38 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -335,218 +549,6 @@ position = Vector2( 658.435, 3032.6 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
-
-[node name="Tree" parent="." instance=ExtResource( 4 )]
-position = Vector2( 219.607, 1586.54 )
-solid_leaves = false
-
-[node name="Tree2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 388.645, 1534.23 )
-solid_leaves = false
-
-[node name="Tree3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 302.513, 1682.08 )
-solid_leaves = false
-
-[node name="Tree4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 458.154, 1672.74 )
-solid_leaves = false
-
-[node name="Tree5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 416.221, 1765.26 )
-solid_leaves = false
-
-[node name="Tree14" parent="." instance=ExtResource( 4 )]
-position = Vector2( 584.443, 1758.53 )
-solid_leaves = false
-
-[node name="Tree6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 784.068, 912.931 )
-solid_leaves = false
-
-[node name="Tree10" parent="." instance=ExtResource( 4 )]
-position = Vector2( 218.839, 547.327 )
-solid_leaves = false
-
-[node name="Tree11" parent="." instance=ExtResource( 4 )]
-position = Vector2( 398.277, 542.841 )
-solid_leaves = false
-
-[node name="Tree12" parent="." instance=ExtResource( 4 )]
-position = Vector2( 315.287, 650.504 )
-solid_leaves = false
-
-[node name="Tree13" parent="." instance=ExtResource( 4 )]
-position = Vector2( 479.024, 648.26 )
-solid_leaves = false
-
-[node name="Tree15" parent="." instance=ExtResource( 4 )]
-position = Vector2( 880.681, 223.441 )
-solid_leaves = false
-
-[node name="Tree16" parent="." instance=ExtResource( 4 )]
-position = Vector2( 961.428, 328.86 )
-solid_leaves = false
-
-[node name="Tree7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 974.721, 901.716 )
-solid_leaves = false
-
-[node name="Tree8" parent="." instance=ExtResource( 4 )]
-position = Vector2( 896.217, 1043.02 )
-solid_leaves = false
-
-[node name="Tree9" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1059.95, 1038.54 )
-solid_leaves = false
-
-[node name="Shrub7" parent="." instance=ExtResource( 5 )]
-material = SubResource( 1 )
-position = Vector2( 531.566, 1980.45 )
-
-[node name="Shrub8" parent="." instance=ExtResource( 5 )]
-material = SubResource( 1 )
-position = Vector2( 390.589, 2174.29 )
-
-[node name="Shrub9" parent="." instance=ExtResource( 5 )]
-material = SubResource( 1 )
-position = Vector2( 980.929, 1220.5 )
-
-[node name="Shrub10" parent="." instance=ExtResource( 5 )]
-material = SubResource( 1 )
-position = Vector2( 1075.65, 1306.4 )
-
-[node name="Shrub4" parent="." instance=ExtResource( 5 )]
-material = SubResource( 1 )
-position = Vector2( 352.419, 957.97 )
-
-[node name="Shrub6" parent="." instance=ExtResource( 5 )]
-material = SubResource( 1 )
-position = Vector2( 413.485, 861.361 )
-
-[node name="Grass" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 1069.88, 2116.39 )
-
-[node name="Grass5" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 217.407, 1860.87 )
-
-[node name="Grass6" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 327.545, 1918.14 )
-
-[node name="Grass26" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 713.028, 1744.12 )
-
-[node name="Grass27" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 770.3, 1656.01 )
-
-[node name="Grass28" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 862.816, 1726.5 )
-
-[node name="Grass29" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 887.046, 1605.35 )
-
-[node name="Grass12" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 373.803, 1400.49 )
-
-[node name="Grass13" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 483.941, 1486.4 )
-
-[node name="Grass14" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 353.978, 1290.35 )
-
-[node name="Grass15" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 475.13, 1369.65 )
-
-[node name="Grass17" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 871.627, 832.18 )
-
-[node name="Grass18" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 966.345, 748.475 )
-
-[node name="Grass19" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 726.245, 803.544 )
-
-[node name="Grass20" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 858.41, 722.042 )
-
-[node name="Grass22" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 177.757, 437.886 )
-
-[node name="Grass23" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 292.301, 488.549 )
-
-[node name="Grass24" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 287.895, 369.6 )
-
-[node name="Grass25" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 437.683, 420.264 )
-
-[node name="Grass21" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 983.968, 625.12 )
-
-[node name="Grass30" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 825.369, 413.655 )
-
-[node name="Grass31" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 913.479, 503.969 )
-
-[node name="Grass16" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 345.167, 1510.63 )
-
-[node name="Grass7" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 217.407, 1968.8 )
-
-[node name="Grass8" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 230.623, 2063.52 )
-
-[node name="Grass2" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 1050.05, 2422.57 )
-
-[node name="Grass3" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 1041.24, 2543.73 )
-
-[node name="Grass4" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 944.318, 2462.22 )
-
-[node name="Grass9" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 437.683, 2675.89 )
-
-[node name="Grass10" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 455.305, 2803.65 )
-
-[node name="Grass11" parent="." instance=ExtResource( 2 )]
-material = SubResource( 3 )
-position = Vector2( 327.545, 2746.38 )
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 10 )]
 position = Vector2( 668.876, 522.663 )
