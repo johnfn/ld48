@@ -156,7 +156,7 @@ func update_wall_positions() -> void:
   get_node("Walls/TopWall/Box").position.y = walled_level.top_wall + walled_level.position.y
   walled_level.dirty = false
 
-func _ready():
+func _ready():  
   if CanvasModulate != null:
     CanvasModulate.visible = false
     $Player/Light2D.visible = false

@@ -25,6 +25,8 @@ var min_height = 50
 var lifespan = 0.3
 var auto_advance = false
 
+var coin_drop = load("res://components/CoinDrop.tscn")
+
 # Here's how you use this:
 #  display_text_sequence_co([
 #    "Hewo I am a small child",
@@ -82,6 +84,24 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child =
   
   rect_position = Vector2(0, -120)
   
+  var cam = $"/root/Main/Camera"
+  var ctrans = cam.get_canvas_transform()
+  var vsize = get_viewport_rect().size * cam.zoom
+  var screen_pos = target.get_global_transform_with_canvas().origin
+
+  print("vsize", vsize)
+
+  # Keep dialog within window
+  var eventual_width = active_text.get_font("font").get_string_size(sequence[0]).x
+  var off_screen_amount_left = eventual_width / 2.0 - screen_pos.x
+  var off_screen_amount_right = $Zero.global_position.x + eventual_width - (cam.global_position.x + vsize.x / 2)
+
+  if off_screen_amount_left > 0:
+    rect_position += Vector2(off_screen_amount_left, 0)
+
+  if off_screen_amount_right > 0:
+    rect_position -= Vector2(off_screen_amount_right, 0)
+    
   for phrase in sequence:
     yield(display_text_co(phrase), "completed")
   

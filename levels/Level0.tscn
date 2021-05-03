@@ -114,7 +114,7 @@ dialog = [ "Winston, c'mon! Let's go back!", "Mom says we're not supposed to go 
 cinematic_style_dialog = true
 
 [node name="DialogTrigger3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 644.979, -111.013 )
+position = Vector2( 644.979, -109.209 )
 dialog = [ "Hey, Winston, wait for me!!", "...", "...Winston?", "...alright, alright, I'll play along! Here I come!" ]
 cinematic_style_dialog = true
 

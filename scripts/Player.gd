@@ -40,7 +40,9 @@ func _process(delta: float) -> void:
     
   Weapons.look_at(get_global_mouse_position())
   
-  if Input.is_key_pressed(KEY_F):
+  print(global_position)
+  
+  if Input.is_key_pressed(KEY_F) and Globals.debug_f_die:
     damage(9999, self)
 
 func _physics_process(delta: float) -> void:

@@ -91,6 +91,7 @@ a=false
 asdf=false
 fps=true
 vsync=false
+force=false
 
 [input]
 

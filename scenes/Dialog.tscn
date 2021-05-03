@@ -13,8 +13,10 @@ font_data = ExtResource( 2 )
 
 [node name="Dialog" type="Control"]
 pause_mode = 1
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.000417376
+anchor_top = -0.000417352
+anchor_right = 1.00042
+anchor_bottom = 0.999583
 margin_left = -1.22864
 margin_right = -1.22864
 script = ExtResource( 3 )
@@ -150,3 +152,6 @@ scale = Vector2( 0.641073, 0.641073 )
 texture = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Zero" type="Node2D" parent="."]
+position = Vector2( -155.457, 0.53421 )
