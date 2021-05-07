@@ -3,7 +3,8 @@ extends Control
 export(float) var time_per_screen = 6
 
 func _ready():
-  $AudioStreamPlayer.volume_db = SoundManager.get_db()
+  SoundManager.update_song("CareForYouSong")
+  
   var layer = get_node("Delete").get_child_count() - 1
   
   while layer >= 0:

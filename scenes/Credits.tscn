@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/art/credits_arch2.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/credits_fawn2.png" type="Texture" id=2]
@@ -15,9 +15,8 @@
 [ext_resource path="res://assets/art/credits_lunacyecho1.png" type="Texture" id=13]
 [ext_resource path="res://assets/art/credits_musicians1.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Credits.gd" type="Script" id=15]
-[ext_resource path="res://assets/music/Care for You.mp3" type="AudioStream" id=16]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 14 ), ExtResource( 9 ) ],
 "loop": true,
@@ -25,7 +24,7 @@ animations = [ {
 "speed": 1.6
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 5 ) ],
 "loop": true,
@@ -81,45 +80,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 16 )
-autoplay = true
-
 [node name="Delete" type="Node2D" parent="."]
 
 [node name="Musicians" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Taroth" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 641 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="Miyo" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="LunacyEcho" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Johnfn" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="Fawn" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [node name="Arch" type="AnimatedSprite" parent="Delete"]
 position = Vector2( 640, 640 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true

@@ -65,5 +65,5 @@ func _on_GoblinKing_died():
   tween.interpolate_property($Mob/AnimatedSprite, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 3.0, Tween.TRANS_CUBIC, Tween.EASE_OUT)
   tween.start()
   song = null
-  main.update_song()
+  SoundManager.update_song("ForestAmbience")
   SoundManager.play_sound("GoblinKingDeath")

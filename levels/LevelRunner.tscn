@@ -1216,7 +1216,6 @@ z_index = 5
 position = Vector2( 640, -150 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Runner"]
@@ -1268,45 +1267,48 @@ direction_to_shoot = Vector2( -1, 0 )
 position = Vector2( 637.913, 12523.9 )
 dialog = [ "What the... where am I?", "...and are those voices coming from behind me? W-WHO'S THERE?", "I— I HAVE A SWORD AND... AND I'M N-NOT AFRAID TO USE IT!!!" ]
 cinematic_style_dialog = true
+autodismiss_time = 2
+
+[node name="DialogTrigger2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 653.659, 11274.8 )
+dialog = [ "AAAAAA GET AWAY FROM ME!!!!!!!!" ]
+autodismiss_time = 2
 
 [node name="EnemyDialogTrigger" parent="." instance=ExtResource( 12 )]
 position = Vector2( 736.034, 12165.9 )
 dialog = [ "hOW dArE yOu eNTeR OUr FoREsT???" ]
 cinematic_style_dialog = true
+autodismiss_time = 1
 enemy_speaker = NodePath("../Obstacles/Tree234")
 
 [node name="EnemyDialogTrigger2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 444.161, 12169.5 )
-dialog = [ "yOu'LL nEvER gEt yOuR prECiOus LitTLe pUpPy bAcK..........." ]
-enemy_speaker = NodePath("../Obstacles/Tree281")
+position = Vector2( 34, -1 )
+dialog = [ "THERE'S NO ESCAAAAAAAAPE", "(welp. maybe there is)" ]
+autodismiss_time = 1
+enemy_speaker = NodePath("../Runner/AnimatedSprite")
 
 [node name="EnemyDialogTrigger3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 228.739, 12167 )
 dialog = [ "tHiS is OUR turF....." ]
-enemy_speaker = NodePath("../Obstacles/Tree240")
+autodismiss_time = 1
+enemy_speaker = NodePath("../Obstacles/Tree244")
 
 [node name="EnemyDialogTrigger4" parent="." instance=ExtResource( 12 )]
 position = Vector2( 650.527, 11558.5 )
 dialog = [ "PREPARE TO BE CONSUMED BY THE GOBLIN HORDE!!!!!" ]
+autodismiss_time = 1
 enemy_speaker = NodePath("../Runner/AnimatedSprite")
-
-[node name="DialogTrigger" parent="EnemyDialogTrigger4" instance=ExtResource( 10 )]
-position = Vector2( 3.13226, -283.712 )
-dialog = [ "AAAAAA GET AWAY FROM ME!!!!!!!!" ]
 
 [node name="EnemyDialogTrigger5" parent="." instance=ExtResource( 12 )]
 position = Vector2( 645.652, 8887.76 )
 dialog = [ "YOU CAN'T RUN, AND YOU CAN'T HIDE!!", "(wait, guys, she can run)", "(oh, wait. yeah.)" ]
+autodismiss_time = 1
 enemy_speaker = NodePath("../Runner/AnimatedSprite")
 
 [node name="EnemyDialogTrigger6" parent="." instance=ExtResource( 12 )]
 position = Vector2( 697.869, 6096.54 )
 dialog = [ "I DON'T KNOW WHAT A MENU IS, BUT MEAT IS PROBABLY BACK ON IT!", "(you serious? an orc reference?)", "(bruh, i don't know. she's 8. what media has she even watched)" ]
+autodismiss_time = 1
 enemy_speaker = NodePath("../Runner/AnimatedSprite")
-
-[node name="EnemyDialogTrigger" parent="EnemyDialogTrigger6" instance=ExtResource( 12 )]
-position = Vector2( -13.9248, -3070.42 )
-dialog = [ "THERE'S NO ESCAAAAAAAAPE", "(welp. maybe there is)" ]
-enemy_speaker = NodePath("../../Runner/AnimatedSprite")
 
 [connection signal="body_entered" from="Runner" to="." method="_on_body_entered"]

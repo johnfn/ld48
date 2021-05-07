@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/CardTrigger.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/MusicTrigger.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -31,6 +32,7 @@ shader_param/white = null
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 1 )
+song = "ForestAmbiance"
 
 [node name="EditorBackground" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, 0.903444 )
@@ -40,7 +42,7 @@ position = Vector2( 0, 0.903444 )
 [node name="Donut" parent="Items" instance=ExtResource( 6 )]
 position = Vector2( 640.263, 210.839 )
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 397.05, 19.9244 )
@@ -321,6 +323,9 @@ position = Vector2( 1439.02, 3376.81 )
 [node name="DialogTrigger" parent="." instance=ExtResource( 8 )]
 position = Vector2( 648.739, 3016.3 )
 dialog = [ "Wiiiiinstoooon!!!!", "Come out, come out, wherever you are!" ]
+
+[node name="MusicTrigger" parent="." instance=ExtResource( 11 )]
+song = "Chapter1Song"
 
 [node name="CardTrigger" parent="." instance=ExtResource( 9 )]
 position = Vector2( 674.008, 3393.53 )

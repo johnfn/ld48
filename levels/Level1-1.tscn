@@ -56,9 +56,8 @@ position = Vector2( 640.263, 210.839 )
 
 [node name="Sword" parent="Items" instance=ExtResource( 2 )]
 position = Vector2( 740.105, 1894.07 )
-rotation = 0.0
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 397.05, 19.9244 )

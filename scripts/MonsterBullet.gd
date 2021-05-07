@@ -25,6 +25,7 @@ func bullet_explode_anim_co():
   
   # TODO - better anim
   self.sprite.scale = Vector2(5, 5)
+  
   for x in range(30):
     self.sprite.scale = Vector2(1.0 + x / 30.0, 1.0 + x / 30.0)
     self.sprite.modulate.a = (10.0 - float(x)) / 10.0
@@ -46,3 +47,8 @@ func body_entered(body):
 func _integrate_forces(state):
   if active:
     state.linear_velocity = direction * speed
+
+  var bounds = Rect2(global_position - Vector2(5, 5), Vector2(10, 10))
+  
+  if not Globals.cam_extents().intersects(bounds):
+    queue_free()

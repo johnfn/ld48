@@ -45,7 +45,11 @@ func _ready():
 #  NightOverlay.modulate.a = 1
   
 func animate_in(target: Node2D):
-  if is_animating: 
+  print("Start animating", is_animating)
+  if is_animating:
+    # two people called animate_in at the same time. wait until it finishes and then just end
+    while is_animating:
+      yield(get_tree(), "idle_frame")
     return
     
   is_animating = true

@@ -54,7 +54,7 @@ position = Vector2( 7.9057, 4.09052 )
 [node name="Donut" parent="Items" instance=ExtResource( 4 )]
 position = Vector2( 640.263, 210.839 )
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 397.05, 19.9244 )

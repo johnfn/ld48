@@ -15,6 +15,7 @@ var speaker = null # null implies player - otherwise this will be passed down by
 var triggered = false
 onready var area = $DialogTrigger
 var DialogScene = load("res://scenes/Dialog.tscn")
+export var autodismiss_time = 20
 
 func _ready():
   connect("body_entered", self, "body_entered")
@@ -23,19 +24,23 @@ func body_entered(other: Node2D):
   if triggered:
     return
   
+  if not (other is Player):
+    return
+    
+  if Globals.skip_cinematics:
+    emit_signal("cinematic_ended")
+    return
+  
   if Globals.seen_dialogs.has(dialog):
     return
     
   Globals.seen_dialogs[dialog] = true
-  
-  if other is Player:
-    if Globals.skip_cinematics:
-      return
+
+  triggered = true
+  begin_cinematic(other)
     
-    triggered = true
-    begin_cinematic(other)
-    
-func begin_cinematic(player: Player):
+func begin_cinematic(initiator: Node2D):
+  print("begin cinematic", initiator.name)
   yield(get_tree(), "idle_frame")
   
   if sfx != "":
@@ -44,20 +49,23 @@ func begin_cinematic(player: Player):
   var new_dialog = DialogScene.instance()
   
   if speaker == null:
-    speaker = player
+    speaker = $"/root/Main/Player"
   
   if not cinematic_style_dialog:
-    new_dialog.display_text_sequence_co(speaker, dialog)
+    new_dialog.display_text_sequence_co(speaker, dialog, autodismiss_time)
     emit_signal("cinematic_ended")
     return
   
   Letterbox.in_cinematic = true
   
-  if not is_instance_valid(speaker): return
+  if not is_instance_valid(speaker): 
+    yield(get_tree(), "idle_frame")
+    return
+    
   yield(Letterbox.animate_in(speaker), "completed")
     
   if is_instance_valid(speaker):
-    yield(new_dialog.display_text_sequence_co(speaker, dialog), "completed")
+    yield(new_dialog.display_text_sequence_co(speaker, dialog, autodismiss_time), "completed")
   
   if fade_to_black:
     yield(Letterbox.fade_to_black(120.0), "completed")

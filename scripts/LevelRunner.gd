@@ -61,9 +61,7 @@ func _process(delta):
 
 
 func start_runner_cam():
-  print(Cam.global_position, main_cam.global_position)
   Cam.global_position = main_cam.global_position
-  print(Cam.global_position, main_cam.global_position)
   main_cam.current = false
   Cam.current = true
   is_beginning_running = true

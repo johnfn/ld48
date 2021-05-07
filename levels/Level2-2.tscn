@@ -43,7 +43,7 @@ song = "Chapter2Song"
 [node name="Donut" parent="Items" instance=ExtResource( 4 )]
 position = Vector2( 640, 128 )
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Pushable" parent="Obstacles" instance=ExtResource( 11 )]
 position = Vector2( 704, 960 )
@@ -101,7 +101,7 @@ position = Vector2( 226.993, 629.148 )
 solid_leaves = false
 
 [node name="Tree60" parent="Obstacles" instance=ExtResource( 1 )]
-position = Vector2( 422.886, 702.472 )
+position = Vector2( 389.993, 700.487 )
 solid_leaves = false
 
 [node name="Tree38" parent="Obstacles" instance=ExtResource( 1 )]
@@ -114,7 +114,8 @@ position = Vector2( 2.00101, 919.358 )
 position = Vector2( 223.398, 848.511 )
 
 [node name="Tree57" parent="Obstacles" instance=ExtResource( 1 )]
-position = Vector2( 417.581, 888.363 )
+position = Vector2( 433.297, 849.947 )
+solid_leaves = false
 
 [node name="Tree56" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1091.27, 844.083 )

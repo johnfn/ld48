@@ -45,6 +45,7 @@ func hide_anim():
 
 func on_pick_up() -> void:
   Hitbox.set_disabled(true)
+  
   SwordSprite.visible = true
   StickSprite.visible = false
   

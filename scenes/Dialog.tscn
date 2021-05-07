@@ -9,6 +9,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
+use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="Dialog" type="Control"]

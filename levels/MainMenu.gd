@@ -3,6 +3,8 @@ onready var FadeToBlack = $CanvasLayer/FadeToBlack
 
 func _ready():
   FadeToBlack.modulate.a = 0
+  
+  SoundManager.update_song("CareForYouSong")
 
 func _process(delta):
   var mouse_vec = get_global_mouse_position()

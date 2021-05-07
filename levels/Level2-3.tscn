@@ -79,7 +79,7 @@ position = Vector2( 637.852, 73.3996 )
 position = Vector2( 640, 813 )
 texture = ExtResource( 9 )
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 5 )]
 position = Vector2( 397.05, 19.9244 )

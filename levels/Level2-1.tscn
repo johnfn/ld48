@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/CardTrigger.tscn" type="PackedScene" id=15]
 [ext_resource path="res://components/RiverSounds.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/MusicTrigger.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -60,7 +61,7 @@ shader_param/white = null
 
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
-song = "Chapter2Song"
+song = "ForestAmbiance"
 
 [node name="EditorBackground" parent="." instance=ExtResource( 8 )]
 position = Vector2( -2.12659, 2.12659 )
@@ -77,7 +78,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 397.05, 19.9244 )
@@ -553,5 +554,9 @@ dialog = [ "Winston, please..." ]
 
 [node name="RiverSounds" parent="." instance=ExtResource( 16 )]
 position = Vector2( 652.696, 1362.05 )
+
+[node name="MusicTrigger" parent="." instance=ExtResource( 17 )]
+position = Vector2( 685.547, 2770.64 )
+song = "Chapter2Song"
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

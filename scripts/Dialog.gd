@@ -25,6 +25,9 @@ var min_height = 50
 var lifespan = 0.3
 var auto_advance = false
 
+var is_player = false
+var is_enemy = false
+
 var coin_drop = load("res://components/CoinDrop.tscn")
 
 # Here's how you use this:
@@ -59,9 +62,8 @@ func hide_everything():
   PressSpaceBlack.visible = false
   DialogAdvanceArrow.visible = false
 
-func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child = false) -> void:
-  if not already_a_child:
-    target.call_deferred("add_child", self)
+func display_text_sequence_co(target: Node2D, sequence: Array, autodismiss_time_sec = 10.0) -> void:
+  target.call_deferred("add_child", self)
   
   self.modulate = Color.white
   
@@ -70,57 +72,69 @@ func display_text_sequence_co(target: Node2D, sequence: Array, already_a_child =
   hide_everything()
   
   if target is Player or target is Dog:
+    is_player = true
+    
     BlackText.visible = true
     WhiteImage.visible = true
     active_text = BlackText
     active_image = WhiteImage
     active_press_space = PressSpaceBlack
+    
+    if Globals.active_dialog_player:
+      Globals.active_dialog_player.visible = false
+      
+    Globals.active_dialog_player = self
+    
   else:
+    is_enemy = false
+    
     WhiteText.visible = true
     BlackImage.visible = true
     active_text = WhiteText
     active_image = BlackImage
     active_press_space = PressSpaceBlack
-  
-  rect_position = Vector2(0, -120)
-  
-  var cam = $"/root/Main/Camera"
-  var ctrans = cam.get_canvas_transform()
-  var vsize = get_viewport_rect().size * cam.zoom
-  var screen_pos = target.get_global_transform_with_canvas().origin
-
-  print("vsize", vsize)
-
-  # Keep dialog within window
-  var eventual_width = active_text.get_font("font").get_string_size(sequence[0]).x
-  var off_screen_amount_left = eventual_width / 2.0 - screen_pos.x
-  var off_screen_amount_right = $Zero.global_position.x + eventual_width - (cam.global_position.x + vsize.x / 2)
-
-  if off_screen_amount_left > 0:
-    rect_position += Vector2(off_screen_amount_left, 0)
-
-  if off_screen_amount_right > 0:
-    rect_position -= Vector2(off_screen_amount_right, 0)
     
   for phrase in sequence:
-    yield(display_text_co(phrase), "completed")
+    yield(display_text_co(phrase, autodismiss_time_sec), "completed")
   
   $Tween.interpolate_property(
     self, 
     "modulate",
     Color(modulate.r, modulate.g, modulate.b, 0.6),
     Color(1, 1, 1, 0),
-    0.5,
-    Tween.TRANS_LINEAR, 
-    Tween.EASE_IN_OUT
+    0.1
   )
   $Tween.start()
   
   yield($Tween, "tween_completed")
   
   visible = false
+  
+  if is_player:
+    Globals.active_dialog_player = null
+    
+  queue_free()
 
-func display_text_co(new_text: String) -> void:
+func calc_rect_position(text):
+  rect_position = Vector2(0, -120)
+
+  # Keep dialog within window
+  
+  var eventual_width = active_text.get_font("font").get_wordwrap_string_size(text, max_width).x
+  var cam_extents = Globals.cam_extents()
+  var our_bounds = Rect2($Zero.global_position, Vector2(eventual_width, 1000))
+  var off_screen_amount_left = cam_extents.position.x - our_bounds.position.x
+  var off_screen_amount_right = our_bounds.end.x - cam_extents.end.x
+  
+  if off_screen_amount_left > 0:
+    rect_position += Vector2(off_screen_amount_left, 0)
+
+  if off_screen_amount_right > 0:
+     rect_position -= Vector2(off_screen_amount_right, 0)
+  
+  return rect_position
+
+func display_text_co(new_text: String, autodismiss_time_sec: float) -> void:
   var cur_text = ""
   var size = active_text.get_font("font").get_string_size(cur_text)
   
@@ -130,6 +144,8 @@ func display_text_co(new_text: String) -> void:
   DialogAdvanceArrow.visible = false
   
   for x in new_text:
+    rect_position = calc_rect_position(new_text)
+    
     cur_text += x
     
     SoundManager.play_sound("OliveSpeakSound")
@@ -173,7 +189,9 @@ func display_text_co(new_text: String) -> void:
   active_press_space.position = active_image.rect_position + active_image.rect_size - Vector2(160, -10)
   
   # autodismiss after 3 sec roughly
-  for x in range(1800):
+  
+  print("Auto", autodismiss_time_sec)
+  for x in range(autodismiss_time_sec * 60.0):
     yield(get_tree(), "idle_frame")
     
     if Input.is_action_just_pressed("ui_accept"):

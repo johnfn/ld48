@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/music/goblin king/gk_grunt2.mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/music/sword3.wav" type="AudioStream" id=2]
@@ -40,12 +40,14 @@
 [ext_resource path="res://assets/music/voicefx/alert_noise.wav" type="AudioStream" id=38]
 [ext_resource path="res://assets/music/voicefx/voice1.wav" type="AudioStream" id=39]
 [ext_resource path="res://assets/music/OOT_Sword_Smack1.wav" type="AudioStream" id=40]
+[ext_resource path="res://assets/music/Care for You.mp3" type="AudioStream" id=41]
 
 [node name="Audio" type="Node2D"]
 position = Vector2( 0, 1.85022 )
 
 [node name="Chapter1Song" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 33 )
+volume_db = -30.0
 
 [node name="Chapter2Song" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 29 )
@@ -58,6 +60,9 @@ stream = ExtResource( 15 )
 
 [node name="BossSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+
+[node name="CareForYouSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 41 )
 
 [node name="RockSplash" type="Node2D" parent="."]
 

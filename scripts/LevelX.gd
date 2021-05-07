@@ -7,10 +7,8 @@ export(bool) var is_top_open = true;
 export(bool) var dirty = false
 export(String) var song = "Chapter1Song"
 
-
 func get_song():
   return song
-
 
 func _ready():
   if spawn_point == Vector2(0, 0):

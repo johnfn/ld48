@@ -37,8 +37,6 @@ func _damage_anim(target):
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
   yield(get_tree(), "idle_frame")
-  
-  # Prevent crash, no catches in gdscript
 
   if is_enemy(target):
       target.material.set_shader_param("red", 1.0)

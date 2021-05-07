@@ -1,0 +1,212 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://scripts/SoundManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/music/sword1.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/music/bush1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/music/voicefx/voice1.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/music/rosksplash2.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/hit3.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/music/footstep3.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/music/goblin king/gk_grunt3.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/music/sword4.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/music/rosksplash1.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/river.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/music/Bossfight New.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/Goblin Runner.mp3" type="AudioStream" id=13]
+[ext_resource path="res://assets/music/footstep5.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/music/voicefx/alert_noise.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/music/footstep2.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/music/hit2.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/music/Chapter 2.mp3" type="AudioStream" id=18]
+[ext_resource path="res://assets/music/goblin king/gk_watchoutbelow.mp3" type="AudioStream" id=19]
+[ext_resource path="res://assets/music/footstep1.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/music/footstep7.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/music/forestambient.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/music/footstep6.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/music/footstep4.wav" type="AudioStream" id=24]
+[ext_resource path="res://assets/music/goblin king/gk_grunt4.mp3" type="AudioStream" id=25]
+[ext_resource path="res://assets/music/goblin king/gk_grunt1.mp3" type="AudioStream" id=26]
+[ext_resource path="res://assets/music/hit1.wav" type="AudioStream" id=27]
+[ext_resource path="res://assets/music/goblin king/gk_jumping-grunt.mp3" type="AudioStream" id=28]
+[ext_resource path="res://assets/music/sword2.wav" type="AudioStream" id=29]
+[ext_resource path="res://assets/music/sword3.wav" type="AudioStream" id=30]
+[ext_resource path="res://assets/music/goblin king/gk_grunt2.mp3" type="AudioStream" id=31]
+[ext_resource path="res://assets/music/goblin king/gk_takethis_1.mp3" type="AudioStream" id=32]
+[ext_resource path="res://assets/music/goblin king/gk_grunt5.mp3" type="AudioStream" id=33]
+[ext_resource path="res://assets/music/goblin king/gk_noooo.mp3" type="AudioStream" id=34]
+[ext_resource path="res://assets/music/goblin king/gk_landing-grunt.mp3" type="AudioStream" id=35]
+[ext_resource path="res://assets/music/Chapter 1.mp3" type="AudioStream" id=36]
+[ext_resource path="res://assets/music/bush2.wav" type="AudioStream" id=37]
+[ext_resource path="res://assets/music/goblin king/gk_takethis_2.mp3" type="AudioStream" id=38]
+[ext_resource path="res://assets/music/OOT_Sword_Smack1.wav" type="AudioStream" id=39]
+[ext_resource path="res://assets/music/bush3.wav" type="AudioStream" id=40]
+[ext_resource path="res://assets/music/goblin king/gk_hello.mp3" type="AudioStream" id=41]
+[ext_resource path="res://assets/music/Care for You.mp3" type="AudioStream" id=42]
+
+[node name="Audio" type="Node2D"]
+position = Vector2( 0, 1.85022 )
+script = ExtResource( 1 )
+
+[node name="Chapter1Song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 36 )
+volume_db = -30.0
+
+[node name="Chapter2Song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="ForestAmbiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+
+[node name="RunnerSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="BossSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="CareForYouSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 42 )
+
+[node name="RockSplash" type="Node2D" parent="."]
+
+[node name="Splash1" type="AudioStreamPlayer" parent="RockSplash"]
+stream = ExtResource( 10 )
+
+[node name="Splash2" type="AudioStreamPlayer" parent="RockSplash"]
+stream = ExtResource( 5 )
+
+[node name="Sword" type="Node2D" parent="."]
+
+[node name="Sword1" type="AudioStreamPlayer" parent="Sword"]
+stream = ExtResource( 2 )
+volume_db = -10.0
+
+[node name="Sword2" type="AudioStreamPlayer" parent="Sword"]
+stream = ExtResource( 29 )
+volume_db = -10.0
+
+[node name="Sword3" type="AudioStreamPlayer" parent="Sword"]
+stream = ExtResource( 30 )
+volume_db = -10.0
+
+[node name="Sword4" type="AudioStreamPlayer" parent="Sword"]
+stream = ExtResource( 9 )
+volume_db = -10.0
+
+[node name="River" type="Node2D" parent="."]
+
+[node name="River" type="AudioStreamPlayer" parent="River"]
+stream = ExtResource( 11 )
+
+[node name="Hit" type="Node2D" parent="."]
+
+[node name="Hit1" type="AudioStreamPlayer" parent="Hit"]
+stream = ExtResource( 27 )
+
+[node name="Hit2" type="AudioStreamPlayer" parent="Hit"]
+stream = ExtResource( 17 )
+
+[node name="Hit3" type="AudioStreamPlayer" parent="Hit"]
+stream = ExtResource( 6 )
+
+[node name="Footstep" type="Node2D" parent="."]
+
+[node name="Footstep1" type="AudioStreamPlayer" parent="Footstep"]
+stream = ExtResource( 20 )
+
+[node name="Footstep2" type="AudioStreamPlayer" parent="Footstep"]
+stream = ExtResource( 16 )
+
+[node name="Footstep3" type="AudioStreamPlayer" parent="Footstep"]
+stream = ExtResource( 7 )
+
+[node name="Footstep4" type="AudioStreamPlayer" parent="Footstep"]
+stream = ExtResource( 24 )
+
+[node name="Footstep5" type="AudioStreamPlayer" parent="Footstep"]
+stream = ExtResource( 14 )
+
+[node name="Footstep6" type="AudioStreamPlayer" parent="Footstep"]
+stream = ExtResource( 23 )
+
+[node name="Footstep7" type="AudioStreamPlayer" parent="Footstep"]
+stream = ExtResource( 21 )
+
+[node name="Bush" type="Node2D" parent="."]
+
+[node name="Bush1" type="AudioStreamPlayer" parent="Bush"]
+stream = ExtResource( 3 )
+
+[node name="Bush2" type="AudioStreamPlayer" parent="Bush"]
+stream = ExtResource( 37 )
+
+[node name="Bush3" type="AudioStreamPlayer" parent="Bush"]
+stream = ExtResource( 40 )
+
+[node name="InTween" type="Tween" parent="."]
+
+[node name="OutTween" type="Tween" parent="."]
+
+[node name="GoblinKingGrunt" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GoblinKingGrunt"]
+stream = ExtResource( 26 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="GoblinKingGrunt"]
+stream = ExtResource( 31 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="GoblinKingGrunt"]
+stream = ExtResource( 8 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="GoblinKingGrunt"]
+stream = ExtResource( 25 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="GoblinKingGrunt"]
+stream = ExtResource( 33 )
+
+[node name="GoblinKingHello" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GoblinKingHello"]
+stream = ExtResource( 41 )
+
+[node name="GoblinKingJump" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GoblinKingJump"]
+stream = ExtResource( 28 )
+
+[node name="GoblinKingLand" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GoblinKingLand"]
+stream = ExtResource( 35 )
+
+[node name="GoblinKingDeath" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GoblinKingDeath"]
+stream = ExtResource( 34 )
+
+[node name="GoblinKingSpearAttack" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GoblinKingSpearAttack"]
+stream = ExtResource( 32 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="GoblinKingSpearAttack"]
+stream = ExtResource( 38 )
+
+[node name="GoblinKingJumpAttack" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GoblinKingJumpAttack"]
+stream = ExtResource( 19 )
+
+[node name="OOT_Sword_Smack1" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="OOT_Sword_Smack1"]
+stream = ExtResource( 39 )
+
+[node name="OliveSpeakSound" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="OliveSpeakSound"]
+stream = ExtResource( 4 )
+
+[node name="SpeakCompleteSound" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SpeakCompleteSound"]
+stream = ExtResource( 15 )

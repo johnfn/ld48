@@ -89,7 +89,7 @@ __meta__ = {
 position = Vector2( 641.966, 1888.54 )
 texture = ExtResource( 15 )
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="YSort" parent="."]
 
 [node name="Tree7" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 397.05, 19.9244 )

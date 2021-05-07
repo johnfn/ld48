@@ -35,7 +35,7 @@ var saved_inventory = []
 var saved_slots = {}
 const ALL_SLOTS = ["weapons"]
 var Level = null
-var OldLevel = null
+var OldLevel: Node2D = null
 var level_height = null
 const BASE_VIEWPORT_HEIGHT = 1280 # TODO this sucks
 const WALL_THICKNESS = 10
@@ -46,7 +46,6 @@ var bgs = [0, 1, 2, 3]
 # new_scene and loaded_scene are temp vars
 var new_scene = null
 var loaded_scene = null
-var curr_song = null
 
 func add_to_inventory(item_name):
   inventory.append(item_name)
@@ -58,49 +57,22 @@ func checkpoint():
   saved_slots = slots.duplicate()
 
 
-func load_level(level_name: String):
+func load_level(level_name: String) -> Node2D:
   loaded_scene = load(level_name)
   assert(loaded_scene != null, "ERROR: %s not a valid level. Check Main->Inspector->Level Scenes (sometimes from level_scenes) matches available names in /levels." % level_name)
-  Level = loaded_scene.instance()
+  var new_level = loaded_scene.instance()
   loaded_scene = null
-  assert(Level.get_node("Markers/LevelBottom") != null)
-  assert(Level.get_node("Markers/LevelTop") != null)
-  level_height = Level.get_node("Markers/LevelBottom").position.y - Level.get_node("Markers/LevelTop").position.y
-  if Level.has_method('set_player'):
-    Level.set_player(Player)
-  if Level.has_method('set_camera'):
-    Level.set_camera(Cam)
-
-
-func update_song():
-  if Globals.mute_sound: return
-  var song_name = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
-  if curr_song != song_name:
-    var to_shut_down = null
-    var og_volume = null
-    var fade_out_len = 3
-    if curr_song != null and song_name == null:
-      fade_out_len = 3
-    if curr_song != null:
-      og_volume = $Audio.get_node(curr_song).volume_db
-      to_shut_down = $Audio.get_node(curr_song)
-      $Audio/OutTween.interpolate_property(to_shut_down, "volume_db", og_volume, og_volume-30, fade_out_len, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-      $Audio/OutTween.start()
-    curr_song = song_name
-    if song_name != null:
-      var curr_node = $Audio.get_node(curr_song)
-      if to_shut_down != null:
-        var volume = $Audio.get_node(curr_song).volume_db
-        curr_node.volume_db = volume-30
-        $Audio/InTween.interpolate_property(curr_node, "volume_db", volume-30, volume, 5.0, Tween.TRANS_CUBIC, Tween.EASE_IN)
-        $Audio/InTween.start()
-        yield(get_tree().create_timer(0.1), "timeout")
-      curr_node.playing = SoundManager.volume > 5
-    if to_shut_down != null:
-      yield(get_tree().create_timer(fade_out_len), "timeout")
-      to_shut_down.volume_db = og_volume
-      to_shut_down.playing = false
-
+  assert(new_level.get_node("Markers/LevelBottom") != null)
+  assert(new_level.get_node("Markers/LevelTop") != null)
+  level_height = new_level.get_node("Markers/LevelBottom").position.y - new_level.get_node("Markers/LevelTop").position.y
+  
+  if new_level.has_method('set_player'):
+    new_level.set_player(Player)
+    
+  if new_level.has_method('set_camera'):
+    new_level.set_camera(Cam)
+    
+  return new_level
 
 func start_level(level_num: int) -> void:
   if Level != null:
@@ -110,14 +82,15 @@ func start_level(level_num: int) -> void:
     OldLevel = null
   is_transitioning = false
     
-  load_level(level_scenes[level_num])
+  Level = load_level(level_scenes[level_num])
+  
   Levels.add_child(Level)
   
   Player.position.x = Level.spawn_point.x
   jump_view(Level.spawn_point.y - Player.position.y)
   Player.reset()
   Cam.current = true
-  update_song()
+  SoundManager.update_song(Level.get_song())
   inventory = saved_inventory.duplicate()
   slots = saved_slots.duplicate()
   for slot in saved_slots.keys():
@@ -137,13 +110,19 @@ func start_level(level_num: int) -> void:
 
 
 func load_new_level(level_num: int) -> void:
+  print("load new")
   OldLevel = Level
   if level_num == len(level_scenes):
     return
-  load_level(level_scenes[level_num])
+  Level = load_level(level_scenes[level_num])
   assert(Level.get_node("Markers/LevelBottom") != null)
   Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
   Levels.add_child(Level)
+  
+  Level.z_index = 0
+  TransitionTop.z_index = 1
+  OldLevel.z_index = 2
+  
   SoundManager.update_possible_rivers()
   wire_item_signals() 
   update_wall_positions()
@@ -174,7 +153,7 @@ func _ready():
   start_level(curr_level_num)
   CloudSpawner.initial_cloud_spawn()
   
-  for audio in $Audio.get_children():
+  for audio in get_children():
     if audio as AudioStreamPlayer != null:
       audio.volume_db = SoundManager.get_db()
     for child in audio.get_children():
@@ -217,9 +196,11 @@ func _process(delta: float):
   if Player.position.y < load_y and not is_transitioning:
     is_transitioning = true
     load_new_level(curr_level_num + 1)
+    
   if Player.position.y < teleport_y:
     var bottom = get_node("Levels/TransitionBottom")
     var top = get_node("Levels/TransitionTop")
+    
     bottom.position.y = top.position.y
     top.position.y -= TRANSITION_LEN + level_height
     teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + top.position.y
@@ -227,8 +208,9 @@ func _process(delta: float):
     despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + bottom.position.y
     curr_level_num += 1
     is_transitioning = false
-    update_song()
+    SoundManager.update_song(Level.get_song())
     checkpoint()
+    
   if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
     OldLevel.queue_free()
     OldLevel = null
@@ -252,9 +234,9 @@ func equip_to_slot(slot, equipment_filename):
   var equipment: Node2D = load(equipment_filename).instance()
   slots[slot] = equipment_filename
   Player.equip(equipment, slot)
+
   if equipment.has_method("on_pick_up"):
     equipment.call_deferred("on_pick_up") # need to wait for the children to load in, etc
-
 
 func process_item(item_node):
     add_to_inventory(item_node.name)

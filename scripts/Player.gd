@@ -40,8 +40,6 @@ func _process(delta: float) -> void:
     
   Weapons.look_at(get_global_mouse_position())
   
-  print(global_position)
-  
   if Input.is_key_pressed(KEY_F) and Globals.debug_f_die:
     damage(9999, self)
 
@@ -51,9 +49,10 @@ func _physics_process(delta: float) -> void:
     Sprite.frame = IDLE_FRAME
         
     return
+  var is_running = Input.is_key_pressed(KEY_SHIFT)
   
   spawn_invuln_left -= delta
-  var direction = input_vec.normalized() * max_speed
+  var direction = input_vec.normalized() * max_speed * (2.0 if is_running else 1.0)
   
   var knockback_strength = knockback_velocity.length()
   if knockback_strength > 0:
@@ -84,8 +83,8 @@ func _physics_process(delta: float) -> void:
 
 
   if input_vec == Vector2(0, 0) and Sprite.is_playing():
-  # IdleCounter smooths the stopping animation
-  # Also reduces sliding
+    # IdleCounter smooths the stopping animation
+    # Also reduces sliding
     idleCounter += 1
     if idleCounter > 3:
       Sprite.stop()
@@ -101,7 +100,7 @@ func _physics_process(delta: float) -> void:
   
   move_and_slide(direction, Vector2(0, 0), false, 4, 0.785398, false)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:  
   if Input.is_action_just_pressed("move_down"):
     input_vec.y = 1
   elif Input.is_action_just_pressed("move_up"):

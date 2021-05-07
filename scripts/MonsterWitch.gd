@@ -37,7 +37,6 @@ func _integrate_forces(state):
     if state.linear_velocity.length() < 1.0:
       state.linear_velocity = Vector2.ZERO
     else:
-      print(state.linear_velocity)
       state.linear_velocity -= Vector2(sign(state.linear_velocity.x) * 20, sign(state.linear_velocity.y) * 20)
   
   if knockback:

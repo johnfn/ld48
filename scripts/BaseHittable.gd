@@ -35,6 +35,13 @@ func on_die():
 
   queue_free()
 
+func disable_hitbox(delay = 0.1):
+  # It feels better for there to be a short delay before the hitbox is removed
+  yield(get_tree().create_timer(delay), "timeout")
+  
+  collision_layer = 0
+  collision_mask = 0
+
 func damage(amount: int, source: Node2D) -> void:
   if being_hit or health <= 0:
     return
@@ -50,8 +57,7 @@ func damage(amount: int, source: Node2D) -> void:
   
   # instantly turn off collisions, even before death animation
   if dead:
-    collision_layer = 0
-    collision_mask = 0
+    disable_hitbox()
 
   if sprite is Sprite:
     yield(CombatHelpers.damage_anim_sprite(sprite), "completed")
