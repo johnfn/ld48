@@ -26,7 +26,8 @@ export(Array) var level_scenes = ["res://levels/Level0.tscn","res://levels/Level
 # 2: PLAY LEVELS. FEEL FREE TO EDIT THIS LIST.
 #export(Array) var level_scenes = ["res://levels/Level0.tscn", "res://levels/Level1-0.tscn", "res://levels/Level1-1.tscn", "res://levels/Level1-3Mock.tscn", "res://levels/LevelMock.tscn", "res://levels/Level5Mock.tscn"]
 
-export(int) var curr_level_num = 0
+export(int) var start_level_num = 0
+var curr_level_name: String
 
 var center_camera = false
 var inventory = []
@@ -57,6 +58,7 @@ func checkpoint():
   saved_slots = slots.duplicate()
 
 
+
 func load_level(level_name: String) -> Node2D:
   loaded_scene = load(level_name)
   assert(loaded_scene != null, "ERROR: %s not a valid level. Check Main->Inspector->Level Scenes (sometimes from level_scenes) matches available names in /levels." % level_name)
@@ -74,17 +76,27 @@ func load_level(level_name: String) -> Node2D:
     
   return new_level
 
-func start_level(level_num: int) -> void:
+#func sort_levels():
+#  Level.z_index = 0
+#  TransitionTop.z_index = 1
+#  if OldLevel != null:
+#    OldLevel.z_index = 2
+
+func start_level(level_path: String) -> void:
   if Level != null:
     Level.queue_free()
+  
   if OldLevel != null:
     OldLevel.queue_free()
     OldLevel = null
+  
+  curr_level_name = level_path
   is_transitioning = false
     
-  Level = load_level(level_scenes[level_num])
+  Level = load_level(level_path)
   
   Levels.add_child(Level)
+#  sort_levels()
   
   Player.position.x = Level.spawn_point.x
   jump_view(Level.spawn_point.y - Player.position.y)
@@ -101,7 +113,6 @@ func start_level(level_num: int) -> void:
   Cam.position.y = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
   last_player_y = Player.position.y
   TransitionBottom.global_position.y = Level.get_node("Markers/LevelBottom").position.y
-  curr_level_num = level_num
   TransitionTop.global_position.y = Level.get_node("Markers/LevelTop").position.y - TRANSITION_LEN
   update_wall_positions()
   teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + TransitionTop.position.y
@@ -109,19 +120,18 @@ func start_level(level_num: int) -> void:
   despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
 
 
-func load_new_level(level_num: int) -> void:
-  print("load new")
+func load_new_level(level: String) -> void:
   OldLevel = Level
-  if level_num == len(level_scenes):
+  
+  if level == curr_level_name:
     return
-  Level = load_level(level_scenes[level_num])
+  
+  Level = load_level(level)
   assert(Level.get_node("Markers/LevelBottom") != null)
   Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
   Levels.add_child(Level)
   
-  Level.z_index = 0
-  TransitionTop.z_index = 1
-  OldLevel.z_index = 2
+#  sort_levels()
   
   SoundManager.update_possible_rivers()
   wire_item_signals() 
@@ -150,7 +160,7 @@ func _ready():
     
   Ui.player = Player
   Player.connect("died", self, "handle_player_died")
-  start_level(curr_level_num)
+  start_level(level_scenes[start_level_num])
   CloudSpawner.initial_cloud_spawn()
   
   for audio in get_children():
@@ -187,6 +197,14 @@ func get_desired_cam_position(delta: float):
   
   return cam_pos
 
+# Returns the current level number, or -1 if you're in a cave
+func curr_level_num():
+  var index = level_scenes.find(curr_level_name)
+  
+  if index == -1:
+    print("You're transitioning in a cave - this should never happen!")
+  
+  return index
 
 func _process(delta: float):
   if not Letterbox.in_cinematic and Cam.current:
@@ -195,7 +213,11 @@ func _process(delta: float):
   
   if Player.position.y < load_y and not is_transitioning:
     is_transitioning = true
-    load_new_level(curr_level_num + 1)
+    
+    var num = curr_level_num()
+    
+    if num != -1:
+      load_new_level(level_scenes[num + 1])
     
   if Player.position.y < teleport_y:
     var bottom = get_node("Levels/TransitionBottom")
@@ -206,7 +228,7 @@ func _process(delta: float):
     teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + top.position.y
     load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + top.position.y
     despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + bottom.position.y
-    curr_level_num += 1
+    # curr_level_num += 1
     is_transitioning = false
     SoundManager.update_song(Level.get_song())
     checkpoint()
@@ -256,7 +278,7 @@ func handle_item_body_entered(body: Node, item_node):
 
 func handle_player_died():
   if Globals.skip_cinematics:
-    start_level(curr_level_num)
+    start_level(level_scenes[curr_level_num()])
     return
     
   Letterbox.in_cinematic = true
@@ -269,7 +291,7 @@ func handle_player_died():
     
   yield(Letterbox.fade_to_black(120.0), "completed")
 
-  start_level(curr_level_num)
+  start_level(level_scenes[curr_level_num()])
   
   Player.modulate.a = 1.0
   Player.Sprite.material.set_shader_param("white", 0.0)

@@ -49,10 +49,11 @@ func _physics_process(delta: float) -> void:
     Sprite.frame = IDLE_FRAME
         
     return
+  
   var is_running = Input.is_key_pressed(KEY_SHIFT)
   
   spawn_invuln_left -= delta
-  var direction = input_vec.normalized() * max_speed * (2.0 if is_running else 1.0)
+  var direction = input_vec.normalized() * max_speed * (4.0 if is_running else 1.0)
   
   var knockback_strength = knockback_velocity.length()
   if knockback_strength > 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/EntranceTrigger.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/LevelCave-1.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -96,13 +98,17 @@ position = Vector2( -94.651, 3184.31 )
 position = Vector2( -94.651, 3184.31 )
 
 [node name="Tree68" parent="Obstacles" instance=ExtResource( 3 )]
+modulate = Color( 1, 0.5, 0.5, 1 )
 position = Vector2( 161.57, 3163.72 )
+fake_tree = true
 
 [node name="Tree70" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 10.5825, 3291.83 )
 
 [node name="Tree71" parent="Obstacles" instance=ExtResource( 3 )]
+modulate = Color( 1, 0.5, 0.5, 1 )
 position = Vector2( 253.078, 3296.4 )
+fake_tree = true
 
 [node name="Tree72" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( -87.7881, 3424.51 )
@@ -198,10 +204,6 @@ position = Vector2( -27.6138, 1647.15 )
 
 [node name="Tree97" parent="Obstacles" instance=ExtResource( 3 )]
 position = Vector2( 154.631, 1012.24 )
-solid_leaves = false
-
-[node name="Tree106" parent="Obstacles" instance=ExtResource( 3 )]
-position = Vector2( 225.354, 1164.47 )
 solid_leaves = false
 
 [node name="Tree111" parent="Obstacles" instance=ExtResource( 3 )]
@@ -537,5 +539,19 @@ position = Vector2( 980.173, 537.952 )
 
 [node name="dog" type="Node2D" parent="."]
 position = Vector2( 609.878, -322.309 )
+
+[node name="RandomSquare" type="ColorRect" parent="."]
+margin_left = 493.537
+margin_top = 2809.34
+margin_right = 593.537
+margin_bottom = 2909.34
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EntranceTrigger" parent="." instance=ExtResource( 11 )]
+scene_dest = ExtResource( 12 )
+exit_name = "Exit1"
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

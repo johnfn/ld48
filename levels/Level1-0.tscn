@@ -318,29 +318,6 @@ position = Vector2( 1182.8, 3379.1 )
 [node name="Tree82" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 1439.02, 3376.81 )
 
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="DialogTrigger" parent="." instance=ExtResource( 8 )]
-position = Vector2( 648.739, 3016.3 )
-dialog = [ "Wiiiiinstoooon!!!!", "Come out, come out, wherever you are!" ]
-
-[node name="MusicTrigger" parent="." instance=ExtResource( 11 )]
-song = "Chapter1Song"
-
-[node name="CardTrigger" parent="." instance=ExtResource( 9 )]
-position = Vector2( 674.008, 3393.53 )
-
-[node name="Markers" type="Node2D" parent="."]
-
-[node name="LevelBottom" type="Node2D" parent="Markers"]
-position = Vector2( 671.904, 3521.6 )
-
-[node name="SpawnPoint" type="Node2D" parent="Markers"]
-position = Vector2( 658.435, 3032.6 )
-
-[node name="LevelTop" type="Node2D" parent="Markers"]
-position = Vector2( 677.235, 0 )
-
 [node name="Tree" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 219.607, 1586.54 )
 solid_leaves = false
@@ -559,6 +536,9 @@ position = Vector2( 327.545, 2746.38 )
 position = Vector2( 648.739, 3016.3 )
 dialog = [ "Wiiiiinstoooon!!!!", "Come out, come out, wherever you are!" ]
 
+[node name="MusicTrigger" parent="." instance=ExtResource( 11 )]
+song = "Chapter1Song"
+
 [node name="CardTrigger" parent="." instance=ExtResource( 9 )]
 position = Vector2( 674.008, 3393.53 )
 
@@ -572,6 +552,26 @@ position = Vector2( 658.435, 3032.6 )
 
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
+
+[node name="LevelBottom" type="Node2D" parent="Markers"]
+position = Vector2( 671.904, 3521.6 )
+
+[node name="SpawnPoint" type="Node2D" parent="Markers"]
+position = Vector2( 658.435, 3032.6 )
+
+[node name="LevelTop" type="Node2D" parent="Markers"]
+position = Vector2( 677.235, 0 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="DialogTrigger" parent="." instance=ExtResource( 8 )]
+position = Vector2( 648.739, 3016.3 )
+dialog = [ "Wiiiiinstoooon!!!!", "Come out, come out, wherever you are!" ]
+
+[node name="CardTrigger" parent="." instance=ExtResource( 9 )]
+position = Vector2( 674.008, 3393.53 )
+
+[node name="Markers" type="Node2D" parent="."]
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 10 )]
 position = Vector2( 668.876, 522.663 )

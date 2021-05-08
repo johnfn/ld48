@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/shaders/WindSwept.shader" type="Shader" id=1]
+[ext_resource path="res://scripts/Tree.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/roundtree_top.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/tree_shadow.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/white = 0.0
+shader_param/red = 0.0
+shader_param/wind_magnitude = 0.5
+shader_param/global_xy = Vector2( 0, 0 )
+shader_param/wind_speed = 1.0
+
+[node name="TreeFake" type="Node2D"]
+position = Vector2( 225.354, 1164.47 )
+script = ExtResource( 2 )
+solid_leaves = false
+
+[node name="Shadow" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 0.34902 )
+material = SubResource( 1 )
+position = Vector2( -2.48791, 114.765 )
+scale = Vector2( 1.45771, 1.45771 )
+texture = ExtResource( 4 )
+
+[node name="Leaves" type="Sprite" parent="."]
+material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
