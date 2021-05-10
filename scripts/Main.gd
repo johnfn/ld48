@@ -35,7 +35,7 @@ var slots = {}
 var saved_inventory = []
 var saved_slots = {}
 const ALL_SLOTS = ["weapons"]
-var Level = null
+var Level: Node2D = null
 var OldLevel: Node2D = null
 var level_height = null
 const BASE_VIEWPORT_HEIGHT = 1280 # TODO this sucks
@@ -47,6 +47,7 @@ var bgs = [0, 1, 2, 3]
 # new_scene and loaded_scene are temp vars
 var new_scene = null
 var loaded_scene = null
+var already_loaded_levels = {}
 
 func add_to_inventory(item_name):
   inventory.append(item_name)
@@ -58,14 +59,24 @@ func checkpoint():
   saved_slots = slots.duplicate()
 
 
-
 func load_level(level_name: String) -> Node2D:
-  loaded_scene = load(level_name)
-  assert(loaded_scene != null, "ERROR: %s not a valid level. Check Main->Inspector->Level Scenes (sometimes from level_scenes) matches available names in /levels." % level_name)
-  var new_level = loaded_scene.instance()
-  loaded_scene = null
-  assert(new_level.get_node("Markers/LevelBottom") != null)
-  assert(new_level.get_node("Markers/LevelTop") != null)
+  var new_level: Node2D
+  
+  print(level_name, already_loaded_levels)
+  
+  if already_loaded_levels.has(level_name):
+    print("already has it")
+    new_level = already_loaded_levels[level_name]
+  else:
+    loaded_scene = load(level_name)
+    assert(loaded_scene != null, "ERROR: %s not a valid level. Check Main->Inspector->Level Scenes (sometimes from level_scenes) matches available names in /levels." % level_name)
+    new_level = loaded_scene.instance()
+    loaded_scene = null
+    assert(new_level.get_node("Markers/LevelBottom") != null)
+    assert(new_level.get_node("Markers/LevelTop") != null)
+  
+  already_loaded_levels[level_name] = new_level
+  
   level_height = new_level.get_node("Markers/LevelBottom").position.y - new_level.get_node("Markers/LevelTop").position.y
   
   if new_level.has_method('set_player'):
@@ -75,12 +86,6 @@ func load_level(level_name: String) -> Node2D:
     new_level.set_camera(Cam)
     
   return new_level
-
-#func sort_levels():
-#  Level.z_index = 0
-#  TransitionTop.z_index = 1
-#  if OldLevel != null:
-#    OldLevel.z_index = 2
 
 func start_level(level_path: String) -> void:
   if Level != null:
@@ -92,11 +97,9 @@ func start_level(level_path: String) -> void:
   
   curr_level_name = level_path
   is_transitioning = false
-    
-  Level = load_level(level_path)
   
+  Level = load_level(level_path)
   Levels.add_child(Level)
-#  sort_levels()
   
   Player.position.x = Level.spawn_point.x
   jump_view(Level.spawn_point.y - Player.position.y)
@@ -119,6 +122,31 @@ func start_level(level_path: String) -> void:
   load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
   despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
 
+func load_cave(level: String, exit_name: String) -> void:
+  if level == curr_level_name:
+    return
+  
+  Letterbox.in_cinematic = true
+  yield(Letterbox.fade_to_black(30.0), "completed")
+  
+  Letterbox.unfade_to_black_instant()
+  Letterbox.in_cinematic = false
+  
+  curr_level_name = level
+  
+  Level.get_parent().remove_child(Level)
+  
+  Level = load_level(level)
+  
+  var exit_node = Level.get_node(exit_name)
+  
+  Levels.add_child(Level)
+  
+  # Move the level so that the place you exited into is right on top of the player
+  Player.global_position = exit_node.global_position
+
+  SoundManager.update_possible_rivers()
+  wire_item_signals() 
 
 func load_new_level(level: String) -> void:
   OldLevel = Level
@@ -130,8 +158,6 @@ func load_new_level(level: String) -> void:
   assert(Level.get_node("Markers/LevelBottom") != null)
   Level.position.y = get_node("Levels/TransitionTop").position.y - Level.get_node("Markers/LevelBottom").position.y
   Levels.add_child(Level)
-  
-#  sort_levels()
   
   SoundManager.update_possible_rivers()
   wire_item_signals() 
@@ -199,6 +225,8 @@ func get_desired_cam_position(delta: float):
 
 # Returns the current level number, or -1 if you're in a cave
 func curr_level_num():
+  # name never gets updated!
+  
   var index = level_scenes.find(curr_level_name)
   
   if index == -1:
@@ -217,6 +245,7 @@ func _process(delta: float):
     var num = curr_level_num()
     
     if num != -1:
+      print(num)
       load_new_level(level_scenes[num + 1])
     
   if Player.position.y < teleport_y:
@@ -228,7 +257,7 @@ func _process(delta: float):
     teleport_y = $Levels/TransitionTop/Markers/TeleportPoint.position.y + top.position.y
     load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + top.position.y
     despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + bottom.position.y
-    # curr_level_num += 1
+    curr_level_name = level_scenes[curr_level_num() + 1]
     is_transitioning = false
     SoundManager.update_song(Level.get_song())
     checkpoint()
@@ -245,12 +274,11 @@ func _physics_process(delta):
   if (is_transitioning and OldLevel.dirty) or (Level.dirty and not is_transitioning):
     update_wall_positions()
 
-
 func wire_item_signals():
   var items = get_tree().get_nodes_in_group("items")
+  
   for item_node in items:
     item_node.connect("body_entered", self, "handle_item_body_entered", [item_node])
-
 
 func equip_to_slot(slot, equipment_filename):
   var equipment: Node2D = load(equipment_filename).instance()
@@ -268,7 +296,6 @@ func process_item(item_node):
         slot = poss_slot
     if slot != "":
       equip_to_slot(slot, item_node.filename)
-
 
 func handle_item_body_entered(body: Node, item_node):
   if body == Player and not is_transitioning:
@@ -296,7 +323,9 @@ func handle_player_died():
   Player.modulate.a = 1.0
   Player.Sprite.material.set_shader_param("white", 0.0)
   Player.Hand.material.set_shader_param("white", 0.0)
+  
   yield(get_tree(), "idle_frame")
+  
   Letterbox.unfade_to_black_instant()
   Letterbox.in_cinematic = false
   

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/EntranceTrigger.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/LevelCave-1.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -551,7 +550,11 @@ __meta__ = {
 }
 
 [node name="EntranceTrigger" parent="." instance=ExtResource( 11 )]
-scene_dest = ExtResource( 12 )
+position = Vector2( 498.723, 2820.35 )
+scene_dest = "res://levels/LevelCave-1.tscn"
 exit_name = "Exit1"
+
+[node name="Exit1" type="Node2D" parent="."]
+position = Vector2( 570.073, 864.912 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
