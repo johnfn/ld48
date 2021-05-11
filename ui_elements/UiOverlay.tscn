@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/UIHeart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/UiOverlay.gd" type="Script" id=2]
 [ext_resource path="res://ui_elements/UIInventorySlot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/Dialog.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/art/coin.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/arrow.png" type="Texture" id=6]
 
 [node name="UiOverlay" type="Control"]
 rect_scale = Vector2( 0.997682, 1 )
@@ -95,3 +96,23 @@ text = "4"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Arrows" type="Node2D" parent="CanvasLayer"]
+position = Vector2( -125.884, 0 )
+
+[node name="ArrowText" type="Label" parent="CanvasLayer/Arrows"]
+margin_left = 1224.07
+margin_top = 1012.85
+margin_right = 1264.07
+margin_bottom = 1048.85
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 4 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArrowSprite" type="Sprite" parent="CanvasLayer/Arrows"]
+position = Vector2( 1176.86, 1046.96 )
+scale = Vector2( 0.899178, 0.899178 )
+texture = ExtResource( 6 )

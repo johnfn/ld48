@@ -21,6 +21,8 @@ onready var coins = 0
 
 var is_invuln = false
 var idleCounter = 0
+var arrows = 10
+var max_arrows = 20
 
 var knockback = false
 var knockback_source: Node2D = null
@@ -34,46 +36,84 @@ var SPAWN_INVULN = 1.0 # seconds
 var spawn_invuln_left = SPAWN_INVULN
 var arrow_scene = load("res://scenes/Arrow.tscn")
 
-onready var Sword = $Equipment/weapons/Sword
-onready var Bow = $Equipment/weapons/Bow
+enum WeaponNames {
+  Nothing = 0,
+  Sword = 1,
+  Bow = 2,
+}
+
+onready var WeaponSprites = [
+  null,
+  $Equipment/weapons/Sword,
+  $Equipment/weapons/Bow
+]
+var has_weapon = [true, false, false]
+var active_weapon = 0
 
 func _ready() -> void:
-  Sword.visible = false
-  Bow.visible = false
+  for sprite in WeaponSprites:
+    if sprite != null:
+      sprite.visible = false
   
   if Globals.debug_has_sword:
-    get_sword()
+    get_weapon(WeaponNames.Sword)
+    set_active(WeaponNames.Sword)
     
   if Globals.debug_has_bow:
-    get_bow()
+    get_weapon(WeaponNames.Bow)
+    set_active(WeaponNames.Bow)
+    
+func get_weapon(weapon):
+  has_weapon[weapon] = true
+  active_weapon = weapon
 
-func get_sword():
-  Sword.visible = true
+func set_active(weapon):
+  active_weapon = weapon
+  
+  for sprite in WeaponSprites:
+    if sprite != null:
+      sprite.visible = false
+  
+  if WeaponSprites[weapon] != null:
+    WeaponSprites[weapon].visible = true
 
-func has_sword():
-  return Sword.visible
-
-func get_bow():
-  Bow.visible = true
-
-func has_bow():
-  return Bow.visible
+func is_active(weapon):
+  return active_weapon == weapon
 
 func _process(delta: float) -> void:
   if Letterbox.in_cinematic:
     return
   
-  if has_sword():
-    Sword.look_at(get_global_mouse_position())
+  if is_active(WeaponNames.Sword):
+    WeaponSprites[WeaponNames.Sword].look_at(get_global_mouse_position())
   
-  if has_bow():
-    Bow.look_at(get_global_mouse_position())
+  if is_active(WeaponNames.Bow):
+    WeaponSprites[WeaponNames.Bow].look_at(get_global_mouse_position())
   
   if Input.is_key_pressed(KEY_F) and Globals.debug_f_die:
     damage(9999, self)
 
+  if Input.is_action_just_pressed("swap_weapon"):
+    rotate_weapon()
+
+func rotate_weapon():
+  print("Hello")
+  for i in range(active_weapon + 1, active_weapon + len(WeaponSprites) + 1):
+    var weapon = i % len(WeaponSprites)
+    
+    if has_weapon[weapon]:
+      set_active(weapon)
+      return
+      
+      
 
 func fire_arrow():
+  if arrows <= 0:
+    # TODO: Some sort of 'empty quiver' noise or something
+    return
+  
+  arrows -= 1
+  
   var new_arrow: Node2D = arrow_scene.instance()
   
   $"/root/Main".add_child(new_arrow)
@@ -160,14 +200,15 @@ func _unhandled_input(event: InputEvent) -> void:
   
   if Weapons.get_child_count() > 0:
     if Input.is_action_just_pressed("interact"):
-      if has_sword():
-        Sword.set_in_use(true)
-      if has_bow():
+      if is_active(WeaponNames.Sword):
+        WeaponSprites[WeaponNames.Sword].set_in_use(true)
+        
+      if is_active(WeaponNames.Bow):
         fire_arrow()
         
     elif Input.is_action_just_released("interact"):
-      if has_sword():
-        Sword.set_in_use(false)
+      if is_active(WeaponNames.Sword):
+        WeaponSprites[WeaponNames.Sword].set_in_use(false)
 
 func set_direction(dir_name):
   if Sprite.animation != dir_name or not Sprite.playing:
@@ -205,6 +246,13 @@ func get_health(amount: int) -> void:
   if health > max_health:
     health = max_health
 
+
+func get_arrows(amount: int) -> void:
+  arrows += amount
+  
+  if arrows > max_arrows:
+    arrows = max_arrows
+    
 func damage(amount: int, source: Node2D, strength=500) -> void:
   # returns whether damage was actually taken
   if not is_invuln and health > 0 and not Letterbox.in_cinematic and spawn_invuln_left <= 0.0:

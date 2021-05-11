@@ -27,6 +27,9 @@ func destroy():
     
     
 func _on_Node2D_body_entered(body):
+  if not active:
+    return
+  
   if body.has_method("is_hittable") and body.is_hittable():
     body.damage(1, self)
   

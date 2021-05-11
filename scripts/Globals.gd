@@ -8,6 +8,7 @@ export var mute_sound = false
 export var debug_lighting_on = false
 export var debug_f_die = false
 export var mute_sfx = false
+export var always_drop_arrow = false
 
 var active_dialog_enemy = null
 var active_dialog_player = null

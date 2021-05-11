@@ -2,6 +2,7 @@ extends Node2D
 
 var heart_drop = load("res://components/HeartDrop.tscn")
 var coin_drop = load("res://components/CoinDrop.tscn")
+var arrow_drop = load("res://components/ArrowDrop.tscn")
 
 func damage_anim_sprite(target: Sprite):
  return _damage_anim(target)
@@ -13,8 +14,11 @@ func drop_item(target: Node2D):
   var parent = target.get_parent()
   var player = $"/root/Main/Player"
     
-  if randi() % 5 == 0:
-    var which_drop = randi() % 2
+  if randi() % 5 == 0 or Globals.always_drop_arrow:
+    var which_drop = randi() % 3
+    
+    if Globals.always_drop_arrow:
+      which_drop = 2
     
     # re-roll so we don't get hearts at max hearts
     while which_drop == 0 and player.health == player.max_health:
@@ -25,11 +29,17 @@ func drop_item(target: Node2D):
       
       parent.add_child(new_heart)
       new_heart.position = target.position
+    
     elif which_drop == 1:
       var new_coin = coin_drop.instance()
       
       parent.add_child(new_coin)
       new_coin.position = target.position
+    elif which_drop == 2:
+      var new_arrow = arrow_drop.instance()
+      
+      parent.add_child(new_arrow)
+      new_arrow.position = target.position
 
 func _damage_anim(target):
   assert(target != null, "null target in _damage_anim")
