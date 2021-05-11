@@ -31,10 +31,6 @@ var curr_level_name: String
 
 var center_camera = false
 var inventory = []
-var slots = {}
-var saved_inventory = []
-var saved_slots = {}
-const ALL_SLOTS = ["weapons"]
 var Level: Node2D = null
 var OldLevel: Node2D = null
 var level_height = null
@@ -54,18 +50,10 @@ func add_to_inventory(item_name):
   Ui.display_items(inventory)
 
 
-func checkpoint():
-  saved_inventory = inventory.duplicate()
-  saved_slots = slots.duplicate()
-
-
 func load_level(level_name: String) -> Node2D:
   var new_level: Node2D
   
-  print(level_name, already_loaded_levels)
-  
   if already_loaded_levels.has(level_name):
-    print("already has it")
     new_level = already_loaded_levels[level_name]
   else:
     loaded_scene = load(level_name)
@@ -106,10 +94,6 @@ func start_level(level_path: String) -> void:
   Player.reset()
   Cam.current = true
   SoundManager.update_song(Level.get_song())
-  inventory = saved_inventory.duplicate()
-  slots = saved_slots.duplicate()
-  for slot in saved_slots.keys():
-    equip_to_slot(slot, saved_slots[slot])
   
   wire_item_signals() 
   SoundManager.update_possible_rivers()
@@ -180,10 +164,6 @@ func _ready():
     CanvasModulate.visible = true
     $Player/Light2D.visible = true
   
-  if Globals.has_sword:
-    saved_inventory.append("Sword")
-    saved_slots["weapons"] = "res://components/Sword.tscn"
-    
   Ui.player = Player
   Player.connect("died", self, "handle_player_died")
   start_level(level_scenes[start_level_num])
@@ -245,7 +225,6 @@ func _process(delta: float):
     var num = curr_level_num()
     
     if num != -1:
-      print(num)
       load_new_level(level_scenes[num + 1])
     
   if Player.position.y < teleport_y:
@@ -260,7 +239,6 @@ func _process(delta: float):
     curr_level_name = level_scenes[curr_level_num() + 1]
     is_transitioning = false
     SoundManager.update_song(Level.get_song())
-    checkpoint()
     
   if Player.position.y < despawn_y and OldLevel != null and not is_transitioning:
     OldLevel.queue_free()
@@ -280,28 +258,11 @@ func wire_item_signals():
   for item_node in items:
     item_node.connect("body_entered", self, "handle_item_body_entered", [item_node])
 
-func equip_to_slot(slot, equipment_filename):
-  var equipment: Node2D = load(equipment_filename).instance()
-  slots[slot] = equipment_filename
-  Player.equip(equipment, slot)
-
-  if equipment.has_method("on_pick_up"):
-    equipment.call_deferred("on_pick_up") # need to wait for the children to load in, etc
-
-func process_item(item_node):
-    add_to_inventory(item_node.name)
-    var slot = ""
-    for poss_slot in ALL_SLOTS:
-      if item_node.is_in_group(poss_slot):
-        slot = poss_slot
-    if slot != "":
-      equip_to_slot(slot, item_node.filename)
-
 func handle_item_body_entered(body: Node, item_node):
   if body == Player and not is_transitioning:
-    process_item(item_node)
-    item_node.queue_free()
-
+    if item_node is SwordPickup:
+      Player.get_sword()
+      item_node.queue_free()
 
 func handle_player_died():
   if Globals.skip_cinematics:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/art/chara_up2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -28,27 +28,14 @@
 [ext_resource path="res://assets/art/chara_upright1.png" type="Texture" id=26]
 [ext_resource path="res://assets/art/chara_downleft2.png" type="Texture" id=27]
 [ext_resource path="res://assets/art/chara_shadow.png" type="Texture" id=28]
+[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenes/Bow.tscn" type="PackedScene" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 12 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 13 ), ExtResource( 4 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "right",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "left",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 1 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "up",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "down",
@@ -72,6 +59,21 @@ animations = [ {
 "frames": [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "downright",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "left",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "right",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 1 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "up",
 "speed": 12.0
 } ]
 
@@ -102,6 +104,11 @@ position = Vector2( 38.0235, 20.5912 )
 [node name="Sprite" type="Sprite" parent="Equipment/weapons"]
 material = ExtResource( 3 )
 texture = ExtResource( 15 )
+
+[node name="Sword" parent="Equipment/weapons" instance=ExtResource( 29 )]
+position = Vector2( -29.575, 0.72559 )
+
+[node name="Bow" parent="Equipment/weapons" instance=ExtResource( 30 )]
 
 [node name="rh_up" type="Node2D" parent="Equipment"]
 position = Vector2( 38.296, 20.4378 )

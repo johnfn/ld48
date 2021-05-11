@@ -2,7 +2,8 @@ extends Node2D
 
 # Debug flags
 export var skip_cinematics = false
-export var has_sword = false
+export var debug_has_sword = false
+export var debug_has_bow = false
 export var mute_sound = false
 export var debug_lighting_on = false
 export var debug_f_die = false

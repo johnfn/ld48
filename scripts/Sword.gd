@@ -1,3 +1,4 @@
+class_name Sword
 extends Node2D
 
 onready var Letterbox = $"/root/Main/Letterbox"
@@ -14,14 +15,11 @@ var raycast_instance: RayCast2D
 var HitsparkScene = load("res://scenes/Hitspark.tscn")
 
 var damage = 1
-var player: Player
+onready var player: Player = $"/root/Main/Player"
 var swinging = false
 var has_raycasted_this_swing = true
 
 func _ready() -> void:
-  SwordSprite.visible = false
-  StickSprite.visible = true
-  
   raycast_instance = RayCast2D.new()
   raycast_instance.enabled = true
   raycast_instance.collide_with_areas = true
@@ -42,17 +40,6 @@ func _ready() -> void:
 
 func hide_anim():
   SliceAnimation.visible = false
-
-func on_pick_up() -> void:
-  Hitbox.set_disabled(true)
-  
-  SwordSprite.visible = true
-  StickSprite.visible = false
-  
-  SwordSprite.modulate.a = 0.3
-
-func init(player: Player):
-  self.player = player
 
 func set_in_use(in_use: bool) -> void:
   if not in_use:

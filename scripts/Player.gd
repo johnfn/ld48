@@ -19,7 +19,6 @@ onready var Weapons = $Equipment/weapons
 onready var health = max_health
 onready var coins = 0
 
-var equipment_slots = {}
 var is_invuln = false
 var idleCounter = 0
 
@@ -33,15 +32,58 @@ var FOOTSTEP_RANGE = 0.03
 var footstep_target = 0.0
 var SPAWN_INVULN = 1.0 # seconds
 var spawn_invuln_left = SPAWN_INVULN
+var arrow_scene = load("res://scenes/Arrow.tscn")
+
+onready var Sword = $Equipment/weapons/Sword
+onready var Bow = $Equipment/weapons/Bow
+
+func _ready() -> void:
+  Sword.visible = false
+  Bow.visible = false
+  
+  if Globals.debug_has_sword:
+    get_sword()
+    
+  if Globals.debug_has_bow:
+    get_bow()
+
+func get_sword():
+  Sword.visible = true
+
+func has_sword():
+  return Sword.visible
+
+func get_bow():
+  Bow.visible = true
+
+func has_bow():
+  return Bow.visible
 
 func _process(delta: float) -> void:
   if Letterbox.in_cinematic:
     return
-    
-  Weapons.look_at(get_global_mouse_position())
+  
+  if has_sword():
+    Sword.look_at(get_global_mouse_position())
+  
+  if has_bow():
+    Bow.look_at(get_global_mouse_position())
   
   if Input.is_key_pressed(KEY_F) and Globals.debug_f_die:
     damage(9999, self)
+
+
+func fire_arrow():
+  var new_arrow: Node2D = arrow_scene.instance()
+  
+  $"/root/Main".add_child(new_arrow)
+  
+  new_arrow.global_position = global_position
+  new_arrow.look_at(get_global_mouse_position())
+  
+  # Go past player
+  var dir = Vector2(cos(new_arrow.rotation), sin(new_arrow.rotation))
+  new_arrow.global_position += dir * 100.0
 
 func _physics_process(delta: float) -> void:
   if Letterbox.in_cinematic: 
@@ -118,25 +160,24 @@ func _unhandled_input(event: InputEvent) -> void:
   
   if Weapons.get_child_count() > 0:
     if Input.is_action_just_pressed("interact"):
-      for weapon in Weapons.get_children():
-        if weapon.has_method("set_in_use"):
-          weapon.set_in_use(true)
+      if has_sword():
+        Sword.set_in_use(true)
+      if has_bow():
+        fire_arrow()
+        
     elif Input.is_action_just_released("interact"):
-      for weapon in Weapons.get_children():
-        if weapon.has_method("set_in_use"):
-          weapon.set_in_use(false)
-  
-
-
-
+      if has_sword():
+        Sword.set_in_use(false)
 
 func set_direction(dir_name):
   if Sprite.animation != dir_name or not Sprite.playing:
     Sprite.play(dir_name)
+  
   if dir_name.find("up") >= 0 or dir_name == "left":
     Weapons.z_index = 0
   else:
     Weapons.z_index = 2
+  
   match dir_name:
     "up":
       Weapons.position = $Equipment/rh_up.position
@@ -182,6 +223,7 @@ func damage(amount: int, source: Node2D, strength=500) -> void:
       for child in get_children():
         if "Dialog" in child.name:
           child.queue_free()
+          
       return
     
     # bump player back a little
@@ -195,29 +237,11 @@ func damage(amount: int, source: Node2D, strength=500) -> void:
 
 
 func reset():
-  reset_equipment()
   Sprite.animation = "up"
   Sprite.stop()
   Sprite.frame = IDLE_FRAME
   health = max_health
   spawn_invuln_left = SPAWN_INVULN
-
-
-func reset_equipment():
-  for equipment in equipment_slots.values():
-    equipment.queue_free()
-  equipment_slots = {}
-
-
-func equip(equipment: Node, slot: String) -> void:
-  if equipment.has_method("init"):
-    equipment.init(self)
-  
-  if slot in equipment_slots:
-    equipment_slots[slot].queue_free()
-  Equipment.get_node(slot).call_deferred("add_child", equipment)
-  equipment_slots[slot] = equipment
-
 
 func is_player() -> bool:
   return true

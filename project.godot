@@ -43,6 +43,16 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
+}, {
+"base": "Node2D",
+"class": "Sword",
+"language": "GDScript",
+"path": "res://scripts/Sword.gd"
+}, {
+"base": "Area2D",
+"class": "SwordPickup",
+"language": "GDScript",
+"path": "res://scripts/SwordPickup.gd"
 } ]
 _global_script_class_icons={
 "BaseHittable": "",
@@ -51,7 +61,9 @@ _global_script_class_icons={
 "DialogTrigger": "",
 "Dog": "",
 "Main": "",
-"Player": ""
+"Player": "",
+"Sword": "",
+"SwordPickup": ""
 }
 
 [application]
