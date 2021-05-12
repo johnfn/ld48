@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Letterbox.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/chapter 2 title.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/chapter 1 title.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/item_get.png" type="Texture" id=4]
+[ext_resource path="res://scripts/ItemGet.gd" type="Script" id=5]
 
-[node name="Node2D" type="Node2D"]
+[node name="Letterbox" type="Node2D"]
 position = Vector2( 28.703, 52.3121 )
 script = ExtResource( 1 )
 
@@ -43,7 +45,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EnterScreenFadeRect" type="ColorRect" parent="CanvasLayer"]
+[node name="EntireScreenFadeRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
 margin_right = 1500.0
 margin_bottom = 1500.0
@@ -51,3 +53,18 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ItemGet" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 806.058, 654.281 )
+
+[node name="ItemGetSprite" type="Sprite" parent="CanvasLayer/ItemGet"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 4.10181, 4.10205 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+offset = Vector2( -5, 10 )
+script = ExtResource( 5 )
+
+[node name="AboveCanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enable = true

@@ -259,9 +259,14 @@ func wire_item_signals():
     item_node.connect("body_entered", self, "handle_item_body_entered", [item_node])
 
 func handle_item_body_entered(body: Node, item_node):
-  if body == Player and not is_transitioning:
+  if body == Player and not is_transitioning and not Letterbox.in_cinematic:
     if item_node is SwordPickup:
-      Player.get_sword()
+      Player.Sprite.play("itemget")
+      Player.z_index = 4005
+      yield(Letterbox.get_item_cinematic(item_node), "completed")
+      
+      Player.get_weapon(1) # WeaponNames.Sword
+      Player.set_active(1)
       item_node.queue_free()
 
 func handle_player_died():

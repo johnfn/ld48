@@ -5,7 +5,5 @@
 [node name="Globals" type="Node2D"]
 script = ExtResource( 1 )
 skip_cinematics = true
-debug_has_sword = true
-debug_has_bow = true
 mute_sound = true
 always_drop_arrow = true

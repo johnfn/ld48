@@ -30,6 +30,8 @@ var is_enemy = false
 
 var coin_drop = load("res://components/CoinDrop.tscn")
 
+var is_ready = false
+
 # Here's how you use this:
 #  display_text_sequence_co([
 #    "Hewo I am a small child",
@@ -39,6 +41,7 @@ var coin_drop = load("res://components/CoinDrop.tscn")
 func _ready():
   ZSorter.z_index = 500
   hide_everything()
+  is_ready = true
 
 var tick = 0
 
@@ -63,11 +66,14 @@ func hide_everything():
   DialogAdvanceArrow.visible = false
 
 func display_text_sequence_co(target: Node2D, sequence: Array, autodismiss_time_sec = 10.0) -> void:
+  print("name", target.name)
   target.call_deferred("add_child", self)
+  self.call_deferred("set_owner", target)
   
   self.modulate = Color.white
   
-  yield(self, "ready")
+  if not is_ready:
+    yield(self, "ready")
   
   hide_everything()
   
@@ -86,7 +92,7 @@ func display_text_sequence_co(target: Node2D, sequence: Array, autodismiss_time_
     Globals.active_dialog_player = self
     
   else:
-    is_enemy = false
+    is_enemy = true
     
     WhiteText.visible = true
     BlackImage.visible = true

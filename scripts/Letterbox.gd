@@ -1,12 +1,15 @@
 extends Node2D
 
-onready var TopRect = null
-onready var BottomRect = null
-onready var EntireScreenFadeRect = null
+onready var TopRect = $CanvasLayer/TopRect
+onready var BottomRect = $CanvasLayer/BottomRect
+onready var EntireScreenFadeRect = $CanvasLayer/EntireScreenFadeRect
 onready var camera: Camera2D = null
 onready var main = null
 onready var Cards = [$CanvasLayer/Title1, $CanvasLayer/Title2]
 onready var FireflySpawner = $"/root/Main/FireflySpawner"
+onready var ItemGet = $CanvasLayer/ItemGet
+var DialogScene = load("res://scenes/Dialog.tscn")
+var SwordPickup = load("res://components/SwordPickup.tscn")
 
 var shown_card = [false, false, false, false]
 var letterbox_animation_length = 45.0
@@ -22,9 +25,6 @@ var max_dusk = 0.2
 var max_night = 0.3
 
 func _ready():
-  TopRect = $CanvasLayer/TopRect
-  BottomRect = $CanvasLayer/BottomRect
-  EntireScreenFadeRect = $CanvasLayer/EnterScreenFadeRect
   camera = $"/root/Main/Camera"
   main = $"/root/Main"
 
@@ -33,6 +33,7 @@ func _ready():
   TopRect.rect_position.y -= TopRect.rect_size.y
   BottomRect.rect_position.y += BottomRect.rect_size.y
   EntireScreenFadeRect.visible = false 
+  ItemGet.visible = false
   
   for card in Cards:
     card.visible = false
@@ -43,13 +44,78 @@ func _ready():
 #func _process(f: float):
 #  DuskOverlay.modulate.a = 0.2
 #  NightOverlay.modulate.a = 1
+
+func get_item_cinematic(item: Node2D):
+  in_cinematic = true
   
+  # TODO: Just use a custom graphic lol
+  
+  # Show the animation and item you got
+  var main_item = SwordPickup.instance()
+  var bg_item = SwordPickup.instance()
+  
+  var player = $"/root/Main/Player"
+  var player_screen_pos = player.get_global_transform_with_canvas().origin
+  var pos = player_screen_pos + Vector2(0, -150)
+  var old_player_parent = player.get_parent()
+  var old_player_global_position = player.global_position
+  
+  # necessary for the player to sort properly over the fade layer
+  old_player_parent.remove_child(player)
+  
+  $CanvasLayer.add_child(main_item)
+  $CanvasLayer.add_child(bg_item)
+  $AboveCanvasLayer.add_child(player)
+  
+  player.Equipment.visible = false
+  player.global_position = old_player_global_position
+  
+  main_item.position = pos
+  bg_item.position = pos
+  ItemGet.position = pos
+  
+  bg_item.get_node("StickSprite").material.set_shader_param("white", 1.0)
+  main_item.z_index = 4000
+  bg_item.z_index = 3999
+#  bg_item.get_node("StickSprite").material.set_shader_param("white", 0.0)
+  
+#  main_item.scale = Vector2(2, 2)
+  bg_item.scale = Vector2(1.3, 1.3)
+  
+  bg_item.rotation_degrees = 0
+  bg_item.modulate = Color(1, 1, 1, 1)
+  
+  item.position = ItemGet.position + Vector2(40, -100)
+  item.scale = Vector2(2, 2)
+  
+  ItemGet.visible = true
+  
+  yield(fade_to_black(20.0, 0.8), "completed")
+  
+  var new_dialog = DialogScene.instance()
+  
+  yield(new_dialog.display_text_sequence_co(ItemGet, ["You got a stick!", "Oh god pls someone help me with dialog aaaaaa"], 500.0), "completed")
+  
+  player.Sprite.play("up")
+  ItemGet.visible = false
+  
+  player.Equipment.visible = true
+  player.get_parent().remove_child(player)
+  old_player_parent.add_child(player)
+  main_item.queue_free()
+  bg_item.queue_free()
+  player.global_position = old_player_global_position
+  
+  yield(unfade_to_black_timed(30.0), "completed")
+  
+  in_cinematic = false
+
 func animate_in(target: Node2D):
-  print("Start animating", is_animating)
   if is_animating:
     # two people called animate_in at the same time. wait until it finishes and then just end
     while is_animating:
       yield(get_tree(), "idle_frame")
+    
     return
     
   is_animating = true
@@ -90,7 +156,7 @@ func animate_out():
 
   is_animating = false
 
-func fade_to_black(fade_length):
+func fade_to_black(fade_length, fade_percentage = 1.0):
   if is_animating: 
     return
     
@@ -102,7 +168,7 @@ func fade_to_black(fade_length):
   for x in range(int(fade_length)):
     yield(get_tree(), "idle_frame")
     
-    EntireScreenFadeRect.modulate.a = (float(x) / fade_length)
+    EntireScreenFadeRect.modulate.a = (float(x) / fade_length) * fade_percentage
   
   is_animating = false
   
@@ -112,12 +178,13 @@ func unfade_to_black_timed(fade_length):
     
   is_animating = true
   EntireScreenFadeRect.visible = true
-  EntireScreenFadeRect.modulate.a = 1.0
+  
+  var starting = EntireScreenFadeRect.modulate.a
   
   for x in range(int(fade_length)):
     yield(get_tree(), "idle_frame")
     
-    EntireScreenFadeRect.modulate.a = 1.0 - (float(x) / fade_length)
+    EntireScreenFadeRect.modulate.a = starting - starting * (float(x) / fade_length)
   
   EntireScreenFadeRect.visible = false
   is_animating = false

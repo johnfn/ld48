@@ -40,7 +40,6 @@ func body_entered(other: Node2D):
   begin_cinematic(other)
     
 func begin_cinematic(initiator: Node2D):
-  print("begin cinematic", initiator.name)
   yield(get_tree(), "idle_frame")
   
   if sfx != "":

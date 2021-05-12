@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/art/chara_up2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -30,12 +30,18 @@
 [ext_resource path="res://assets/art/chara_shadow.png" type="Texture" id=28]
 [ext_resource path="res://components/Sword.tscn" type="PackedScene" id=29]
 [ext_resource path="res://scenes/Bow.tscn" type="PackedScene" id=30]
+[ext_resource path="res://assets/art/chara_get.png" type="Texture" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 12 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "itemget",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "down",
@@ -144,5 +150,4 @@ position = Vector2( 2.35164, -29.1645 )
 rotation = 0.000139589
 z_index = 1
 frames = SubResource( 2 )
-animation = "up"
-frame = 1
+animation = "itemget"

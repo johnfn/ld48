@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
-[ext_resource path="res://components/Sword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://components/SwordPickup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=5]
@@ -55,8 +55,8 @@ dialog = [ "Hey, come back! That's no fair!", "Huh, I wonder if there are any co
 [node name="Donut" parent="Items" instance=ExtResource( 6 )]
 position = Vector2( 640.263, 210.839 )
 
-[node name="Sword" parent="Items" instance=ExtResource( 2 )]
-position = Vector2( 740.105, 1894.07 )
+[node name="SwordPickup" parent="Items" instance=ExtResource( 2 )]
+position = Vector2( 818.491, 1587.34 )
 
 [node name="Obstacles" type="YSort" parent="."]
 
