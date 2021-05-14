@@ -10,6 +10,11 @@ onready var FireflySpawner = $"/root/Main/FireflySpawner"
 onready var ItemGet = $CanvasLayer/ItemGet
 var DialogScene = load("res://scenes/Dialog.tscn")
 var SwordPickup = load("res://components/SwordPickup.tscn")
+var WeaponName = preload("res://scripts/WeaponName.gd").WeaponName
+var item_scenes = {
+  WeaponName.Sword: preload("res://components/SwordPickup.tscn"),
+  WeaponName.Bow: preload("res://components/BowPickup.tscn")
+}
 
 var shown_card = [false, false, false, false]
 var letterbox_animation_length = 45.0
@@ -45,20 +50,25 @@ func _ready():
 #  DuskOverlay.modulate.a = 0.2
 #  NightOverlay.modulate.a = 1
 
-func get_item_cinematic(item: Node2D):
+
+func get_item_cinematic(item: Pickup):
   in_cinematic = true
   
   # TODO: Just use a custom graphic lol
   
   # Show the animation and item you got
-  var main_item = SwordPickup.instance()
-  var bg_item = SwordPickup.instance()
+  var lofted_item_scene = item_scenes[item.weapon_id]
+  var main_item = lofted_item_scene.instance()
+  var bg_item = lofted_item_scene.instance()
   
-  var player = $"/root/Main/Player"
+  var player = $"/root/Main/Levels/Player"
   var player_screen_pos = player.get_global_transform_with_canvas().origin
   var pos = player_screen_pos + Vector2(0, -150)
   var old_player_parent = player.get_parent()
   var old_player_global_position = player.global_position
+
+  player.Sprite.play("itemget")
+#  player.z_index = 4005
   
   # necessary for the player to sort properly over the fade layer
   old_player_parent.remove_child(player)
@@ -74,12 +84,12 @@ func get_item_cinematic(item: Node2D):
   bg_item.position = pos
   ItemGet.position = pos
   
-  bg_item.get_node("StickSprite").material.set_shader_param("white", 1.0)
+  bg_item.get_node("Sprite").material.set_shader_param("whited", 1.0)
   main_item.z_index = 4000
   bg_item.z_index = 3999
-#  bg_item.get_node("StickSprite").material.set_shader_param("white", 0.0)
+  # bg_item.get_node("StickSprite").material.set_shader_param("white", 0.0)
   
-#  main_item.scale = Vector2(2, 2)
+  # main_item.scale = Vector2(2, 2)
   bg_item.scale = Vector2(1.3, 1.3)
   
   bg_item.rotation_degrees = 0
@@ -94,7 +104,7 @@ func get_item_cinematic(item: Node2D):
   
   var new_dialog = DialogScene.instance()
   
-  yield(new_dialog.display_text_sequence_co(ItemGet, ["You got a stick!", "Oh god pls someone help me with dialog aaaaaa"], 500.0), "completed")
+  yield(new_dialog.display_text_sequence_co(ItemGet, item.pickup_dialog, 500.0), "completed")
   
   player.Sprite.play("up")
   ItemGet.visible = false
@@ -210,9 +220,11 @@ func show_title_card(num: int, trigger_lighting = false) -> void:
 
   if trigger_lighting:
     FireflySpawner.initial_firefly_spawn()
+    # TODO: use fn on Main
     $"/root/Main/CanvasModulate".visible = true
-    $"/root/Main/Player/Light2D".visible = true
-  
+    $"/root/Main/Levels/Player/Light2D".visible = true
+    $"/root/Main/Levels/Player/Light2DDark".visible = false
+    
   for x in range(30):
     c.modulate.a = 1.0 - x / 30.0
     yield(get_tree(), "idle_frame")

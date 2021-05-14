@@ -12,7 +12,7 @@ func damage_anim_animated_sprite(target: AnimatedSprite):
 
 func drop_item(target: Node2D):
   var parent = target.get_parent()
-  var player = $"/root/Main/Player"
+  var player = $"/root/Main/Levels/Player"
     
   if randi() % 5 == 0 or Globals.always_drop_arrow:
     var which_drop = randi() % 3

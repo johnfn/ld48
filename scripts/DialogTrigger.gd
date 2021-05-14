@@ -48,7 +48,7 @@ func begin_cinematic(initiator: Node2D):
   var new_dialog = DialogScene.instance()
   
   if speaker == null:
-    speaker = $"/root/Main/Player"
+    speaker = $"/root/Main/Levels/Player"
   
   if not cinematic_style_dialog:
     new_dialog.display_text_sequence_co(speaker, dialog, autodismiss_time)

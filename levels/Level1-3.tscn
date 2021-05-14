@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=2]
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=3]
-[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/Background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=8]
@@ -46,7 +46,7 @@ shader_param/white = null
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="EditorBackground" parent="." instance=ExtResource( 4 )]
+[node name="Background" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2.27588, 7.51172 )
 
 [node name="Items" type="Node2D" parent="."]

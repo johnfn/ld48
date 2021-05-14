@@ -6,7 +6,7 @@
 [ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
-[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://components/Background.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/CardTrigger.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=10]
@@ -34,7 +34,7 @@ shader_param/white = null
 script = ExtResource( 1 )
 song = "ForestAmbiance"
 
-[node name="EditorBackground" parent="." instance=ExtResource( 7 )]
+[node name="Background" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, 0.903444 )
 
 [node name="Items" type="Node2D" parent="."]

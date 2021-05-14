@@ -6,4 +6,3 @@
 script = ExtResource( 1 )
 skip_cinematics = true
 mute_sound = true
-always_drop_arrow = true

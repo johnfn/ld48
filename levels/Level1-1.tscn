@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/SwordPickup.tscn" type="PackedScene" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://components/FirTree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=6]
-[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://components/Background.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/EntranceTrigger.tscn" type="PackedScene" id=11]
+[ext_resource path="res://components/BowPickup.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -33,7 +34,7 @@ resource_local_to_scene = true
 [node name="LevelX" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="EditorBackground" parent="." instance=ExtResource( 7 )]
+[node name="Background" parent="." instance=ExtResource( 7 )]
 
 [node name="DialogTrigger2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 662.088, 1922.64 )
@@ -56,7 +57,10 @@ dialog = [ "Hey, come back! That's no fair!", "Huh, I wonder if there are any co
 position = Vector2( 640.263, 210.839 )
 
 [node name="SwordPickup" parent="Items" instance=ExtResource( 2 )]
-position = Vector2( 818.491, 1587.34 )
+position = Vector2( 591.521, 1280.68 )
+
+[node name="BowPickup" parent="Items" instance=ExtResource( 12 )]
+position = Vector2( 744.516, 2465.15 )
 
 [node name="Obstacles" type="YSort" parent="."]
 
@@ -553,6 +557,7 @@ __meta__ = {
 position = Vector2( 498.723, 2820.35 )
 scene_dest = "res://levels/LevelCave-1.tscn"
 exit_name = "Exit1"
+is_cave = true
 
 [node name="Exit1" type="Node2D" parent="."]
 position = Vector2( 570.073, 864.912 )

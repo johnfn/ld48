@@ -10,7 +10,7 @@ var started = false
   
 func initial_cloud_spawn():
   main = $'/root/Main'
-  player = $"/root/Main/Player"
+  player = $"/root/Main/Levels/Player"
   yield(get_tree(), "idle_frame")
   
   for i in range(50):

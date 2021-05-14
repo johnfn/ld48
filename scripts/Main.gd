@@ -2,7 +2,7 @@ class_name Main
 extends Node2D
 
 onready var Letterbox = $"/root/Main/Letterbox"
-onready var Player = $Player
+onready var Player = $Levels/Player
 onready var Cam = $Camera
 onready var Ui = $UI
 onready var Levels = $Levels
@@ -15,6 +15,7 @@ onready var load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + Transi
 onready var despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
 onready var FireflySpawner = $"/root/Main/FireflySpawner"
 onready var CanvasModulate = $CanvasModulate
+var WeaponName = preload("res://scripts/WeaponName.gd").WeaponName
 
 export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
@@ -106,12 +107,28 @@ func start_level(level_path: String) -> void:
   load_y = $Levels/TransitionTop/Markers/LoadPoint.position.y + TransitionTop.position.y
   despawn_y = $Levels/TransitionBottom/Markers/DespawnPoint.position.y + TransitionBottom.position.y
 
-func load_cave(level: String, exit_name: String) -> void:
+func set_bg_type(name: String):
+  for ch in $Background.get_children():
+    for bg_tile in ch.get_children():
+      if not (bg_tile is Sprite):
+        continue
+        
+      if bg_tile.name == name:
+        bg_tile.visible = true
+      else:
+        bg_tile.visible = false
+        
+func load_cave(level: String, exit_name: String, is_cave: bool) -> void:
   if level == curr_level_name:
     return
   
   Letterbox.in_cinematic = true
   yield(Letterbox.fade_to_black(30.0), "completed")
+  
+  if is_cave:
+    set_lighting_on(true, false)
+  else:
+    set_lighting_on(false, false)
   
   Letterbox.unfade_to_black_instant()
   Letterbox.in_cinematic = false
@@ -121,6 +138,10 @@ func load_cave(level: String, exit_name: String) -> void:
   Level.get_parent().remove_child(Level)
   
   Level = load_level(level)
+  
+  var background_name = Level.get_node("Background").texture_name
+  
+  set_bg_type(background_name)
   
   var exit_node = Level.get_node(exit_name)
   
@@ -155,14 +176,22 @@ func update_wall_positions() -> void:
   get_node("Walls/TopWall/Box").position.y = walled_level.top_wall + walled_level.position.y
   walled_level.dirty = false
 
+func set_lighting_on(light: bool, shading: bool) -> void:
+  CanvasModulate.visible = shading or light
+  
+  if light and not shading:
+    CanvasModulate.color = Color(0.2, 0.2, 0.2, 1.0)
+  else:
+    CanvasModulate.color = Color(0.5, 0.5, 0.5, 1.0)
+  $Levels/Player/Light2D.visible = light and shading
+  $Levels/Player/Light2DDark.visible = light and (not shading)
+  
 func _ready():  
   if CanvasModulate != null:
-    CanvasModulate.visible = false
-    $Player/Light2D.visible = false
+    set_lighting_on(false, false)
   
   if Globals.debug_lighting_on:
-    CanvasModulate.visible = true
-    $Player/Light2D.visible = true
+    set_lighting_on(true, true)
   
   Ui.player = Player
   Player.connect("died", self, "handle_player_died")
@@ -260,13 +289,14 @@ func wire_item_signals():
 
 func handle_item_body_entered(body: Node, item_node):
   if body == Player and not is_transitioning and not Letterbox.in_cinematic:
-    if item_node is SwordPickup:
-      Player.Sprite.play("itemget")
-      Player.z_index = 4005
-      yield(Letterbox.get_item_cinematic(item_node), "completed")
+    if item_node is Pickup:
+      var pickup: Pickup = item_node
       
-      Player.get_weapon(1) # WeaponNames.Sword
-      Player.set_active(1)
+      yield(Letterbox.get_item_cinematic(pickup), "completed")
+      
+      Player.get_weapon(pickup.weapon_id)
+      Player.set_active(pickup.weapon_id)
+      
       item_node.queue_free()
 
 func handle_player_died():

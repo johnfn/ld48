@@ -15,7 +15,7 @@ var raycast_instance: RayCast2D
 var HitsparkScene = load("res://scenes/Hitspark.tscn")
 
 var damage = 1
-onready var player: Player = $"/root/Main/Player"
+onready var player: Player = $"/root/Main/Levels/Player"
 var swinging = false
 var has_raycasted_this_swing = true
 

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/LevelX.gd" type="Script" id=1]
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=2]
-[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Dog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=6]
@@ -71,7 +71,7 @@ shader_param/white = null
 script = ExtResource( 1 )
 song = "Chapter2Song"
 
-[node name="EditorBackground" parent="." instance=ExtResource( 3 )]
+[node name="Background" parent="." instance=ExtResource( 3 )]
 
 [node name="Items" type="Node2D" parent="."]
 

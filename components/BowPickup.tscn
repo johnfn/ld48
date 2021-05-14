@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Pickup.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/stick.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/bow.png" type="Texture" id=2]
 [ext_resource path="res://materials/modulate_shader.tres" type="Material" id=3]
 
-[node name="SwordPickup" type="Area2D" groups=[
+[node name="BowPickup" type="Area2D" groups=[
 "items",
 "weapons",
 ]]
@@ -12,8 +12,8 @@ position = Vector2( 23.4522, -50.0451 )
 collision_layer = 24
 collision_mask = 1159
 script = ExtResource( 1 )
-weapon_id = 1
-pickup_dialog = [ "You got a stick!", "Oh god someone pls help me with dialog AAA" ]
+weapon_id = 2
+pickup_dialog = [ "You got a bow!", "AWESOME" ]
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 position = Vector2( -75.5015, 83.8852 )
@@ -22,5 +22,5 @@ polygon = PoolVector2Array( -88.0887, -2.29553, -89.9023, -62.2358, 5.07083, -15
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 3 )
-position = Vector2( -1.925, -0.912907 )
+position = Vector2( 1.44968, 10.8072 )
 texture = ExtResource( 2 )

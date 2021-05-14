@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://components/RoundTree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/DogMoveTrigger.tscn" type="PackedScene" id=2]
@@ -11,7 +11,8 @@
 [ext_resource path="res://components/MonsterWitch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/Shrub.tscn" type="PackedScene" id=10]
 [ext_resource path="res://components/Grass.tscn" type="PackedScene" id=11]
-[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=12]
+[ext_resource path="res://components/Background.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Store.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -43,10 +44,10 @@ resource_local_to_scene = true
 shader = SubResource( 6 )
 shader_param/white = null
 
-[node name="LevelX2" type="Node2D"]
+[node name="LevelX" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="EditorBackground" parent="." instance=ExtResource( 12 )]
+[node name="Background" parent="." instance=ExtResource( 12 )]
 position = Vector2( 7.9057, 4.09052 )
 
 [node name="Items" type="Node2D" parent="."]
@@ -834,5 +835,8 @@ dialog = [ "C'mere, you lil rascal!!" ]
 
 [node name="dog" type="Node2D" parent="."]
 position = Vector2( 638.152, -432.447 )
+
+[node name="Store" parent="." instance=ExtResource( 13 )]
+position = Vector2( 367.944, 5523.55 )
 
 [connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

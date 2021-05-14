@@ -35,12 +35,7 @@ var footstep_target = 0.0
 var SPAWN_INVULN = 1.0 # seconds
 var spawn_invuln_left = SPAWN_INVULN
 var arrow_scene = load("res://scenes/Arrow.tscn")
-
-enum WeaponNames {
-  Nothing = 0,
-  Sword = 1,
-  Bow = 2,
-}
+var WeaponName = preload("res://scripts/WeaponName.gd").WeaponName
 
 onready var WeaponSprites = [
   null,
@@ -56,12 +51,12 @@ func _ready() -> void:
       sprite.visible = false
   
   if Globals.debug_has_sword:
-    get_weapon(WeaponNames.Sword)
-    set_active(WeaponNames.Sword)
+    get_weapon(WeaponName.Sword)
+    set_active(WeaponName.Sword)
     
   if Globals.debug_has_bow:
-    get_weapon(WeaponNames.Bow)
-    set_active(WeaponNames.Bow)
+    get_weapon(WeaponName.Bow)
+    set_active(WeaponName.Bow)
     
 func get_weapon(weapon):
   has_weapon[weapon] = true
@@ -84,11 +79,11 @@ func _process(delta: float) -> void:
   if Letterbox.in_cinematic:
     return
   
-  if is_active(WeaponNames.Sword):
-    WeaponSprites[WeaponNames.Sword].look_at(get_global_mouse_position())
+  if is_active(WeaponName.Sword):
+    WeaponSprites[WeaponName.Sword].look_at(get_global_mouse_position())
   
-  if is_active(WeaponNames.Bow):
-    WeaponSprites[WeaponNames.Bow].look_at(get_global_mouse_position())
+  if is_active(WeaponName.Bow):
+    WeaponSprites[WeaponName.Bow].look_at(get_global_mouse_position())
   
   if Input.is_key_pressed(KEY_F) and Globals.debug_f_die:
     damage(9999, self)
@@ -200,15 +195,15 @@ func _unhandled_input(event: InputEvent) -> void:
   
   if Weapons.get_child_count() > 0:
     if Input.is_action_just_pressed("interact"):
-      if is_active(WeaponNames.Sword):
-        WeaponSprites[WeaponNames.Sword].set_in_use(true)
+      if is_active(WeaponName.Sword):
+        WeaponSprites[WeaponName.Sword].set_in_use(true)
         
-      if is_active(WeaponNames.Bow):
+      if is_active(WeaponName.Bow):
         fire_arrow()
         
     elif Input.is_action_just_released("interact"):
-      if is_active(WeaponNames.Sword):
-        WeaponSprites[WeaponNames.Sword].set_in_use(false)
+      if is_active(WeaponName.Sword):
+        WeaponSprites[WeaponName.Sword].set_in_use(false)
 
 func set_direction(dir_name):
   if Sprite.animation != dir_name or not Sprite.playing:

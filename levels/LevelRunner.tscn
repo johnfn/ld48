@@ -10,7 +10,7 @@
 [ext_resource path="res://components/MonsterShooter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/art/horde3.png" type="Texture" id=9]
 [ext_resource path="res://scenes/DialogTrigger.tscn" type="PackedScene" id=10]
-[ext_resource path="res://components/EditorBackground.tscn" type="PackedScene" id=11]
+[ext_resource path="res://components/Background.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/EnemyDialogTrigger.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -37,7 +37,7 @@ resource_local_to_scene = true
 position = Vector2( -34, 0 )
 script = ExtResource( 6 )
 
-[node name="EditorBackground" parent="." instance=ExtResource( 11 )]
+[node name="Background" parent="." instance=ExtResource( 11 )]
 position = Vector2( -2.82837, 0 )
 num_bgs = 9
 
@@ -1216,6 +1216,7 @@ z_index = 5
 position = Vector2( 640, -150 )
 frames = SubResource( 3 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Runner"]
