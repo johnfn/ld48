@@ -30,7 +30,7 @@ resource_local_to_scene = true
 shader = SubResource( 2 )
 shader_param/white = null
 
-[node name="LevelX" type="Node2D"]
+[node name="LevelX" type="YSort"]
 script = ExtResource( 1 )
 song = "ForestAmbiance"
 
@@ -339,7 +339,7 @@ position = Vector2( 416.221, 1765.26 )
 solid_leaves = false
 
 [node name="Tree14" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 584.443, 1758.53 )
+position = Vector2( 584.443, 1757.11 )
 solid_leaves = false
 
 [node name="Tree6" parent="YSort" instance=ExtResource( 4 )]
@@ -562,16 +562,16 @@ position = Vector2( 658.435, 3032.6 )
 [node name="LevelTop" type="Node2D" parent="Markers"]
 position = Vector2( 677.235, 0 )
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies2" type="Node2D" parent="."]
 
-[node name="DialogTrigger" parent="." instance=ExtResource( 8 )]
+[node name="DialogTrigger2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 648.739, 3016.3 )
 dialog = [ "Wiiiiinstoooon!!!!", "Come out, come out, wherever you are!" ]
 
-[node name="CardTrigger" parent="." instance=ExtResource( 9 )]
+[node name="CardTrigger2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 674.008, 3393.53 )
 
-[node name="Markers" type="Node2D" parent="."]
+[node name="Markers2" type="Node2D" parent="."]
 
 [node name="DogMoveTrigger" parent="." instance=ExtResource( 10 )]
 position = Vector2( 668.876, 522.663 )
@@ -582,8 +582,6 @@ dog_speak = [ "Yip yip!", "(Come follow me!)" ]
 [node name="DoggoDesto" type="Node2D" parent="."]
 position = Vector2( 636.598, -392.091 )
 
-[node name="DialogTrigger2" parent="." instance=ExtResource( 8 )]
+[node name="DialogTrigger3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 645.086, 205.466 )
 dialog = [ "Winston? Where'd you go??", "Okay, we can play ONE more game of hide and seek!" ]
-
-[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
