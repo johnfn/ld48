@@ -16,6 +16,9 @@ func _process(delta):
 func _ready():
   modulate = Color(1.0, 1.0, 1.0, 1.0)
   
+  if Engine.editor_hint:
+    return
+  
   if fake_tree:
     $Tree/FullHitbox.queue_free()
     $TreeTrunk.queue_free()
