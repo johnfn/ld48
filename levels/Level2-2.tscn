@@ -32,7 +32,7 @@ resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/white = null
 
-[node name="LevelX" type="Node2D"]
+[node name="LevelX" type="YSort"]
 script = ExtResource( 6 )
 song = "Chapter2Song"
 
@@ -484,5 +484,3 @@ position = Vector2( 630.773, -298.896 )
 [node name="DialogTrigger2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 628.015, 65.6009 )
 dialog = [ "Winston, is everything okay?", "Are you... taking me somewhere?" ]
-
-[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

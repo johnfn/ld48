@@ -13,7 +13,7 @@ export(int) var max_health = 4
 
 onready var Letterbox = $"/root/Main/Letterbox"
 onready var Sprite: AnimatedSprite = $Sprite
-onready var Hand = $Equipment/weapons/Sprite
+onready var Hand = $Equipment/weapons/Hand
 onready var Equipment = $Equipment
 onready var Weapons = $Equipment/weapons
 onready var health = max_health
@@ -212,7 +212,7 @@ func set_direction(dir_name):
   if dir_name.find("up") >= 0 or dir_name == "left":
     Weapons.z_index = 0
   else:
-    Weapons.z_index = 2
+    Weapons.z_index = 0
   
   match dir_name:
     "up":

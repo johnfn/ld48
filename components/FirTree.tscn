@@ -13,6 +13,7 @@ polygon = PoolVector2Array( -18.9979, 156.654, 96.0604, 134.009, 108.301, 59.343
 script = ExtResource( 3 )
 
 [node name="TreeTrunk" type="StaticBody2D" parent="."]
+position = Vector2( -3.83246, -124.342 )
 collision_layer = 2
 collision_mask = 133
 
@@ -25,20 +26,22 @@ polygon = PoolVector2Array( -29.4023, 118.096, 42.8152, 112.588, 22.6188, 60.567
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.329412 )
 material = ExtResource( 5 )
-position = Vector2( 4.94799, 102.966 )
+position = Vector2( 1.11552, -21.3761 )
 scale = Vector2( 1.16249, -1.37496 )
 texture = ExtResource( 4 )
 
 [node name="Trunk" type="Sprite" parent="."]
 material = ExtResource( 5 )
+position = Vector2( -3.83246, -124.342 )
 texture = ExtResource( 2 )
 
 [node name="Leaves" type="Sprite" parent="."]
 material = ExtResource( 5 )
-z_index = 5
+position = Vector2( -3.83246, -124.342 )
 texture = ExtResource( 1 )
 
 [node name="Tree" type="StaticBody2D" parent="."]
+position = Vector2( -3.83246, -124.342 )
 
 [node name="FullHitbox" type="CollisionPolygon2D" parent="Tree"]
 visible = false
@@ -49,6 +52,7 @@ polygon = PoolVector2Array( -4.42491, -61.3063, -21.2809, -33.7749, -27.6487, -1
 [node name="Tween" type="Tween" parent="."]
 
 [node name="LeafArea" type="Area2D" parent="."]
+position = Vector2( -3.83246, -124.342 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeafArea"]
 polygon = PoolVector2Array( 29.963, 93.6158, 89.9401, 45.2668, -1.24969, -124.873, -81.4233, 65.4632, -26.9542, 96.6758 )

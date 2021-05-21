@@ -44,7 +44,7 @@ resource_local_to_scene = true
 shader = SubResource( 6 )
 shader_param/white = null
 
-[node name="LevelX" type="Node2D"]
+[node name="LevelX" type="YSort"]
 script = ExtResource( 6 )
 
 [node name="Background" parent="." instance=ExtResource( 12 )]
@@ -609,7 +609,7 @@ position = Vector2( 1427.97, 5920.55 )
 
 [node name="MonsterShooter" parent="Enemies" instance=ExtResource( 8 )]
 material = SubResource( 1 )
-position = Vector2( 1062.24, 4156.31 )
+position = Vector2( 1092.96, 4028.17 )
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 8 )]
@@ -717,7 +717,7 @@ solid_leaves = false
 
 [node name="MonsterShooter" parent="." instance=ExtResource( 8 )]
 material = SubResource( 3 )
-position = Vector2( 240.247, 4597.72 )
+position = Vector2( 226.069, 4465.39 )
 
 [node name="Pushable" parent="." instance=ExtResource( 7 )]
 position = Vector2( 576, 1728 )
@@ -838,5 +838,3 @@ position = Vector2( 638.152, -432.447 )
 
 [node name="Store" parent="." instance=ExtResource( 13 )]
 position = Vector2( 367.944, 5523.55 )
-
-[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

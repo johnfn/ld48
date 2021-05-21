@@ -37,11 +37,6 @@ extents = Vector2( 12, 12 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 31 ) ],
-"loop": true,
-"name": "itemget",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "left",
@@ -56,6 +51,11 @@ animations = [ {
 "loop": true,
 "name": "up",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "itemget",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 18 ) ],
 "loop": true,
@@ -90,24 +90,23 @@ script = ExtResource( 2 )
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.294118 )
-position = Vector2( -76.5003, -162.845 )
+position = Vector2( -77.8989, -181.727 )
 rotation = 0.0156109
 scale = Vector2( 1.06821, 1.545 )
 texture = ExtResource( 28 )
 centered = false
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( 9.34276, 9.66458 )
+position = Vector2( 7.94411, -9.21707 )
 shape = SubResource( 1 )
 
 [node name="Equipment" type="Node2D" parent="."]
-position = Vector2( -4.89996, -28.9543 )
-z_index = 1
+position = Vector2( -6.29861, -47.836 )
 
 [node name="weapons" type="Node2D" parent="Equipment"]
 position = Vector2( 38.0235, 20.5912 )
 
-[node name="Sprite" type="Sprite" parent="Equipment/weapons"]
+[node name="Hand" type="Sprite" parent="Equipment/weapons"]
 material = ExtResource( 3 )
 texture = ExtResource( 15 )
 
@@ -146,8 +145,7 @@ position = Vector2( 13.4929, 22.4221 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 material = ExtResource( 3 )
-position = Vector2( 2.35164, -29.1645 )
+position = Vector2( 0.952988, -48.0462 )
 rotation = 0.000139589
-z_index = 1
 frames = SubResource( 2 )
 animation = "itemget"

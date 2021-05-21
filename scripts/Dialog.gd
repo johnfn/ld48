@@ -66,7 +66,6 @@ func hide_everything():
   DialogAdvanceArrow.visible = false
 
 func display_text_sequence_co(target: Node2D, sequence: Array, autodismiss_time_sec = 10.0) -> void:
-  print("name", target.name)
   target.call_deferred("add_child", self)
   self.call_deferred("set_owner", target)
   

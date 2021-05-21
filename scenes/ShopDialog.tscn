@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/BalsamiqSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/ShopButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/ShopDialog.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+resource_local_to_scene = true
+size = 150
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="ShopDialog" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Border" type="ColorRect" parent="."]
+margin_left = 245.0
+margin_top = 245.0
+margin_right = 1055.0
+margin_bottom = 1055.0
+mouse_filter = 2
+color = Color( 0.32549, 0.32549, 0.32549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog" type="ColorRect" parent="."]
+margin_left = 250.0
+margin_top = 250.0
+margin_right = 1050.0
+margin_bottom = 1050.0
+mouse_filter = 2
+color = Color( 0.109804, 0.0117647, 0.266667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Dialog"]
+margin_right = 800.0
+margin_bottom = 150.0
+custom_fonts/font = SubResource( 1 )
+text = "Shop!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="." instance=ExtResource( 2 )]
+margin_left = 302.297
+margin_top = 438.598
+margin_right = 602.297
+margin_bottom = 561.598

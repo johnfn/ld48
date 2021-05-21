@@ -33,7 +33,7 @@ extents = Vector2( 640, 154.813 )
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 
-[node name="LevelRunner" type="Node2D"]
+[node name="LevelRunner" type="YSort"]
 position = Vector2( -34, 0 )
 script = ExtResource( 6 )
 

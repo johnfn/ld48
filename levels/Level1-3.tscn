@@ -43,7 +43,7 @@ resource_local_to_scene = true
 shader = SubResource( 5 )
 shader_param/white = null
 
-[node name="LevelX" type="Node2D"]
+[node name="LevelX" type="YSort"]
 script = ExtResource( 2 )
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
@@ -904,5 +904,3 @@ dialog = [ "*grumble grumble*" ]
 
 [node name="dog" type="Node2D" parent="."]
 position = Vector2( 633.209, -250.22 )
-
-[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]

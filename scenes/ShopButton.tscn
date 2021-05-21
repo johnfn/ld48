@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/BalsamiqSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/art/heart_full.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/coin.png" type="Texture" id=3]
+[ext_resource path="res://scripts/ShopButton.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+resource_local_to_scene = true
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "MouseOver"
+length = 0.15
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+
+[node name="ColorRect" type="ColorRect"]
+margin_left = -147.89
+margin_top = -53.974
+margin_right = 152.11
+margin_bottom = 69.026
+rect_scale = Vector2( 0.993724, 0.990448 )
+color = Color( 0.203922, 0.211765, 0.329412, 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyLabel" type="Label" parent="."]
+margin_left = 145.609
+margin_top = 7.00089
+margin_right = 282.609
+margin_bottom = 43.0009
+custom_fonts/font = SubResource( 1 )
+text = "Buy Heart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLabel" type="Label" parent="."]
+margin_left = 262.719
+margin_top = 77.1667
+margin_right = 285.719
+margin_bottom = 113.167
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.854902, 0.854902, 0.854902, 1 )
+text = "15"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IconHeart" type="Sprite" parent="."]
+position = Vector2( 40.193, 54.4882 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+
+[node name="Coin" type="Sprite" parent="."]
+position = Vector2( 231.438, 98.5456 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/MouseOver = SubResource( 3 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_ColorRect_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_ColorRect_mouse_exited"]

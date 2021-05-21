@@ -59,7 +59,7 @@ resource_local_to_scene = true
 shader = SubResource( 6 )
 shader_param/white = null
 
-[node name="LevelX" type="Node2D"]
+[node name="LevelX" type="YSort"]
 script = ExtResource( 6 )
 song = "ForestAmbiance"
 
@@ -558,5 +558,3 @@ position = Vector2( 652.696, 1362.05 )
 [node name="MusicTrigger" parent="." instance=ExtResource( 17 )]
 position = Vector2( 685.547, 2770.64 )
 song = "Chapter2Song"
-
-[connection signal="tree_exited" from="Items/Donut" to="." method="_on_Donut_tree_exited"]
