@@ -5,6 +5,35 @@
 [ext_resource path="res://assets/art/coin.png" type="Texture" id=3]
 [ext_resource path="res://scripts/ShopButton.gd" type="Script" id=4]
 
+[sub_resource type="Animation" id=3]
+resource_name = "MouseOver"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 3.03143, 0.287175 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 3.24901, 1 ),
+"update": 0,
+"values": [ Color( 0.203922, 0.211765, 0.329412, 1 ), Color( 0.27451, 0.282353, 0.423529, 1 ) ]
+}
+
 [sub_resource type="DynamicFont" id=1]
 resource_local_to_scene = true
 size = 30
@@ -19,51 +48,61 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "MouseOver"
-length = 0.15
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
-}
-
-[node name="ColorRect" type="ColorRect"]
-margin_left = -147.89
-margin_top = -53.974
-margin_right = 152.11
-margin_bottom = 69.026
-rect_scale = Vector2( 0.993724, 0.990448 )
+[node name="ShopButton" type="ColorRect"]
+margin_right = 351.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 250, 120 )
+rect_pivot_offset = Vector2( 150, 60 )
 color = Color( 0.203922, 0.211765, 0.329412, 1 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BuyLabel" type="Label" parent="."]
-margin_left = 145.609
-margin_top = 7.00089
-margin_right = 282.609
-margin_bottom = 43.0009
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/MouseOver = SubResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSprite" type="TextureRect" parent="HBoxContainer"]
+margin_right = 90.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 94.0
+margin_right = 231.0
+margin_bottom = 81.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 137.0
+margin_bottom = 36.0
 custom_fonts/font = SubResource( 1 )
 text = "Buy Heart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CostLabel" type="Label" parent="."]
-margin_left = 262.719
-margin_top = 77.1667
-margin_right = 285.719
-margin_bottom = 113.167
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 40.0
+margin_right = 137.0
+margin_bottom = 70.0
+alignment = 2
+
+[node name="CostLabel" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 74.0
+margin_right = 97.0
+margin_bottom = 30.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.854902, 0.854902, 0.854902, 1 )
 text = "15"
@@ -71,18 +110,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="IconHeart" type="Sprite" parent="."]
-position = Vector2( 40.193, 54.4882 )
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 2 )
-
-[node name="Coin" type="Sprite" parent="."]
-position = Vector2( 231.438, 98.5456 )
-scale = Vector2( 1.5, 1.5 )
+[node name="Coin" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 101.0
+margin_right = 137.0
+margin_bottom = 30.0
 texture = ExtResource( 3 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/MouseOver = SubResource( 3 )
 
 [connection signal="mouse_entered" from="." to="." method="_on_ColorRect_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_ColorRect_mouse_exited"]
