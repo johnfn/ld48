@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/BalsamiqSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/ShopButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/ShopDialog.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/Dialog.tres" type="DynamicFont" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 resource_local_to_scene = true
@@ -11,6 +12,22 @@ size = 150
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Close"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="ShopDialog" type="Node2D"]
 script = ExtResource( 3 )
@@ -58,23 +75,41 @@ __meta__ = {
 }
 
 [node name="Button" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_left = 0.0
-margin_top = 0.0
 margin_right = 350.0
-margin_bottom = 120.0
 
 [node name="Button2" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_left = 0.0
 margin_top = 136.0
 margin_right = 350.0
 margin_bottom = 256.0
 item = 1
 
 [node name="Button3" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_left = 0.0
 margin_top = 272.0
 margin_right = 350.0
 margin_bottom = 392.0
 item = 2
 
 [node name="DoneButton" parent="." instance=ExtResource( 4 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Close = SubResource( 2 )
+
+[node name="Description" type="Label" parent="."]
+margin_left = 699.656
+margin_top = 480.757
+margin_right = 999.656
+margin_bottom = 542.757
+custom_fonts/font = ExtResource( 5 )
+text = "This is a heart."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_move" from="VBoxContainer/Button" to="." method="_on_Button_mouse_move"]
+[connection signal="mouse_out" from="VBoxContainer/Button" to="." method="on_button_mouse_out"]
+[connection signal="mouse_move" from="VBoxContainer/Button2" to="." method="_on_Button2_mouse_move"]
+[connection signal="mouse_out" from="VBoxContainer/Button2" to="." method="on_button_mouse_out"]
+[connection signal="mouse_move" from="VBoxContainer/Button3" to="." method="_on_Button3_mouse_move"]
+[connection signal="mouse_out" from="VBoxContainer/Button3" to="." method="on_button_mouse_out"]
+[connection signal="click" from="DoneButton" to="." method="_on_DoneButton_click"]

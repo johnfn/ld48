@@ -26,7 +26,7 @@ var max_arrows = 20
 
 var knockback = false
 var knockback_source: Node2D = null
-const KNOCKBACK_DECAY = 1500
+const KNOCKBACK_DECAY = 15000
 var knockback_velocity = Vector2(0, 0)
 
 var FOOTSTEP_RATE = 0.25
@@ -75,7 +75,7 @@ func set_active(weapon):
 func is_active(weapon):
   return active_weapon == weapon
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:  
   if Letterbox.in_cinematic:
     return
   
@@ -87,12 +87,14 @@ func _process(delta: float) -> void:
   
   if Input.is_key_pressed(KEY_F) and Globals.debug_f_die:
     damage(9999, self)
+  
+  if Input.is_key_pressed(KEY_G) and Globals.debug_g_give_money:
+    coins += 1
 
   if Input.is_action_just_pressed("swap_weapon"):
     rotate_weapon()
 
 func rotate_weapon():
-  print("Hello")
   for i in range(active_weapon + 1, active_weapon + len(WeaponSprites) + 1):
     var weapon = i % len(WeaponSprites)
     
@@ -133,6 +135,7 @@ func _physics_process(delta: float) -> void:
   var direction = input_vec.normalized() * max_speed * (4.0 if is_running else 1.0)
   
   var knockback_strength = knockback_velocity.length()
+  
   if knockback_strength > 0:
     knockback_velocity = knockback_velocity.normalized() * max(0, knockback_strength - KNOCKBACK_DECAY * delta)
     direction += knockback_velocity
@@ -248,13 +251,14 @@ func get_arrows(amount: int) -> void:
   if arrows > max_arrows:
     arrows = max_arrows
     
-func damage(amount: int, source: Node2D, strength=500) -> void:
+func damage(amount: int, source: Node2D, strength = 500) -> void:
   # returns whether damage was actually taken
   if not is_invuln and health > 0 and not Letterbox.in_cinematic and spawn_invuln_left <= 0.0:
-    
     # take damage
     
-    health -= amount
+    if not Globals.debug_invincible:
+      health -= amount
+      
     SoundManager.play_sound("Hit")
     
     if health <= 0:
@@ -266,7 +270,6 @@ func damage(amount: int, source: Node2D, strength=500) -> void:
       for child in get_children():
         if "Dialog" in child.name:
           child.queue_free()
-          
       return
     
     # bump player back a little

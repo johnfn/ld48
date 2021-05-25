@@ -17,6 +17,8 @@ onready var FireflySpawner = $"/root/Main/FireflySpawner"
 onready var CanvasModulate = $CanvasModulate
 var WeaponName = preload("res://scripts/WeaponName.gd").WeaponName
 
+var screen_shake_time_left = 0.0
+
 export(float) var max_camera_speed = 300
 export(float) var camera_offset = 370
 
@@ -44,6 +46,7 @@ var bgs = [0, 1, 2, 3]
 # new_scene and loaded_scene are temp vars
 var new_scene = null
 var loaded_scene = null
+var initial_cam_x
 var already_loaded_levels = {}
 
 func add_to_inventory(item_name):
@@ -193,6 +196,7 @@ func _ready():
   if Globals.debug_lighting_on:
     set_lighting_on(true, true)
   
+  initial_cam_x = Cam.position.x
   Ui.player = Player
   Player.connect("died", self, "handle_player_died")
   start_level(level_scenes[start_level_num])
@@ -215,6 +219,8 @@ func jump_view(dist):
     bg.position.y += dist
     bg.get_node('Hitbox').disabled = false
 
+func screen_shake(duration: float):
+  screen_shake_time_left = duration
 
 func get_desired_cam_position(delta: float):
   var walled_level = OldLevel if is_transitioning else Level
@@ -230,7 +236,13 @@ func get_desired_cam_position(delta: float):
   if not walled_level.is_top_open and not is_transitioning:
     cam_pos = max(walled_level.top_wall + BASE_VIEWPORT_HEIGHT / 2 + walled_level.position.y, cam_pos)
   
-  return cam_pos
+  var shake = Vector2.ZERO
+  
+  if screen_shake_time_left > 0:
+    shake = Vector2(randf() * 5.0 - 2.0, randf() * 5.0 - 2.0)
+    screen_shake_time_left -= delta
+  
+  return Vector2(initial_cam_x, cam_pos) + shake
 
 # Returns the current level number, or -1 if you're in a cave
 func curr_level_num():
@@ -244,9 +256,10 @@ func curr_level_num():
   return index
 
 func _process(delta: float):
+  # In this case, the letterbox takes care of camera location
+    
   if not Letterbox.in_cinematic and Cam.current:
-    # In this case, the letterbox takes care of camera location 
-    Cam.position.y = get_desired_cam_position(delta)
+    Cam.position = get_desired_cam_position(delta)
   
   if Player.position.y < load_y and not is_transitioning:
     is_transitioning = true

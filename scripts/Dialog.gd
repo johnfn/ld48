@@ -2,6 +2,8 @@
 
 extends Control
 
+signal dialog_complete
+
 onready var ZSorter: Node2D = $ZSorter
 
 onready var BlackImage: NinePatchRect = $ZSorter/BlackImage
@@ -76,7 +78,7 @@ func display_text_sequence_co(target: Node2D, sequence: Array, autodismiss_time_
   
   hide_everything()
   
-  if target is Player or target is Dog:
+  if target is Player or target is Dog or target is Store:
     is_player = true
     
     BlackText.visible = true
@@ -101,6 +103,8 @@ func display_text_sequence_co(target: Node2D, sequence: Array, autodismiss_time_
     
   for phrase in sequence:
     yield(display_text_co(phrase, autodismiss_time_sec), "completed")
+    
+  emit_signal("dialog_complete")
   
   $Tween.interpolate_property(
     self, 
@@ -195,7 +199,6 @@ func display_text_co(new_text: String, autodismiss_time_sec: float) -> void:
   
   # autodismiss after 3 sec roughly
   
-  print("Auto", autodismiss_time_sec)
   for x in range(autodismiss_time_sec * 60.0):
     yield(get_tree(), "idle_frame")
     

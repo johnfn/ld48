@@ -1,9 +1,10 @@
 extends BaseHittable
 
+var screen_shake_on_hit = false
+
 func _init().():
   self.health = 1
-  self.hit_sfx = "Bush"
-  
+  self.hit_sfx = "Bush"  
   
 func _ready():
   var shrubMaterial = $Sprite.material

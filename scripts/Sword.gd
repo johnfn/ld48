@@ -5,6 +5,7 @@ onready var Letterbox = $"/root/Main/Letterbox"
 onready var AnimationPlayer = $SwordObj/AnimationPlayer
 onready var swing_animation = $SwordObj/AnimationPlayer.get_animation("Swing")
 onready var Hitbox: CollisionPolygon2D = $Hitbox
+onready var Hurtbox: CollisionPolygon2D = $Hurtbox
 onready var SwordSprite = $SwordObj/SwordSprite
 onready var StickSprite = $StickSprite
 onready var SwordArea = self
@@ -107,14 +108,24 @@ func _physics_process(delta):
       var damaged = false
       
       if hit == potential_enemy:
+        var screen_shake = true
+        
+        if "screen_shake_on_hit" in potential_enemy:
+          screen_shake = potential_enemy.screen_shake_on_hit
+        
         hit.damage(damage, self)
         successful_hits.push_back(potential_enemy)
+        
+        if screen_shake:
+          $"/root/Main".screen_shake_time_left = 0.05
       
       if hit == null and potential_enemy.get_collision_layer_bit(11):
         potential_enemy.damage(damage, self)
         successful_hits.push_back(potential_enemy)
   
   # render hitspark
+  
+  var hit_anything = false
   
   for hit in hits:
     raycast_instance.global_position = player.global_position
@@ -123,6 +134,8 @@ func _physics_process(delta):
     
     if raycast_instance.get_collider() == null:
       continue
+    
+    hit_anything = true
     
     var hitspark = HitsparkScene.instance()
     
@@ -136,7 +149,7 @@ func _physics_process(delta):
     hitspark.visible = true
     hitspark.HitsparkAnimation.frame = 0
     hitspark.HitsparkAnimation.play("hitspark")
-        
+    
     hitspark.look_at(player.global_position)
     hitspark.rotation_degrees += 180
     
@@ -147,3 +160,4 @@ func _physics_process(delta):
     hitspark.queue_free()
 
     break
+

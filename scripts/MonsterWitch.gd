@@ -50,8 +50,8 @@ func on_enter(other) -> void:
   
   if other.has_method("is_player") and other.is_player():
     player_in_contact = other
-  else:
-    current_movement_direction *= -1
+    
+  current_movement_direction *= -1
 
 func on_exit(other) -> void:
   .on_exit(other)

@@ -9,6 +9,7 @@ var shooter = null
 var damage = 1
 var active = true
 
+onready var animation = $AnimationPlayer
 onready var sprite = $Sprite
 
 func _ready():
@@ -17,20 +18,15 @@ func _ready():
   
   connect("body_entered", self, "body_entered")
 
-func bullet_explode_anim_co():
+func explode():
   if exploding or not active: 
     return
     
   exploding = true
   
-  # TODO - better anim
-  self.sprite.scale = Vector2(5, 5)
+  animation.play("Hit")
   
-  for x in range(30):
-    self.sprite.scale = Vector2(1.0 + x / 30.0, 1.0 + x / 30.0)
-    self.sprite.modulate.a = (10.0 - float(x)) / 10.0
-
-    yield(get_tree(), "idle_frame")
+  yield(animation, "animation_finished")
 
   queue_free()
 
@@ -40,11 +36,15 @@ func bullet_explode_anim_co():
 func body_entered(body):
   if body is Player:
     body.damage(damage, self)
-    bullet_explode_anim_co()
+    explode()
   elif body != shooter:
-    bullet_explode_anim_co()
+    explode()
 
 func _integrate_forces(state):
+  if exploding: 
+    state.linear_velocity = Vector2.ZERO
+    return
+    
   if active:
     state.linear_velocity = direction * speed
 

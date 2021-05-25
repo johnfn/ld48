@@ -33,25 +33,10 @@
 [ext_resource path="res://assets/art/chara_get.png" type="Texture" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 12 )
+extents = Vector2( 26.5449, 25.176 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "left",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 4 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "right",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 1 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "up",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 31 ) ],
 "loop": true,
 "name": "itemget",
@@ -81,6 +66,21 @@ animations = [ {
 "loop": true,
 "name": "downright",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "left",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "right",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 1 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "up",
+"speed": 12.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -98,6 +98,10 @@ centered = false
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 7.94411, -9.21707 )
+shape = SubResource( 1 )
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2( 2.10744, -18.7017 )
 shape = SubResource( 1 )
 
 [node name="Equipment" type="Node2D" parent="."]

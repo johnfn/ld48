@@ -35,16 +35,8 @@ shader_param/white = null
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
-shader = SubResource( 1 )
-shader_param/white = null
 
-[sub_resource type="ShaderMaterial" id=4]
-resource_local_to_scene = true
-
-[sub_resource type="ShaderMaterial" id=5]
-resource_local_to_scene = true
-
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 
 uniform float white;
@@ -54,17 +46,24 @@ void fragment() {
     COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), white), texture_color.a);
 }"
 
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+shader_param/white = null
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+shader_param/white = null
+
 [sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
-shader = SubResource( 6 )
-shader_param/white = null
 
 [node name="LevelX" type="YSort"]
 script = ExtResource( 6 )
 song = "ForestAmbiance"
 
 [node name="Background" parent="." instance=ExtResource( 8 )]
-position = Vector2( -2.12659, 2.12659 )
 
 [node name="Items" type="Node2D" parent="."]
 
@@ -72,11 +71,9 @@ position = Vector2( -2.12659, 2.12659 )
 position = Vector2( 642.693, 125.794 )
 
 [node name="river_2tiles" type="Sprite" parent="."]
-position = Vector2( 640, 1367 )
+position = Vector2( -12.6375, 1219.65 )
 texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
+centered = false
 
 [node name="Obstacles" type="YSort" parent="."]
 
@@ -88,6 +85,9 @@ position = Vector2( 852.007, 737.955 )
 
 [node name="Node2D10" parent="Obstacles" instance=ExtResource( 12 )]
 position = Vector2( 759.733, 739.531 )
+
+[node name="Node2D11" parent="Obstacles" instance=ExtResource( 12 )]
+position = Vector2( 539.523, 2098.81 )
 
 [node name="Node2D5" parent="Obstacles" instance=ExtResource( 12 )]
 position = Vector2( 447.257, 741.129 )
@@ -149,7 +149,7 @@ position = Vector2( 13.1243, 1007.65 )
 position = Vector2( 13.1243, 1007.65 )
 
 [node name="Tree36" parent="Obstacles" instance=ExtResource( 1 )]
-position = Vector2( 15.3596, 1171.94 )
+position = Vector2( 11.8194, 1246.99 )
 
 [node name="Tree50" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 0, 1560.78 )
@@ -315,27 +315,80 @@ position = Vector2( 1196.9, 2805.93 )
 [node name="Tree82" parent="Obstacles" instance=ExtResource( 1 )]
 position = Vector2( 1453.12, 2803.64 )
 
+[node name="Grass" parent="Obstacles" instance=ExtResource( 13 )]
+material = SubResource( 2 )
+position = Vector2( 1125.14, 1529.07 )
+
+[node name="Grass4" parent="Obstacles" instance=ExtResource( 13 )]
+material = SubResource( 2 )
+position = Vector2( 205.302, 1519.35 )
+
+[node name="Grass5" parent="Obstacles" instance=ExtResource( 13 )]
+material = SubResource( 2 )
+position = Vector2( 320.454, 1487.44 )
+
+[node name="Grass6" parent="Obstacles" instance=ExtResource( 13 )]
+material = SubResource( 2 )
+position = Vector2( 227.5, 1597.05 )
+
+[node name="Grass2" parent="Obstacles" instance=ExtResource( 13 )]
+material = SubResource( 2 )
+position = Vector2( 1014.15, 1504.09 )
+
+[node name="Grass3" parent="Obstacles" instance=ExtResource( 13 )]
+material = SubResource( 2 )
+position = Vector2( 1123.75, 1624.8 )
+rotation = 0.0249332
+
+[node name="Shrub7" parent="Obstacles" instance=ExtResource( 10 )]
+material = SubResource( 3 )
+position = Vector2( 262.863, 2383.71 )
+
+[node name="Shrub10" parent="Obstacles" instance=ExtResource( 10 )]
+material = SubResource( 3 )
+position = Vector2( 228.153, 2252.76 )
+
+[node name="Shrub15" parent="Obstacles" instance=ExtResource( 10 )]
+material = SubResource( 3 )
+position = Vector2( 375.092, 2304 )
+
+[node name="Shrub11" parent="Obstacles" instance=ExtResource( 10 )]
+material = SubResource( 3 )
+position = Vector2( 275.761, 392.93 )
+
+[node name="Shrub12" parent="Obstacles" instance=ExtResource( 10 )]
+material = SubResource( 3 )
+position = Vector2( 348.481, 309.821 )
+
+[node name="Shrub13" parent="Obstacles" instance=ExtResource( 10 )]
+material = SubResource( 3 )
+position = Vector2( 405.618, 402.02 )
+
+[node name="Shrub14" parent="Obstacles" instance=ExtResource( 10 )]
+material = SubResource( 3 )
+position = Vector2( 878.297, 312.418 )
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="MonsterWitch" parent="Enemies" instance=ExtResource( 9 )]
-material = SubResource( 2 )
+material = SubResource( 5 )
 position = Vector2( 979.61, 2286.91 )
 
 [node name="MonsterWitch2" parent="Enemies" instance=ExtResource( 9 )]
-material = SubResource( 2 )
-position = Vector2( 647.399, 652.402 )
+material = SubResource( 5 )
+position = Vector2( 646.129, 550.772 )
 
 [node name="MonsterShooter3" parent="Enemies" instance=ExtResource( 5 )]
-material = SubResource( 3 )
-position = Vector2( 1026.4, 1859.45 )
+material = SubResource( 6 )
+position = Vector2( 1015.65, 1742.58 )
 direction_to_shoot = Vector2( -1, 0 )
 
 [node name="MonsterShooter2" parent="Enemies" instance=ExtResource( 5 )]
-material = SubResource( 4 )
+material = SubResource( 7 )
 position = Vector2( 984.382, 493.439 )
 direction_to_shoot = Vector2( -1, 0 )
 
-[node name="Markers" type="Node2D" parent="."]
+[node name="Markers" type="YSort" parent="."]
 
 [node name="LevelBottom" type="Node2D" parent="Markers"]
 position = Vector2( 669.949, 3035.61 )
@@ -347,69 +400,16 @@ position = Vector2( 670.655, 2678.84 )
 position = Vector2( 677.235, 0 )
 
 [node name="Pushable89" parent="Markers" instance=ExtResource( 3 )]
-position = Vector2( 832, 1536 )
+position = Vector2( 704, 1504 )
 
 [node name="Pushable91" parent="Markers" instance=ExtResource( 3 )]
-position = Vector2( 960, 1600 )
+position = Vector2( 896, 1568 )
 
 [node name="Pushable92" parent="Markers" instance=ExtResource( 3 )]
-position = Vector2( 512, 1536 )
+position = Vector2( 512, 1504 )
 
 [node name="Pushable93" parent="Markers" instance=ExtResource( 3 )]
-position = Vector2( 448, 1600 )
-
-[node name="Shrub7" parent="." instance=ExtResource( 10 )]
-material = SubResource( 5 )
-position = Vector2( 262.863, 2383.71 )
-
-[node name="Grass" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
-position = Vector2( 862.274, -854.643 )
-
-[node name="Grass4" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
-position = Vector2( -57.5613, -864.355 )
-
-[node name="Grass5" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
-position = Vector2( 57.5915, -896.265 )
-
-[node name="Grass6" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
-position = Vector2( -35.3632, -786.661 )
-
-[node name="Grass2" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
-position = Vector2( 751.283, -879.616 )
-
-[node name="Grass3" parent="Shrub7" instance=ExtResource( 13 )]
-material = SubResource( 7 )
-position = Vector2( 860.886, -758.914 )
-rotation = 0.0249332
-
-[node name="Shrub10" parent="." instance=ExtResource( 10 )]
-material = SubResource( 5 )
-position = Vector2( 228.153, 2252.76 )
-
-[node name="Shrub15" parent="." instance=ExtResource( 10 )]
-material = SubResource( 5 )
-position = Vector2( 375.092, 2304 )
-
-[node name="Shrub11" parent="." instance=ExtResource( 10 )]
-material = SubResource( 5 )
-position = Vector2( 275.761, 392.93 )
-
-[node name="Shrub12" parent="." instance=ExtResource( 10 )]
-material = SubResource( 5 )
-position = Vector2( 348.481, 309.821 )
-
-[node name="Shrub13" parent="." instance=ExtResource( 10 )]
-material = SubResource( 5 )
-position = Vector2( 405.618, 402.02 )
-
-[node name="Shrub14" parent="." instance=ExtResource( 10 )]
-material = SubResource( 5 )
-position = Vector2( 878.297, 312.418 )
+position = Vector2( 512, 1632 )
 
 [node name="Fillable" parent="." instance=ExtResource( 11 )]
 position = Vector2( 512, 1408 )
@@ -525,14 +525,15 @@ position = Vector2( 640, 1344 )
 [node name="Fillable38" parent="." instance=ExtResource( 11 )]
 position = Vector2( 576, 1344 )
 
+[node name="DialogTrigger3" parent="." instance=ExtResource( 14 )]
+visible = false
+position = Vector2( 697.912, 1555.49 )
+dialog = [ "Hey, what a cute little river! I wonder if I can get across it?" ]
+
 [node name="DialogTrigger" parent="." instance=ExtResource( 14 )]
 position = Vector2( 670.097, 2648.31 )
 dialog = [ "Whoa... I've never been in *this* part of the forest before.", "Winston, where are we going? I hope he gets tired soon..." ]
 cinematic_style_dialog = true
-
-[node name="DialogTrigger" parent="DialogTrigger" instance=ExtResource( 14 )]
-position = Vector2( 30.0276, -1091.34 )
-dialog = [ "Hey, what a cute little river! I wonder if I can get across it?" ]
 
 [node name="CardTrigger" parent="." instance=ExtResource( 15 )]
 position = Vector2( 681.228, 2958.94 )

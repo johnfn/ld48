@@ -7,8 +7,10 @@ export var debug_has_bow = false
 export var mute_sound = false
 export var debug_lighting_on = false
 export var debug_f_die = false
+export var debug_g_give_money = false
 export var mute_sfx = false
 export var always_drop_arrow = false
+export var debug_invincible = false
 
 var active_dialog_enemy = null
 var active_dialog_player = null
@@ -16,8 +18,8 @@ var active_dialog_player = null
 var seen_dialogs = {}
 
 func get_camera() -> Camera2D:
-  var camera_override: Camera2D = $"/root/Main/Levels/LevelRunner/Camera"
-  var camera_normal: Camera2D = $"/root/Main/Camera"
+  var camera_override: Camera2D = get_node_or_null("/root/Main/Levels/LevelRunner/Camera")
+  var camera_normal: Camera2D = get_node_or_null("/root/Main/Camera")
   
   if camera_override != null and camera_override.current:
     return camera_override

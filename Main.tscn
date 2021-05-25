@@ -19,7 +19,7 @@ extents = Vector2( 956.12, 10 )
 [node name="Main" type="Node2D"]
 position = Vector2( 1.43592, -2.43603 )
 script = ExtResource( 3 )
-start_level_num = 5
+start_level_num = 4
 
 [node name="Letterbox" parent="." instance=ExtResource( 26 )]
 position = Vector2( 27.8121, 50.462 )
