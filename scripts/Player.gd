@@ -178,7 +178,6 @@ func _physics_process(delta: float) -> void:
       footstep_target += FOOTSTEP_RATE + (randf() * 2 - 1) * FOOTSTEP_RANGE
       SoundManager.play_sound("Footstep")
     
-  
   move_and_slide(direction, Vector2(0, 0), false, 4, 0.785398, false)
 
 func _unhandled_input(event: InputEvent) -> void:  

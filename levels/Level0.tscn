@@ -86,17 +86,6 @@ position = Vector2( 1253.86, 375.59 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Markers" type="Node2D" parent="."]
-
-[node name="LevelBottom" type="Node2D" parent="Markers"]
-position = Vector2( 671.308, 1497.95 )
-
-[node name="SpawnPoint" type="Node2D" parent="Markers"]
-position = Vector2( 667.512, 1261.08 )
-
-[node name="LevelTop" type="Node2D" parent="Markers"]
-position = Vector2( 677.235, 0 )
-
 [node name="DialogTrigger" parent="." instance=ExtResource( 3 )]
 position = Vector2( 635.505, 1222.04 )
 scale = Vector2( 1.21311, 0.260445 )

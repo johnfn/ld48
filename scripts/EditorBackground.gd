@@ -1,4 +1,4 @@
-tool
+# tool
 extends Node2D
 
 export(int) var num_bgs = 4

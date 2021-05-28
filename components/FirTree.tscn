@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/art/pinetree_top.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/pinetree_bottom.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Tree.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/tree_shadow.png" type="Texture" id=4]
-[ext_resource path="res://assets/shaders/WindSwept.tres" type="Material" id=5]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -18.9979, 156.654, 96.0604, 134.009, 108.301, 59.3435, 17.7228, -25.7263, -75.3031, 28.1308, -84.4833, 116.873, -27.5661, 168.894, -13.4898, 151.145 )
@@ -25,18 +24,15 @@ polygon = PoolVector2Array( -29.4023, 118.096, 42.8152, 112.588, 22.6188, 60.567
 
 [node name="Shadow" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 0.329412 )
-material = ExtResource( 5 )
 position = Vector2( 1.11552, -21.3761 )
 scale = Vector2( 1.16249, -1.37496 )
 texture = ExtResource( 4 )
 
 [node name="Trunk" type="Sprite" parent="."]
-material = ExtResource( 5 )
 position = Vector2( -3.83246, -124.342 )
 texture = ExtResource( 2 )
 
 [node name="Leaves" type="Sprite" parent="."]
-material = ExtResource( 5 )
 position = Vector2( -3.83246, -124.342 )
 texture = ExtResource( 1 )
 
@@ -55,4 +51,5 @@ polygon = PoolVector2Array( -4.42491, -61.3063, -21.2809, -33.7749, -27.6487, -1
 position = Vector2( -3.83246, -124.342 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeafArea"]
+visible = false
 polygon = PoolVector2Array( 29.963, 93.6158, 89.9401, 45.2668, -1.24969, -124.873, -81.4233, 65.4632, -26.9542, 96.6758 )

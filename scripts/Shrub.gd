@@ -7,5 +7,7 @@ func _init().():
   self.hit_sfx = "Bush"  
   
 func _ready():
+  $Sprite.material = load("res://assets/shaders/WindSwept.tres").duplicate()
+  
   var shrubMaterial = $Sprite.material
   material.set_shader_param("global_xy", global_position)

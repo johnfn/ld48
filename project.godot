@@ -50,6 +50,11 @@ _global_script_classes=[ {
 "path": "res://scripts/Player.gd"
 }, {
 "base": "Node2D",
+"class": "SimpleMain",
+"language": "GDScript",
+"path": "res://scripts/SimpleMain.gd"
+}, {
+"base": "Node2D",
 "class": "Store",
 "language": "GDScript",
 "path": "res://scripts/Store.gd"
@@ -73,6 +78,7 @@ _global_script_class_icons={
 "Main": "",
 "Pickup": "",
 "Player": "",
+"SimpleMain": "",
 "Store": "",
 "Sword": "",
 "SwordPickup": ""

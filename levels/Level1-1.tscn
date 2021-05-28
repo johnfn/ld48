@@ -437,17 +437,6 @@ position = Vector2( 393.506, 3154.55 )
 material = SubResource( 2 )
 position = Vector2( 362.626, 3056.12 )
 
-[node name="Markers" type="Node2D" parent="."]
-
-[node name="LevelBottom" type="Node2D" parent="Markers"]
-position = Vector2( 671.904, 3535.49 )
-
-[node name="SpawnPoint" type="Node2D" parent="Markers"]
-position = Vector2( 658.435, 3032.6 )
-
-[node name="LevelTop" type="Node2D" parent="Markers"]
-position = Vector2( 677.235, 0 )
-
 [node name="Tree2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 595.253, 1603.83 )
 solid_leaves = false
@@ -541,9 +530,11 @@ material = SubResource( 3 )
 position = Vector2( 980.173, 537.952 )
 
 [node name="dog" type="Node2D" parent="."]
+visible = false
 position = Vector2( 609.878, -322.309 )
 
 [node name="RandomSquare" type="ColorRect" parent="."]
+visible = false
 margin_left = 493.537
 margin_top = 2809.34
 margin_right = 593.537
@@ -554,10 +545,12 @@ __meta__ = {
 }
 
 [node name="EntranceTrigger" parent="." instance=ExtResource( 11 )]
+visible = false
 position = Vector2( 498.723, 2820.35 )
 scene_dest = "res://levels/LevelCave-1.tscn"
 exit_name = "Exit1"
 is_cave = true
 
 [node name="Exit1" type="Node2D" parent="."]
+visible = false
 position = Vector2( 570.073, 864.912 )

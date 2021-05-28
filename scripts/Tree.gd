@@ -1,4 +1,4 @@
-tool
+# tool
 extends Node2D
 
 export(bool) var solid_leaves = true
@@ -6,8 +6,18 @@ export(bool) var fake_tree = false
 
 const MAX_OPACITY = 0.6
 
+onready var mat = load("res://assets/shaders/WindSwept.tres")
+
+func set_shaders(shader):
+  $Trunk.set_material(shader)
+  $Leaves.set_material(shader)
+  $Shadow.set_material(shader)
+
 func _process(delta):
   if Engine.editor_hint:
+    #we need to do this b/c otherwise this destroys grant's CPU
+    set_shaders(null)
+    
     if fake_tree:
       modulate = Color(1.0, 0.5, 0.5, 1.0)
     else:
@@ -18,6 +28,8 @@ func _ready():
   
   if Engine.editor_hint:
     return
+  
+  set_shaders(mat)
   
   if fake_tree:
     $Tree/FullHitbox.queue_free()

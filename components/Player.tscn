@@ -37,24 +37,9 @@ extents = Vector2( 26.5449, 25.176 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 31 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 22 ) ],
 "loop": true,
-"name": "itemget",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "upright",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "down",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "upleft",
+"name": "downright",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 27 ), ExtResource( 17 ) ],
@@ -62,9 +47,24 @@ animations = [ {
 "name": "downleft",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 24 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 25 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "downright",
+"name": "upright",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "itemget",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "upleft",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "down",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 12 ) ],
