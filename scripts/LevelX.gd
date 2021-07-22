@@ -11,4 +11,4 @@ func get_song():
   return song
 
 func _on_DialogTrigger_cinematic_ended():
-  get_tree().change_scene("res://scenes/Credits.tscn")
+  var _err = get_tree().change_scene("res://scenes/Credits.tscn")

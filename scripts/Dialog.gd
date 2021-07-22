@@ -145,8 +145,6 @@ func calc_rect_position(text):
 
 func display_text_co(new_text: String, autodismiss_time_sec: float) -> void:
   var cur_text = ""
-  var size = active_text.get_font("font").get_string_size(cur_text)
-  
   var skipped_dialog = false
   
   active_press_space.visible = false
@@ -186,7 +184,7 @@ func display_text_co(new_text: String, autodismiss_time_sec: float) -> void:
     return
   
   if not skipped_dialog:
-    for x in range(60):
+    for _x in range(60):
       yield(get_tree(), "idle_frame")
       if Input.is_action_just_pressed("ui_accept"): break
   
@@ -199,7 +197,7 @@ func display_text_co(new_text: String, autodismiss_time_sec: float) -> void:
   
   # autodismiss after 3 sec roughly
   
-  for x in range(autodismiss_time_sec * 60.0):
+  for _x in range(autodismiss_time_sec * 60.0):
     yield(get_tree(), "idle_frame")
     
     if Input.is_action_just_pressed("ui_accept"):

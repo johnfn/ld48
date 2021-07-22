@@ -25,7 +25,7 @@ func _ready():
   ._ready()
   
   if not Engine.editor_hint:
-    material = load("res://assets/shaders/WindSwept.tres")
+    $Sprite.material = load("res://assets/shaders/WindSwept.tres").duplicate()
   
   if direction_to_shoot.x > 0:
     self.sprite.flip_h = true
@@ -35,7 +35,7 @@ func _integrate_forces(state):
   
 func _process(delta):
   if Engine.editor_hint:
-    material = null
+    $Sprite.material = null
     
     if sprite != null:
       sprite.flip_h = direction_to_shoot.x > 0

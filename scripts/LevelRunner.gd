@@ -6,13 +6,13 @@ export(float) var bottom_wall = 0;
 export(bool) var is_top_open = false;
 var dirty = false
 
-var player = null
-var main_cam = null
+onready var player = $"/root/Main/Levels/Player"
+onready var main_cam = $"/root/Main/Camera"
 var player_min_y = null
 
-onready var cam_steal_y = $Markers/CameraSteal.global_position.y
-onready var cam_return_y = $Markers/CameraReturn.global_position.y
-onready var Cam = $Camera
+#onready var cam_steal_y = 
+
+onready var Cam = $"/root/Main/Camera"
 onready var Runner = $Runner
 
 var is_beginning_running = false
@@ -34,8 +34,10 @@ func _ready():
   player_min_y = spawn_point.y
   dirty = true
 
-
 func _process(delta):
+  var cam_steal_y = $Markers/CameraSteal.global_position.y
+  var cam_return_y = $Markers/CameraReturn.global_position.y
+  
   var player_y = player.global_position.y
   if player_min_y > player_y:
     if player_min_y > cam_steal_y and player_y <= cam_steal_y:

@@ -47,10 +47,10 @@ func update_song(next_song = null):
     if next_song != null:
       var curr_node = get_node(next_song)
       if to_shut_down != null:
-        var volume = get_node(next_song).volume_db
+        var next_vol = get_node(next_song).volume_db
         
-        curr_node.volume_db = volume-30
-        $InTween.interpolate_property(curr_node, "volume_db", volume-30, volume, 5.0, Tween.TRANS_CUBIC, Tween.EASE_IN)
+        curr_node.volume_db = next_vol-30
+        $InTween.interpolate_property(curr_node, "volume_db", next_vol-30, next_vol, 5.0, Tween.TRANS_CUBIC, Tween.EASE_IN)
         $InTween.start()
         yield(get_tree().create_timer(0.1), "timeout")
       
@@ -103,4 +103,4 @@ func update_river_volume(y):
   for river in rivers:
     if dist == null or abs(y - river) < dist:
       dist = abs(y - river)
-  set_river_volume(max(0, min(1, 1.5 - (dist / 800))) if dist != null else 0)
+  set_river_volume(max(0, min(1, 1.5 - (dist / 800))) if dist != null else 0.0)

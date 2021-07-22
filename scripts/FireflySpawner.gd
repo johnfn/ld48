@@ -13,7 +13,7 @@ func initial_firefly_spawn():
   player = $"/root/Main/Levels/Player"
   yield(get_tree(), "idle_frame")
   
-  for i in range(50):
+  for _i in range(50):
     var c = spawn_firefly()
     
     c.position = player.position + Vector2(randf() * 1000.0 - 1000.0, - randf() * 20000.0)

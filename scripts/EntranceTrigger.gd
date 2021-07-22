@@ -5,7 +5,7 @@ export(String) var exit_name
 export(bool) var is_cave
 
 func _ready():
-  self.connect("body_entered", self, "body_enter")
+  if self.connect("body_entered", self, "body_enter") != OK: print("connect error [4]")
 
 func body_enter(other: Node2D):
   if other is Player:

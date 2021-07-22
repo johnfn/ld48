@@ -8,8 +8,10 @@
 script = ExtResource( 1 )
 
 [node name="GrassTexture" type="Sprite" parent="."]
-position = Vector2( 640, 1280 )
 texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 500, 500 )
 
 [node name="CaveTexture" type="Sprite" parent="."]
 visible = false

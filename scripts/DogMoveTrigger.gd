@@ -8,11 +8,11 @@ export(Array) var dog_speak: Array = ["Yip yip!"]
 
 var DialogScene = load("res://scenes/Dialog.tscn")
 var triggered = false
-onready var area = $DialogTrigger
+
 var dog
 
 func _ready():
-  connect("body_entered", self, "body_entered")
+  if connect("body_entered", self, "body_entered") != OK: print("connect error [3]")
   
   dog = get_node(dog_path)
 
@@ -27,7 +27,7 @@ func body_entered(other: Node2D):
       return
     begin_cinematic(other)
     
-func begin_cinematic(player: Player):
+func begin_cinematic(_player: Player):
   Letterbox.in_cinematic = true
   
   yield(Letterbox.animate_in(dog), "completed")

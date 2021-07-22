@@ -25,15 +25,16 @@ func _ready():
   
   $Original.texture = textures[floor(randf()*len(textures))]
 
-
 func _on_push_entered(body):
-  if body.has_method('is_player') and body.is_player():
-    pushing_player = body
+  pass
+#  if body.has_method('is_player') and body.is_player():
+#    pushing_player = body
 
 
 func _on_push_exited(body):
-  if body == pushing_player:
-    pushing_player = null
+  pass
+#  if body == pushing_player:
+#    pushing_player = null
 
 
 func _physics_process(delta):
@@ -54,8 +55,8 @@ func _physics_process(delta):
     if move_dist >= position.distance_to(target):
       move_dist = position.distance_to(target) 
       target = null
-    move_and_collide(move_dir * move_dist)
 
+    move_and_collide(move_dir * move_dist)
 
 func get_push_dir():
   if pushing_player == null:
@@ -81,7 +82,6 @@ func get_push_dir():
     
   return null
 
-
 func _unhandled_input(event: InputEvent) -> void:
   for dir_name in dir_map.keys():
     if Input.is_action_just_pressed(dir_name):
@@ -89,9 +89,9 @@ func _unhandled_input(event: InputEvent) -> void:
     elif Input.is_action_just_released(dir_name):
       dirs_held[dir_map[dir_name]] = false 
 
-
 func attempt_push(push_dir):
   target = position * 1
+
   match push_dir:
     0:
       target.x += push_distance
@@ -101,10 +101,10 @@ func attempt_push(push_dir):
       target.x -= push_distance
     3:
       target.y -= push_distance
-    
+
   target.x = round((target - initial_pos).x / push_distance) * push_distance + initial_pos.x
   target.y = round((target - initial_pos).y / push_distance) * push_distance + initial_pos.y
-  
+
   var curr_pos = position
   var collision = move_and_collide(target - position, false, true, true)
   
@@ -114,7 +114,6 @@ func attempt_push(push_dir):
 
 func is_pushable():
   return pushable
-  
   
 func fill_in_hole():
   $PushBounds.queue_free()

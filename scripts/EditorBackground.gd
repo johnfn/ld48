@@ -4,7 +4,7 @@ extends Node2D
 export(int) var num_bgs = 4
 export(String) var texture_name = "GrassTexture"
 
-func _process(delta):
+func _process(_delta):
   if Engine.editor_hint:
     var texture = get_node(texture_name)
     

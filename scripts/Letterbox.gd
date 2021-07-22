@@ -153,7 +153,7 @@ func animate_out():
   is_animating = true
   
   var start_pos = camera.global_position
-  var end_pos = Vector2(start_pos.x, main.get_desired_cam_position(999999.0)) # pass in massive delta to get the final position
+  var end_pos = main.get_desired_cam_position(999999.0) # pass in massive delta to get the final position
   
   for x in range(int(letterbox_animation_length)):
     yield(get_tree(), "idle_frame")
@@ -168,6 +168,8 @@ func animate_out():
 
 func fade_to_black(fade_length, fade_percentage = 1.0):
   if is_animating: 
+    yield(get_tree(), "idle_frame")
+    
     return
     
   is_animating = true

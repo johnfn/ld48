@@ -15,14 +15,14 @@ var knockback: bool = false
 var hit_sfx = "Hit"
 
 func _ready() -> void:
-  self.connect("body_entered", self, "on_enter")
-  self.connect("body_exited", self, "on_exit")
+  if self.connect("body_entered", self, "on_enter") != OK: print("connect error [1]")
+  if self.connect("body_exited", self, "on_exit") != OK: print("connect error [2]")
 
 func on_enter(other) -> void:
   if other.has_method("is_player") and other.is_player() and deals_damage:
     other.damage(1, self)
     
-func on_exit(other) -> void:
+func on_exit(_other) -> void:
   pass
 
 func is_hittable() -> bool:

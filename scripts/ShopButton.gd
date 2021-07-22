@@ -56,7 +56,7 @@ func _ready():
 func can_buy(): 
   return player.coins >= shop_data[item].cost
 
-func _process(delta):
+func _process(_delta):
   if Engine.editor_hint:
     update_content()
     return

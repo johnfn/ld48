@@ -29,7 +29,7 @@ func render_coins():
 func render_arrows():
   ArrowText.text = str(player.arrows)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
   if player.health != old_player_health:
     render_hearts()
     old_player_health = player.health

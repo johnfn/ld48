@@ -57,7 +57,7 @@ func _damage_anim(target):
       yield(get_tree().create_timer(0.1), "timeout")
       target.material.set_shader_param("white", 0.0)
   
-  for i in range(1):
+  for _i in range(1):
      if target == null:
         break
      target.visible = false

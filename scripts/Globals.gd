@@ -43,7 +43,6 @@ func cam_extents() -> Rect2:
   # The maximum edge is obtained by adding the rectangle size.
   # Because it's a size it's only affected by zoom, so divide by scale too.
   var view_size = get_camera().get_viewport_rect().size / ctrans.get_scale()
-  var max_pos = min_pos + view_size
   
   return Rect2(min_pos, view_size)
 

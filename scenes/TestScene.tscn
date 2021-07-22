@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://levels/Level1-1.tscn" type="PackedScene" id=1]
-[ext_resource path="res://levels/Level0.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/art/background1.png" type="Texture" id=1]
+[ext_resource path="res://scenes/FireflySpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Letterbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/SimpleMain.gd" type="Script" id=5]
 [ext_resource path="res://assets/art/player.png" type="Texture" id=6]
 [ext_resource path="res://ui_elements/UiOverlay.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/BetterStub.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scripts/LevelX.gd" type="Script" id=10]
+[ext_resource path="res://levels/Level1-5.tscn" type="PackedScene" id=10]
+[ext_resource path="res://levels/LevelRunner.tscn" type="PackedScene" id=11]
 
 [node name="Main" type="Node2D"]
 position = Vector2( -15.6904, -10.5031 )
@@ -16,20 +17,46 @@ script = ExtResource( 5 )
 
 [node name="Levels" type="YSort" parent="."]
 
-[node name="Level1-1" parent="Levels" instance=ExtResource( 1 )]
-position = Vector2( 0, -5.1886 )
+[node name="LevelRunner" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 158.031, -39184.1 )
+permanent = true
+scene_path = "res://levels/LevelRunner.tscn"
+
+[node name="Scene" parent="Levels/LevelRunner" instance=ExtResource( 11 )]
+
+[node name="Level1-5" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 136.339, -26415.5 )
+permanent = true
+scene_path = "res://levels/Level1-5.tscn"
+
+[node name="Scene" parent="Levels/Level1-5" instance=ExtResource( 10 )]
+
+[node name="Level1-4" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 173.895, -23063.7 )
+scene_path = "res://levels/Level1-4.tscn"
+
+[node name="Level1-3" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 112.457, -16784.9 )
+scene_path = "res://Levels/Level1-3.tscn"
+
+[node name="Level1-2" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 104.091, -9093.24 )
+scene_path = "res://levels/Level1-2.tscn"
+
+[node name="Level1-1" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 27.4392, -3501.03 )
+scene_path = "res://levels/Level1-1.tscn"
+
+[node name="Level1-0" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 0, -6.21582 )
+scene_path = "res://levels/Level1-0.tscn"
 
 [node name="Level0" parent="Levels" instance=ExtResource( 8 )]
-position = Vector2( -132.429, 3498.18 )
-done = true
+position = Vector2( -21.1638, 3540.72 )
 scene_path = "res://levels/Level0.tscn"
 
-[node name="Scene" type="Node2D" parent="Levels/Level0" instance=ExtResource( 2 )]
-script = ExtResource( 10 )
-song = "ForestAmbiance"
-
 [node name="Player" parent="Levels" instance=ExtResource( 3 )]
-position = Vector2( 742.573, 4326.42 )
+position = Vector2( 769.14, -21053.5 )
 
 [node name="Light2D" type="Light2D" parent="Levels/Player"]
 visible = false
@@ -59,3 +86,14 @@ current = true
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="UI" parent="." instance=ExtResource( 7 )]
+
+[node name="FireflySpawner" parent="." instance=ExtResource( 2 )]
+
+[node name="GrassTexture" type="Sprite" parent="."]
+position = Vector2( -16.9639, -39544.1 )
+scale = Vector2( 1, 1.23969 )
+z_index = -10
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2000, 50000 )

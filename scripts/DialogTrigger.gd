@@ -13,12 +13,11 @@ export var fade_to_black = false
 var speaker = null # null implies player - otherwise this will be passed down by someone who inherits us
 
 var triggered = false
-onready var area = $DialogTrigger
 var DialogScene = load("res://scenes/Dialog.tscn")
 export var autodismiss_time = 20
 
 func _ready():
-  connect("body_entered", self, "body_entered")
+  var _unused = connect("body_entered", self, "body_entered")
 
 func body_entered(other: Node2D):
   if triggered:
@@ -39,7 +38,7 @@ func body_entered(other: Node2D):
   triggered = true
   begin_cinematic(other)
     
-func begin_cinematic(initiator: Node2D):
+func begin_cinematic(_initiator: Node2D):
   yield(get_tree(), "idle_frame")
   
   if sfx != "":

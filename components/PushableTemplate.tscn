@@ -12,7 +12,7 @@ extents = Vector2( 34.9736, 36.1657 )
 extents = Vector2( 25.6249, 26.3734 )
 
 [node name="Pushable" type="KinematicBody2D"]
-position = Vector2( 0, -0.305023 )
+position = Vector2( 0, -0.600754 )
 collision_layer = 2
 collision_mask = 167
 script = ExtResource( 2 )

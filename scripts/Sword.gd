@@ -5,13 +5,10 @@ onready var Letterbox = $"/root/Main/Letterbox"
 onready var AnimationPlayer = $SwordObj/AnimationPlayer
 onready var swing_animation = $SwordObj/AnimationPlayer.get_animation("Swing")
 onready var Hitbox: CollisionPolygon2D = $Hitbox
-onready var Hurtbox: CollisionPolygon2D = $Hurtbox
 onready var SwordSprite = $SwordObj/SwordSprite
-onready var StickSprite = $StickSprite
 onready var SwordArea = self
 onready var root = $"/root"
 onready var SliceAnimation = $SliceAnimation
-onready var HitsparkAnimation = $Hitspark/HitsparkAnimation
 var raycast_instance: RayCast2D
 var HitsparkScene = load("res://scenes/Hitspark.tscn")
 
@@ -36,8 +33,6 @@ func _ready() -> void:
   root.call_deferred("add_child", raycast_instance)
   SliceAnimation.visible = false
   SliceAnimation.connect("animation_finished", self, "hide_anim")
-  
-  SwordArea.connect("body_entered", SwordArea, "on_enter")
 
 func hide_anim():
   SliceAnimation.visible = false
@@ -76,7 +71,7 @@ func set_in_use(in_use: bool) -> void:
 
   # ... continues in _physics_process, b/c we need to wait for the overlapping bodies to be updated!
 
-func _physics_process(delta):
+func _physics_process(_delta):
   if Hitbox.disabled:
     return
   
@@ -105,8 +100,6 @@ func _physics_process(delta):
       
       var hit = raycast_instance.get_collider()
       
-      var damaged = false
-      
       if hit == potential_enemy:
         var screen_shake = true
         
@@ -125,8 +118,6 @@ func _physics_process(delta):
   
   # render hitspark
   
-  var hit_anything = false
-  
   for hit in hits:
     raycast_instance.global_position = player.global_position
     raycast_instance.cast_to = hit.global_position - player.global_position
@@ -134,8 +125,6 @@ func _physics_process(delta):
     
     if raycast_instance.get_collider() == null:
       continue
-    
-    hit_anything = true
     
     var hitspark = HitsparkScene.instance()
     

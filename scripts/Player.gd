@@ -18,6 +18,7 @@ onready var Equipment = $Equipment
 onready var Weapons = $Equipment/weapons
 onready var health = max_health
 onready var coins = 0
+onready var hitbox: CollisionShape2D = $Hitbox
 
 var is_invuln = false
 var idleCounter = 0
@@ -50,6 +51,8 @@ func _ready() -> void:
     if sprite != null:
       sprite.visible = false
   
+  # hitbox.connect()
+  
   if Globals.debug_has_sword:
     get_weapon(WeaponName.Sword)
     set_active(WeaponName.Sword)
@@ -75,7 +78,7 @@ func set_active(weapon):
 func is_active(weapon):
   return active_weapon == weapon
 
-func _process(delta: float) -> void:  
+func _process(_delta: float) -> void:  
   if Letterbox.in_cinematic:
     return
   
@@ -178,9 +181,80 @@ func _physics_process(delta: float) -> void:
       footstep_target += FOOTSTEP_RATE + (randf() * 2 - 1) * FOOTSTEP_RANGE
       SoundManager.play_sound("Footstep")
     
-  move_and_slide(direction, Vector2(0, 0), false, 4, 0.785398, false)
+  var _unused = move_and_slide(direction, Vector2(0, 0), false, 4, 0.785398, false)
+  
+  try_to_push_rocks(input_vec)
 
-func _unhandled_input(event: InputEvent) -> void:  
+var rock_push_tick = {}
+
+func try_to_push_rocks(input_vec: Vector2):
+  var collided_rocks = []
+  
+  for i in get_slide_count():
+    var collision = get_slide_collision(i)
+    var collider = collision.collider
+    
+    if collider.has_method("is_pushable"):
+      collided_rocks.append(collider)
+  
+  # Update amount of time we've been pushing each rock
+  
+  var new_rock_push_tick = {}
+  
+  for rock in collided_rocks:
+    if rock in rock_push_tick:
+      new_rock_push_tick[rock] = rock_push_tick[rock] + 1
+    else:
+      new_rock_push_tick[rock] = 1
+  
+  rock_push_tick = new_rock_push_tick
+  
+  for rock in rock_push_tick:
+    if rock_push_tick[rock] > 20:
+      
+      # Actually push the rock
+      
+      rock_push_tick[rock] = 0
+      
+      var self_center = self.get_node("Center").global_position
+      var rock_center = rock.get_node("Center").global_position
+      
+      var dx = self_center.x - rock_center.x
+      var dy = self_center.y - rock_center.y
+      
+      
+      if (input_vec.x != 0) != (input_vec.y != 0):
+        # if only one directional key is pressed, it's pretty easy
+        if input_vec.x < 0:
+          rock.attempt_push(2) # left
+        elif input_vec.x > 0:
+          rock.attempt_push(0) # right
+        elif input_vec.y > 0:
+          rock.attempt_push(1) # down
+        elif input_vec.y < 0:
+          rock.attempt_push(3) # up
+      else:
+        # if they're pushing diagonally, try to figure out which direction is more sensible
+
+        if abs(dx) > abs(dy):
+          if dx > 0:
+            rock.attempt_push(2) # left
+          elif dx < 0:
+            rock.attempt_push(0) # right
+        else:
+          if dy < 0:
+            rock.attempt_push(1) # down
+          elif dy > 0:
+            rock.attempt_push(3) # up
+      
+#      var dir_map = {
+#        move_left = 2,
+#        move_up = 3,
+#        move_right = 0,
+#        move_down = 1
+#      }
+
+func _unhandled_input(_event: InputEvent) -> void:  
   if Input.is_action_just_pressed("move_down"):
     input_vec.y = 1
   elif Input.is_action_just_pressed("move_up"):

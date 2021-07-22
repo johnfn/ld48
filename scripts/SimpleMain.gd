@@ -3,9 +3,9 @@ extends Node2D
 
 onready var Letterbox = $"/root/Main/Letterbox"
 onready var Player = $Levels/Player
-onready var Cam = $Camera
-onready var Ui = $UI
-onready var Levels = $Levels
+onready var Cam = $"/root/Main/Camera"
+onready var Ui = $"/root/Main/UI"
+onready var Levels = $"/root/Main/Levels"
 onready var CanvasModulate = $CanvasModulate
 var WeaponName = preload("res://scripts/WeaponName.gd").WeaponName
 
@@ -51,7 +51,7 @@ func start_level(level_path: String) -> void:
   
   wire_item_signals() 
   SoundManager.update_possible_rivers()
-  Cam.position.y = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2
+  Cam.position.y = Level.bottom_wall - BASE_VIEWPORT_HEIGHT / 2.0
 
 func set_bg_type(name: String):
   for ch in $Background.get_children():
@@ -144,10 +144,10 @@ func get_desired_cam_position(delta: float):
 
 func _process(delta: float):
   # In this case, the letterbox takes care of camera location
-    
+  
   if not Letterbox.in_cinematic and Cam.current:
     Cam.position = get_desired_cam_position(delta)
-    
+  
   SoundManager.update_river_volume(Player.global_position.y)
 
 func wire_item_signals():
@@ -203,7 +203,8 @@ func _on_background_entered(body, i):
       $Background.get_child(front).position.y += BACKGROUND_HEIGHT * len(bgs)
 
 onready var PauseMenu = load("res://scenes/PauseMenu.tscn")
-func _unhandled_input(event):
+
+func _unhandled_input(_event):
   if Input.is_action_just_pressed("pause"):
     add_child(PauseMenu.instance())
     

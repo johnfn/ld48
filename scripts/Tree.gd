@@ -13,7 +13,7 @@ func set_shaders(shader):
   $Leaves.set_material(shader)
   $Shadow.set_material(shader)
 
-func _process(delta):
+func _process(_delta):
   if Engine.editor_hint:
     #we need to do this b/c otherwise this destroys grant's CPU
     set_shaders(null)
@@ -36,16 +36,16 @@ func _ready():
     $TreeTrunk.queue_free()
     $Trunk.queue_free()
     
-    $LeafArea.connect("body_entered", self, "_on_body_entered")
-    $LeafArea.connect("body_exited", self, "_on_body_exited")
+    var _unused = $LeafArea.connect("body_entered", self, "_on_body_entered")
+    _unused = $LeafArea.connect("body_exited", self, "_on_body_exited")
   elif solid_leaves:
     $TreeTrunk/TrunkHitbox.queue_free()
 
     $LeafArea.queue_free()
   else:
     $Tree/FullHitbox.queue_free()
-    $LeafArea.connect("body_entered", self, "_on_body_entered")
-    $LeafArea.connect("body_exited", self, "_on_body_exited")
+    var _unused = $LeafArea.connect("body_entered", self, "_on_body_entered")
+    _unused = $LeafArea.connect("body_exited", self, "_on_body_exited")
   
   var trunkMaterial = $Trunk.material
   var leavesMaterial = $Leaves.material

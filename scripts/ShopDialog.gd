@@ -17,9 +17,6 @@ func _on_DoneButton_click():
 func _on_button_mouse_move(position, which):
   $Description.visible = true
   
-  var button = $VBoxContainer/Button
-  var r = button.get_global_rect()
-  
   $Description.rect_position = Vector2(700 + 20, position.y)
   $Description.text = which.my_description
 

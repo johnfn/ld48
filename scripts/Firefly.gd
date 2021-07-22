@@ -17,7 +17,7 @@ func _ready():
     if i != index:
       clouds[i].visible = false
 
-func _process(delta: float):
+func _process(_delta: float):
   count += 1
   
   var x_vel = noise.get_noise_1d(count)
