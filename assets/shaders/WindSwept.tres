@@ -9,4 +9,3 @@ shader_param/white = 0.0
 shader_param/red = 0.0
 shader_param/wind_magnitude = 0.5
 shader_param/global_xy = Vector2( 0, 0 )
-shader_param/wind_speed = 1.0

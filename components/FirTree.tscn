@@ -9,6 +9,7 @@
 polygon = PoolVector2Array( -18.9979, 156.654, 96.0604, 134.009, 108.301, 59.3435, 17.7228, -25.7263, -75.3031, 28.1308, -84.4833, 116.873, -27.5661, 168.894, -13.4898, 151.145 )
 
 [node name="FirTree" type="Node2D"]
+position = Vector2( 0, -0.453552 )
 script = ExtResource( 3 )
 
 [node name="TreeTrunk" type="StaticBody2D" parent="."]

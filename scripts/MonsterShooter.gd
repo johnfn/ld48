@@ -24,8 +24,10 @@ var dying = false
 func _ready():
   ._ready()
   
+  print("Hewo")
   if not Engine.editor_hint:
     $Sprite.material = load("res://assets/shaders/WindSwept.tres").duplicate()
+    $Sprite.material.set_shader_param("wind_magnitude", 0) # shooters are unaffected by wind
   
   if direction_to_shoot.x > 0:
     self.sprite.flip_h = true
