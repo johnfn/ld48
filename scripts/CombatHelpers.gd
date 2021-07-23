@@ -14,11 +14,14 @@ func drop_item(target: Node2D):
   var parent = target.get_parent()
   var player = $"/root/Main/Levels/Player"
     
-  if randi() % 5 == 0 or Globals.always_drop_arrow:
+  if randi() % 5 == 0 or Globals.always_drop_arrow() or Globals.always_drop_coin():
     var which_drop = randi() % 3
     
-    if Globals.always_drop_arrow:
+    if Globals.always_drop_arrow():
       which_drop = 2
+      
+    if Globals.always_drop_coin():
+      which_drop = 1
     
     # re-roll so we don't get hearts at max hearts
     while which_drop == 0 and player.health == player.max_health:

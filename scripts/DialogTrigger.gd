@@ -26,7 +26,7 @@ func body_entered(other: Node2D):
   if not (other is Player):
     return
     
-  if Globals.skip_cinematics:
+  if Globals.skip_cinematics():
     emit_signal("cinematic_ended")
     return
   

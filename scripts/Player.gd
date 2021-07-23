@@ -53,11 +53,11 @@ func _ready() -> void:
   
   # hitbox.connect()
   
-  if Globals.debug_has_sword:
+  if Globals.debug_has_sword():
     get_weapon(WeaponName.Sword)
     set_active(WeaponName.Sword)
     
-  if Globals.debug_has_bow:
+  if Globals.debug_has_bow():
     get_weapon(WeaponName.Bow)
     set_active(WeaponName.Bow)
     
@@ -88,10 +88,10 @@ func _process(_delta: float) -> void:
   if is_active(WeaponName.Bow):
     WeaponSprites[WeaponName.Bow].look_at(get_global_mouse_position())
   
-  if Input.is_key_pressed(KEY_F) and Globals.debug_f_die:
+  if Input.is_key_pressed(KEY_F) and Globals.debug_f_die():
     damage(9999, self)
   
-  if Input.is_key_pressed(KEY_G) and Globals.debug_g_give_money:
+  if Input.is_key_pressed(KEY_G) and Globals.debug_g_give_money():
     coins += 1
 
   if Input.is_action_just_pressed("swap_weapon"):
@@ -135,7 +135,7 @@ func _physics_process(delta: float) -> void:
   var is_running = Input.is_key_pressed(KEY_SHIFT)
   
   spawn_invuln_left -= delta
-  var direction = input_vec.normalized() * max_speed * (4.0 if is_running else 1.0)
+  var direction = input_vec.normalized() * max_speed * ((4.0 if Globals.debug_hyper_run() else 2.0) if is_running else 1.0)
   
   var knockback_strength = knockback_velocity.length()
   
@@ -329,7 +329,7 @@ func damage(amount: int, source: Node2D, strength = 500) -> void:
   if not is_invuln and health > 0 and not Letterbox.in_cinematic and spawn_invuln_left <= 0.0:
     # take damage
     
-    if not Globals.debug_invincible:
+    if not Globals.debug_invincible():
       health -= amount
       
     SoundManager.play_sound("Hit")

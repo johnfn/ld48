@@ -2,11 +2,14 @@ extends Area2D
 
 func _ready():
     var _res = connect("body_entered", self, "on_enter")
-  
+
+func pickup(other: Player):
+  other.get_coin(1)
+  queue_free()
+
 func on_enter(other: Node2D):
   if other is Player:
-    other.get_coin(1)
-    queue_free()
+    pickup(other)
 
 var tick = 0
 

@@ -193,7 +193,7 @@ func _ready():
   if CanvasModulate != null:
     set_lighting_on(false, false)
   
-  if Globals.debug_lighting_on:
+  if Globals.debug_lighting_on():
     set_lighting_on(true, true)
   
   initial_cam_x = Cam.position.x
@@ -313,7 +313,7 @@ func handle_item_body_entered(body: Node, item_node):
       item_node.queue_free()
 
 func handle_player_died():
-  if Globals.skip_cinematics:
+  if Globals.skip_cinematics():
     start_level(level_scenes[curr_level_num()])
     return
     

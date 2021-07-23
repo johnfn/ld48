@@ -90,6 +90,10 @@ func _physics_process(_delta):
   
   update()
   
+  for potential_pickup in hits:
+    if potential_pickup.is_in_group("pickup"):
+      potential_pickup.pickup(player)
+  
   var successful_hits = []
   
   for potential_enemy in hits:

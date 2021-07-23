@@ -12,7 +12,7 @@
 [ext_resource path="res://levels/LevelRunner.tscn" type="PackedScene" id=11]
 
 [node name="Main" type="Node2D"]
-position = Vector2( -15.6904, -10.5031 )
+position = Vector2( -21.206, -10.5031 )
 script = ExtResource( 5 )
 
 [node name="Levels" type="YSort" parent="."]
@@ -56,7 +56,7 @@ position = Vector2( -21.1638, 3540.72 )
 scene_path = "res://levels/Level0.tscn"
 
 [node name="Player" parent="Levels" instance=ExtResource( 3 )]
-position = Vector2( 769.14, -21053.5 )
+position = Vector2( 687.562, 4409.28 )
 
 [node name="Light2D" type="Light2D" parent="Levels/Player"]
 visible = false

@@ -4,8 +4,6 @@
 
 [node name="Globals" type="Node2D"]
 script = ExtResource( 1 )
-skip_cinematics = true
-debug_has_sword = true
-mute_sound = true
-debug_g_give_money = true
-debug_invincible = true
+_skip_cinematics = true
+_debug_has_sword = true
+_always_drop_coin = true

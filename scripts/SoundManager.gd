@@ -6,7 +6,7 @@ var curr_song = null
 onready var river_audio = $River/River
 
 func set_volume(val):
-  if Globals.mute_sound: return
+  if Globals.mute_sound(): return
   
   volume = val
   var old_mute = muted
@@ -21,7 +21,7 @@ func set_volume(val):
       song.stream_paused = muted
 
 func update_song(next_song = null):
-  if Globals.mute_sound: return
+  if Globals.mute_sound(): return
   
 #  if next_song == null:
 #    next_song = Level.get_song() if Level.has_method("get_song") else "Chapter1Song"
@@ -69,7 +69,7 @@ func get_db(vol_boost=0.0):
 
 func play_sound(sound, vol_boost=0.0):
   if volume < 5: return
-  if Globals.mute_sfx: return
+  if Globals.mute_sfx(): return
   
   var sounds = get_node(sound).get_children()
   var unused = []
@@ -83,7 +83,7 @@ func play_sound(sound, vol_boost=0.0):
     unused[randi() % len(unused)].volume_db = get_db(vol_boost)
 
 func set_river_volume(vol):
-  if Globals.mute_sound: return
+  if Globals.mute_sound(): return
   
   if vol <= 0.05:
     river_audio.playing = false

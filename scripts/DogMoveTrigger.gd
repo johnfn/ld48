@@ -23,7 +23,7 @@ func body_entered(other: Node2D):
   triggered = true
   
   if other is Player:
-    if Globals.skip_cinematics:
+    if Globals.skip_cinematics():
       return
     begin_cinematic(other)
     

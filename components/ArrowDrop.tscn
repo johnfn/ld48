@@ -7,7 +7,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.5087, 26.0414 )
 
-[node name="ArrowDrop" type="Area2D"]
+[node name="ArrowDrop" type="Area2D" groups=[
+"pickup",
+]]
 script = ExtResource( 2 )
 
 [node name="Shadow" type="Sprite" parent="."]
@@ -25,3 +27,5 @@ shape = SubResource( 1 )
 position = Vector2( 4.78323, -2.35004 )
 rotation = 0.785398
 texture = ExtResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_ArrowDrop_body_entered"]

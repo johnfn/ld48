@@ -104,7 +104,7 @@ func _ready():
   if CanvasModulate != null:
     set_lighting_on(false, false)
   
-  if Globals.debug_lighting_on:
+  if Globals.debug_lighting_on():
     set_lighting_on(true, true)
   
   initial_cam_x = Cam.position.x
